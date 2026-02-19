@@ -23,3 +23,9 @@ python -m pip install -e '.[dev]'
 Runner-owned implementation contracts live in:
 
 - `specs/impl/python/`
+
+## Source Moved From data-contracts
+
+Implementation narratives previously documented in `data-contracts/docs/impl/python.md`
+are owned here. See `docs/migration_from_data_contracts.md` for migration
+mapping.
