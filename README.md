@@ -17,3 +17,9 @@ Python compatibility runner for Data Contracts.
 ```sh
 python -m pip install -e '.[dev]'
 ```
+
+## Implementation Specs
+
+Runner-owned implementation contracts live in:
+
+- `specs/impl/python/`
