@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dc-runner-python"
+version = "0.1.0"
+description = "Python compatibility runner for data-contracts"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "jon"}]
+dependencies = ["PyYAML>=6"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.8", "mypy>=1.11"]
+
+[tool.setuptools]
+package-dir = {"" = "."}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["spec_runner*"]
+
+[tool.mypy]
+python_version = "3.10"
+files = ["spec_runner"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

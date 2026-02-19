@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  compatibility-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e '.[dev]'
+      - name: Lint
+        run: python -m ruff check spec_runner
+      - name: Typecheck
+        run: python -m mypy spec_runner
+      - name: Smoke
+        run: python -m spec_runner.spec_lang_commands --help
