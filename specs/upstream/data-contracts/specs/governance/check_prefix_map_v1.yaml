@@ -1,50 +1,22 @@
 version: 1
 rules:
-  DCGOV-DOCS-REF-007: docs.make_commands_sync
-  DCGOV-NORM-002: normalization.mapping_ast_only
-  DCGOV-RUNTIME-TRIAGE-001: runtime.governance_triage_entrypoint_required
-  DCGOV-RUNTIME-TRIAGE-002: runtime.prepush_uses_governance_triage_required
-  DCGOV-RUNTIME-TRIAGE-003: runtime.cigate_uses_governance_triage_required
-  DCGOV-RUNTIME-TRIAGE-004: runtime.triage_artifacts_emitted_required
-  DCGOV-RUNTIME-TRIAGE-005: runtime.triage_failure_id_parsing_required
-  DCGOV-RUNTIME-TRIAGE-006: runtime.triage_bypass_logged_required
-  DCGOV-RUNTIME-TRIAGE-007: runtime.triage_stall_fallback_required
-  DCGOV-RUNTIME-TRIAGE-008: runtime.governance_triage_targeted_first_required
-  DCGOV-RUNTIME-TRIAGE-009: runtime.local_prepush_broad_governance_forbidden
-  DCGOV-RUNTIME-TRIAGE-019: runtime.ci_gate_ownership_contract_required
-  DCGOV-RUNTIME-TRIAGE-011: runtime.governance_prefix_selection_from_changed_paths
-  DCGOV-RUNTIME-TRIAGE-012: runtime.governance_triage_artifact_contains_selection_metadata
-  DCGOV-RUNTIME-TRIAGE-013: runtime.ci_artifact_upload_paths_valid
-  DCGOV-RUNTIME-TRIAGE-023: runtime.fast_path_consistency_required
-  DCGOV-RUNTIME-ENTRY-003: runtime.runner_adapter_python_impl_forbidden
-  DCGOV-RUNTIME-PREPUSH-001: runtime.local_ci_parity_python_lane_forbidden
-  DCGOV-RUNTIME-PREPUSH-002: runtime.make_python_parity_targets_forbidden
-  DCGOV-RUNTIME-PREPUSH-006: runtime.rust_only_prepush_required
-  DCGOV-RUNTIME-CONFIG-005: runtime.ci_python_lane_non_blocking_required
-  DCGOV-RUNTIME-CONFIG-006: runtime.required_rust_lane_blocking_status
-  DCGOV-RUNTIME-CONFIG-007: runtime.compatibility_lanes_non_blocking_status
-  DCGOV-RUNTIME-CONFIG-008: runtime.compatibility_matrix_registration_required
-  DCGOV-RUNTIME-CERT-001: runtime.runner_certification_registry_valid
-  DCGOV-RUNTIME-CERT-002: runtime.runner_certification_surfaces_sync
-  DCGOV-RUNTIME-CERT-003: runtime.runner_certification_artifacts_contract_sync
-  DCGOV-RUNTIME-CERT-004: runtime.runner_certification_required_lane_passes
-  DCGOV-RUNTIME-CERT-005: runtime.runner_certification_compat_lanes_non_blocking
-  DCGOV-RUNTIME-CONFIG-010: runtime.no_external_runner_file_path_refs
-  DCGOV-RUNTIME-CONFIG-009: runtime.implicit_subject_binding_forbidden
-  DCGOV-DOCS-REF-008: docs.compatibility_examples_labeled
-  DCGOV-DOCS-REF-010: docs.readme_rust_first_coherence
-  DCGOV-DOCS-REF-011: docs.generated_command_meta_no_python_exec
-  DCGOV-DOCS-REF-012: docs.reviews_prompt_schema_contract_sync
-  DCGOV-DOCS-REF-013: docs.review_snapshot_template_contract_sync
-  DCGOV-DOCS-REF-014: docs.review_tooling_contract_sync
-  DCGOV-DOCS-REF-015: docs.review_snapshots_schema_valid
-  DCGOV-DOCS-REF-016: docs.reviews_discovery_prompt_present
-  DCGOV-DOCS-REF-017: docs.reviews_discovery_prompt_contract_sync
-  DCGOV-DOCS-REF-018: docs.reviews_discovery_workflow_sync
-  DCGOV-SCHEMA-CONTRACT-001: schema.contract_imports_explicit_required
-  DCGOV-SCHEMA-CONTRACT-002: schema.contract_target_on_forbidden
+  DCGOV-RUNTIME-STATUS-001: runtime.runner_status_report_schema_valid
+  DCGOV-RUNTIME-STATUS-002: runtime.runner_status_matrix_schema_valid
+  DCGOV-RUNTIME-STATUS-003: runtime.compatibility_status_ingestion_configured
+  DCGOV-RUNTIME-STATUS-004: runtime.compatibility_status_freshness_within_slo
+  DCGOV-RUNTIME-STATUS-005: runtime.compatibility_missing_status_visibility_required
+  DCGOV-RUNTIME-CI-001: runtime.control_plane_ci_runner_execution_forbidden
+  DCGOV-RUNTIME-CI-002: runtime.status_ingest_job_present
+  DCGOV-RUNTIME-CI-003: runtime.matrix_artifacts_emitted
+  DCGOV-RUNTIME-CONTRACT-001: runtime.contracts_no_rust_primary_language
+  DCGOV-RUNTIME-DOCS-001: runtime.docs_no_required_lane_language
+  DCGOV-DOCS-REF-019: docs.readme_task_usage_paths_present
+  DCGOV-DOCS-REF-020: docs.readme_makefile_cookbook_forbidden
+  DCGOV-DOCS-REF-021: docs.usage_guides_required_set_present
+  DCGOV-DOCS-REF-022: docs.reference_manifest_guide_order_canonical
+  DCGOV-DOCS-REF-023: docs.guide_contract_links_valid
+  DCGOV-DOCS-REF-024: docs.visual_aids_core_chapters_present
   DCGOV-DOCS-: docs.
-  DCGOV-NORM-: normalization.
   DCGOV-RUNTIME-: runtime.
   DCGOV-CONTRACT-: contract.
   DCGOV-SCHEMA-: schema.
@@ -52,4 +24,3 @@ rules:
   DCGOV-LIBRARY-: library.
   DCGOV-REF-: reference.
   DCGOV-SPEC-: spec.
-  DCGOV-SPEC-TOPO-001: spec.taxonomy_hard_cut_required

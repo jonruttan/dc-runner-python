@@ -29,20 +29,18 @@ docs_layout:
   canonical_roots:
   - /docs/book
   - /specs
-  - /docs/impl
-  - /docs/reviews
+  - runner-owned implementation docs
   forbidden_roots: []
   index_filename: index.md
   required_index_dirs:
   - /docs/book
-  - /docs/impl
+  - runner-owned implementation docs
   - /specs
   - /specs/contract
   - /specs/conformance
   - /specs/conformance/cases
   - /specs/governance
   - /dc-runner-php
-  - /docs/reviews
   forbidden_filenames:
   - README.md
   - .DS_Store

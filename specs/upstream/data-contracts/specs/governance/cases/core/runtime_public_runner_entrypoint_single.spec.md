@@ -10,7 +10,7 @@ type: contract.check
 harness:
   root: .
   public_runner_entrypoint:
-    required_entrypoint: runners/public/runner_adapter.sh
+    required_entrypoint: scripts/runner_bin.sh
     gate_files:
     - scripts/ci_gate.sh
     - scripts/core_gate.sh

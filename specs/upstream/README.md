@@ -26,3 +26,8 @@ Related docs:
 
 - `/docs/compatibility.md`
 - `/docs/release.md`
+
+Canonical global command-contract jobs are sourced from:
+
+- `/specs/upstream/data-contracts/specs/conformance/cases/core/report_job_contracts.spec.md`
+- `/specs/upstream/data-contracts/specs/conformance/cases/core/script_job_contracts.spec.md`

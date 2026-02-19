@@ -17,6 +17,8 @@ Case fixtures that portable runner implementations execute.
 
 ## Fixture File Guide
 
+- `core/report_job_contracts.spec.md`: command report job contract coverage for JSON/Markdown report surfaces
+- `core/script_job_contracts.spec.md`: script command contract coverage for schema registry and docs workflows
 - `assertion-health.spec.md`: assertion-health diagnostics and mode behavior
 - `core/api_http.spec.md`: portable `api.http` extension behavior, CORS, verbs, and scenario coverage
 - `domain_libraries.spec.md`: domain library contract coverage for non-core projection helpers
@@ -119,3 +121,29 @@ Case fixtures that portable runner implementations execute.
 - `DCCONF-STDLIB-012`
 - `DCCONF-STDLIB-013`
 - `DCCONF-STDLIB-014`
+- `DCCONF-JOB-004`
+- `DCCONF-JOB-005`
+- `DCCONF-JOB-006`
+- `DCCONF-JOB-007`
+- `DCCONF-JOB-008`
+- `DCCONF-JOB-009`
+- `DCCONF-JOB-010`
+- `DCCONF-JOB-011`
+- `DCCONF-JOB-REP-001`
+- `DCCONF-JOB-REP-002`
+- `DCCONF-JOB-REP-003`
+- `DCCONF-JOB-REP-004`
+- `DCCONF-JOB-REP-005`
+- `DCCONF-JOB-REP-006`
+- `DCCONF-JOB-REP-007`
+- `DCCONF-JOB-REP-008`
+- `DCCONF-JOB-REP-009`
+- `DCCONF-JOB-REP-010`
+- `DCCONF-JOB-REP-011`
+- `DCCONF-JOB-REP-012`
+- `DCCONF-JOB-REP-013`
+- `DCCONF-JOB-REP-014`
+- `DCCONF-JOB-REP-015`
+- `DCCONF-JOB-REP-016`
+- `DCCONF-JOB-REP-017`
+- `DCCONF-JOB-REP-018`

@@ -1,35 +1,27 @@
-# Docs Information Architecture v1
+# Docs Information Architecture Contract (v1)
 
-## Canonical Surface Split
+Defines canonical docs surfaces for reader navigation and governance coverage.
 
-`docs/` is organized into four canonical surfaces:
+## Canonical Surfaces
 
-- `/docs/book` for user-facing reference manuals.
-- `/specs` for executable contracts, schema, conformance, governance, and
-  policy sources.
-- `/docs/impl` for implementation-specific appendices only.
-- `/docs/reviews` for active review prompts/templates/snapshots.
-- a separate historical review archive root for archived artifacts only.
+- `docs/book/index.md`
+- `docs/book/reference_manifest.yaml`
+- `docs/book/reference_index.md`
+- `docs/book/reference_coverage.md`
+- `docs/book/guides/`
 
-`/docs/reviews` is the only valid active review namespace in v1.
+## Audience Paths
 
-## Naming and Index Rules
+- narrative orientation path (`05` -> `15` -> `25`)
+- guide-first operational path (`guides/index` -> guide set)
+- reference bridge path (`90_reference_guide.md` -> generated references)
 
-- Directory index files MUST use `index.md`.
-- `README.md` under `/docs/**` is forbidden.
-- Filenames MUST be lowercase.
-- Word separator is `_`.
-- Section separator is `-`.
-- Spaces in docs paths are forbidden.
-- OS/editor artifact files (for example `.DS_Store`) are forbidden in tracked
-  docs paths.
+## Ownership Boundary
 
-## Enforcement
+- this repository documents control-plane operation.
+- runtime execution details belong in runner repositories.
 
-The layout is machine-enforced by:
+## Governance
 
-- `specs/schema/docs_layout_profile_v1.yaml`
-- `scripts/normalize_docs_layout.py`
-- governance checks in `./runners/public/runner_adapter.sh --impl rust governance`
-
-This contract is hard-fail in CI (no compatibility window).
+- docs navigation and manifest order MUST stay canonical.
+- guide subtree presence and index synchronization MUST be enforced.

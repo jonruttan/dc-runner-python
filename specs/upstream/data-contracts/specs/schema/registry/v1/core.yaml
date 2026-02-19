@@ -94,7 +94,3 @@ fields:
     type: list
     required: false
     since: v1
-  doc.deprecated:
-    type: mapping
-    required: false
-    since: v1

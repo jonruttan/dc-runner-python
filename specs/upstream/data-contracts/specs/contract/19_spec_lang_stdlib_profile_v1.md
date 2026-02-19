@@ -26,8 +26,7 @@ This contract defines the complete fixed stdlib surface for spec-lang v1.
   - `since`
 - Optional semantic fields:
   - `details`
-  - `deprecated` (`in`, `replacement`, `note`)
-  - `tags`
+    - `tags`
 - Unknown schema-shape keys for `schema_match` / `schema_errors` MUST fail as `schema`.
 - Governance MUST hard-fail on profile/implementation/docs/conformance drift.
 - Filesystem utility symbols are pure-only and contract-virtual:

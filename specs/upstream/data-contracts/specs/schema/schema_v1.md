@@ -51,7 +51,7 @@ Parser behavior:
 - runners MAY opt in additional external case formats via explicit format
   selection (`yaml`, `json`)
 - canonical executable spec trees (`specs/conformance/cases`,
-  `specs/governance/cases`, `specs/impl`) are markdown-only and must
+  `specs/governance/cases`, `runner-owned implementation specs`) are markdown-only and must
   not include runnable `.spec.yaml`/`.spec.yml`/`.spec.json` files
 - fence extraction accepts Markdown fences using either backticks or tildes
   (3+), with info tokens including `contract-spec` and `yaml`/`yml`
@@ -412,10 +412,10 @@ Each `steps[]` entry requires:
 - `assert` (non-empty expression mapping or list)
 - `imports` (optional list)
 
-Legacy lowercase contract class/group forms (`must`, `can`, `cannot`) are
+prior lowercase contract class/group forms (`must`, `can`, `cannot`) are
 forbidden.
 
-Forbidden legacy forms:
+Forbidden prior forms:
 
 - `contract` list form
 - step key `asserts`
@@ -615,7 +615,6 @@ This section is generated from `specs/schema/registry/v1/*.yaml`.
 | `contract` | `any` | `false` | `v1` |
 | `doc` | `mapping` | `false` | `v1` |
 | `doc.audience` | `string` | `false` | `v1` |
-| `doc.deprecated` | `mapping` | `false` | `v1` |
 | `doc.description` | `string` | `false` | `v1` |
 | `doc.see_also` | `list` | `false` | `v1` |
 | `doc.since` | `string` | `false` | `v1` |
@@ -662,7 +661,6 @@ This section is generated from `specs/schema/registry/v1/*.yaml`.
 | `contract` | `any` | false | `v1` |
 | `doc` | `mapping` | false | `v1` |
 | `doc.audience` | `string` | false | `v1` |
-| `doc.deprecated` | `mapping` | false | `v1` |
 | `doc.description` | `string` | false | `v1` |
 | `doc.see_also` | `list` | false | `v1` |
 | `doc.since` | `string` | false | `v1` |

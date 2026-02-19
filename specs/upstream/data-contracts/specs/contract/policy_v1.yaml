@@ -186,56 +186,6 @@ rules:
   - specs/governance/cases/core/conformance_evaluate_first_ratio_non_regression.spec.md
   - specs/governance/metrics/spec_lang_adoption_baseline.json
   - dc-runner-python
-- id: IMPL_EVALUATE_FIRST_REQUIRED
-  introduced_in: v1
-  scope: governance
-  applies_to: impl.assertion_authoring.surface
-  norm: MUST
-  requirement: impl_fixtures_must_use_evaluate_first_assertions
-  description: 'Implementation fixture suites must use evaluate-first assertion trees;
-    sugar operators are non-canonical and allowed only when explicitly allowlisted
-    in governance policy.
-
-    '
-  rationale: Raises spec-lang decision ownership in implementation-owned fixture surfaces.
-  risk_if_violated: Impl suites remain coupled to sugar-first semantics and under-represent
-    decision portability.
-  references:
-  - specs/contract/07_portable_spec_authoring.md
-  - dc-runner-php
-- id: IMPL_EVALUATE_RATIO_NON_REGRESSION_REQUIRED
-  introduced_in: v1
-  scope: governance
-  applies_to: impl.assertion_authoring.metric_ratchet
-  norm: MUST
-  requirement: impl_evaluate_ratio_must_not_regress
-  description: 'Governance must enforce non-regression of implementation fixture evaluate
-    coverage against checked-in baseline.
-
-    '
-  rationale: Keeps implementation suite migration toward evaluate-first monotonic.
-  risk_if_violated: Impl evaluate coverage can regress silently between merges.
-  references:
-  - specs/governance/cases/core/impl_evaluate_ratio_non_regression.spec.md
-  - specs/governance/metrics/spec_lang_adoption_baseline.json
-  - dc-runner-python
-- id: IMPL_LIBRARY_BACKED_ASSERTIONS_NON_REGRESSION_REQUIRED
-  introduced_in: v1
-  scope: governance
-  applies_to: impl.assertion_authoring.library_usage
-  norm: MUST
-  requirement: impl_library_backed_assertion_ratio_must_not_regress
-  description: 'Governance must enforce non-regression of implementation fixture library-backed
-    assertion wiring against checked-in baseline.
-
-    '
-  rationale: Prevents backsliding from reusable spec-lang helpers into duplicated
-    inline expression trees.
-  risk_if_violated: Impl expressions drift toward repetition and lower maintainability.
-  references:
-  - specs/governance/cases/core/impl_library_usage_non_regression.spec.md
-  - specs/libraries/impl/assertion_core.spec.md
-  - specs/governance/metrics/spec_lang_adoption_baseline.json
 - id: CONFORMANCE_SPEC_LANG_FIXTURE_LIBRARY_USAGE_REQUIRED
   introduced_in: v1
   scope: governance
@@ -733,7 +683,7 @@ rules:
 - id: RUNTIME_PYTHON_DEPENDENCY_EVIDENCE_REPORTED
   introduced_in: v1
   scope: governance
-  applies_to: runtime.python_dependency.metric_report
+  applies_to: runtime.compatibility_python_lane_dependency.metric_report
   norm: MUST
   requirement: python_dependency_metric_report_generation_and_shape_valid
   description: 'Governance must produce a valid python-dependency evidence report
@@ -748,7 +698,7 @@ rules:
 - id: RUNTIME_PYTHON_DEPENDENCY_NON_REGRESSION_REQUIRED
   introduced_in: v1
   scope: governance
-  applies_to: runtime.python_dependency.metric_non_regression
+  applies_to: runtime.compatibility_python_lane_dependency.metric_non_regression
   norm: MUST
   requirement: python_dependency_metrics_must_not_regress_from_baseline
   description: 'Governance must enforce non-regression for configured python-dependency
@@ -779,7 +729,7 @@ rules:
 - id: RUNTIME_RUST_ADAPTER_TRANSITIVE_NO_PYTHON
   introduced_in: v1
   scope: governance
-  applies_to: runtime.rust_adapter.transitive_path
+  applies_to: runtime.required_lane_adapter.transitive_path
   norm: MUST
   requirement: rust_adapter_shell_boundary_avoids_transitive_python_delegation_tokens
   description: 'Rust adapter shell boundary must not include direct delegation tokens
@@ -797,12 +747,12 @@ rules:
   applies_to: runtime.default_gate.adapter
   norm: MUST
   requirement: default_gate_scripts_set_public_runner_adapter_as_default_runner_bin
-  description: 'Default gate scripts must set SPEC_RUNNER_BIN to runners/public/runner_adapter.sh
+  description: 'Default gate scripts must set SPEC_RUNNER_BIN to scripts/runner_bin.sh
     when not explicitly overridden.
 
     '
   rationale: Makes rust lane the default operational boundary.
-  risk_if_violated: Default path remains python-biased and transition stalls.
+  risk_if_violated: Default path remains python-biased and migration stalls.
   references:
   - scripts/ci_gate.sh
   - scripts/core_gate.sh
@@ -810,7 +760,7 @@ rules:
 - id: RUNTIME_PYTHON_USAGE_SCOPED_TO_PYTHON_RUNNER
   introduced_in: v1
   scope: governance
-  applies_to: runtime.python_usage.scope
+  applies_to: runtime.compatibility_python_lane_usage.scope
   norm: MUST
   requirement: python_execution_must_be_scoped_to_explicit_python_runner_surfaces
   description: 'Python execution tokens are permitted only on explicit python-runner
@@ -893,7 +843,7 @@ rules:
     `min_segment_ratios`) when explicit enforcement is enabled in configuration.
 
     '
-  rationale: Enables gradual transition from report-only to hard quality gates.
+  rationale: Enables gradual migration from report-only to hard quality gates.
   risk_if_violated: Teams cannot ratchet portability quality over time.
   references:
   - specs/contract/07_portable_spec_authoring.md
@@ -1179,7 +1129,7 @@ rules:
   risk_if_violated: Removing Python requires rewriting gate orchestration logic.
   references:
   - specs/contract/12_runner_interface.md
-  - runners/public/runner_adapter.sh
+  - scripts/runner_bin.sh
   - scripts/ci_gate.sh
   - scripts/core_gate.sh
   - scripts/docs_doctor.sh
@@ -1203,9 +1153,9 @@ rules:
   scope: governance
   applies_to: runtime.runner_interface.rust_adapter
   norm: MUST
-  requirement: rust_adapter_invokes_rust_cli_without_delegating_to_shell_python_adapter
-  description: 'The Rust adapter script must invoke the Rust runner-interface CLI
-    directly and must not delegate to runners/public/runner_adapter.sh.
+  requirement: rust_runner_binary_executes_without_shell_adapter_delegation
+  description: 'The Rust runner binary must execute runner-interface commands directly
+    without shell adapter delegation.
 
     '
   rationale: Ensures the Rust lane validates real adapter behavior instead of shell
@@ -1217,24 +1167,23 @@ rules:
 - id: RUST_PRIMARY_GATE_PATH_REQUIRED
   introduced_in: v1
   scope: governance
-  applies_to: runtime.rust_primary.ci_lane
+  applies_to: runtime.required_lane_primary.ci_lane
   norm: MUST
   requirement: rust_primary_ci_lane_executes_core_gate_via_runner_interface
-  description: 'CI must include a Rust-primary lane that executes core gate with SPEC_RUNNER_BIN=./runners/public/runner_adapter.sh
-    and SPEC_RUNNER_IMPL=rust.
+  description: 'CI must include a Rust-primary lane that executes core gate with SPEC_RUNNER_BIN=./scripts/runner_bin.sh.
 
     '
   rationale: Makes Rust-primary operation continuously verifiable in automation.
   risk_if_violated: Rust-primary path can silently regress.
   references:
-  - specs/contract/16_rust_primary_transition.md
-  - specs/governance/cases/core/runtime_rust_primary_gate_path.spec.md
+  
+  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
 - id: RUNTIME_REQUIRED_RUST_LANE_BLOCKING_STATUS
   introduced_in: v1
   scope: governance
   applies_to: runtime.ci.required_lane
   norm: MUST
-  requirement: required_rust_lane_must_be_blocking
+  requirement: control_plane_ci_no_runtime_lane_execution
   description: 'The required Rust CI lane must remain merge-blocking and must not
     be configured as continue-on-error.
 
@@ -1244,7 +1193,7 @@ rules:
   references:
   - .github/workflows/ci.yml
   - specs/contract/25_compatibility_matrix.md
-  - specs/governance/cases/core/runtime_required_rust_lane_blocking_status.spec.md
+  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
 - id: RUNTIME_COMPATIBILITY_LANES_NON_BLOCKING
   introduced_in: v1
   scope: governance
@@ -1276,6 +1225,103 @@ rules:
   references:
   - specs/contract/25_compatibility_matrix.md
   - specs/governance/cases/core/runtime_compatibility_matrix_registration_required.spec.md
+- id: RUNTIME_RUNNER_STATUS_REPORT_SCHEMA_VALID
+  introduced_in: v1
+  scope: governance
+  applies_to: runtime.status_exchange.report_schema
+  norm: MUST
+  requirement: runner_status_report_schema_must_be_declared_and_complete
+  description: 'Runner status producer payload contract must be declared in
+    /specs/schema/runner_status_report_v1.yaml with required producer fields.
+
+    '
+  rationale: Prevents cross-repo status payload drift and ingestion ambiguity.
+  risk_if_violated: Runner repos publish incompatible status payloads that cannot
+    be consumed deterministically.
+  references:
+  - specs/schema/runner_status_report_v1.yaml
+  - specs/contract/27_runner_status_exchange.md
+  - specs/governance/cases/core/runtime_runner_status_report_schema_valid.spec.md
+- id: RUNTIME_RUNNER_STATUS_MATRIX_SCHEMA_VALID
+  introduced_in: v1
+  scope: governance
+  applies_to: runtime.status_exchange.matrix_schema
+  norm: MUST
+  requirement: runner_status_matrix_schema_must_be_declared_and_complete
+  description: 'Aggregated status matrix contract must be declared in
+    /specs/schema/runner_status_matrix_v1.yaml.
+
+    '
+  rationale: Keeps policy/reporting outputs deterministic and machine-readable.
+  risk_if_violated: Status telemetry cannot be consumed consistently by docs/governance.
+  references:
+  - specs/schema/runner_status_matrix_v1.yaml
+  - specs/contract/27_runner_status_exchange.md
+  - specs/governance/cases/core/runtime_runner_status_matrix_schema_valid.spec.md
+- id: RUNTIME_COMPATIBILITY_STATUS_INGESTION_CONFIGURED
+  introduced_in: v1
+  scope: governance
+  applies_to: runtime.status_exchange.ingestion
+  norm: MUST
+  requirement: compatibility_status_ingestion_must_use_release_assets
+  description: 'Compatibility status ingestion must be configured through
+    /scripts/runner_status_ingest.sh and runner certification registry release
+    asset metadata.
+
+    '
+  rationale: Preserves implementation separation while keeping status exchange explicit.
+  risk_if_violated: Compatibility telemetry becomes ad-hoc or silently absent.
+  references:
+  - scripts/runner_status_ingest.sh
+  - specs/schema/runner_certification_registry_v1.yaml
+  - specs/governance/cases/core/runtime_compatibility_status_ingestion_configured.spec.md
+- id: RUNTIME_COMPATIBILITY_STATUS_FRESHNESS_WITHIN_SLO
+  introduced_in: v1
+  scope: governance
+  applies_to: runtime.status_exchange.freshness
+  norm: MUST
+  requirement: compatibility_status_reports_must_be_fresh_within_72_hours
+  description: 'Compatibility lane status telemetry must remain fresh within a
+    72-hour SLO.
+
+    '
+  rationale: Makes stale compatibility health visible before drift becomes chronic.
+  risk_if_violated: Non-blocking lanes can silently rot without governance signal.
+  references:
+  - scripts/runner_status_ingest.sh
+  - scripts/ci_gate.sh
+  - specs/governance/cases/core/runtime_compatibility_status_freshness_within_slo.spec.md
+- id: RUNTIME_COMPATIBILITY_MISSING_STATUS_VISIBILITY_REQUIRED
+  introduced_in: v1
+  scope: governance
+  applies_to: runtime.status_exchange.missing_status
+  norm: MUST
+  requirement: missing_compatibility_status_must_be_visible_and_policy_scored
+  description: 'Missing compatibility status must be represented in matrix outputs
+    and mapped to a non-blocking policy effect.
+
+    '
+  rationale: Prevents missing data from being interpreted as healthy data.
+  risk_if_violated: CI and reviewers cannot distinguish missing vs passing compatibility state.
+  references:
+  - scripts/runner_status_ingest.sh
+  - specs/governance/cases/core/runtime_compatibility_missing_status_visibility_required.spec.md
+- id: RUNTIME_REQUIRED_LANE_STATUS_BLOCKING_ENFORCED
+  introduced_in: v1
+  scope: governance
+  applies_to: runtime.status_exchange.required_lane
+  norm: MUST
+  requirement: required_lane_status_must_map_to_blocking_policy_effect
+  description: 'Required lane status outcomes must remain merge-blocking when
+    status exchange data is ingested.
+
+    '
+  rationale: Preserves required lane authority under cross-repo status exchange.
+  risk_if_violated: Merge can proceed when required runtime health is degraded.
+  references:
+  - scripts/runner_status_ingest.sh
+  - specs/contract/25_compatibility_matrix.md
+  - specs/governance/cases/core/runtime_required_lane_status_blocking_enforced.spec.md
 - id: DOCS_COMPATIBILITY_EXAMPLES_LABELING_REQUIRED
   introduced_in: v1
   scope: governance
@@ -1296,7 +1342,7 @@ rules:
 - id: RUST_PRIMARY_NO_PYTHON_GATE_DEPENDENCY
   introduced_in: v1
   scope: governance
-  applies_to: runtime.rust_primary.gate_dependency
+  applies_to: runtime.required_lane_primary.gate_dependency
   norm: MUST
   requirement: gate_scripts_avoid_direct_python_runner_entrypoints_under_rust_primary
   description: 'Gate scripts must remain runner-interface driven and must not hardcode
@@ -1306,15 +1352,15 @@ rules:
   rationale: Preserves implementation-neutral orchestration for Rust-primary usage.
   risk_if_violated: Switching primary runtime requires invasive script rewrites.
   references:
-  - specs/contract/16_rust_primary_transition.md
-  - specs/governance/cases/core/runtime_rust_primary_no_python_dependency.spec.md
+  
+  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
 - id: RUNTIME_SINGLE_PUBLIC_RUNNER_ENTRYPOINT_REQUIRED
   introduced_in: v1
   scope: governance
   applies_to: runtime.runner_interface.public_entrypoint
   norm: MUST
   requirement: gate_scripts_use_single_public_runner_entrypoint
-  description: 'Gate shell scripts must reference runners/public/runner_adapter.sh as the
+  description: 'Gate shell scripts must reference scripts/runner_bin.sh as the
     single public runner entrypoint.
 
     '
@@ -1328,17 +1374,17 @@ rules:
   scope: governance
   applies_to: runtime.runner_interface.default_mode
   norm: MUST
-  requirement: public_runner_entrypoint_defaults_to_rust
-  description: 'runners/public/runner_adapter.sh must default to rust mode unless impl is
-    explicitly selected.
+  requirement: public_runner_entrypoint_targets_rust_runner_binary
+  description: 'scripts/runner_bin.sh must resolve and execute the Rust runner
+    binary as the required lane.
 
     '
-  rationale: Enforces rust-first behavior without changing the public command surface.
+  rationale: Enforces implementation-agnostic behavior without changing the public command surface.
   risk_if_violated: Default lane behavior becomes ambiguous and policy checks lose
     meaning.
   references:
   - specs/contract/12_runner_interface.md
-  - specs/governance/cases/core/runtime_public_runner_default_rust.spec.md
+  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
 - id: RUNTIME_RUNNER_ADAPTER_PYTHON_IMPL_FORBIDDEN
   introduced_in: v1
   scope: governance
@@ -1350,11 +1396,11 @@ rules:
 
     '
   rationale: Enforces Rust-only runtime execution for local and CI critical paths.
-  risk_if_violated: Deprecated python runtime execution can re-enter gate paths and
+  risk_if_violated: retired python runtime execution can re-enter gate paths and
     increase drift.
   references:
   - specs/contract/12_runner_interface.md
-  - specs/governance/cases/core/runtime_runner_adapter_python_impl_forbidden.spec.md
+  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
 - id: RUNTIME_LOCAL_CI_PARITY_PYTHON_LANE_FORBIDDEN
   introduced_in: v1
   scope: governance
@@ -1381,8 +1427,8 @@ rules:
     commands.
 
     '
-  rationale: Prevents accidental invocation of deprecated python runtime lanes.
-  risk_if_violated: Legacy commands persist and confuse runtime expectations.
+  rationale: Prevents accidental invocation of retired python runtime lanes.
+  risk_if_violated: prior commands persist and confuse runtime expectations.
   references:
   - Makefile
   - specs/governance/cases/core/runtime_make_python_parity_targets_forbidden.spec.md
@@ -1397,7 +1443,7 @@ rules:
 
     '
   rationale: Ensures no Python runtime path exists in local critical-gate execution.
-  risk_if_violated: Deprecated Python execution can re-enter prepush and slow or destabilize
+  risk_if_violated: retired Python execution can re-enter prepush and slow or destabilize
     iteration.
   references:
   - scripts/local_ci_parity.sh
@@ -1442,7 +1488,7 @@ rules:
 - id: RUNTIME_RUST_ADAPTER_TARGET_FALLBACK_REQUIRED
   introduced_in: v1
   scope: governance
-  applies_to: runtime.rust_adapter.target_selection
+  applies_to: runtime.required_lane_adapter.target_selection
   norm: MUST
   requirement: rust_adapter_must_support_host_target_fallback_with_strict_mode_override
   description: 'Rust adapter must fallback to host target when preferred target is
@@ -1681,7 +1727,7 @@ rules:
 - id: RUST_PRIMARY_INTERFACE_STABILITY_REQUIRED
   introduced_in: v1
   scope: governance
-  applies_to: runtime.rust_primary.interface_stability
+  applies_to: runtime.required_lane_primary.interface_stability
   norm: MUST
   requirement: rust_primary_adapter_preserves_required_runner_interface_subcommands
   description: 'Rust-primary adapter path must preserve required runner-interface
@@ -1691,27 +1737,27 @@ rules:
   rationale: Prevents compatibility drift for gate orchestration commands.
   risk_if_violated: Core commands fail when Rust path is selected.
   references:
-  - specs/contract/16_rust_primary_transition.md
-  - specs/governance/cases/core/runtime_rust_primary_interface_stability.spec.md
+  
+  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
 - id: RUST_PRIMARY_SHARED_CAPABILITY_PARITY_REQUIRED
   introduced_in: v1
   scope: governance
-  applies_to: runtime.rust_primary.parity
+  applies_to: runtime.required_lane_primary.parity
   norm: MUST
   requirement: rust_primary_gate_flow_includes_shared_capability_parity_step
   description: 'Rust-primary-compatible gate flow must include shared-capability conformance
     parity execution.
 
     '
-  rationale: Keeps cross-runtime behavior equivalence enforced during transition.
+  rationale: Keeps cross-runtime behavior equivalence enforced during migration.
   risk_if_violated: Runtime behavior drift can ship undetected.
   references:
-  - specs/contract/16_rust_primary_transition.md
-  - specs/governance/cases/core/runtime_rust_primary_shared_capability_parity.spec.md
+  
+  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
 - id: RUST_PRIMARY_ADAPTER_EXEC_SMOKE_REQUIRED
   introduced_in: v1
   scope: governance
-  applies_to: runtime.rust_primary.adapter_exec
+  applies_to: runtime.required_lane_primary.adapter_exec
   norm: MUST
   requirement: rust_primary_adapter_executes_deterministic_smoke_command
   description: 'Rust-primary governance must include an execution smoke check that
@@ -1722,12 +1768,12 @@ rules:
   risk_if_violated: Rust adapter can regress at runtime while token/path checks still
     pass.
   references:
-  - specs/contract/16_rust_primary_transition.md
-  - specs/governance/cases/core/runtime_rust_primary_adapter_exec_smoke.spec.md
+  
+  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
 - id: RUST_PRIMARY_SUBCOMMAND_PARITY_REQUIRED
   introduced_in: v1
   scope: governance
-  applies_to: runtime.rust_primary.interface_parity
+  applies_to: runtime.required_lane_primary.interface_parity
   norm: MUST
   requirement: rust_adapter_shell_and_rust_cli_subcommand_sets_must_match
   description: 'Rust-primary governance must enforce parity between subcommands exposed
@@ -1739,8 +1785,8 @@ rules:
   risk_if_violated: Commands may appear supported in one layer but fail in the other
     at runtime.
   references:
-  - specs/contract/16_rust_primary_transition.md
-  - specs/governance/cases/core/runtime_rust_primary_subcommand_parity.spec.md
+  
+  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
 - id: RUST_PRIMARY_DOCS_ADOPTION_SYNC
   introduced_in: v1
   scope: docs
@@ -1751,10 +1797,10 @@ rules:
     with core/full adoption profile guidance and optional compatibility lanes.
 
     '
-  rationale: Reduces onboarding ambiguity during runtime-primary transition.
+  rationale: Reduces onboarding ambiguity during runtime-primary migration.
   risk_if_violated: Teams adopt inconsistent local/CI invocation paths.
   references:
-  - specs/contract/16_rust_primary_transition.md
+  
   - specs/governance/cases/core/docs_adoption_profiles_sync.spec.md
 - id: RUNTIME_SCOPE_BOUNDED_FOR_V1
   introduced_in: v1
@@ -2147,7 +2193,7 @@ rules:
   risk_if_violated: Rust lane silently remains Python-dependent.
   references:
   - specs/contract/12_runner_interface.md
-  - specs/contract/16_rust_primary_transition.md
+  
   - specs/governance/cases/core/runtime_rust_adapter_no_python_exec.spec.md
 - id: NORMALIZATION_PROFILE_DEFINED
   introduced_in: v1
@@ -2180,7 +2226,7 @@ rules:
     checks.
   references:
   - scripts/normalize_repo.py
-  - runners/public/runner_adapter.sh
+  - scripts/runner_bin.sh
   - dc-runner-python
 - id: NORMALIZATION_MAPPING_AST_ONLY
   introduced_in: v1
@@ -2229,7 +2275,7 @@ rules:
   risk_if_violated: Teams rely on manual ad-hoc rewrites and drift accumulates.
   references:
   - Makefile
-  - runners/public/runner_adapter.sh
+  - scripts/runner_bin.sh
   - scripts/normalize_repo.py
   - specs/governance/cases/core/normalization_spec_style_sync.spec.md
 - id: NORMALIZATION_VIRTUAL_ROOT_PATHS_ONLY
@@ -2820,7 +2866,7 @@ rules:
   risk_if_violated: Divergent command paths produce inconsistent artifacts.
   references:
   - scripts/docs_generate_all.py
-  - runners/public/runner_adapter.sh
+  - scripts/runner_bin.sh
   - specs/governance/cases/core/docs_generator_outputs_sync.spec.md
 - id: DOCS_GENERATED_SURFACES_SYNC_REQUIRED
   introduced_in: v1
@@ -3022,7 +3068,7 @@ rules:
   applies_to: docs.reviews
   norm: MUST
   requirement: reviews_active_assets_must_live_under_docs_reviews
-  description: 'Active review prompts/templates/workflow assets must use `docs/reviews`;
+  description: 'Active review prompts/templates/workflow assets must use `docs/history/reviews`;
     the historical review archive root is archival-only and must not be used by active tooling guidance.
 
     '
@@ -4057,3 +4103,53 @@ rules:
   references:
   - dc-runner-python
   - specs/governance/cases/core/docs_canonical_freshness_strict.spec.md
+- id: CONTROL_PLANE_STATUS_INGEST_INTEGRITY_REQUIRED
+  introduced_in: v1
+  scope: governance
+  applies_to: runtime.status.ingest
+  norm: MUST
+  requirement: status_ingest_job_and_artifacts_must_be_present
+  description: CI must execute status ingest and emit canonical matrix artifacts.
+  rationale: Ensures compatibility telemetry remains available for governance and docs.
+  risk_if_violated: Policy evaluation operates on stale or absent telemetry.
+  references:
+  - specs/contract/25_compatibility_matrix.md
+  - specs/governance/cases/core/runtime_status_ingest_job_present.spec.md
+  - specs/governance/cases/core/runtime_matrix_artifacts_emitted.spec.md
+- id: CONTROL_PLANE_CI_RUNTIME_EXECUTION_FORBIDDEN
+  introduced_in: v1
+  scope: governance
+  applies_to: runtime.control_plane.ci
+  norm: MUST_NOT
+  requirement: runtime_lane_execution_in_data_contracts_ci
+  description: Canonical CI in data-contracts must not execute runtime implementation lanes.
+  rationale: Preserves strict control-plane ownership boundaries.
+  risk_if_violated: Repository drifts back into implementation ownership.
+  references:
+  - specs/contract/12_runner_interface.md
+  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+- id: CONTROL_PLANE_DOCS_TASK_USAGE_REQUIRED
+  introduced_in: v1
+  scope: governance
+  applies_to: docs.readme
+  norm: MUST
+  requirement: readme_task_paths_and_no_makefile_cookbook
+  description: README must provide user task paths and avoid makefile onboarding cookbook guidance.
+  rationale: Keeps docs user-focused and implementation-agnostic.
+  risk_if_violated: Reader onboarding becomes operationally noisy and confusing.
+  references:
+  - specs/contract/10_docs_quality.md
+  - specs/governance/cases/core/docs_readme_task_usage_paths_present.spec.md
+  - specs/governance/cases/core/docs_readme_makefile_cookbook_forbidden.spec.md
+- id: CONTROL_PLANE_LANGUAGE_AGNOSTIC_REQUIRED
+  introduced_in: v1
+  scope: governance
+  applies_to: docs.contracts.language
+  norm: MUST
+  requirement: no_rust_primary_language_in_active_surfaces
+  description: Active contracts and docs in this repository must remain implementation-agnostic.
+  rationale: Maintains clean separation between control-plane and runner repositories.
+  risk_if_violated: Policy semantics become coupled to a specific runtime implementation.
+  references:
+  - specs/governance/cases/core/runtime_contracts_no_rust_primary_language.spec.md
+  - specs/governance/cases/core/runtime_docs_no_required_lane_language.spec.md

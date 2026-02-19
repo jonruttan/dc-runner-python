@@ -5,13 +5,13 @@
 ```yaml contract-spec
 id: DCGOV-RUNTIME-ENTRY-003
 title: runner adapter hard-fails python impl selection
-purpose: Ensures `runners/public/runner_adapter.sh` rejects `--impl python` with migration
+purpose: Ensures `scripts/runner_bin.sh` rejects `--impl python` with migration
   guidance.
 type: contract.check
 harness:
   root: .
   runner_adapter_python_impl:
-    path: /runners/public/runner_adapter.sh
+    path: /scripts/runner_bin.sh
     required_tokens:
     - python runner impl is no longer supported on the runtime path
     - Use rust impl instead

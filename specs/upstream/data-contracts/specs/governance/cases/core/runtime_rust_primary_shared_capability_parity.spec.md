@@ -12,7 +12,7 @@ harness:
   root: .
   runner_interface:
     required_paths:
-    - /runners/public/runner_adapter.sh
+    - /scripts/runner_bin.sh
     - /dc-runner-rust
     files:
     - dc-runner-python

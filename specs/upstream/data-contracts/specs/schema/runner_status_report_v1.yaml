@@ -1,0 +1,79 @@
+version: 1
+type: runtime.runner_status_report
+required_top_level:
+  - version
+  - runner_id
+  - implementation_repo
+  - release_version
+  - commit_sha
+  - generated_at
+  - lane_class
+  - overall_status
+  - fresh_until
+  - command_results
+  - artifact_refs
+fields:
+  version:
+    type: int
+  runner_id:
+    type: string
+  implementation_repo:
+    type: string
+  release_version:
+    type: string
+  commit_sha:
+    type: string
+  generated_at:
+    type: string
+    format: rfc3339_utc
+  lane_class:
+    type: string
+    enum:
+      - required
+      - compatibility_non_blocking
+  overall_status:
+    type: string
+    enum:
+      - pass
+      - fail
+      - degraded
+      - unknown
+  fresh_until:
+    type: string
+    format: rfc3339_utc
+  command_results:
+    type: list
+    item_shape:
+      required:
+        - command
+        - status
+        - exit_code
+        - duration_ms
+      fields:
+        command:
+          type: string
+        status:
+          type: string
+          enum:
+            - pass
+            - fail
+            - skip
+        exit_code:
+          type: int
+        duration_ms:
+          type: int
+  artifact_refs:
+    type: list
+    item_shape:
+      required:
+        - name
+        - url
+        - sha256
+      fields:
+        name:
+          type: string
+        url:
+          type: string
+        sha256:
+          type: string
+

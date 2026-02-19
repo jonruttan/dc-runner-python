@@ -99,10 +99,6 @@ fields:
     type: string
     required: true
     since: v1
-  harness.exports[].doc.deprecated:
-    type: mapping
-    required: false
-    since: v1
   doc:
     type: mapping
     required: true
@@ -129,9 +125,5 @@ fields:
     since: v1
   doc.see_also:
     type: list
-    required: false
-    since: v1
-  doc.deprecated:
-    type: mapping
     required: false
     since: v1

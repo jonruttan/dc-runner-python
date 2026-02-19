@@ -16,7 +16,7 @@ harness:
   check:
     profile: governance.scan
     config:
-      check: runtime.rust_adapter_subcommand_parity
+      check: runtime.required_lane_adapter_subcommand_parity
   use:
   - ref: /specs/libraries/policy/policy_core.spec.md
     as: lib_policy_core_spec
@@ -46,7 +46,7 @@ contract:
       - std.object.get:
         - {var: summary_json}
         - check_id
-      - runtime.rust_adapter_subcommand_parity
+      - runtime.required_lane_adapter_subcommand_parity
     imports:
     - from: artifact
       names:

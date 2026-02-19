@@ -33,7 +33,7 @@ harness:
   check:
     profile: governance.scan
     config:
-      check: runtime.rust_only_prepush_required
+      check: runtime.required_lane_only_prepush_required
   use:
   - ref: /specs/libraries/policy/policy_core.spec.md
     as: lib_policy_core_spec

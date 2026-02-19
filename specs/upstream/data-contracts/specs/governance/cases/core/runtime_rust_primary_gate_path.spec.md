@@ -13,8 +13,7 @@ harness:
     workflow: .github/workflows/ci.yml
     required_tokens:
     - 'core-gate-rust-adapter:'
-    - 'SPEC_RUNNER_BIN: ./runners/public/runner_adapter.sh'
-    - 'SPEC_RUNNER_IMPL: rust'
+    - 'SPEC_RUNNER_BIN: ./scripts/runner_bin.sh'
     - 'run: ./scripts/core_gate.sh'
   check:
     profile: governance.scan

@@ -4,8 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-CONFIG-006
-title: required rust lane remains blocking
-purpose: Ensures the required CI gate lane is rust-first and not configured as non-blocking.
+title: required lane remains blocking
+purpose: Ensures the required CI gate lane is implementation-agnostic and not configured as non-blocking.
 type: contract.check
 harness:
   root: .
@@ -13,7 +13,7 @@ harness:
     workflow: /.github/workflows/ci.yml
     required_tokens:
     - ci-gate: null
-    - Run CI gate (required rust lane)
+    - Run CI gate (required lane)
     - run: ./scripts/ci_gate.sh
     forbidden_tokens:
     - Run CI gate (diagnostic lane)

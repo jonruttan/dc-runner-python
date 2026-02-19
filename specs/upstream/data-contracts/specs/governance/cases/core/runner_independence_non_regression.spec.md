@@ -28,7 +28,7 @@ harness:
         ci_workflows:
         - .github/workflows/*.yml
         adapter_interfaces:
-        - runners/public/runner_adapter.sh
+        - scripts/runner_bin.sh
         - dc-runner-rust
         - dc-runner-rust
       direct_runtime_token_segments:

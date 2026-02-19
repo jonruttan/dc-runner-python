@@ -41,8 +41,7 @@ maintenance decisions stay predictable.
 - Governance checks SHOULD keep rule-data (for example token/regex lists) in
   governance `.spec.md` harness config instead of hardcoded script globals.
 - Contract-breaking changes require versioning:
-  - update policy lifecycle metadata (`introduced_in` / `deprecated_in` /
-    `removed_in`)
+  - update policy lifecycle metadata (`introduced_in` / `removed_in`)
   - update schema/contract docs and traceability in the same change slice
   - include conformance or unit evidence for changed `MUST` behavior
 - Portable conformance case format remains Markdown `*.spec.md` with fenced
@@ -50,7 +49,7 @@ maintenance decisions stay predictable.
 - Canonical executable surfaces are markdown-only:
   - conformance cases (`specs/conformance/cases`)
   - governance cases (`specs/governance/cases`)
-  - impl executable cases (`specs/impl`)
+  - impl executable cases (`runner-owned implementation specs`)
   - spec-lang library cases (`specs/libraries`)
 - Machine data artifacts remain YAML/JSON (baselines/manifests/generated
   reports/schema profiles) and are non-executable surfaces.

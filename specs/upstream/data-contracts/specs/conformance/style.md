@@ -32,9 +32,9 @@ Nested `lit` wrappers are forbidden.
 
 Use tooling to enforce/normalize:
 
-- lint: `./runners/public/runner_adapter.sh --impl rust spec-lang-lint --cases specs`
-- format: `./runners/public/runner_adapter.sh --impl rust spec-lang-format --write --cases specs`
-- docs sync: `./runners/public/runner_adapter.sh --impl rust docs-generate-check`
+- lint: `./scripts/runner_bin.sh spec-lang-lint --cases specs`
+- format: `./scripts/runner_bin.sh spec-lang-format --write --cases specs`
+- docs sync: `./scripts/runner_bin.sh docs-generate-check`
   - `runtime`: runtime profile name from policy (for example `php`)
   - `min_words`: integer override
   - `placeholders`: list override
@@ -55,7 +55,7 @@ Spec-lang lint code contract:
 - `SLINT005` invalid spec-lang mapping AST expression
 - `SLINT006` assert node must be mapping/list
 - `SLINT007` contract step `asserts` must be non-empty list
-- `SLINT008` legacy lowercase group key forbidden (`must`/`can`/`cannot`)
+- `SLINT008` prior lowercase group key forbidden (`must`/`can`/`cannot`)
 - `SLINT009` assert group must include exactly one group key
 - `SLINT010` assert group children must be non-empty list
 - `SLINT011` `when` must be mapping
@@ -81,9 +81,6 @@ Spec-lang lint code contract:
 - `SLINT058` missing required root `doc` field for `contract.export`
 - `SLINT059` invalid `doc.tags` shape
 - `SLINT060` invalid `doc.see_also` shape
-- `SLINT061` malformed `doc.deprecated`
-- `SLINT062` missing `doc.deprecated.replacement`
-- `SLINT063` missing `doc.deprecated.reason`
 
 Rationale:
 

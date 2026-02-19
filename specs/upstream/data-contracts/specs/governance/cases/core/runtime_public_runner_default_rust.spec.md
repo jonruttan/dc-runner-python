@@ -5,21 +5,19 @@
 ```yaml contract-spec
 id: DCGOV-RUNTIME-ENTRY-002
 title: public runner defaults to rust mode
-purpose: Ensures the canonical public adapter defaults to rust and forbids python impl runtime
-  dispatch.
+purpose: Ensures the canonical runner launcher targets the rust runtime lane and
+  forbids python runtime dispatch.
 type: contract.check
 harness:
   root: .
   public_runner_default:
-    path: /runners/public/runner_adapter.sh
+    path: /scripts/runner_bin.sh
     required_tokens:
-    - impl="${SPEC_RUNNER_IMPL:-rust}"
     - dc-runner-rust
-    - python runner impl is no longer supported on the runtime path
-    - --impl
+    - unsupported platform
+    - dc-runner-rust release artifact
     forbidden_tokens:
-    - SPEC_RUNNER_IMPL:-python
-    - exec "${ROOT_DIR}/dc-runner-python"
+    - dc-runner-python
   check:
     profile: governance.scan
     config:

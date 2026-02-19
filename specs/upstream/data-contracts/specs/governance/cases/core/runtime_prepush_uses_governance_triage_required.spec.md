@@ -13,9 +13,9 @@ harness:
     path: /scripts/local_ci_parity.sh
     required_tokens:
     - governance-triage
-    - ./scripts/governance_triage.sh --mode broad-first --impl
+    - ./scripts/governance_triage.sh
     forbidden_tokens:
-    - run_step governance "${SPEC_RUNNER_BIN}" --impl "${SPEC_RUNNER_IMPL}" governance
+    - run_step governance "${SPEC_RUNNER_BIN}" governance
   check:
     profile: governance.scan
     config:

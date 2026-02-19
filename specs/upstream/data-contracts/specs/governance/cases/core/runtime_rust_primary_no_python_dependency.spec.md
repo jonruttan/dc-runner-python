@@ -12,7 +12,7 @@ harness:
   root: .
   runner_interface:
     required_paths:
-    - /runners/public/runner_adapter.sh
+    - /scripts/runner_bin.sh
     - /dc-runner-python
     - /dc-runner-rust
     files:
@@ -21,7 +21,7 @@ harness:
     - scripts/core_gate.sh
     required_tokens:
     - SPEC_RUNNER_BIN
-    - runners/public/runner_adapter.sh
+    - scripts/runner_bin.sh
     forbidden_tokens:
     - spec_lang_commands run-governance-specs
     - dc-runner-python

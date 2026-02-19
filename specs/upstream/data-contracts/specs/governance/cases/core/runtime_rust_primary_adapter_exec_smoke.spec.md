@@ -23,7 +23,7 @@ harness:
   check:
     profile: governance.scan
     config:
-      check: runtime.rust_adapter_exec_smoke
+      check: runtime.required_lane_adapter_exec_smoke
   use:
   - ref: /specs/libraries/policy/policy_core.spec.md
     as: lib_policy_core_spec
@@ -53,7 +53,7 @@ contract:
       - std.object.get:
         - {var: summary_json}
         - check_id
-      - runtime.rust_adapter_exec_smoke
+      - runtime.required_lane_adapter_exec_smoke
     imports:
     - from: artifact
       names:

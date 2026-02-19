@@ -7789,8 +7789,8 @@ def _scan_runtime_contract_job_hooks_refactor_applied(
 ) -> list[str]:
     del harness
     target_files = (
-        "specs/impl/rust/jobs/script_jobs.spec.md",
-        "specs/impl/rust/jobs/report_jobs.spec.md",
+        "specs/upstream/data-contracts/specs/conformance/cases/core/script_job_contracts.spec.md",
+        "specs/upstream/data-contracts/specs/conformance/cases/core/report_job_contracts.spec.md",
     )
     target_set = {p.as_posix() for p in (_join_contract_path(root, rel) for rel in target_files)}
     violations: list[str] = []

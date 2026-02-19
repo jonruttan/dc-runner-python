@@ -7,31 +7,55 @@ profiles:
         path: /specs/governance/check_sets_v1.yaml
         profile: critical
         key: checks
-      - id: runtime.critical_runner_lock_declared
+      - id: runtime.status_ingest_job_present
         kind: file_tokens
-        path: /specs/schema/dc_runner_rust_lock_v1.yaml
+        path: /.github/workflows/ci.yml
         must_contain:
-          - "repo: dc-runner-rust"
-          - "release_version:"
-      - id: runtime.critical_public_adapter_uses_runner_bin
+          - runner-status-ingest:
+          - ./scripts/runner_status_ingest.sh --max-age-hours 72 --enforce-freshness
+      - id: runtime.matrix_artifacts_emitted
         kind: file_tokens
-        path: /runners/public/runner_adapter.sh
+        path: /.github/workflows/ci.yml
         must_contain:
-          - scripts/runner_bin.sh
-          - 'impl="${SPEC_RUNNER_IMPL:-rust}"'
+          - .artifacts/runner-status-matrix.json
+          - .artifacts/runner-status-matrix.md
+          - .artifacts/runner-status-ingest-log.json
+      - id: runtime.control_plane_ci_runner_execution_forbidden
+        kind: file_tokens
+        path: /.github/workflows/ci.yml
         must_not_contain:
-          - runners/rust/runner_adapter.sh
-          - runners/python/runner_adapter.sh
-      - id: runtime.critical_ci_gate_invokes_required_sequence
-        kind: file_ordered_tokens
-        path: /scripts/ci_gate.sh
-        ordered_tokens:
-          - critical-gate
-          - runner-certify --runner rust
-          - ci-gate-summary
-      - id: runtime.critical_gate_slo_sub_10s_required
-        kind: slo_budget
-        max_ms: 10000
+          - scripts/runner_bin.sh
+      - id: runtime.compatibility_status_freshness_within_slo
+        kind: file_tokens
+        path: /scripts/runner_status_ingest.sh
+        must_contain:
+          - --max-age-hours
+          - --enforce-freshness
+          - compatibility_stale_or_missing_count
+          - 72
+      - id: runtime.compatibility_missing_status_visibility_required
+        kind: file_tokens
+        path: /scripts/runner_status_ingest.sh
+        must_contain:
+          - freshness_state
+          - missing
+          - policy_effect
+      - id: docs.readme_task_usage_paths_present
+        kind: file_tokens
+        path: /README.md
+        must_contain:
+          - How Users Use This Repository
+          - Author a spec change
+          - Validate docs and contract coherence
+          - Read compatibility and status telemetry
+          - Debug governance or docs drift
+      - id: docs.readme_makefile_cookbook_forbidden
+        kind: file_tokens
+        path: /README.md
+        must_not_contain:
+          - make setup
+          - make prepush
+          - hooks-install
   full:
     checks:
       - id: runtime.full_check_set_manifest_required
@@ -39,89 +63,78 @@ profiles:
         path: /specs/governance/check_sets_v1.yaml
         profile: full
         key: checks
-      - id: runtime.full_rust_lane_blocking_ci
+      - id: runtime.runner_status_report_schema_valid
         kind: file_tokens
-        path: /.github/workflows/ci.yml
+        path: /specs/schema/runner_status_report_v1.yaml
         must_contain:
-          - ci-gate:
-          - Run CI gate (required rust lane)
-      - id: runtime.full_compatibility_lanes_non_blocking_status
+          - type: runtime.runner_status_report
+          - runner_id
+          - implementation_repo
+          - generated_at
+          - fresh_until
+          - command_results
+          - artifact_refs
+      - id: runtime.runner_status_matrix_schema_valid
         kind: file_tokens
-        path: /.github/workflows/ci.yml
+        path: /specs/schema/runner_status_matrix_v1.yaml
         must_contain:
-          - compatibility-python-lane:
-          - compatibility-php-lane:
-          - compatibility-node-lane:
-          - compatibility-c-lane:
-          - continue-on-error: true
-          - dc-runner-python
-          - dc-runner-php
-      - id: runtime.full_public_adapter_rust_only
+          - type: runtime.runner_status_matrix
+          - matrix_rows
+          - freshness_state
+          - policy_effect
+      - id: runtime.compatibility_status_ingestion_configured
         kind: file_tokens
-        path: /runners/public/runner_adapter.sh
+        path: /scripts/runner_status_ingest.sh
         must_contain:
-          - expected rust only
-        must_not_contain:
-          - impl is no longer supported on the runtime path
-          - runners/rust/runner_adapter.sh
-      - id: runtime.full_no_local_runner_source_coupling
-        kind: file_tokens
-        path: /scripts/local_ci_parity.sh
-        must_contain:
-          - dc-runner-python
-          - dc-runner-php
-        must_not_contain:
-          - PYTHONPATH=
-          - spec_runner.spec_lang_commands
-          - runners/php/
-          - runners/python/
-          - runners/rust/
-      - id: runtime.full_runner_interface_contract_dc_split
+          - release_api_url
+          - runner-status-matrix.json
+          - runner-status-matrix.md
+          - runner-status-ingest-log.json
+      - id: runtime.contracts_no_rust_primary_language
         kind: file_tokens
         path: /specs/contract/12_runner_interface.md
         must_contain:
-          - dc-runner-rust
-          - dc-runner-python
-          - dc-runner-php
-          - dc_runner_rust_lock_v1.yaml
-      - id: runtime.full_compatibility_matrix_contract_registered
+          - implementation-agnostic boundary
+          - control plane
+      - id: runtime.docs_no_required_lane_language
         kind: file_tokens
-        path: /specs/contract/25_compatibility_matrix.md
+        path: /README.md
         must_contain:
-          - dc-runner-rust
-          - dc-runner-python
-          - dc-runner-php
-      - id: runtime.full_runner_certification_registry_registered
+          - implementation-agnostic control plane
+          - does not execute runtime lanes
+      - id: docs.usage_guides_required_set_present
         kind: file_tokens
-        path: /specs/schema/runner_certification_registry_v1.yaml
+        path: /docs/book/reference_manifest.yaml
         must_contain:
-          - runner_id: rust
-          - runner_id: python
-          - runner_id: php
-          - implementation_repo: dc-runner-rust
-          - implementation_repo: dc-runner-python
-          - implementation_repo: dc-runner-php
-      - id: runtime.no_external_runner_file_path_refs_contract_policy
+          - /docs/book/guides/guide_01_onboarding.md
+          - /docs/book/guides/guide_10_reference_navigation_patterns.md
+      - id: docs.reference_manifest_guide_order_canonical
+        kind: file_ordered_tokens
+        path: /docs/book/reference_manifest.yaml
+        ordered_tokens:
+          - /docs/book/guides/index.md
+          - /docs/book/guides/guide_01_onboarding.md
+          - /docs/book/guides/guide_02_first_spec_authoring.md
+          - /docs/book/guides/guide_03_running_checks_and_gates.md
+          - /docs/book/guides/guide_04_debugging_failures.md
+          - /docs/book/guides/guide_05_release_and_change_control.md
+          - /docs/book/guides/guide_06_governance_tuning.md
+          - /docs/book/guides/guide_07_schema_extension_workflow.md
+          - /docs/book/guides/guide_08_ci_integration.md
+          - /docs/book/guides/guide_09_status_exchange_operations.md
+          - /docs/book/guides/guide_10_reference_navigation_patterns.md
+      - id: docs.guide_contract_links_valid
         kind: file_tokens
-        path: /specs/contract/policy_v1.yaml
-        must_not_contain:
-          - dc-runner-rust/
-          - dc-runner-python/
-          - dc-runner-php/
-      - id: runtime.no_external_runner_file_path_refs_contract_traceability
+        path: /docs/book/90_reference_guide.md
+        must_contain:
+          - Guide To Contract Map
+          - specs/contract/10_docs_quality.md
+          - specs/contract/27_runner_status_exchange.md
+      - id: docs.visual_aids_core_chapters_present
         kind: file_tokens
-        path: /specs/contract/traceability_v1.yaml
-        must_not_contain:
-          - dc-runner-rust/
-          - dc-runner-python/
-          - dc-runner-php/
-      - id: runtime.no_external_runner_file_path_refs_governance_cases
-        kind: file_tokens
-        path: /specs/governance/cases/core/index.md
-        must_not_contain:
-          - dc-runner-rust/
-          - dc-runner-python/
-          - dc-runner-php/
-      - id: runtime.full_governance_broad_native_slo
-        kind: slo_budget
-        max_ms: 120000
+        path: /specs/contract/10_docs_quality.md
+        must_contain:
+          - 05_what_is_data_contracts.md
+          - 15_spec_lifecycle.md
+          - 25_system_topology.md
+          - Mermaid

@@ -4,7 +4,7 @@ runners:
   class: required
   status: active
   entrypoints:
-    public_adapter: /runners/public/runner_adapter.sh
+    public_adapter: /scripts/runner_bin.sh
     implementation_repo: dc-runner-rust
   required_core_checks:
   - runtime.runner_interface_subcommands
@@ -25,12 +25,18 @@ runners:
   artifact_contract:
     json_out: /.artifacts/runner-certification-{runner}.json
     md_out: /.artifacts/runner-certification-{runner}.md
+  status_exchange:
+    source_kind: release_asset
+    release_api_url: https://api.github.com/repos/jonruttan/dc%2Drunner%2Drust/releases/latest
+    report_asset_name: runner-status-report-v1.json
+    matrix_role: required
+    freshness_slo_hours: 72
 
 - runner_id: python
   class: compatibility_non_blocking
   status: active
   entrypoints:
-    public_adapter: /runners/public/runner_adapter.sh
+    public_adapter: /scripts/runner_bin.sh
     implementation_repo: dc-runner-python
   required_core_checks: []
   required_core_cases: []
@@ -38,12 +44,18 @@ runners:
   artifact_contract:
     json_out: /.artifacts/runner-certification-{runner}.json
     md_out: /.artifacts/runner-certification-{runner}.md
+  status_exchange:
+    source_kind: release_asset
+    release_api_url: https://api.github.com/repos/jonruttan/dc%2Drunner%2Dpython/releases/latest
+    report_asset_name: runner-status-report-v1.json
+    matrix_role: compatibility
+    freshness_slo_hours: 72
 
 - runner_id: php
   class: compatibility_non_blocking
   status: active
   entrypoints:
-    public_adapter: /runners/public/runner_adapter.sh
+    public_adapter: /scripts/runner_bin.sh
     implementation_repo: dc-runner-php
   required_core_checks: []
   required_core_cases: []
@@ -51,12 +63,18 @@ runners:
   artifact_contract:
     json_out: /.artifacts/runner-certification-{runner}.json
     md_out: /.artifacts/runner-certification-{runner}.md
+  status_exchange:
+    source_kind: release_asset
+    release_api_url: https://api.github.com/repos/jonruttan/dc%2Drunner%2Dphp/releases/latest
+    report_asset_name: runner-status-report-v1.json
+    matrix_role: compatibility
+    freshness_slo_hours: 72
 
 - runner_id: node
   class: compatibility_non_blocking
   status: planned
   entrypoints:
-    public_adapter: /runners/public/runner_adapter.sh
+    public_adapter: /scripts/runner_bin.sh
     implementation_repo: dc-runner-node
   required_core_checks: []
   required_core_cases: []
@@ -64,12 +82,18 @@ runners:
   artifact_contract:
     json_out: /.artifacts/runner-certification-{runner}.json
     md_out: /.artifacts/runner-certification-{runner}.md
+  status_exchange:
+    source_kind: release_asset
+    release_api_url: https://api.github.com/repos/jonruttan/dc-runner-node/releases/latest
+    report_asset_name: runner-status-report-v1.json
+    matrix_role: compatibility
+    freshness_slo_hours: 72
 
 - runner_id: c
   class: compatibility_non_blocking
   status: planned
   entrypoints:
-    public_adapter: /runners/public/runner_adapter.sh
+    public_adapter: /scripts/runner_bin.sh
     implementation_repo: dc-runner-c
   required_core_checks: []
   required_core_cases: []
@@ -77,3 +101,9 @@ runners:
   artifact_contract:
     json_out: /.artifacts/runner-certification-{runner}.json
     md_out: /.artifacts/runner-certification-{runner}.md
+  status_exchange:
+    source_kind: release_asset
+    release_api_url: https://api.github.com/repos/jonruttan/dc-runner-c/releases/latest
+    report_asset_name: runner-status-report-v1.json
+    matrix_role: compatibility
+    freshness_slo_hours: 72

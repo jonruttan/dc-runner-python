@@ -10,8 +10,8 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_FILES = [
-    "specs/impl/rust/jobs/script_jobs.spec.md",
-    "specs/impl/rust/jobs/report_jobs.spec.md",
+    "specs/upstream/data-contracts/specs/conformance/cases/core/script_job_contracts.spec.md",
+    "specs/upstream/data-contracts/specs/conformance/cases/core/report_job_contracts.spec.md",
 ]
 FENCE_RE = re.compile(r"```yaml contract-spec\n(.*?)\n```", re.DOTALL)
 

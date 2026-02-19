@@ -2,11 +2,11 @@
 
 Source of truth: `/specs/schema/review_snapshot_schema_v1.yaml`
 
-Defines the required machine-consumable markdown shape for active review snapshots under `/docs/reviews/snapshots`.
+Defines the required machine-consumable markdown shape for review snapshots under `/docs/history/reviews/snapshots`.
 
 ## Scope
 
-Applies to active review outputs created from prompts in `/docs/reviews/prompts/`.
+Applies to active review outputs created from prompts in `/docs/history/reviews/prompts/`.
 
 ## Required Metadata
 
@@ -68,7 +68,7 @@ Allowed labels:
 
 Canonical command:
 
-- `./runners/public/runner_adapter.sh --impl rust review-validate --snapshot <path>`
+- `./scripts/control_plane.sh review-validate --snapshot <path>`
 
 Exit semantics:
 

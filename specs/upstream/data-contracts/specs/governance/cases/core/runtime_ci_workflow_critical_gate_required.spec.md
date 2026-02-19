@@ -13,10 +13,10 @@ harness:
   ci_workflow_critical_gate:
     path: /.github/workflows/ci.yml
     required_tokens:
-    - 'rust-critical-gate:'
-    - Run rust critical gate
-    - ./runners/public/runner_adapter.sh --impl rust critical-gate
-    - 'needs: rust-critical-gate'
+    - 'control-plane-critical-gate:'
+    - Run control-plane critical gate
+    - ./scripts/control_plane.sh critical-gate
+    - 'needs: control-plane-critical-gate'
     - 'continue-on-error: true'
   check:
     profile: governance.scan

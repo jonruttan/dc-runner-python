@@ -26,7 +26,7 @@ harness:
       roots:
       - /specs/conformance/cases
       - /specs/governance/cases
-      - /specs/impl
+      - runner-owned implementation specs
       core_types:
       - text.file
       - cli.run
@@ -35,7 +35,7 @@ harness:
         segment: conformance
       - prefix: specs/governance/cases
         segment: governance
-      - prefix: specs/impl
+      - prefix: runner-owned implementation specs
         segment: impl
       runtime_capability_tokens:
       - api.http

@@ -25,9 +25,7 @@ profile_shape:
       - required
       - enum
       - since
-      - deprecated
       - removed
-      - replacement
       - description
 type_profile_shape:
   required:

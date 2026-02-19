@@ -356,5 +356,5 @@ standardize `evaluate` expression formatting to:
 
 Tooling:
 
-- lint: `./runners/public/runner_adapter.sh --impl rust spec-lang-format --check --cases specs`
-- format: `./runners/public/runner_adapter.sh --impl rust spec-lang-format --write --cases specs`
+- lint: `./scripts/control_plane.sh spec-lang-format --check --cases specs`
+- format: `./scripts/control_plane.sh spec-lang-format --write --cases specs`

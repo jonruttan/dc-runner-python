@@ -3591,7 +3591,7 @@
     "roots": [
       "specs/conformance/cases",
       "specs/governance/cases",
-      "specs/impl"
+      "runner-owned implementation specs"
     ],
     "runtime_capability_prefixes": [
       "runtime.",
@@ -3612,7 +3612,7 @@
         "segment": "governance"
       },
       {
-        "prefix": "specs/impl",
+        "prefix": "runner-owned implementation specs",
         "segment": "impl"
       }
     ],

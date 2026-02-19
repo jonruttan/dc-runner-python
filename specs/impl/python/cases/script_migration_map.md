@@ -2,19 +2,18 @@
 
 Frozen conversion inventory from script-focused unit suites to executable spec suites.
 
-- `/specs/impl/python/cases/script_ci_and_parity.spec.md` -> `/specs/impl/python/cases/script_ci_and_parity.spec.md`
-- `/specs/impl/python/cases/script_ci_and_parity.spec.md` -> `/specs/impl/python/cases/script_ci_and_parity.spec.md`
-- `/specs/impl/python/cases/script_ci_and_parity.spec.md` -> `/specs/impl/python/cases/script_ci_and_parity.spec.md`
-- `/specs/impl/python/cases/script_docs_generate.spec.md` -> `/specs/impl/python/cases/script_docs_generate.spec.md`
-- `/specs/impl/python/cases/script_docs_generate.spec.md` -> `/specs/impl/python/cases/script_docs_generate.spec.md`
-- `/specs/impl/python/cases/script_docs_generate.spec.md` -> `/specs/impl/python/cases/script_docs_generate.spec.md`
-- `/specs/impl/python/cases/script_normalization.spec.md` -> `/specs/impl/python/cases/script_normalization.spec.md`
-- `/specs/impl/python/cases/script_normalization.spec.md` -> `/specs/impl/python/cases/script_normalization.spec.md`
-- `/specs/impl/python/cases/script_quality_reports.spec.md` -> `/specs/impl/python/cases/script_quality_reports.spec.md`
-- `/specs/impl/python/cases/script_quality_reports.spec.md` -> `/specs/impl/python/cases/script_quality_reports.spec.md`
-- `/specs/impl/python/cases/script_quality_reports.spec.md` -> `/specs/impl/python/cases/script_quality_reports.spec.md`
-- `/specs/impl/python/cases/script_portability_and_migration.spec.md` -> `/specs/impl/python/cases/script_portability_and_migration.spec.md`
-- `/specs/impl/python/cases/script_portability_and_migration.spec.md` -> `/specs/impl/python/cases/script_portability_and_migration.spec.md`
-- `/specs/impl/python/cases/script_portability_and_migration.spec.md` -> `/specs/impl/python/cases/script_portability_and_migration.spec.md`
-- `/specs/impl/python/cases/script_portability_and_migration.spec.md` -> `/specs/impl/python/cases/script_portability_and_migration.spec.md`
-- `/specs/impl/python/cases/script_governance_runner.spec.md` -> `/specs/impl/python/cases/script_governance_runner.spec.md`
+## Ownership Updates (Cross-Runner De-dup Sweep)
+
+- Legacy Rust-local report job contracts moved to canonical upstream:
+  - `/specs/upstream/data-contracts/specs/conformance/cases/core/report_job_contracts.spec.md`
+- Legacy Rust-local script command-contract subset moved to canonical upstream:
+  - `/specs/upstream/data-contracts/specs/conformance/cases/core/script_job_contracts.spec.md`
+
+## Python-local Scope (unchanged in this sweep)
+
+- `/specs/impl/python/cases/script_ci_and_parity.spec.md`
+- `/specs/impl/python/cases/script_docs_generate.spec.md`
+- `/specs/impl/python/cases/script_normalization.spec.md`
+- `/specs/impl/python/cases/script_quality_reports.spec.md`
+- `/specs/impl/python/cases/script_portability_and_migration.spec.md`
+- `/specs/impl/python/cases/script_governance_runner.spec.md`

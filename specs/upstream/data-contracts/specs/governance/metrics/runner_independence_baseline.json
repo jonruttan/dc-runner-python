@@ -9,7 +9,7 @@
     ],
     "gate_required_tokens": [
       "SPEC_RUNNER_BIN",
-      "runners/public/runner_adapter.sh"
+      "scripts/runner_bin.sh"
     ],
     "rust_ci_required_tokens": [
       "core-gate-rust-adapter:",
@@ -18,7 +18,7 @@
     ],
     "segment_files": {
       "adapter_interfaces": [
-        "runners/public/runner_adapter.sh",
+        "scripts/runner_bin.sh",
         "dc-runner-rust",
         "dc-runner-rust"
       ],
@@ -35,7 +35,7 @@
   "files": [
     {
       "direct_runtime_invocation_count": 4.0,
-      "file": "runners/public/runner_adapter.sh",
+      "file": "scripts/runner_bin.sh",
       "runner_independence_ratio": 0.6666666666666666,
       "runner_interface_usage_ratio": 1.0,
       "rust_primary_path_coverage_ratio": 1.0,
@@ -91,7 +91,7 @@
     },
     {
       "direct_runtime_invocation_count": 4.0,
-      "file": "runners/public/runner_adapter.sh",
+      "file": "scripts/runner_bin.sh",
       "runner_independence_ratio": 0.3333333333333333,
       "runner_interface_usage_ratio": 0.0,
       "rust_primary_path_coverage_ratio": 1.0,

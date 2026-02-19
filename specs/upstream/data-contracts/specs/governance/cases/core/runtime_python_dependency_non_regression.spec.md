@@ -23,7 +23,7 @@ harness:
   check:
     profile: governance.scan
     config:
-      check: runtime.python_dependency_non_regression
+      check: runtime.compatibility_python_lane_dependency_non_regression
   use:
   - ref: /specs/libraries/policy/policy_core.spec.md
     as: lib_policy_core_spec
@@ -53,7 +53,7 @@ contract:
       - std.object.get:
         - {var: summary_json}
         - check_id
-      - runtime.python_dependency_non_regression
+      - runtime.compatibility_python_lane_dependency_non_regression
     imports:
     - from: artifact
       names:

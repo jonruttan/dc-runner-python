@@ -1,0 +1,36 @@
+# Governance Cases
+
+## DCGOV-RUNTIME-STATUS-006
+
+```yaml contract-spec
+id: DCGOV-RUNTIME-STATUS-006
+title: required lane status remains blocking
+purpose: Ensures required-lane status outcomes map to blocking policy effects.
+type: contract.check
+harness:
+  root: .
+  required_lane_policy:
+    path: /scripts/runner_status_ingest.sh
+    required_tokens:
+    - lane_class
+    - required
+    - blocking_fail
+  check:
+    profile: governance.scan
+    config:
+      check: runtime.required_lane_status_blocking_enforced
+contract:
+  defaults:
+    class: MUST
+  imports:
+  - from: artifact
+    names:
+    - violation_count
+  steps:
+  - id: assert_1
+    assert:
+      std.logic.eq:
+      - {var: violation_count}
+      - 0
+```
+

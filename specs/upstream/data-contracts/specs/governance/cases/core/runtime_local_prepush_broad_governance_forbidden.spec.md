@@ -15,7 +15,7 @@ harness:
     - skip broad governance (set SPEC_PREPUSH_REQUIRE_BROAD=1 to enable)
     - SPEC_PREPUSH_REQUIRE_BROAD=1
     forbidden_tokens:
-    - run_step governance "${SPEC_RUNNER_BIN}" --impl "${SPEC_RUNNER_IMPL}" governance
+    - run_step governance "${SPEC_RUNNER_BIN}" governance
   check:
     profile: governance.scan
     config:

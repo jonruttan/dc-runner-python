@@ -5,7 +5,7 @@
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-018
 title: discovery review workflow is documented and synced
-purpose: Ensures docs/reviews README documents scaffold, validate, and pending-conversion flow for the discovery prompt.
+purpose: Ensures docs/history/reviews README documents scaffold, validate, and pending-conversion flow for the discovery prompt.
 type: contract.check
 harness:
   root: .

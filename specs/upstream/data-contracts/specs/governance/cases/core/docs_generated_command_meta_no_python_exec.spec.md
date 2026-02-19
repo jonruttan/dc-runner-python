@@ -17,7 +17,7 @@ harness:
     - /docs/book/93m_spec_case_index.md
     - /docs/book/93n_spec_case_templates_reference.md
     required_tokens:
-    - ./runners/public/runner_adapter.sh --impl rust docs-generate-check
+    - ./scripts/control_plane.sh docs-generate-check
     forbidden_tokens:
     - PYTHONPATH=runners/python
     - .venv/bin/python

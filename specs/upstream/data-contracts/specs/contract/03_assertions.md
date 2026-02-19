@@ -14,7 +14,7 @@ Each step has:
 - `imports` (optional list of import items)
 - `assert` (non-empty expression mapping or list)
 
-Legacy forms are forbidden:
+prior forms are forbidden:
 
 - top-level list `contract: [...]`
 - step key `asserts`

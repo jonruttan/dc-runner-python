@@ -8,7 +8,7 @@
       "rust_adapter"
     ],
     "python_allowed_globs": [
-      "runners/public/runner_adapter.sh",
+      "scripts/runner_bin.sh",
       "scripts/python/*.py",
       ".github/workflows/*.yml",
       ".github/workflows/*.yaml"
@@ -27,7 +27,7 @@
     ],
     "runtime_trace_path": ".artifacts/gate-exec-trace.json",
     "rust_transitive_forbidden_tokens": [
-      "runners/public/runner_adapter.sh",
+      "scripts/runner_bin.sh",
       "scripts/run_governance_specs.py",
       "scripts/ci_gate_summary.py",
       "python -m ",
@@ -44,7 +44,7 @@
         "scripts/docs_doctor.sh"
       ],
       "python_surfaces": [
-        "runners/public/runner_adapter.sh",
+        "scripts/runner_bin.sh",
         "scripts/python/*.py"
       ],
       "rust_adapter": [
@@ -61,7 +61,7 @@
         "file": "dc-runner-rust",
         "kind": "rust_transitive_token",
         "segment": "rust_adapter",
-        "token": "runners/public/runner_adapter.sh"
+        "token": "scripts/runner_bin.sh"
       }
     ]
   },
@@ -103,7 +103,7 @@
     },
     {
       "allowed_python_surface": 1.0,
-      "file": "runners/public/runner_adapter.sh",
+      "file": "scripts/runner_bin.sh",
       "python_token_count": 6.0,
       "segment": "python_surfaces",
       "transitive_token_count": 0.0

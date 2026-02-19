@@ -16,12 +16,12 @@ harness:
     - /docs/development.md
     - /specs/current.md
     - /specs/contract/12_runner_interface.md
-    - /specs/contract/16_rust_primary_transition.md
+    
     forbidden_tokens:
     - dc-runner-rust
     allowlist:
     - /specs/contract/12_runner_interface.md
-    - /specs/contract/16_rust_primary_transition.md
+    
   check:
     profile: governance.scan
     config:

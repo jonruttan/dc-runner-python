@@ -30,13 +30,13 @@ harness:
       roots:
       - /specs/conformance/cases
       - /specs/governance/cases
-      - /specs/impl
+      - runner-owned implementation specs
       segment_rules:
       - prefix: specs/conformance/cases
         segment: conformance
       - prefix: specs/governance/cases
         segment: governance
-      - prefix: specs/impl
+      - prefix: runner-owned implementation specs
         segment: impl
       recursive: true
   check:

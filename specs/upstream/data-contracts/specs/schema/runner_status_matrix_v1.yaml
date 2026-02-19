@@ -1,0 +1,58 @@
+version: 1
+type: runtime.runner_status_matrix
+required_top_level:
+  - version
+  - updated_at
+  - matrix_rows
+fields:
+  version:
+    type: int
+  updated_at:
+    type: string
+    format: rfc3339_utc
+  matrix_rows:
+    type: list
+    item_shape:
+      required:
+        - runner_id
+        - implementation_repo
+        - lane_class
+        - runner_status
+        - freshness_state
+        - policy_effect
+      fields:
+        runner_id:
+          type: string
+        implementation_repo:
+          type: string
+        lane_class:
+          type: string
+          enum:
+            - required
+            - compatibility_non_blocking
+        runner_status:
+          type: string
+          enum:
+            - pass
+            - fail
+            - degraded
+            - unknown
+        freshness_state:
+          type: string
+          enum:
+            - fresh
+            - stale
+            - missing
+        policy_effect:
+          type: string
+          enum:
+            - blocking_fail
+            - non_blocking_warn
+            - non_blocking_fail
+        status_source:
+          type: mapping
+          optional: true
+        status_report:
+          type: mapping
+          optional: true
+

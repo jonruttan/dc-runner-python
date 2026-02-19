@@ -3,20 +3,19 @@ title: Docs Layout Profile v1
 canonical_roots:
 - /docs/book
 - /specs
-- /docs/impl
-- /docs/reviews
+- runner-owned implementation docs
 forbidden_roots: []
 index_filename: index.md
 required_index_dirs:
 - /docs/book
-- /docs/impl
+- /docs/book/guides
+- runner-owned implementation docs
 - /specs
 - /specs/contract
 - /specs/conformance
 - /specs/conformance/cases
 - /specs/governance
-- /specs/impl
-- /docs/reviews
+- runner-owned implementation specs
 forbidden_filenames:
 - README.md
 - .DS_Store

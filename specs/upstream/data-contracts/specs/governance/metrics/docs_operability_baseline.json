@@ -15,7 +15,7 @@
         "segment": "schema"
       },
       {
-        "prefix": "specs/impl",
+        "prefix": "runner-owned implementation specs",
         "segment": "impl_docs"
       }
     ]

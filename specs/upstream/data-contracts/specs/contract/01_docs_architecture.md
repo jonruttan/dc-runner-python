@@ -9,7 +9,7 @@ Source of truth: spec.contract.docs_architecture
 - `/specs/contract/**` owns normative policy/traceability contracts.
 - `/specs/governance/**` owns executable governance checks.
 - `/specs/libraries/**` owns reusable spec-lang library surfaces.
-- `/specs/impl/**` owns implementation fixture suites.
+- `runner-owned implementation specs/**` owns implementation fixture suites.
 
 ## Generated References
 

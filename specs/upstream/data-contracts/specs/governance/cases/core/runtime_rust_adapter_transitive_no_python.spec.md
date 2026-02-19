@@ -15,7 +15,7 @@ harness:
     - dc-runner-rust
     - dc-runner-rust
     forbidden_tokens:
-    - runners/public/runner_adapter.sh
+    - scripts/runner_bin.sh
     - spec_runner.spec_lang_commands
     - PYTHONPATH
     - python
@@ -23,7 +23,7 @@ harness:
   check:
     profile: governance.scan
     config:
-      check: runtime.rust_adapter_transitive_no_python
+      check: runtime.required_lane_adapter_transitive_no_python
   use:
   - ref: /specs/libraries/policy/policy_core.spec.md
     as: lib_policy_core_spec
@@ -53,7 +53,7 @@ contract:
       - std.object.get:
         - {var: summary_json}
         - check_id
-      - runtime.rust_adapter_transitive_no_python
+      - runtime.required_lane_adapter_transitive_no_python
     imports:
     - from: artifact
       names:

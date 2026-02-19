@@ -4,8 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-010
-title: readme remains rust-first and canonical for v1 authoring
-purpose: Ensures root README stays gateway-oriented, rust-first, and free from legacy assertion-surface
+title: readme remains implementation-agnostic and canonical for v1 authoring
+purpose: Ensures root README stays gateway-oriented, implementation-agnostic, and free from prior assertion-surface
   snippets.
 type: contract.check
 harness:
@@ -13,9 +13,9 @@ harness:
   readme_coherence:
     path: /README.md
     required_tokens:
-    - ./runners/public/runner_adapter.sh --impl rust critical-gate
-    - ./runners/public/runner_adapter.sh --impl rust governance
-    - ./runners/public/runner_adapter.sh --impl rust docs-generate-check
+    - ./scripts/control_plane.sh critical-gate
+    - ./scripts/control_plane.sh governance
+    - ./scripts/control_plane.sh docs-generate-check
     - Compatibility Matrix (Non-Blocking)
     - compatibility_non_blocking
     - SPEC_PREPUSH_BYPASS=1 git push

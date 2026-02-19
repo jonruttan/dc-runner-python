@@ -6,7 +6,7 @@ Use this template when adding or revising a portable contract rule.
 
 - Rule ID: `RULE-ID`
 - Introduced In: `vN` (required)
-- Deprecated In: `vN` (optional)
+- Retired In: `vN` (optional)
 - Removed In: `vN` (optional)
 - Norm: `MUST | SHOULD | MUST_NOT`
 - Scope: `case | implementation | conformance | runner`

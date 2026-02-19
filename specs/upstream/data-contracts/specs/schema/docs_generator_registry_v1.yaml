@@ -5,6 +5,10 @@ surfaces:
   inputs:
   - /docs/book/reference_manifest.yaml
   - /docs/book
+  - /docs/book/guides
+  - /specs/schema/runner_status_report_v1.yaml
+  - /specs/schema/runner_status_matrix_v1.yaml
+  - /specs/contract/27_runner_status_exchange.md
   outputs:
   - /docs/book/reference_index.md
   - /docs/book/reference_coverage.md
@@ -48,6 +52,7 @@ surfaces:
   inputs:
   - /docs/book/reference_manifest.yaml
   - /docs/book
+  - /docs/book/guides
   outputs:
   - /docs/book/docs_graph.json
   generator: docs_build_reference
@@ -66,7 +71,7 @@ surfaces:
 - surface_id: runner_api_catalog
   source_type: code_scan
   inputs:
-  - /runners/public/runner_adapter.sh
+  - /scripts/runner_bin.sh
   - /dc-runner-python
   - /specs/schema/dc_runner_rust_lock_v1.yaml
   outputs:
@@ -76,7 +81,7 @@ surfaces:
   check_mode_supported: true
   owner_contract_docs:
   - /specs/contract/12_runner_interface.md
-  - /specs/contract/16_rust_primary_transition.md
+  
   determinism_hash_fields:
   - summary
   - commands

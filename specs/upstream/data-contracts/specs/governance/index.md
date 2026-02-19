@@ -14,12 +14,11 @@ Executable governance checks for canonical contract enforcement.
 
 - Metrics baselines: `/specs/governance/metrics/`
 - Tool contracts: `/specs/governance/tools/`
-- Pending governance work: `/specs/governance/pending/`
 
 ## Execution
 
 ```sh
-./runners/public/runner_adapter.sh --impl rust governance
+./scripts/control_plane.sh governance
 ```
 
 ## Canonical Checks

@@ -13,4 +13,4 @@ Source of truth: spec.contract.docs_style
 
 - Broken links are invalid.
 - Generated docs drift is invalid.
-- Stale legacy terms in active docs are invalid.
+- Stale prior terms in active docs are invalid.
