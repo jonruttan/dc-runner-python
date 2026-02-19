@@ -1,0 +1,89 @@
+{
+  "config": {
+    "paths": [
+      "specs/contract/03_assertions.md",
+      "specs/schema/schema_v1.md",
+      "docs/book/30_assertion_model.md",
+      "specs/contract/03b_spec_lang_v1.md"
+    ],
+    "required_tokens": [
+      "must",
+      "can",
+      "cannot",
+      "contain",
+      "regex",
+      "evaluate"
+    ],
+    "segment_rules": [
+      {
+        "prefix": "specs/contract",
+        "segment": "contract"
+      },
+      {
+        "prefix": "specs/schema",
+        "segment": "schema"
+      },
+      {
+        "prefix": "docs/book",
+        "segment": "book"
+      }
+    ]
+  },
+  "docs": [
+    {
+      "missing_required_token_count": 0.0,
+      "path": "docs/book/30_assertion_model.md",
+      "required_token_coverage_ratio": 1.0,
+      "segment": "book"
+    },
+    {
+      "missing_required_token_count": 0.0,
+      "path": "specs/contract/03_assertions.md",
+      "required_token_coverage_ratio": 1.0,
+      "segment": "contract"
+    },
+    {
+      "missing_required_token_count": 1.0,
+      "path": "specs/contract/03b_spec_lang_v1.md",
+      "required_token_coverage_ratio": 0.8333333333333334,
+      "segment": "contract"
+    },
+    {
+      "missing_required_token_count": 0.0,
+      "path": "specs/schema/schema_v1.md",
+      "required_token_coverage_ratio": 1.0,
+      "segment": "schema"
+    }
+  ],
+  "errors": [],
+  "segments": {
+    "book": {
+      "case_count": 1,
+      "mean_missing_required_token_count": 0.0,
+      "mean_required_token_coverage_ratio": 1.0
+    },
+    "contract": {
+      "case_count": 2,
+      "mean_missing_required_token_count": 0.5,
+      "mean_required_token_coverage_ratio": 0.9166666666666667
+    },
+    "other": {
+      "case_count": 0,
+      "mean_missing_required_token_count": 0.0,
+      "mean_required_token_coverage_ratio": 0.0
+    },
+    "schema": {
+      "case_count": 1,
+      "mean_missing_required_token_count": 0.0,
+      "mean_required_token_coverage_ratio": 1.0
+    }
+  },
+  "summary": {
+    "contract_must_coverage_ratio": 1.0,
+    "overall_contract_assertions_ratio": 0.9305555555555557,
+    "overall_required_token_coverage_ratio": 0.9583333333333334,
+    "token_sync_ratio": 0.8333333333333334,
+    "total_docs": 4
+  },
+  "version": 1
+}

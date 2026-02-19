@@ -1,0 +1,31 @@
+version: 1
+title: Docs Layout Profile v1
+canonical_roots:
+- /docs/book
+- /specs
+- /docs/impl
+- /docs/reviews
+forbidden_roots: []
+index_filename: index.md
+required_index_dirs:
+- /docs/book
+- /docs/impl
+- /specs
+- /specs/contract
+- /specs/conformance
+- /specs/conformance/cases
+- /specs/governance
+- /specs/impl
+- /docs/reviews
+forbidden_filenames:
+- README.md
+- .DS_Store
+filename_policy:
+  lowercase_only: true
+  forbid_spaces: true
+  allow_extensions:
+  - .md
+  - .yaml
+  - .yml
+  - .json
+  - .txt

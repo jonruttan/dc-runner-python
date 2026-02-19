@@ -1,31 +1,100 @@
 # dc-runner-python
 
-Python compatibility runner for Data Contracts.
+Python implementation lane for Data Contracts runner compatibility.
 
-## Scope
+## What This Project Is
 
-- Owns Python compatibility execution surfaces formerly hosted in monorepo path `runners/python`.
-- Non-blocking lane relative to required Rust lane.
+`dc-runner-python` provides Python runner interfaces and compatibility checks for
+Data Contracts workflows. It verifies behavior against a pinned upstream specs
+snapshot so compatibility changes are explicit and reviewable.
 
-## Commands
+## What Is Data Contracts?
 
-- `python -m spec_runner.spec_lang_commands run-governance-specs --liveness-level basic`
-- `python -m spec_runner.spec_lang_commands compare-conformance-parity --python-only --cases specs/conformance/cases --out .artifacts/conformance-parity-python.json`
+[Data Contracts](https://github.com/jonruttan/data-contracts) is the canonical
+contracts/specifications project for the runner ecosystem. It owns normative
+contracts, schemas, conformance surfaces, and governance policy.
 
-## Local setup
+This repository does not redefine those canonical contracts. It owns Python
+implementation behavior and compatibility verification against pinned upstream
+versions.
+
+## Responsibility Boundary
+
+- `data-contracts` owns canonical runner specs/contracts and evolution.
+- `dc-runner-python` owns Python implementation behavior and compatibility checks.
+
+## Stable Interface Contract
+
+- Public runner entrypoint: `/runner_adapter.sh`
+- Stable exit code semantics:
+  - `0` success
+  - `1` runtime/tool failure
+  - `2` invalid usage/config
+
+## Quickstart
+
+Setup:
 
 ```sh
-python -m pip install -e '.[dev]'
+make setup
 ```
 
-## Implementation Specs
+Core checks:
 
-Runner-owned implementation contracts live in:
+```sh
+make lint
+make typecheck
+make smoke
+```
 
-- `specs/impl/python/`
+Full local verification:
+
+```sh
+make verify
+```
+
+## Upstream Snapshot Workflow
+
+Pinned upstream compatibility artifacts:
+
+- `/specs/upstream/data_contracts_lock_v1.yaml`
+- `/specs/upstream/data-contracts.manifest.sha256`
+- `/specs/upstream/data-contracts/`
+
+Update pinned snapshot:
+
+```sh
+make spec-sync TAG=<upstream-tag-or-ref> SOURCE=<path-or-url>
+```
+
+Validate lock/snapshot integrity:
+
+```sh
+make spec-sync-check
+```
+
+Run compatibility verification:
+
+```sh
+make compat-check
+```
+
+## Documentation Map
+
+- Architecture: `/docs/architecture.md`
+- Commands: `/docs/commands.md`
+- Compatibility: `/docs/compatibility.md`
+- Release operations: `/docs/release.md`
+- Contributor workflow: `/CONTRIBUTING.md`
+
+## Specs Map
+
+- Local runner-owned implementation specs:
+  - `/specs/impl/python/`
+- Upstream pinned compatibility snapshot:
+  - `/specs/upstream/data-contracts/`
 
 ## Source Moved From data-contracts
 
-Implementation narratives previously documented in `data-contracts/docs/impl/python.md`
-are owned here. See `docs/migration_from_data_contracts.md` for migration
-mapping.
+Implementation narratives previously in `data-contracts/docs/impl/python.md` are
+owned here. See `/docs/migration_from_data_contracts.md`.

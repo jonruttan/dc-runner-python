@@ -18,8 +18,12 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e '.[dev]'
       - name: Lint
-        run: python -m ruff check spec_runner
+        run: make lint
       - name: Typecheck
-        run: python -m mypy spec_runner
+        run: make typecheck
       - name: Smoke
-        run: python -m spec_runner.spec_lang_commands --help
+        run: make smoke
+      - name: Spec Sync Check
+        run: make spec-sync-check
+      - name: Compatibility Check
+        run: make compat-check

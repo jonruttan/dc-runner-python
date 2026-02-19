@@ -1,0 +1,42 @@
+version: 1
+name: subject_profiles_v1
+envelope:
+  required:
+  - profile_id
+  - profile_version
+  - value
+  - meta
+  optional:
+  - context
+field_types:
+  profile_id: string
+  profile_version: integer
+  value: json
+  meta: object
+  context: object
+constraints:
+  json_core_only: true
+  deterministic_projection: true
+  non_json_native_values_must_be_projected: true
+profiles:
+- id: text.file/v1
+  type: text.file
+  target: context_json
+- id: cli.run/v1
+  type: cli.run
+  target: context_json
+- id: api.http/v1
+  type: api.http
+  target: context_json
+- id: python.generic/v1
+  type: extension.python
+  target: context_json
+- id: php.generic/v1
+  type: extension.php
+  target: context_json
+- id: markdown.generic/v1
+  type: extension.markdown
+  target: context_json
+- id: makefile.generic/v1
+  type: extension.makefile
+  target: context_json

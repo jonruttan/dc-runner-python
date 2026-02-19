@@ -1,0 +1,50 @@
+version: 1
+families:
+  - family: runtime
+    check_prefix: runtime.
+  - family: contract
+    check_prefix: contract.
+  - family: docs
+    check_prefix: docs.
+  - family: schema
+    check_prefix: schema.
+  - family: conformance
+    check_prefix: conformance.
+  - family: spec
+    check_prefix: spec.
+  - family: spec_lang
+    check_prefix: spec_lang.
+  - family: library
+    check_prefix: library.
+  - family: assert
+    check_prefix: assert.
+  - family: reference
+    check_prefix: reference.
+  - family: normalization
+    check_prefix: normalization.
+  - family: orchestration
+    check_prefix: orchestration.
+  - family: objective
+    check_prefix: objective.
+  - family: naming
+    check_prefix: naming.
+  - family: pending
+    check_prefix: pending.
+  - family: security
+    check_prefix: security.
+  - family: tests
+    check_prefix: tests.
+  - family: governance
+    check_prefix: governance.
+  - family: architecture
+    check_prefix: architecture.
+  - family: current
+    check_prefix: current.
+  - family: impl
+    check_prefix: impl.
+  - family: regex
+    check_prefix: regex.
+  - family: runner
+    check_prefix: runner.
+  - family: v1
+    check_prefix: v1.

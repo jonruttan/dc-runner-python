@@ -1,0 +1,16 @@
+version: 1
+type: docs.runner_api_catalog
+required_top_level:
+- version
+- summary
+- quality
+- commands
+fields:
+  version:
+    type: int
+  summary:
+    type: mapping
+  quality:
+    type: mapping
+  commands:
+    type: list

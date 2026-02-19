@@ -1,0 +1,121 @@
+# Conformance Cases
+
+Case fixtures that portable runner implementations execute.
+
+## Authoring Quick Rules
+
+- Keep case ids stable.
+- Prefer small, focused cases per behavior.
+- Include both pass and fail cases.
+- Use Markdown `.spec.md` files with fenced `yaml contract-spec` blocks.
+- Prefer inline expectations via:
+  - optional `expect.impl.<runtime>` overrides
+- Conformance fixture cases should always include `expect.portable.status`.
+- Conformance fixture cases must include a non-empty `purpose`.
+- Purpose lint defaults/runtime profiles live in `specs/conformance/purpose_lint_v1.yaml`.
+- Style details are defined in `specs/conformance/style.md`.
+
+## Fixture File Guide
+
+- `assertion-health.spec.md`: assertion-health diagnostics and mode behavior
+- `core/api_http.spec.md`: portable `api.http` extension behavior, CORS, verbs, and scenario coverage
+- `domain_libraries.spec.md`: domain library contract coverage for non-core projection helpers
+- `spec_lang.spec.md`: `evaluate` operator behavior, schema/runtime failures, TCO, and ramda-style utility conformance
+- `spec_lang_library_contract.spec.md`: `spec.export` producer contract coverage
+- `subject_profiles.spec.md`: JSON-core subject profile envelope contract coverage
+- `cli-run-entrypoint.spec.md`: entrypoint precedence and capability gating
+- `failure-context.spec.md`: deterministic failure context tokens
+- `php-text-file-subset.spec.md`: portable `text.file` subset used for PHP parity
+
+## Case Index
+
+- `DCCONF-AH-001`
+- `DCCONF-AH-002`
+- `DCCONF-AH-003`
+- `DCCONF-AH-004`
+- `DCCONF-AH-005`
+- `DCCONF-AH-006`
+- `DCCONF-API-001`
+- `DCCONF-API-002`
+- `DCCONF-API-003`
+- `DCCONF-API-004`
+- `DCCONF-API-005`
+- `DCCONF-API-006`
+- `DCCONF-API-007`
+- `DCCONF-API-008`
+- `DCCONF-API-009`
+- `DCCONF-API-010`
+- `DCCONF-API-011`
+- `DCCONF-API-012`
+- `DCCONF-API-013`
+- `DCCONF-API-014`
+- `DCCONF-API-015`
+- `DCCONF-API-016`
+- `DCCONF-API-017`
+- `DCCONF-CHAIN-EXPORT-002`
+- `DCCONF-CHAIN-EXPORT-003`
+- `DCCONF-CLI-001`
+- `DCCONF-CLI-002`
+- `DCCONF-DOMAIN-LIB-001`
+- `DCCONF-DOMAIN-LIB-002`
+- `DCCONF-ERR-001`
+- `DCCONF-EXPR-001`
+- `DCCONF-EXPR-002`
+- `DCCONF-EXPR-003`
+- `DCCONF-EXPR-004`
+- `DCCONF-EXPR-005`
+- `DCCONF-EXPR-006`
+- `DCCONF-EXPR-007`
+- `DCCONF-EXPR-008`
+- `DCCONF-EXPR-009`
+- `DCCONF-EXPR-010`
+- `DCCONF-EXPR-011`
+- `DCCONF-EXPR-012`
+- `DCCONF-EXPR-013`
+- `DCCONF-EXPR-014`
+- `DCCONF-EXPR-015`
+- `DCCONF-EXPR-016`
+- `DCCONF-EXPR-017`
+- `DCCONF-EXPR-018`
+- `DCCONF-EXPR-019`
+- `DCCONF-EXPR-020`
+- `DCCONF-EXPR-021`
+- `DCCONF-EXPR-022`
+- `DCCONF-EXPR-023`
+- `DCCONF-EXPR-024`
+- `DCCONF-LIB-CONTRACT-001`
+- `DCCONF-LIB-CONTRACT-002`
+- `DCCONF-LIB-CONTRACT-003`
+- `DCCONF-PHP-TEXT-001`
+- `DCCONF-PHP-TEXT-002`
+- `DCCONF-PHP-TEXT-003`
+- `DCCONF-PHP-TEXT-004`
+- `DCCONF-PHP-TEXT-005`
+- `DCCONF-PHP-TEXT-006`
+- `DCCONF-PHP-TEXT-007`
+- `DCCONF-PHP-TEXT-008`
+- `DCCONF-PHP-TEXT-009`
+- `DCCONF-PHP-TEXT-010`
+- `DCCONF-PHP-TEXT-011`
+- `DCCONF-PHP-TEXT-012`
+- `DCCONF-PHP-TEXT-013`
+- `DCCONF-PHP-TEXT-014`
+- `DCCONF-PROFILE-001`
+- `DCCONF-PROFILE-002`
+- `DCCONF-SCHEMA-CASE-001`
+- `DCCONF-SCHEMA-CASE-002`
+- `DCCONF-SCHEMA-REG-001`
+- `DCCONF-STDLIB-001`
+- `DCCONF-STDLIB-002`
+- `DCCONF-STDLIB-003`
+- `DCCONF-STDLIB-004`
+- `DCCONF-STDLIB-005`
+- `DCCONF-STDLIB-006`
+- `DCCONF-STDLIB-007`
+- `DCCONF-STDLIB-008`
+- `DCCONF-STDLIB-009`
+- `DCCONF-STDLIB-010`
+- `DCCONF-STDLIB-011`
+- `DCCONF-STDLIB-012`
+- `DCCONF-STDLIB-013`
+- `DCCONF-STDLIB-014`

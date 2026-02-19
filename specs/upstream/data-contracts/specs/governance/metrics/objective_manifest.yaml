@@ -1,0 +1,128 @@
+version: 1
+thresholds:
+  green_min: 0.75
+  yellow_min: 0.5
+objectives:
+- id: OBJ-DET-PORT
+  name: Determinism and Portability
+  primary:
+    source: spec_portability
+    field: summary.overall_self_contained_ratio
+    mode: direct
+    scale: 1.0
+  counters:
+  - id: runtime_specific_capability_penalty_share
+    source: derived
+    field: runtime_specific_capability_penalty_share
+    mode: one_minus
+    scale: 1.0
+  - id: expect_impl_overlay_penalty_share
+    source: derived
+    field: expect_impl_overlay_penalty_share
+    mode: one_minus
+    scale: 1.0
+  tripwires:
+  - check_id: conformance.no_ambient_assumptions
+    reason: ambient assumptions break deterministic portability
+  - check_id: runtime.runner_interface_gate_sync
+    reason: parity regressions break cross-implementation contract
+  course_correction:
+    action: freeze baseline and add pending spec with deterministic remediation plan.
+- id: OBJ-SPECLANG-DECISION
+  name: Spec-Lang Decision Plane
+  primary:
+    source: spec_lang_adoption
+    field: summary.overall_logic_self_contained_ratio
+    mode: direct
+    scale: 1.0
+  counters:
+  - id: native_logic_escape_case_ratio
+    source: spec_lang_adoption
+    field: summary.native_logic_escape_case_ratio
+    mode: one_minus
+    scale: 1.0
+  tripwires:
+  - check_id: runtime.assertions_via_spec_lang
+    reason: runtime assertions left spec-lang decision plane
+  - check_id: runtime.orchestration_policy_via_spec_lang
+    reason: orchestration policy escaped spec-lang
+  - check_id: conformance.spec_lang_preferred
+    reason: sugar-first authoring policy regressed
+  course_correction:
+    action: add/upgrade evaluate coverage and remove native decision escapes.
+- id: OBJ-MINIMAL-REUSE
+  name: Minimal Reusable Parts
+  primary:
+    source: runner_independence
+    field: summary.overall_runner_independence_ratio
+    mode: direct
+    scale: 1.0
+  counters:
+  - id: direct_runtime_invocation_count
+    source: runner_independence
+    field: summary.direct_runtime_invocation_count
+    mode: one_minus
+    scale: 20.0
+  - id: non_python_lane_python_exec_count
+    source: python_dependency
+    field: summary.non_python_lane_python_exec_count
+    mode: one_minus
+    scale: 10.0
+  - id: transitive_adapter_python_exec_count
+    source: python_dependency
+    field: summary.transitive_adapter_python_exec_count
+    mode: one_minus
+    scale: 10.0
+  tripwires:
+  - check_id: runtime.config_literals
+    reason: governed literal duplication increases fragmentation
+  - check_id: runtime.runner_interface_gate_sync
+    reason: orchestration bypassed runner interface boundary
+  course_correction:
+    action: consolidate duplicated runtime entrypoints into shared interface/config.
+- id: OBJ-META-SELF
+  name: Meta Self-Application
+  primary:
+    source: contract_assertions
+    field: summary.contract_must_coverage_ratio
+    mode: direct
+    scale: 1.0
+  counters:
+  - id: governance_evaluate_coverage_ratio
+    source: derived
+    field: governance_evaluate_coverage_ratio
+    mode: direct
+    scale: 1.0
+  tripwires:
+  - check_id: contract.coverage_threshold
+    reason: MUST coverage evidence incomplete
+  - check_id: contract.governance_check
+    reason: policy/traceability governance drifted
+  course_correction:
+    action: close traceability/evidence gaps before accepting metric improvements.
+- id: OBJ-DOCS-OPERABILITY
+  name: Docs Operability
+  primary:
+    source: docs_operability
+    field: summary.overall_docs_operability_ratio
+    mode: direct
+    scale: 1.0
+  counters:
+  - id: docs_opt_out_density
+    source: docs_operability
+    field: segments.book.mean_opt_out_density_ratio
+    mode: one_minus
+    scale: 1.0
+  tripwires:
+  - check_id: docs.generated_files_clean
+    reason: generated docs artifacts are stale
+  - check_id: docs.reference_manifest_sync
+    reason: reference manifest/index drift
+  course_correction:
+    action: repair docs build/lint drift and re-generate canonical artifacts.
+correction_policy:
+  delta_drop_threshold: 0.05
+  review_window_baselines: 2
+  baseline_freeze_required: true
+  pending_spec_required: true
+  counter_metric_assertion_required: true

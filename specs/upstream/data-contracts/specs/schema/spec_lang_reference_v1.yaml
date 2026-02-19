@@ -1,0 +1,19 @@
+version: 1
+type: docs.spec_lang_reference
+required_top_level:
+- version
+- summary
+- quality
+- builtins
+- namespaces
+fields:
+  version:
+    type: int
+  summary:
+    type: mapping
+  quality:
+    type: mapping
+  builtins:
+    type: list
+  namespaces:
+    type: mapping

@@ -1,0 +1,79 @@
+version: 1
+runners:
+- runner_id: rust
+  class: required
+  status: active
+  entrypoints:
+    public_adapter: /runners/public/runner_adapter.sh
+    implementation_repo: dc-runner-rust
+  required_core_checks:
+  - runtime.runner_interface_subcommands
+  - runtime.compatibility_matrix_registration_required
+  required_core_cases:
+  - /specs/conformance/cases/core/runner_certification_core.spec.md#DCCONF-RCERT-001
+  - /specs/conformance/cases/core/runner_certification_core.spec.md#DCCONF-RCERT-002
+  command_contract_subset:
+  - name: governance
+    args: []
+    expect_exit: [0, 1]
+  - name: style-check
+    args: []
+    expect_exit: [0]
+  - name: docs-generate-check
+    args: []
+    expect_exit: [0]
+  artifact_contract:
+    json_out: /.artifacts/runner-certification-{runner}.json
+    md_out: /.artifacts/runner-certification-{runner}.md
+
+- runner_id: python
+  class: compatibility_non_blocking
+  status: active
+  entrypoints:
+    public_adapter: /runners/public/runner_adapter.sh
+    implementation_repo: dc-runner-python
+  required_core_checks: []
+  required_core_cases: []
+  command_contract_subset: []
+  artifact_contract:
+    json_out: /.artifacts/runner-certification-{runner}.json
+    md_out: /.artifacts/runner-certification-{runner}.md
+
+- runner_id: php
+  class: compatibility_non_blocking
+  status: active
+  entrypoints:
+    public_adapter: /runners/public/runner_adapter.sh
+    implementation_repo: dc-runner-php
+  required_core_checks: []
+  required_core_cases: []
+  command_contract_subset: []
+  artifact_contract:
+    json_out: /.artifacts/runner-certification-{runner}.json
+    md_out: /.artifacts/runner-certification-{runner}.md
+
+- runner_id: node
+  class: compatibility_non_blocking
+  status: planned
+  entrypoints:
+    public_adapter: /runners/public/runner_adapter.sh
+    implementation_repo: dc-runner-node
+  required_core_checks: []
+  required_core_cases: []
+  command_contract_subset: []
+  artifact_contract:
+    json_out: /.artifacts/runner-certification-{runner}.json
+    md_out: /.artifacts/runner-certification-{runner}.md
+
+- runner_id: c
+  class: compatibility_non_blocking
+  status: planned
+  entrypoints:
+    public_adapter: /runners/public/runner_adapter.sh
+    implementation_repo: dc-runner-c
+  required_core_checks: []
+  required_core_cases: []
+  command_contract_subset: []
+  artifact_contract:
+    json_out: /.artifacts/runner-certification-{runner}.json
+    md_out: /.artifacts/runner-certification-{runner}.md

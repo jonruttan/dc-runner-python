@@ -1,0 +1,5 @@
+.artifacts/
+dist/
+*.pyc
+__pycache__/
+.venv/

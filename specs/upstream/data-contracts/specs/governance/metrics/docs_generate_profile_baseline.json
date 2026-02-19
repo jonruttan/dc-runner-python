@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "metric": "docs_generate_profile_timing",
+  "baseline": {
+    "total_duration_ms": 1068.996
+  },
+  "tolerance": {
+    "max_regression_ratio": 0.4,
+    "max_regression_absolute_ms": 400.0
+  }
+}

@@ -1,0 +1,79 @@
+version: 1
+name: run_trace_v1
+description: Deterministic run profiling artifact for timeout and stall diagnosis.
+
+required_top_level:
+- version
+- run_id
+- runner_impl
+- started_at
+- ended_at
+- status
+- command
+- args
+- env_profile
+- spans
+- events
+- summary
+
+status_values:
+- pass
+- fail
+
+span:
+  required:
+  - span_id
+  - kind
+  - name
+  - phase
+  - start_ns
+  - end_ns
+  - duration_ms
+  - status
+  - attrs
+  optional:
+  - parent_span_id
+  - error
+  status_values:
+  - ok
+  - error
+  - timeout
+  - cancelled
+  - stalled
+
+event:
+  required:
+  - ts_ns
+  - kind
+  - attrs
+  optional:
+  - span_id
+  kind_values:
+  - heartbeat
+  - stall_warning
+  - watchdog
+  - subprocess_state
+  - checkpoint
+  - io.read
+  - io.write
+
+required_span_names:
+- run.total
+- runner.dispatch
+- case.run
+- case.chain
+- case.harness
+- check.execute
+- subprocess.exec
+- subprocess.wait
+
+timeout_reason_tokens:
+- timeout.subprocess.wait
+- timeout.subprocess.io_drain
+- timeout.case.harness
+- timeout.case.chain
+- stall.runner.no_progress
+- stall.subprocess.no_output_no_event
+- timeout.hard_cap.emergency
+- watchdog.kill.term
+- watchdog.kill.killed

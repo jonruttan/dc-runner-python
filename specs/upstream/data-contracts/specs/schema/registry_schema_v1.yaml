@@ -1,0 +1,37 @@
+version: 1
+title: Data Contracts Schema Registry Profile Schema
+profile_shape:
+  required:
+    - id
+    - type
+    - fields
+  types:
+    - core
+    - assertions
+    - harness
+    - path_model
+    - type
+  field_meta:
+    required:
+      - type
+    type_enum:
+      - string
+      - int
+      - bool
+      - list
+      - mapping
+      - any
+    optional:
+      - required
+      - enum
+      - since
+      - deprecated
+      - removed
+      - replacement
+      - description
+type_profile_shape:
+  required:
+    - case_type
+  optional:
+    - required_top_level
+    - allowed_top_level_extra

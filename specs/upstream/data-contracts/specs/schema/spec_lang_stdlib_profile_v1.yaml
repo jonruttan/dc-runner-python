@@ -1,0 +1,1560 @@
+version: 1
+name: spec_lang_stdlib_profile_v1
+categories:
+  core_control:
+  - std.core.subject
+  - var
+  - if
+  - let
+  - fn
+  - call
+  boolean_predicate:
+  - std.logic.and
+  - std.logic.or
+  - std.logic.not
+  - std.logic.xor
+  - std.collection.any
+  - std.collection.all
+  - std.collection.none
+  - std.collection.is_empty
+  equality_comparison:
+  - std.logic.eq
+  - std.logic.neq
+  - std.logic.equals
+  - std.logic.lt
+  - std.logic.lte
+  - std.logic.gt
+  - std.logic.gte
+  - std.logic.compare
+  - std.logic.between
+  numeric:
+  - std.math.add
+  - std.math.sub
+  - std.math.mul
+  - std.math.div
+  - std.math.mod
+  - std.math.pow
+  - std.math.abs
+  - std.math.negate
+  - std.math.inc
+  - std.math.dec
+  - std.math.clamp
+  - std.math.round
+  - std.math.floor
+  - std.math.ceil
+  - std.math.min
+  - std.math.max
+  - std.math.sum
+  type_predicates:
+  - std.type.json_type
+  - std.type.is_null
+  - std.type.is_bool
+  - std.type.is_boolean
+  - std.type.is_number
+  - std.type.is_integer
+  - std.type.is_string
+  - std.type.is_list
+  - std.type.is_array
+  - std.type.is_dict
+  - std.type.is_object
+  text_regex:
+  - std.string.contains
+  - std.string.starts_with
+  - std.string.ends_with
+  - std.string.trim
+  - std.string.lower
+  - std.string.upper
+  - std.string.split
+  - std.string.join
+  - std.string.replace
+  - std.string.pad_left
+  - std.string.pad_right
+  - std.string.regex_match
+  - std.string.matches
+  - std.string.matches_all
+  sequence_collection:
+  - std.collection.len
+  - std.collection.count
+  - std.collection.first
+  - std.collection.rest
+  - std.collection.last
+  - std.collection.nth
+  - std.collection.take
+  - std.collection.drop
+  - std.collection.slice
+  - std.collection.append
+  - std.collection.prepend
+  - std.collection.concat
+  - std.collection.reverse
+  - std.collection.flatten
+  - std.math.range
+  - std.collection.repeat
+  - std.collection.map
+  - std.collection.filter
+  - std.collection.reject
+  - std.collection.find
+  - std.collection.reduce
+  - std.collection.partition
+  - std.collection.group_by
+  - std.collection.uniq_by
+  - std.collection.distinct
+  - std.collection.sort
+  - std.collection.sort_by
+  - std.collection.zip
+  - std.collection.zip_with
+  - std.object.pluck
+  - std.collection.includes
+  - std.collection.in
+  - std.collection.contains_all
+  - std.collection.contains_any
+  object_map:
+  - std.object.has_key
+  - std.object.get
+  - std.object.get_in
+  - std.object.get_or
+  - std.object.has_path
+  - std.object.keys
+  - std.object.values
+  - std.object.entries
+  - std.object.assoc
+  - std.object.dissoc
+  - std.object.merge
+  - std.object.merge_deep
+  - std.object.pick
+  - std.object.omit
+  - std.object.prop_eq
+  - std.object.where
+  - std.object.keys_exact
+  - std.object.keys_include
+  - std.object.keys_exclude
+  set_algebra:
+  - std.set.union
+  - std.set.intersection
+  - std.set.difference
+  - std.set.symmetric_difference
+  - std.set.is_subset
+  - std.set.is_superset
+  - std.set.set_equals
+  json_utilities:
+  - std.json.parse
+  - std.json.stringify
+  null_default:
+  - std.null.coalesce
+  - std.null.default_to
+  functional_combinators:
+  - std.fn.identity
+  - std.fn.always
+  - std.fn.compose
+  - std.fn.pipe
+  schema_shape:
+  - std.schema.match
+  - std.schema.errors
+  fs_path:
+  - ops.fs.path.normalize
+  - ops.fs.path.join
+  - ops.fs.path.split
+  - ops.fs.path.dirname
+  - ops.fs.path.basename
+  - ops.fs.path.extname
+  - ops.fs.path.stem
+  - ops.fs.path.is_abs
+  - ops.fs.path.has_ext
+  - ops.fs.path.change_ext
+  - ops.fs.path.relativize
+  - ops.fs.path.common_prefix
+  - ops.fs.path.parents
+  - ops.fs.path.within
+  - ops.fs.path.compare
+  - ops.fs.path.sort
+  fs_file:
+  - ops.fs.file.exists
+  - ops.fs.file.is_file
+  - ops.fs.file.is_dir
+  - ops.fs.file.size_bytes
+  - ops.fs.file.path
+  - ops.fs.file.name
+  - ops.fs.file.parent
+  - ops.fs.file.ext
+  - ops.fs.file.get
+  - ops.fs.walk
+  - ops.fs.file.set
+  - ops.fs.file.append
+  - ops.fs.file.mkdir_p
+  - ops.fs.file.remove
+  fs_json:
+  - ops.fs.json.parse
+  - ops.fs.json.get
+  - ops.fs.json.get_or
+  - ops.fs.json.has_path
+  - ops.fs.yaml.parse
+  - ops.fs.yaml.stringify
+  - ops.fs.yaml.get
+  - ops.fs.yaml.get_or
+  - ops.fs.yaml.has_path
+  fs_glob:
+  - ops.fs.glob.match
+  - ops.fs.glob.filter
+  - ops.fs.glob.any
+  - ops.fs.glob.all
+  os_process:
+  - ops.os.exec
+  - ops.os.exec_capture
+  - ops.os.exec_capture_ex
+  - ops.os.env_get
+  - ops.os.env_has
+  - ops.os.cwd
+  - ops.os.pid
+  - ops.os.sleep_ms
+  - ops.os.exit_code
+  helper_ops:
+  - ops.helper.call
+  job_ops:
+  - ops.job.dispatch
+symbols:
+  std.core.subject:
+    category: core_control
+    arity: 0
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.helper.call:
+    category: helper_ops
+    arity: 2
+    pure: false
+    deterministic: false
+    error_class: runtime
+    parity_required: false
+  ops.job.dispatch:
+    category: job_ops
+    arity: null
+    pure: false
+    deterministic: false
+    error_class: runtime
+    parity_required: false
+  var:
+    category: core_control
+    arity: null
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  if:
+    category: core_control
+    arity: null
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  let:
+    category: core_control
+    arity: null
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  fn:
+    category: core_control
+    arity: null
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  call:
+    category: core_control
+    arity: null
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.logic.and:
+    category: boolean_predicate
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.logic.or:
+    category: boolean_predicate
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.logic.not:
+    category: boolean_predicate
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.logic.xor:
+    category: boolean_predicate
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.any:
+    category: boolean_predicate
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.all:
+    category: boolean_predicate
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.none:
+    category: boolean_predicate
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.is_empty:
+    category: boolean_predicate
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.logic.eq:
+    category: equality_comparison
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.logic.neq:
+    category: equality_comparison
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.logic.equals:
+    category: equality_comparison
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.logic.lt:
+    category: equality_comparison
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.logic.lte:
+    category: equality_comparison
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.logic.gt:
+    category: equality_comparison
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.logic.gte:
+    category: equality_comparison
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.logic.compare:
+    category: equality_comparison
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.logic.between:
+    category: equality_comparison
+    arity: 3
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.math.add:
+    category: numeric
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.math.sub:
+    category: numeric
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.math.mul:
+    category: numeric
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.math.div:
+    category: numeric
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.math.mod:
+    category: numeric
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.math.pow:
+    category: numeric
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.math.abs:
+    category: numeric
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.math.negate:
+    category: numeric
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.math.inc:
+    category: numeric
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.math.dec:
+    category: numeric
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.math.clamp:
+    category: numeric
+    arity: 3
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.math.round:
+    category: numeric
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.math.floor:
+    category: numeric
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.math.ceil:
+    category: numeric
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.math.min:
+    category: numeric
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.math.max:
+    category: numeric
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.math.sum:
+    category: numeric
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.type.json_type:
+    category: type_predicates
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.type.is_null:
+    category: type_predicates
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.type.is_bool:
+    category: type_predicates
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.type.is_boolean:
+    category: type_predicates
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.type.is_number:
+    category: type_predicates
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.type.is_integer:
+    category: type_predicates
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.type.is_string:
+    category: type_predicates
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.type.is_list:
+    category: type_predicates
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.type.is_array:
+    category: type_predicates
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.type.is_dict:
+    category: type_predicates
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.type.is_object:
+    category: type_predicates
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.string.contains:
+    category: text_regex
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.string.starts_with:
+    category: text_regex
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.string.ends_with:
+    category: text_regex
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.string.trim:
+    category: text_regex
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.string.lower:
+    category: text_regex
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.string.upper:
+    category: text_regex
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.string.split:
+    category: text_regex
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.string.join:
+    category: text_regex
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.string.replace:
+    category: text_regex
+    arity: 3
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.string.pad_left:
+    category: text_regex
+    arity: 3
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.string.pad_right:
+    category: text_regex
+    arity: 3
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.string.regex_match:
+    category: text_regex
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.string.matches:
+    category: text_regex
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.string.matches_all:
+    category: text_regex
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.len:
+    category: sequence_collection
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.count:
+    category: sequence_collection
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.first:
+    category: sequence_collection
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.rest:
+    category: sequence_collection
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.last:
+    category: sequence_collection
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.nth:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.take:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.drop:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.slice:
+    category: sequence_collection
+    arity: 3
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.append:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.prepend:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.concat:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.reverse:
+    category: sequence_collection
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.flatten:
+    category: sequence_collection
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.math.range:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.repeat:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.map:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.filter:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.reject:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.find:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.reduce:
+    category: sequence_collection
+    arity: 3
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.partition:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.group_by:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.uniq_by:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.distinct:
+    category: sequence_collection
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.sort:
+    category: sequence_collection
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.sort_by:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.zip:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.zip_with:
+    category: sequence_collection
+    arity: 3
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.pluck:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.includes:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.in:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.contains_all:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.collection.contains_any:
+    category: sequence_collection
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.has_key:
+    category: object_map
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.get:
+    category: object_map
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.get_in:
+    category: object_map
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.get_or:
+    category: object_map
+    arity: 3
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.has_path:
+    category: object_map
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.keys:
+    category: object_map
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.values:
+    category: object_map
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.entries:
+    category: object_map
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.assoc:
+    category: object_map
+    arity: 3
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.dissoc:
+    category: object_map
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.merge:
+    category: object_map
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.merge_deep:
+    category: object_map
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.pick:
+    category: object_map
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.omit:
+    category: object_map
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.prop_eq:
+    category: object_map
+    arity: 3
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.where:
+    category: object_map
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.keys_exact:
+    category: object_map
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.keys_include:
+    category: object_map
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.object.keys_exclude:
+    category: object_map
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.set.union:
+    category: set_algebra
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.set.intersection:
+    category: set_algebra
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.set.difference:
+    category: set_algebra
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.set.symmetric_difference:
+    category: set_algebra
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.set.is_subset:
+    category: set_algebra
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.set.is_superset:
+    category: set_algebra
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.set.set_equals:
+    category: set_algebra
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.json.parse:
+    category: json_utilities
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.json.stringify:
+    category: json_utilities
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.null.coalesce:
+    category: null_default
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.null.default_to:
+    category: null_default
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.fn.identity:
+    category: functional_combinators
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.fn.always:
+    category: functional_combinators
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.fn.compose:
+    category: functional_combinators
+    arity: 3
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.fn.pipe:
+    category: functional_combinators
+    arity: 3
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.schema.match:
+    category: schema_shape
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  std.schema.errors:
+    category: schema_shape
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.path.normalize:
+    category: fs_path
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.path.join:
+    category: fs_path
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.path.split:
+    category: fs_path
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.path.dirname:
+    category: fs_path
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.path.basename:
+    category: fs_path
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.path.extname:
+    category: fs_path
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.path.stem:
+    category: fs_path
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.path.is_abs:
+    category: fs_path
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.path.has_ext:
+    category: fs_path
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.path.change_ext:
+    category: fs_path
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.path.relativize:
+    category: fs_path
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.path.common_prefix:
+    category: fs_path
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.path.parents:
+    category: fs_path
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.path.within:
+    category: fs_path
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.path.compare:
+    category: fs_path
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.path.sort:
+    category: fs_path
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.file.exists:
+    category: fs_file
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.file.is_file:
+    category: fs_file
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.file.is_dir:
+    category: fs_file
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.file.size_bytes:
+    category: fs_file
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.file.path:
+    category: fs_file
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.file.name:
+    category: fs_file
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.file.parent:
+    category: fs_file
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.file.ext:
+    category: fs_file
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.file.get:
+    category: fs_file
+    arity: 3
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.walk:
+    category: fs_file
+    arity: 2
+    pure: false
+    deterministic: false
+    error_class: runtime
+    parity_required: true
+  ops.fs.file.set:
+    category: fs_file
+    arity: 2
+    pure: false
+    deterministic: false
+    error_class: runtime
+    parity_required: true
+  ops.fs.file.append:
+    category: fs_file
+    arity: 2
+    pure: false
+    deterministic: false
+    error_class: runtime
+    parity_required: true
+  ops.fs.file.mkdir_p:
+    category: fs_file
+    arity: 1
+    pure: false
+    deterministic: false
+    error_class: runtime
+    parity_required: true
+  ops.fs.file.remove:
+    category: fs_file
+    arity: 1
+    pure: false
+    deterministic: false
+    error_class: runtime
+    parity_required: true
+  ops.fs.json.parse:
+    category: fs_json
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.json.get:
+    category: fs_json
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.json.get_or:
+    category: fs_json
+    arity: 3
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.json.has_path:
+    category: fs_json
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.yaml.parse:
+    category: fs_json
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.yaml.stringify:
+    category: fs_json
+    arity: 1
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.yaml.get:
+    category: fs_json
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.yaml.get_or:
+    category: fs_json
+    arity: 3
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.yaml.has_path:
+    category: fs_json
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.glob.match:
+    category: fs_glob
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.glob.filter:
+    category: fs_glob
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.glob.any:
+    category: fs_glob
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.fs.glob.all:
+    category: fs_glob
+    arity: 2
+    pure: true
+    deterministic: true
+    error_class: schema
+    parity_required: true
+  ops.os.exec:
+    category: os_process
+    arity: 2
+    pure: false
+    deterministic: false
+    error_class: runtime
+    parity_required: true
+  ops.os.exec_capture:
+    category: os_process
+    arity: 2
+    pure: false
+    deterministic: false
+    error_class: runtime
+    parity_required: true
+  ops.os.exec_capture_ex:
+    category: os_process
+    arity: 2
+    pure: false
+    deterministic: false
+    error_class: runtime
+    parity_required: true
+  ops.os.env_get:
+    category: os_process
+    arity: 2
+    pure: false
+    deterministic: false
+    error_class: runtime
+    parity_required: true
+  ops.os.env_has:
+    category: os_process
+    arity: 1
+    pure: false
+    deterministic: false
+    error_class: runtime
+    parity_required: true
+  ops.os.cwd:
+    category: os_process
+    arity: 0
+    pure: false
+    deterministic: false
+    error_class: runtime
+    parity_required: true
+  ops.os.pid:
+    category: os_process
+    arity: 0
+    pure: false
+    deterministic: false
+    error_class: runtime
+    parity_required: true
+  ops.os.sleep_ms:
+    category: os_process
+    arity: 1
+    pure: false
+    deterministic: false
+    error_class: runtime
+    parity_required: true
+  ops.os.exit_code:
+    category: os_process
+    arity: 0
+    pure: false
+    deterministic: false
+    error_class: runtime
+    parity_required: true
+schema_shape_keys:
+- type
+- required
+- properties
+- allow_extra
+- items
+- min_items
+- max_items
+- min_length
+- max_length
+- pattern
+- const
+- enum
+- all_of
+- any_of
+- not
+behavior_defaults:
+  pure: true
+  deterministic: true
+  parity_required: true
+  error_classes:
+  - schema
+  - assertion
+  - runtime

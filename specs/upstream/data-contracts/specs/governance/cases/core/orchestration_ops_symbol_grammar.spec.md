@@ -1,0 +1,41 @@
+# Governance Cases
+
+## DCGOV-OPS-001
+
+```yaml contract-spec
+id: DCGOV-OPS-001
+title: orchestration ops symbols follow deep-dot grammar
+purpose: Ensures effect symbols use canonical deep-dot ops names.
+type: contract.check
+harness:
+  root: .
+  check:
+    profile: governance.scan
+    config:
+      check: orchestration.ops_symbol_grammar
+  use:
+  - ref: /specs/libraries/policy/policy_core.spec.md
+    as: lib_policy_core_spec
+    symbols:
+    - policy.pass_when_no_violations
+contract:
+  defaults:
+    class: MUST
+  imports:
+  - from: artifact
+    names:
+    - summary_json
+  steps:
+  - id: assert_1
+    assert:
+    - std.logic.eq:
+      - std.object.get:
+        - {var: summary_json}
+        - check_id
+      - orchestration.ops_symbol_grammar
+    - std.logic.eq:
+      - std.object.get:
+        - {var: summary_json}
+        - passed
+      - true
+```

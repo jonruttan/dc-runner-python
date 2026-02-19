@@ -1,0 +1,60 @@
+version: 1
+id: review_snapshot_schema_v1
+summary: Canonical machine-consumable markdown review snapshot contract.
+required_metadata:
+- Date
+- Model
+- Prompt
+- Prompt revision
+- Repo revision
+- Contract baseline refs
+- Runner lane
+required_sections:
+- Scope Notes
+- Command Execution Log
+- Findings
+- Synthesis
+- Spec Candidates (YAML)
+- Classification Labels
+- Reject / Defer List
+- Raw Output
+table_headers:
+  command_execution_log:
+  - command
+  - status
+  - exit_code
+  - stdout_stderr_summary
+  findings:
+  - Severity
+  - Verified/Hypothesis
+  - File:Line
+  - What
+  - Why
+  - When
+  - Proposed fix
+spec_candidates:
+  yaml_root: list
+  required_keys:
+  - id
+  - title
+  - type
+  - class
+  - target_area
+  - acceptance_criteria
+  - affected_paths
+  - risk
+  key_types:
+    id: string
+    title: string
+    type: string
+    class: string
+    target_area: string
+    acceptance_criteria: list[string]
+    affected_paths: list[string]
+    risk: string
+classification_labels:
+  allowed_values:
+  - behavior
+  - docs
+  - tooling
+  mapping_required_for_each_candidate_id: true

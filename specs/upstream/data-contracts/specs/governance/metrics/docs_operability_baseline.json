@@ -1,0 +1,348 @@
+{
+  "config": {
+    "reference_manifest": "docs/book/reference_manifest.yaml",
+    "segment_rules": [
+      {
+        "prefix": "docs/book",
+        "segment": "book"
+      },
+      {
+        "prefix": "specs/contract",
+        "segment": "contract"
+      },
+      {
+        "prefix": "specs/schema",
+        "segment": "schema"
+      },
+      {
+        "prefix": "specs/impl",
+        "segment": "impl_docs"
+      }
+    ]
+  },
+  "docs": [
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 1.0,
+      "opt_out_density_ratio": 0.0,
+      "path": "/docs/book/10_getting_started.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 1.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 1.0,
+      "opt_out_density_ratio": 0.0,
+      "path": "/docs/book/10_getting_started.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 1.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 1.0,
+      "opt_out_density_ratio": 0.0,
+      "path": "/docs/book/20_case_model.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 1.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 1.0,
+      "opt_out_density_ratio": 0.0,
+      "path": "/docs/book/30_assertion_model.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 1.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 1.0,
+      "opt_out_density_ratio": 0.0,
+      "path": "/docs/book/40_spec_lang_authoring.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 1.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 1.0,
+      "opt_out_density_ratio": 0.0,
+      "path": "/docs/book/60_runner_and_gates.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 1.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 1.0,
+      "opt_out_density_ratio": 0.0,
+      "path": "/docs/book/80_troubleshooting.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 1.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 1.0,
+      "opt_out_density_ratio": 0.0,
+      "path": "/docs/book/90_reference_guide.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 1.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 1.0,
+      "opt_out_density_ratio": 0.0,
+      "path": "/docs/book/10_getting_started.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 1.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 0.75,
+      "opt_out_density_ratio": 1.0,
+      "path": "/docs/book/91_appendix_runner_api_reference.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 0.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 0.75,
+      "opt_out_density_ratio": 1.0,
+      "path": "/docs/book/92_appendix_harness_type_reference.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 0.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 0.75,
+      "opt_out_density_ratio": 1.0,
+      "path": "/docs/book/93_appendix_spec_lang_builtin_catalog.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 0.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 0.75,
+      "opt_out_density_ratio": 1.0,
+      "path": "/docs/book/93a_std_core.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 0.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 0.75,
+      "opt_out_density_ratio": 1.0,
+      "path": "/docs/book/93b_std_logic.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 0.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 0.75,
+      "opt_out_density_ratio": 1.0,
+      "path": "/docs/book/93c_std_math.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 0.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 0.75,
+      "opt_out_density_ratio": 1.0,
+      "path": "/docs/book/93d_std_string.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 0.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 0.75,
+      "opt_out_density_ratio": 1.0,
+      "path": "/docs/book/93e_std_collection.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 0.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 0.75,
+      "opt_out_density_ratio": 1.0,
+      "path": "/docs/book/93f_std_object.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 0.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 0.75,
+      "opt_out_density_ratio": 1.0,
+      "path": "/docs/book/93g_std_type.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 0.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 0.75,
+      "opt_out_density_ratio": 1.0,
+      "path": "/docs/book/93h_std_set.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 0.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 0.75,
+      "opt_out_density_ratio": 1.0,
+      "path": "/docs/book/93i_std_json_schema_fn_null.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 0.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 0.75,
+      "opt_out_density_ratio": 1.0,
+      "path": "/docs/book/94_appendix_contract_policy_reference.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 0.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 0.75,
+      "opt_out_density_ratio": 1.0,
+      "path": "/docs/book/95_appendix_traceability_reference.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 0.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 0.75,
+      "opt_out_density_ratio": 1.0,
+      "path": "/docs/book/96_appendix_governance_checks_reference.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 0.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 0.75,
+      "opt_out_density_ratio": 1.0,
+      "path": "/docs/book/97_appendix_metrics_reference.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 0.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 0.75,
+      "opt_out_density_ratio": 1.0,
+      "path": "/docs/book/98_appendix_spec_case_shape_reference.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 0.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    },
+    {
+      "command_doc_validation_ratio": 1.0,
+      "docs_operability_ratio": 0.75,
+      "opt_out_density_ratio": 1.0,
+      "path": "/docs/book/99_generated_reference_index.md",
+      "required_sections_compliance_ratio": 1.0,
+      "runnable_example_coverage_ratio": 0.0,
+      "segment": "book",
+      "token_sync_compliance_ratio": 1.0
+    }
+  ],
+  "errors": [],
+  "segments": {
+    "book": {
+      "case_count": 27,
+      "mean_command_doc_validation_ratio": 1.0,
+      "mean_docs_operability_ratio": 0.8333333333333334,
+      "mean_opt_out_density_ratio": 0.6666666666666666,
+      "mean_required_sections_compliance_ratio": 1.0,
+      "mean_runnable_example_coverage_ratio": 0.3333333333333333,
+      "mean_token_sync_compliance_ratio": 1.0
+    },
+    "contract": {
+      "case_count": 0,
+      "mean_command_doc_validation_ratio": 0.0,
+      "mean_docs_operability_ratio": 0.0,
+      "mean_opt_out_density_ratio": 0.0,
+      "mean_required_sections_compliance_ratio": 0.0,
+      "mean_runnable_example_coverage_ratio": 0.0,
+      "mean_token_sync_compliance_ratio": 0.0
+    },
+    "impl_docs": {
+      "case_count": 0,
+      "mean_command_doc_validation_ratio": 0.0,
+      "mean_docs_operability_ratio": 0.0,
+      "mean_opt_out_density_ratio": 0.0,
+      "mean_required_sections_compliance_ratio": 0.0,
+      "mean_runnable_example_coverage_ratio": 0.0,
+      "mean_token_sync_compliance_ratio": 0.0
+    },
+    "other": {
+      "case_count": 0,
+      "mean_command_doc_validation_ratio": 0.0,
+      "mean_docs_operability_ratio": 0.0,
+      "mean_opt_out_density_ratio": 0.0,
+      "mean_required_sections_compliance_ratio": 0.0,
+      "mean_runnable_example_coverage_ratio": 0.0,
+      "mean_token_sync_compliance_ratio": 0.0
+    },
+    "schema": {
+      "case_count": 0,
+      "mean_command_doc_validation_ratio": 0.0,
+      "mean_docs_operability_ratio": 0.0,
+      "mean_opt_out_density_ratio": 0.0,
+      "mean_required_sections_compliance_ratio": 0.0,
+      "mean_runnable_example_coverage_ratio": 0.0,
+      "mean_token_sync_compliance_ratio": 0.0
+    }
+  },
+  "summary": {
+    "overall_docs_operability_ratio": 0.8333333333333334,
+    "total_docs": 27
+  },
+  "version": 1
+}

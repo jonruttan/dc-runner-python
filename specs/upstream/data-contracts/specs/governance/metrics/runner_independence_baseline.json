@@ -1,0 +1,133 @@
+{
+  "config": {
+    "direct_runtime_tokens": [
+      "scripts/run_governance_specs.py",
+      "scripts/evaluate_style.py --check specs",
+      "scripts/spec_portability_report.py",
+      "python -m pytest",
+      "php dc-runner-php"
+    ],
+    "gate_required_tokens": [
+      "SPEC_RUNNER_BIN",
+      "runners/public/runner_adapter.sh"
+    ],
+    "rust_ci_required_tokens": [
+      "core-gate-rust-adapter:",
+      "SPEC_RUNNER_BIN: ./dc-runner-rust",
+      "run: ./scripts/core_gate.sh"
+    ],
+    "segment_files": {
+      "adapter_interfaces": [
+        "runners/public/runner_adapter.sh",
+        "dc-runner-rust",
+        "dc-runner-rust"
+      ],
+      "ci_workflows": [
+        ".github/workflows/*.yml",
+        ".github/workflows/*.yaml"
+      ],
+      "gate_scripts": [
+        "scripts/*.sh"
+      ]
+    }
+  },
+  "errors": [],
+  "files": [
+    {
+      "direct_runtime_invocation_count": 4.0,
+      "file": "runners/public/runner_adapter.sh",
+      "runner_independence_ratio": 0.6666666666666666,
+      "runner_interface_usage_ratio": 1.0,
+      "rust_primary_path_coverage_ratio": 1.0,
+      "segment": "adapter_interfaces"
+    },
+    {
+      "direct_runtime_invocation_count": 0.0,
+      "file": "dc-runner-rust",
+      "runner_independence_ratio": 1.0,
+      "runner_interface_usage_ratio": 1.0,
+      "rust_primary_path_coverage_ratio": 1.0,
+      "segment": "adapter_interfaces"
+    },
+    {
+      "direct_runtime_invocation_count": 1.0,
+      "file": "dc-runner-rust",
+      "runner_independence_ratio": 0.6666666666666666,
+      "runner_interface_usage_ratio": 1.0,
+      "rust_primary_path_coverage_ratio": 1.0,
+      "segment": "adapter_interfaces"
+    },
+    {
+      "direct_runtime_invocation_count": 0.0,
+      "file": ".github/workflows/ci.yml",
+      "runner_independence_ratio": 1.0,
+      "runner_interface_usage_ratio": 1.0,
+      "rust_primary_path_coverage_ratio": 1.0,
+      "segment": "ci_workflows"
+    },
+    {
+      "direct_runtime_invocation_count": 0.0,
+      "file": "scripts/ci_gate.sh",
+      "runner_independence_ratio": 1.0,
+      "runner_interface_usage_ratio": 1.0,
+      "rust_primary_path_coverage_ratio": 1.0,
+      "segment": "gate_scripts"
+    },
+    {
+      "direct_runtime_invocation_count": 0.0,
+      "file": "scripts/core_gate.sh",
+      "runner_independence_ratio": 1.0,
+      "runner_interface_usage_ratio": 1.0,
+      "rust_primary_path_coverage_ratio": 1.0,
+      "segment": "gate_scripts"
+    },
+    {
+      "direct_runtime_invocation_count": 0.0,
+      "file": "scripts/docs_doctor.sh",
+      "runner_independence_ratio": 1.0,
+      "runner_interface_usage_ratio": 1.0,
+      "rust_primary_path_coverage_ratio": 1.0,
+      "segment": "gate_scripts"
+    },
+    {
+      "direct_runtime_invocation_count": 4.0,
+      "file": "runners/public/runner_adapter.sh",
+      "runner_independence_ratio": 0.3333333333333333,
+      "runner_interface_usage_ratio": 0.0,
+      "rust_primary_path_coverage_ratio": 1.0,
+      "segment": "gate_scripts"
+    }
+  ],
+  "segments": {
+    "adapter_interfaces": {
+      "case_count": 3,
+      "direct_runtime_invocation_count": 5,
+      "mean_direct_runtime_invocation_count": 1.6666666666666667,
+      "mean_runner_independence_ratio": 0.7777777777777777,
+      "mean_runner_interface_usage_ratio": 1.0,
+      "mean_rust_primary_path_coverage_ratio": 1.0
+    },
+    "ci_workflows": {
+      "case_count": 1,
+      "direct_runtime_invocation_count": 0,
+      "mean_direct_runtime_invocation_count": 0.0,
+      "mean_runner_independence_ratio": 1.0,
+      "mean_runner_interface_usage_ratio": 1.0,
+      "mean_rust_primary_path_coverage_ratio": 1.0
+    },
+    "gate_scripts": {
+      "case_count": 4,
+      "direct_runtime_invocation_count": 4,
+      "mean_direct_runtime_invocation_count": 1.0,
+      "mean_runner_independence_ratio": 0.8333333333333334,
+      "mean_runner_interface_usage_ratio": 0.75,
+      "mean_rust_primary_path_coverage_ratio": 1.0
+    }
+  },
+  "summary": {
+    "direct_runtime_invocation_count": 9,
+    "overall_runner_independence_ratio": 0.8333333333333334,
+    "total_files": 8
+  },
+  "version": 1
+}

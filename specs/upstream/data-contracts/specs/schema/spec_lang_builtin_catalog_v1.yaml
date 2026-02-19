@@ -1,0 +1,22 @@
+version: 1
+type: docs.spec_lang_builtin_catalog
+required_top_level:
+- version
+- summary
+- quality
+- chapters
+- namespaces
+- builtins
+fields:
+  version:
+    type: int
+  summary:
+    type: mapping
+  quality:
+    type: mapping
+  chapters:
+    type: list
+  namespaces:
+    type: mapping
+  builtins:
+    type: list

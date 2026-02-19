@@ -1,0 +1,25 @@
+version: 1
+upstream:
+  repo: https://github.com/jonruttan/data-contracts.git
+  tag: bd1f63c46d505b62eb0c96e3b5af861c1984c9a8
+  commit: bd1f63c46d505b62eb0c96e3b5af861c1984c9a8
+  synced_at_utc: "2026-02-19T22:13:01Z"
+snapshot:
+  root: specs/upstream/data-contracts
+  include:
+    - specs/index.md
+    - specs/current.md
+    - specs/contract/**
+    - specs/schema/**
+    - specs/conformance/**
+    - specs/governance/index.md
+    - specs/governance/check_*.yaml
+    - specs/governance/cases/core/**
+    - specs/governance/metrics/**
+  exclude:
+    - "**/pending/**"
+    - "**/reviews/**"
+    - "**/snapshots/**"
+integrity:
+  file_count: 391
+  sha256_manifest: 6ab44d11839f05e7c2c68e05999849298e013e7f5cd65ab5de17a50a8cd332c1

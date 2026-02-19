@@ -1,0 +1,53 @@
+version: 1
+name: orchestration_result_v1
+
+tool_input:
+  type: object
+  required:
+  - tool_id
+  properties:
+    tool_id:
+      type: string
+    args:
+      type: array
+      items:
+        type: string
+
+# Canonical envelope asserted by orchestration.run harness.
+tool_output:
+  type: object
+  required:
+  - status
+  - tool_id
+  - impl
+  - started_at_utc
+  - ended_at_utc
+  - duration_ms
+  - data
+  - diagnostics
+  - artifacts
+  properties:
+    status:
+      type: string
+      enum: [pass, fail, error]
+    tool_id:
+      type: string
+    impl:
+      type: string
+      enum: [python, rust]
+    started_at_utc:
+      type: string
+    ended_at_utc:
+      type: string
+    duration_ms:
+      type: number
+    data:
+      type: object
+    diagnostics:
+      type: array
+      items:
+        type: object
+    artifacts:
+      type: array
+      items:
+        type: string

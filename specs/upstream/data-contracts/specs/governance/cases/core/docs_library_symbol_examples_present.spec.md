@@ -1,0 +1,41 @@
+# Governance Cases
+
+## DCGOV-DOCS-LIBSYM-003
+
+```yaml contract-spec
+id: DCGOV-DOCS-LIBSYM-003
+title: library symbol docs include examples
+purpose: Ensures each exported symbol has at least one structured documentation example.
+type: contract.check
+harness:
+  root: .
+  check:
+    profile: governance.scan
+    config:
+      check: docs.library_symbol_examples_present
+  use:
+  - ref: /specs/libraries/policy/policy_core.spec.md
+    as: lib_policy_core_spec
+    symbols:
+    - policy.pass_when_no_violations
+contract:
+  defaults:
+    class: MUST
+  imports:
+  - from: artifact
+    names:
+    - summary_json
+  steps:
+  - id: assert_1
+    assert:
+    - std.logic.eq:
+      - std.object.get:
+        - {var: summary_json}
+        - check_id
+      - docs.library_symbol_examples_present
+    - std.logic.eq:
+      - std.object.get:
+        - {var: summary_json}
+        - passed
+      - true
+```

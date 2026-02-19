@@ -1,0 +1,127 @@
+version: 1
+profiles:
+  critical:
+    checks:
+      - id: runtime.critical_check_set_manifest_required
+        kind: manifest_non_empty
+        path: /specs/governance/check_sets_v1.yaml
+        profile: critical
+        key: checks
+      - id: runtime.critical_runner_lock_declared
+        kind: file_tokens
+        path: /specs/schema/dc_runner_rust_lock_v1.yaml
+        must_contain:
+          - "repo: dc-runner-rust"
+          - "release_version:"
+      - id: runtime.critical_public_adapter_uses_runner_bin
+        kind: file_tokens
+        path: /runners/public/runner_adapter.sh
+        must_contain:
+          - scripts/runner_bin.sh
+          - 'impl="${SPEC_RUNNER_IMPL:-rust}"'
+        must_not_contain:
+          - runners/rust/runner_adapter.sh
+          - runners/python/runner_adapter.sh
+      - id: runtime.critical_ci_gate_invokes_required_sequence
+        kind: file_ordered_tokens
+        path: /scripts/ci_gate.sh
+        ordered_tokens:
+          - critical-gate
+          - runner-certify --runner rust
+          - ci-gate-summary
+      - id: runtime.critical_gate_slo_sub_10s_required
+        kind: slo_budget
+        max_ms: 10000
+  full:
+    checks:
+      - id: runtime.full_check_set_manifest_required
+        kind: manifest_non_empty
+        path: /specs/governance/check_sets_v1.yaml
+        profile: full
+        key: checks
+      - id: runtime.full_rust_lane_blocking_ci
+        kind: file_tokens
+        path: /.github/workflows/ci.yml
+        must_contain:
+          - ci-gate:
+          - Run CI gate (required rust lane)
+      - id: runtime.full_compatibility_lanes_non_blocking_status
+        kind: file_tokens
+        path: /.github/workflows/ci.yml
+        must_contain:
+          - compatibility-python-lane:
+          - compatibility-php-lane:
+          - compatibility-node-lane:
+          - compatibility-c-lane:
+          - continue-on-error: true
+          - dc-runner-python
+          - dc-runner-php
+      - id: runtime.full_public_adapter_rust_only
+        kind: file_tokens
+        path: /runners/public/runner_adapter.sh
+        must_contain:
+          - expected rust only
+        must_not_contain:
+          - impl is no longer supported on the runtime path
+          - runners/rust/runner_adapter.sh
+      - id: runtime.full_no_local_runner_source_coupling
+        kind: file_tokens
+        path: /scripts/local_ci_parity.sh
+        must_contain:
+          - dc-runner-python
+          - dc-runner-php
+        must_not_contain:
+          - PYTHONPATH=
+          - spec_runner.spec_lang_commands
+          - runners/php/
+          - runners/python/
+          - runners/rust/
+      - id: runtime.full_runner_interface_contract_dc_split
+        kind: file_tokens
+        path: /specs/contract/12_runner_interface.md
+        must_contain:
+          - dc-runner-rust
+          - dc-runner-python
+          - dc-runner-php
+          - dc_runner_rust_lock_v1.yaml
+      - id: runtime.full_compatibility_matrix_contract_registered
+        kind: file_tokens
+        path: /specs/contract/25_compatibility_matrix.md
+        must_contain:
+          - dc-runner-rust
+          - dc-runner-python
+          - dc-runner-php
+      - id: runtime.full_runner_certification_registry_registered
+        kind: file_tokens
+        path: /specs/schema/runner_certification_registry_v1.yaml
+        must_contain:
+          - runner_id: rust
+          - runner_id: python
+          - runner_id: php
+          - implementation_repo: dc-runner-rust
+          - implementation_repo: dc-runner-python
+          - implementation_repo: dc-runner-php
+      - id: runtime.no_external_runner_file_path_refs_contract_policy
+        kind: file_tokens
+        path: /specs/contract/policy_v1.yaml
+        must_not_contain:
+          - dc-runner-rust/
+          - dc-runner-python/
+          - dc-runner-php/
+      - id: runtime.no_external_runner_file_path_refs_contract_traceability
+        kind: file_tokens
+        path: /specs/contract/traceability_v1.yaml
+        must_not_contain:
+          - dc-runner-rust/
+          - dc-runner-python/
+          - dc-runner-php/
+      - id: runtime.no_external_runner_file_path_refs_governance_cases
+        kind: file_tokens
+        path: /specs/governance/cases/core/index.md
+        must_not_contain:
+          - dc-runner-rust/
+          - dc-runner-python/
+          - dc-runner-php/
+      - id: runtime.full_governance_broad_native_slo
+        kind: slo_budget
+        max_ms: 120000

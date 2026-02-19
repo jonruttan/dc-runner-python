@@ -1,5 +1,7 @@
-.PHONY: help setup test lint typecheck smoke
+.PHONY: help setup test lint typecheck smoke spec-sync spec-sync-check compat-check verify
 .DEFAULT_GOAL := help
+SOURCE ?=
+PYTHON ?= python3
 
 help:
 	@echo "setup      - install dev dependencies"
@@ -7,18 +9,46 @@ help:
 	@echo "lint       - run ruff"
 	@echo "typecheck  - run mypy"
 	@echo "smoke      - run command surface smoke"
+	@echo "spec-sync TAG=<upstream-tag> [SOURCE=<path-or-url>] - sync pinned upstream specs snapshot"
+	@echo "spec-sync-check [SOURCE=<path-or-url>] - verify upstream lock/snapshot integrity"
+	@echo "compat-check [SOURCE=<path-or-url>] - verify runner compatibility against pinned upstream snapshot"
+	@echo "verify     - test + lint + typecheck + smoke + spec-sync-check + compat-check"
 
 setup:
-	python -m pip install -e '.[dev]'
+	$(PYTHON) -m pip install -e '.[dev]'
 
 test:
-	python -m pytest
+	$(PYTHON) -m pytest || [ $$? -eq 5 ]
 
 lint:
-	python -m ruff check spec_runner
+	$(PYTHON) -m ruff check spec_runner
 
 typecheck:
-	python -m mypy spec_runner
+	$(PYTHON) -m mypy spec_runner
 
 smoke:
-	python -m spec_runner.spec_lang_commands --help
+	./runner_adapter.sh spec-runner --help
+
+spec-sync:
+	@test -n "$(TAG)" || (echo "ERROR: TAG is required (make spec-sync TAG=<upstream-tag>)" >&2; exit 2)
+	@if [ -n "$(SOURCE)" ]; then \
+		./scripts/sync_data_contracts_specs.sh --tag "$(TAG)" --source "$(SOURCE)"; \
+	else \
+		./scripts/sync_data_contracts_specs.sh --tag "$(TAG)"; \
+	fi
+
+spec-sync-check:
+	@if [ -n "$(SOURCE)" ]; then \
+		./scripts/sync_data_contracts_specs.sh --check --source "$(SOURCE)"; \
+	else \
+		./scripts/sync_data_contracts_specs.sh --check; \
+	fi
+
+compat-check:
+	@if [ -n "$(SOURCE)" ]; then \
+		./scripts/verify_upstream_compat.sh --strict --source "$(SOURCE)"; \
+	else \
+		./scripts/verify_upstream_compat.sh --strict; \
+	fi
+
+verify: test lint typecheck smoke spec-sync-check compat-check
