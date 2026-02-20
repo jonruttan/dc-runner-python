@@ -2,9 +2,9 @@ version: 1
 root_contract_set: python_runner_contract_set
 runner: python
 source:
-  repo: /Users/jon/Workspace/Development/dc-runner-spec
-  ref: WORKTREE
-  commit: edbc1671427b3a72b392ee543e5b9738f3a539a1
+  repo: git@github.com:jonruttan/dc-runner-spec.git
+  ref: main
+  commit: 1f2393c2085c26cb69542134eadfb43b910306cd
 resolved_order:
 - python_impl_contract_set
 - shared_makefile_help_contract_set
