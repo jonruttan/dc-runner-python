@@ -8,6 +8,7 @@ make lint
 make typecheck
 make smoke
 make verify
+make transition-gate
 ```
 
 ## Global Specs (`data-contracts`)
@@ -24,3 +25,12 @@ make compat-check
 make runner-spec-sync TAG=<tag-or-ref> SOURCE=<path-or-url>
 make runner-spec-check
 ```
+
+## Transition Refactor Gate
+
+```sh
+make transition-gate
+```
+
+Runs phase-transition checks and uses Rust adapter fallback when Python lane
+compat checks are flaky during deep refactor work.

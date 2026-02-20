@@ -6,6 +6,7 @@ import sys
 from functools import lru_cache
 from pathlib import Path
 
+from spec_runner.cli import CommandSpec, build_command_registry, command_names, dispatch_command, parse_command_args
 from spec_runner.codecs import load_external_cases
 from spec_runner.contract_governance import contract_coverage_jsonable
 from spec_runner.docs_quality import (
@@ -336,100 +337,38 @@ def docs_lint_main(argv: list[str] | None = None) -> int:
 
 def main(argv: list[str] | None = None) -> int:
     normalized_argv = list(sys.argv[1:] if argv is None else argv)
-    if normalized_argv and normalized_argv[0] == "evaluate-style":
-        normalized_argv[0] = "spec-lang-format"
-    ap = argparse.ArgumentParser(description="Spec-lang backed command entrypoints.")
-    ap.add_argument(
-        "command",
-        choices=(
-            "validate-report",
-            "spec-lang-stdlib-report",
-            "contract-coverage-report",
-            "schema-registry-report",
-            "spec-lang-format",
-            "spec-lang-lint",
-            "docs-lint",
-            "check-docs-freshness",
-            "ci-gate-summary",
-            "compare-conformance-parity",
-            "conformance-purpose-report",
-            "docs-generate-all",
-            "docs-generate-specs",
-            "impl-evaluate-migration-report",
-            "normalize-docs-layout",
-            "normalize-repo",
-            "objective-scorecard-report",
-            "python-conformance-runner",
-            "quality-metric-reports",
-            "run-governance-specs",
-            "perf-smoke",
-            "generate-library-symbol-catalog",
-            "generate-spec-case-catalog",
-            "generate-spec-case-templates",
-            "review-validate",
-            "spec-portability-report",
-            "split-library-cases-per-symbol",
-        ),
-        help="Command to run.",
+    specs = (
+        CommandSpec("validate-report", validate_report_main),
+        CommandSpec("spec-lang-stdlib-report", spec_lang_stdlib_report_main),
+        CommandSpec("contract-coverage-report", contract_coverage_report_main),
+        CommandSpec("schema-registry-report", schema_registry_report_main),
+        CommandSpec("spec-lang-format", spec_lang_format_main),
+        CommandSpec("spec-lang-lint", spec_lang_lint_main),
+        CommandSpec("docs-lint", docs_lint_main),
+        CommandSpec("check-docs-freshness", check_docs_freshness_main),
+        CommandSpec("ci-gate-summary", ci_gate_summary_main),
+        CommandSpec("compare-conformance-parity", compare_conformance_parity_main),
+        CommandSpec("conformance-purpose-report", conformance_purpose_report_main),
+        CommandSpec("docs-generate-all", docs_generate_all_main),
+        CommandSpec("docs-generate-specs", docs_generate_specs_main),
+        CommandSpec("impl-evaluate-migration-report", impl_evaluate_migration_report_main),
+        CommandSpec("normalize-docs-layout", normalize_docs_layout_main),
+        CommandSpec("normalize-repo", normalize_repo_main),
+        CommandSpec("objective-scorecard-report", objective_scorecard_report_main),
+        CommandSpec("python-conformance-runner", python_conformance_runner_main),
+        CommandSpec("quality-metric-reports", quality_metric_reports_main),
+        CommandSpec("run-governance-specs", run_governance_specs_main),
+        CommandSpec("perf-smoke", perf_smoke_main),
+        CommandSpec("generate-library-symbol-catalog", generate_library_symbol_catalog_main),
+        CommandSpec("generate-spec-case-catalog", generate_spec_case_catalog_main),
+        CommandSpec("generate-spec-case-templates", generate_spec_case_templates_main),
+        CommandSpec("review-validate", review_validate_main),
+        CommandSpec("spec-portability-report", spec_portability_report_main),
+        CommandSpec("split-library-cases-per-symbol", split_library_cases_per_symbol_main),
     )
-    ap.add_argument("args", nargs=argparse.REMAINDER)
-    ns = ap.parse_args(normalized_argv)
-    forwarded = list(ns.args or [])
-    if ns.command == "validate-report":
-        return validate_report_main(forwarded)
-    if ns.command == "spec-lang-stdlib-report":
-        return spec_lang_stdlib_report_main(forwarded)
-    if ns.command == "contract-coverage-report":
-        return contract_coverage_report_main(forwarded)
-    if ns.command == "schema-registry-report":
-        return schema_registry_report_main(forwarded)
-    if ns.command == "spec-lang-format":
-        return spec_lang_format_main(forwarded)
-    if ns.command == "spec-lang-lint":
-        return spec_lang_lint_main(forwarded)
-    if ns.command == "docs-lint":
-        return docs_lint_main(forwarded)
-    if ns.command == "check-docs-freshness":
-        return check_docs_freshness_main(forwarded)
-    if ns.command == "ci-gate-summary":
-        return ci_gate_summary_main(forwarded)
-    if ns.command == "compare-conformance-parity":
-        return compare_conformance_parity_main(forwarded)
-    if ns.command == "conformance-purpose-report":
-        return conformance_purpose_report_main(forwarded)
-    if ns.command == "docs-generate-all":
-        return docs_generate_all_main(forwarded)
-    if ns.command == "docs-generate-specs":
-        return docs_generate_specs_main(forwarded)
-    if ns.command == "impl-evaluate-migration-report":
-        return impl_evaluate_migration_report_main(forwarded)
-    if ns.command == "normalize-docs-layout":
-        return normalize_docs_layout_main(forwarded)
-    if ns.command == "normalize-repo":
-        return normalize_repo_main(forwarded)
-    if ns.command == "objective-scorecard-report":
-        return objective_scorecard_report_main(forwarded)
-    if ns.command == "python-conformance-runner":
-        return python_conformance_runner_main(forwarded)
-    if ns.command == "quality-metric-reports":
-        return quality_metric_reports_main(forwarded)
-    if ns.command == "run-governance-specs":
-        return run_governance_specs_main(forwarded)
-    if ns.command == "perf-smoke":
-        return perf_smoke_main(forwarded)
-    if ns.command == "generate-library-symbol-catalog":
-        return generate_library_symbol_catalog_main(forwarded)
-    if ns.command == "generate-spec-case-catalog":
-        return generate_spec_case_catalog_main(forwarded)
-    if ns.command == "generate-spec-case-templates":
-        return generate_spec_case_templates_main(forwarded)
-    if ns.command == "review-validate":
-        return review_validate_main(forwarded)
-    if ns.command == "spec-portability-report":
-        return spec_portability_report_main(forwarded)
-    if ns.command == "split-library-cases-per-symbol":
-        return split_library_cases_per_symbol_main(forwarded)
-    return 2
+    registry = build_command_registry(specs)
+    command, forwarded = parse_command_args(normalized_argv, command_names=command_names(registry))
+    return dispatch_command(registry, command, forwarded)
 
 
 if __name__ == "__main__":

@@ -50,6 +50,8 @@ from spec_runner.conformance_purpose import PURPOSE_WARNING_CODES
 from spec_runner.conformance_purpose import conformance_purpose_report_jsonable
 from spec_runner.contract_governance import check_contract_governance
 from spec_runner.contract_governance import contract_coverage_jsonable
+from spec_runner.governance.registry import check_ids as governance_check_ids
+from spec_runner.governance.registry import get_check as governance_get_check
 from spec_runner.docs_quality import build_docs_graph
 from spec_runner.docs_quality import check_command_examples_verified
 from spec_runner.docs_quality import check_example_id_uniqueness
@@ -11282,9 +11284,9 @@ def run_governance_check(case, *, ctx) -> None:
     check_id = _governance_check_id(t)
     if not check_id:
         raise ValueError("contract.check profile governance.scan requires harness.check.config.check")
-    fn = _CHECKS.get(check_id)
+    fn = governance_get_check(check_id)
     if fn is None:
-        supported = ", ".join(sorted(_CHECKS))
+        supported = ", ".join(governance_check_ids())
         raise ValueError(f"unknown governance check: {check_id} (supported: {supported})")
 
     h = t.get("harness") or {}

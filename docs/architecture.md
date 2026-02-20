@@ -15,6 +15,8 @@ Local runner-owned artifacts:
 
 - `/runner_adapter.sh`
 - `/spec_runner/**`
+- `/spec_runner/cli/**`
+- `/spec_runner/governance/**`
 - `/specs/impl/python/index.md` (pointer only)
 - `/scripts/sync_data_contracts_specs.sh`
 - `/scripts/verify_upstream_compat.sh`
@@ -36,8 +38,9 @@ Runtime flow:
 
 1. Caller invokes `/runner_adapter.sh <subcommand>`.
 2. Adapter dispatches to Python command entrypoints.
-3. Python runner performs checks/contracts work.
-4. Process returns stable exit semantics.
+3. CLI registry (`spec_runner/cli`) resolves command and dispatches handler.
+4. Python runner performs checks/contracts work.
+5. Process returns stable exit semantics.
 
 ## Compatibility Verification Model
 

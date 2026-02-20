@@ -21,3 +21,13 @@ make runner-spec-check
 ```
 
 `make verify` is blocking and includes all of the above.
+
+For deep refactors, use:
+
+```sh
+make transition-gate
+```
+
+This runs the same core checks and can use Rust adapter fallback
+(`../data-contracts/runners/public/runner_adapter.sh`) as a transition tie-breaker
+when Python compatibility checks are flaky.
