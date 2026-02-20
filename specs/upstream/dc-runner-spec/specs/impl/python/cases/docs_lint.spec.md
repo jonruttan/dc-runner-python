@@ -41,7 +41,7 @@ harness:
     config:
       argv:
       - --manifest
-      - specs/impl/python/fixtures/missing_reference_manifest.yaml
+      - specs/impl/python/cases/fixtures/missing_reference_manifest.yaml
       exit_code: 1
 contract:
   defaults:

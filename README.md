@@ -77,6 +77,7 @@ Run compatibility verification:
 
 ```sh
 make compat-check
+make runner-spec-check
 ```
 
 ## Documentation Map
@@ -89,10 +90,12 @@ make compat-check
 
 ## Specs Map
 
-- Local runner-owned implementation specs:
-  - `/specs/impl/python/`
-- Upstream pinned compatibility snapshot:
+- Global contracts snapshot:
   - `/specs/upstream/data-contracts/`
+- Runner-specific contracts snapshot:
+  - `/specs/upstream/dc-runner-spec/specs/impl/python/`
+- Local pointer only:
+  - `/specs/impl/python/index.md`
 
 ## Source Moved From data-contracts
 

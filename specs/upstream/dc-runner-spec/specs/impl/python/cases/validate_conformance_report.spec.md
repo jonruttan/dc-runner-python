@@ -12,7 +12,7 @@ harness:
     profile: cli.run
     config:
       argv:
-      - specs/impl/python/fixtures/conformance_report_valid.json
+      - specs/impl/python/cases/fixtures/conformance_report_valid.json
       exit_code: 0
 contract:
   defaults:
@@ -41,7 +41,7 @@ harness:
     profile: cli.run
     config:
       argv:
-      - specs/impl/python/fixtures/conformance_report_invalid.json
+      - specs/impl/python/cases/fixtures/conformance_report_invalid.json
       exit_code: 1
 contract:
   defaults:

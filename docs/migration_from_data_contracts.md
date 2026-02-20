@@ -6,6 +6,9 @@ Former locations in `data-contracts`:
 - `docs/impl/python.md`
 - `specs/impl/**` implementation narratives
 
-Canonical implementation ownership now lives in this repository under:
-- `specs/impl/python/`
-- `README.md`
+Canonical runner-specific spec ownership now lives in:
+- `dc-runner-spec/specs/impl/python/`
+
+This repository consumes that canonical source via:
+- `/specs/upstream/dc-runner-spec/specs/impl/python/`
+- `/specs/impl/python/index.md` (local pointer)

@@ -1,33 +1,39 @@
-# Upstream Snapshot
+# Upstream Snapshots
 
-This directory stores a pinned compatibility snapshot of Data Contracts specs
-consumed by `dc-runner-python`.
+This directory stores pinned snapshots consumed by `dc-runner-python`.
 
-Source of truth:
+## Global Contracts (`data-contracts`)
 
-- `/specs/upstream/data_contracts_lock_v1.yaml` (upstream repo/tag-or-ref/commit + integrity)
-- `/specs/upstream/data-contracts.manifest.sha256` (deterministic file manifest)
-- `/specs/upstream/data-contracts/` (vendored spec snapshot used for compatibility verification)
+- Snapshot: `/specs/upstream/data-contracts/`
+- Lock: `/specs/upstream/data_contracts_lock_v1.yaml`
+- Manifest: `/specs/upstream/data-contracts.manifest.sha256`
 
-Update flow:
+Update:
 
 ```sh
-make spec-sync TAG=<upstream-tag-or-ref> SOURCE=<path-or-url>
-make verify
+make spec-sync TAG=<tag-or-ref> SOURCE=<path-or-url>
 ```
 
-Integrity check:
+Check:
 
 ```sh
 make spec-sync-check
 ```
 
-Related docs:
+## Runner-Specific Contracts (`dc-runner-spec`)
 
-- `/docs/compatibility.md`
-- `/docs/release.md`
+- Snapshot: `/specs/upstream/dc-runner-spec/`
+- Lock: `/specs/upstream/dc_runner_spec_lock_v1.yaml`
+- Manifest: `/specs/upstream/dc-runner-spec.manifest.sha256`
 
-Canonical global command-contract jobs are sourced from:
+Update:
 
-- `/specs/upstream/data-contracts/specs/conformance/cases/core/report_job_contracts.spec.md`
-- `/specs/upstream/data-contracts/specs/conformance/cases/core/script_job_contracts.spec.md`
+```sh
+make runner-spec-sync TAG=<tag-or-ref> SOURCE=<path-or-url>
+```
+
+Check:
+
+```sh
+make runner-spec-check
+```

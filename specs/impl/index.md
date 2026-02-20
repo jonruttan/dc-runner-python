@@ -1,3 +1,3 @@
 # Implementation Index
 
-- `/specs/impl/python/`
+- `/specs/impl/python/index.md`

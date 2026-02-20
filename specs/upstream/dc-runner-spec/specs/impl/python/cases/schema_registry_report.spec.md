@@ -48,7 +48,7 @@ harness:
       - json
       - --check
       - --out
-      - specs/impl/python/fixtures/schema_registry_report_stale.json
+      - specs/impl/python/cases/fixtures/schema_registry_report_stale.json
       exit_code: 1
 contract:
   defaults:
