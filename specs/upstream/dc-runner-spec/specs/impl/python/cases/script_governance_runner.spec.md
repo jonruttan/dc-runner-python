@@ -7,6 +7,13 @@ id: DCIMPL-PY-SCRIPT-GOV-001
 title: governance runner help renders usage
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.governance_runner:run_governance_specs_main
   check:
     profile: cli.run
@@ -36,6 +43,13 @@ id: DCIMPL-PY-SCRIPT-GOV-002
 title: governance runner rejects empty case pattern
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.governance_runner:run_governance_specs_main
   check:
     profile: cli.run
@@ -68,6 +82,13 @@ id: DCIMPL-PY-SCRIPT-GOV-003
 title: governance runner rejects check prefix that selects no cases
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.governance_runner:run_governance_specs_main
   check:
     profile: cli.run
@@ -100,6 +121,13 @@ id: DCIMPL-PY-SCRIPT-GOV-004
 title: governance runtime registers required docgen quality checks
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   check:
     profile: text.file
     config:
@@ -114,22 +142,19 @@ contract:
   steps:
   - id: assert_1
     assert:
-    - std.string.contains:
+    - call:
+      - {var: policy.text.contains_pair}
       - {var: text}
       - docs.stdlib_symbol_docs_complete
-    - std.string.contains:
-      - {var: text}
       - docs.stdlib_examples_complete
-    - std.string.contains:
+    - call:
+      - {var: policy.text.contains_pair}
       - {var: text}
       - docs.harness_reference_semantics_complete
-    - std.string.contains:
-      - {var: text}
       - docs.runner_reference_semantics_complete
-    - std.string.contains:
+    - call:
+      - {var: policy.text.contains_pair}
       - {var: text}
       - docs.reference_namespace_chapters_sync
-    - std.string.contains:
-      - {var: text}
       - docs.docgen_quality_score_threshold
 ```

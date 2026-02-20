@@ -7,6 +7,13 @@ id: DCIMPL-PY-SCRIPT-NORM-001
 title: normalize_docs_layout help renders usage
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:normalize_docs_layout_main
   check:
     profile: cli.run
@@ -36,6 +43,13 @@ id: DCIMPL-PY-SCRIPT-NORM-002
 title: normalize_docs_layout rejects conflicting modes
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:normalize_docs_layout_main
   check:
     profile: cli.run
@@ -66,6 +80,13 @@ id: DCIMPL-PY-SCRIPT-NORM-003
 title: normalize_repo help renders usage
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:normalize_repo_main
   check:
     profile: cli.run
@@ -95,6 +116,13 @@ id: DCIMPL-PY-SCRIPT-NORM-004
 title: normalize_repo rejects invalid scope
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:normalize_repo_main
   check:
     profile: cli.run

@@ -7,6 +7,13 @@ id: DCIMPL-PY-SCRIPT-PORT-001
 title: spec_portability_report writes json artifact
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:spec_portability_report_main
   check:
     profile: cli.run
@@ -37,6 +44,13 @@ id: DCIMPL-PY-SCRIPT-PORT-002
 title: spec_portability_report rejects invalid format
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:spec_portability_report_main
   check:
     profile: cli.run
@@ -67,6 +81,13 @@ id: DCIMPL-PY-SCRIPT-PORT-003
 title: impl evaluate migration report help renders usage
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:impl_evaluate_migration_report_main
   check:
     profile: cli.run
@@ -96,6 +117,13 @@ id: DCIMPL-PY-SCRIPT-PORT-004
 title: impl evaluate migration report rejects invalid option
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:impl_evaluate_migration_report_main
   check:
     profile: cli.run
@@ -125,6 +153,13 @@ id: DCIMPL-PY-SCRIPT-PORT-005
 title: split library cases command help renders usage
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:split_library_cases_per_symbol_main
   check:
     profile: cli.run
@@ -154,6 +189,13 @@ id: DCIMPL-PY-SCRIPT-PORT-006
 title: split library cases command requires input paths
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:split_library_cases_per_symbol_main
   check:
     profile: cli.run
@@ -182,6 +224,13 @@ id: DCIMPL-PY-SCRIPT-PORT-007
 title: conformance purpose report writes json artifact
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:conformance_purpose_report_main
   check:
     profile: cli.run
@@ -212,6 +261,13 @@ id: DCIMPL-PY-SCRIPT-PORT-008
 title: conformance purpose report rejects invalid format
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:conformance_purpose_report_main
   check:
     profile: cli.run

@@ -7,6 +7,13 @@ id: DCIMPL-PY-SCRIPT-DOCS-001
 title: docs_generate_all help renders usage
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:docs_generate_all_main
   check:
     profile: cli.run
@@ -36,6 +43,13 @@ id: DCIMPL-PY-SCRIPT-DOCS-002
 title: docs_generate_all fails on unknown surface
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:docs_generate_all_main
   check:
     profile: cli.run
@@ -67,6 +81,13 @@ id: DCIMPL-PY-SCRIPT-DOCS-003
 title: docs_generate_specs help renders usage
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:docs_generate_specs_main
   check:
     profile: cli.run
@@ -96,6 +117,13 @@ id: DCIMPL-PY-SCRIPT-DOCS-004
 title: docs_generate_specs fails on unknown surface
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:docs_generate_specs_main
   check:
     profile: cli.run
@@ -127,6 +155,13 @@ id: DCIMPL-PY-SCRIPT-DOCS-005
 title: evaluate_style help renders usage
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:evaluate_style_main
   check:
     profile: cli.run
@@ -156,6 +191,13 @@ id: DCIMPL-PY-SCRIPT-DOCS-006
 title: evaluate_style check defaults to docs spec tree
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:evaluate_style_main
   check:
     profile: cli.run
@@ -185,6 +227,13 @@ id: DCIMPL-PY-SCRIPT-DOCS-007
 title: docs_build_reference writes artifacts to explicit outputs
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:docs_build_reference_main
   check:
     profile: cli.run
@@ -209,11 +258,10 @@ contract:
   steps:
   - id: assert_1
     assert:
-    - std.string.contains:
+    - call:
+      - {var: policy.text.contains_pair}
       - {var: stdout}
       - wrote .artifacts/docs-build-reference-index.md
-    - std.string.contains:
-      - {var: stdout}
       - wrote .artifacts/docs-build-reference-coverage.md
     - std.string.contains:
       - {var: stdout}
@@ -227,6 +275,13 @@ id: DCIMPL-PY-SCRIPT-DOCS-008
 title: docs_build_reference rejects unknown args
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:docs_build_reference_main
   check:
     profile: cli.run

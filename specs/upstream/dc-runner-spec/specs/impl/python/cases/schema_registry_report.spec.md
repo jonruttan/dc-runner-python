@@ -7,6 +7,13 @@ id: DCIMPL-PY-SCHEMA-REG-001
 title: schema_registry_report_main writes report file
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.spec_lang_commands:schema_registry_report_main
   check:
     profile: cli.run
@@ -39,6 +46,13 @@ id: DCIMPL-PY-SCHEMA-REG-002
 title: schema_registry_report_main check mode fails on stale artifact
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.spec_lang_commands:schema_registry_report_main
   check:
     profile: cli.run

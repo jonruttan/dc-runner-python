@@ -7,6 +7,13 @@ id: DCIMPL-PY-SCRIPT-QUALITY-001
 title: objective_scorecard_report writes json artifact
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:objective_scorecard_report_main
   check:
     profile: cli.run
@@ -37,6 +44,13 @@ id: DCIMPL-PY-SCRIPT-QUALITY-002
 title: objective_scorecard_report rejects invalid format
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:objective_scorecard_report_main
   check:
     profile: cli.run
@@ -67,6 +81,13 @@ id: DCIMPL-PY-SCRIPT-QUALITY-003
 title: quality metric report fanout writes json artifact
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:quality_metric_reports_main
   check:
     profile: cli.run
@@ -98,6 +119,13 @@ id: DCIMPL-PY-SCRIPT-QUALITY-004
 title: quality metric report fanout rejects unknown report key
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:quality_metric_reports_main
   check:
     profile: cli.run
@@ -129,6 +157,13 @@ id: DCIMPL-PY-SCRIPT-QUALITY-005
 title: schema registry report writes json artifact
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.spec_lang_commands:schema_registry_report_main
   check:
     profile: cli.run
@@ -161,6 +196,13 @@ id: DCIMPL-PY-SCRIPT-QUALITY-006
 title: schema registry report rejects invalid format
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.spec_lang_commands:schema_registry_report_main
   check:
     profile: cli.run
