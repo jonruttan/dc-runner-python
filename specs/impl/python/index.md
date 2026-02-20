@@ -8,3 +8,7 @@ Canonical Python runner-specific specs live in vendored `dc-runner-spec`:
 - `/specs/upstream/dc-runner-spec/specs/impl/python/runner_spec_registry_v1.yaml`
 
 Local executable runner-specific specs are intentionally not maintained in this repo.
+
+Local implementation policy specs:
+
+- `/specs/impl/makefile_help_output_v1.md`
