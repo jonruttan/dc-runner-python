@@ -7,6 +7,13 @@ id: DCIMPL-PY-SCRIPT-CI-001
 title: ci_gate_summary command help renders usage
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:ci_gate_summary_main
   check:
     profile: cli.run
@@ -36,6 +43,13 @@ id: DCIMPL-PY-SCRIPT-CI-002
 title: ci_gate_summary requires runner-bin
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:ci_gate_summary_main
   check:
     profile: cli.run
@@ -64,6 +78,13 @@ id: DCIMPL-PY-SCRIPT-CI-003
 title: compare_conformance_parity command help renders usage
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:compare_conformance_parity_main
   check:
     profile: cli.run
@@ -93,6 +114,13 @@ id: DCIMPL-PY-SCRIPT-CI-004
 title: compare_conformance_parity rejects invalid timeout arg
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:compare_conformance_parity_main
   check:
     profile: cli.run
@@ -123,6 +151,13 @@ id: DCIMPL-PY-SCRIPT-CI-005
 title: python conformance runner help renders required flags
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:python_conformance_runner_main
   check:
     profile: cli.run
@@ -140,11 +175,10 @@ contract:
   steps:
   - id: assert_1
     assert:
-    - std.string.contains:
+    - call:
+      - {var: policy.text.contains_pair}
       - {var: stdout}
       - --cases
-    - std.string.contains:
-      - {var: stdout}
       - --out
     - std.string.contains:
       - {var: stdout}
@@ -158,6 +192,13 @@ id: DCIMPL-PY-SCRIPT-CI-006
 title: python conformance runner rejects empty case pattern
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:python_conformance_runner_main
   check:
     profile: cli.run
@@ -192,6 +233,13 @@ id: DCIMPL-PY-SCRIPT-CI-007
 title: php conformance runner usage includes required flags
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   check:
     profile: text.file
     config:
@@ -206,11 +254,10 @@ contract:
   steps:
   - id: assert_1
     assert:
-    - std.string.contains:
+    - call:
+      - {var: policy.text.contains_pair}
       - {var: text}
       - --cases <dir-or-file>
-    - std.string.contains:
-      - {var: text}
       - --out <file>
     - std.string.contains:
       - {var: text}
@@ -224,6 +271,13 @@ id: DCIMPL-PY-SCRIPT-CI-008
 title: compare_conformance_parity rejects empty case formats
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:compare_conformance_parity_main
   check:
     profile: cli.run
@@ -254,6 +308,13 @@ id: DCIMPL-PY-SCRIPT-CI-009
 title: compare_conformance_parity reports missing php executable
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.script_entrypoints:compare_conformance_parity_main
   env:
     PATH: /nonexistent

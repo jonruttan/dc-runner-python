@@ -7,6 +7,13 @@ id: DCIMPL-PY-CONTRACT-REP-001
 title: contract_coverage_report_main emits json payload to stdout
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.spec_lang_commands:contract_coverage_report_main
   check:
     profile: cli.run
@@ -23,11 +30,10 @@ contract:
   steps:
   - id: assert_1
     assert:
-    - std.string.contains:
+    - call:
+      - {var: policy.text.contains_pair}
       - {var: stdout}
       - '"version": 1'
-    - std.string.contains:
-      - {var: stdout}
       - '"summary"'
     - std.string.contains:
       - {var: stdout}
@@ -41,6 +47,13 @@ id: DCIMPL-PY-CONTRACT-REP-002
 title: contract_coverage_report_main writes output file with --out
 type: contract.check
 harness:
+  use:
+  - ref: /specs/libraries/policy/policy_text.spec.md
+    as: lib_policy_text
+    symbols:
+    - policy.text.contains_pair
+    - policy.text.contains_all
+    - policy.text.contains_none
   entrypoint: spec_runner.spec_lang_commands:contract_coverage_report_main
   check:
     profile: cli.run
