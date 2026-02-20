@@ -48,4 +48,9 @@ if [[ -f "$ROOT_DIR/specs/impl/python/runner_build_tool_contract_v1.yaml" ]]; th
   exit 1
 fi
 
+if [[ -f "$ROOT_DIR/specs/upstream/dc_runner_spec_lock_v1.yaml" ]]; then
+  echo "ERROR: legacy lock file detected (specs/upstream/dc_runner_spec_lock_v1.yaml); migrate to resolved_contract_set_lock_v1.yaml" >&2
+  exit 1
+fi
+
 echo "OK: runner-specific spec ingestion is consistent"

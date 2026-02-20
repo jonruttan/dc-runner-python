@@ -2,21 +2,16 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-LOCK_FILE="${ROOT_DIR}/specs/upstream/dc_runner_spec_lock_v1.yaml"
+LOCK_FILE="${ROOT_DIR}/specs/upstream/resolved_contract_set_lock_v1.yaml"
+LOCK_HASH_FILE="${ROOT_DIR}/specs/upstream/resolved_contract_set_lock_v1.sha256"
 SNAP_ROOT="${ROOT_DIR}/specs/upstream/dc-runner-spec"
 MANIFEST_FILE="${ROOT_DIR}/specs/upstream/dc-runner-spec.manifest.sha256"
 DEFAULT_SOURCE="https://github.com/jonruttan/dc-runner-spec.git"
-
-INCLUDE_PATTERNS=(
-  "specs/index.md"
-  "specs/impl/python/**"
-)
-
-EXCLUDE_PATTERNS=(
-  "**/pending/**"
-  "**/reviews/**"
-  "**/snapshots/**"
-)
+RUNNER="python"
+ROOT_CONTRACT_SET="python_runner_contract_set"
+LOCK_FILENAME="resolved_contract_set_lock_v1.yaml"
+RESOLVER_BIN_DEFAULT="${ROOT_DIR}/../data-contracts/scripts/contract-set"
+RESOLVER_BIN="${CONTRACT_SET_RESOLVER_BIN:-${RESOLVER_BIN_DEFAULT}}"
 
 usage() {
   cat <<USAGE
@@ -25,8 +20,8 @@ Usage:
   scripts/sync_runner_specs.sh --tag <tag-or-ref> [--source <path-or-url>] [--write]
 
 Options:
-  --check           Verify lock + manifest + snapshot consistency.
-  --tag <value>     Upstream tag or ref to pin (required for write mode).
+  --check           Verify resolved lock + lock hash + snapshot integrity.
+  --tag <value>     Upstream tag or ref to pin (required for write mode; use WORKTREE for local uncommitted source).
   --source <value>  Upstream git source (optional for --check; default for --tag is ${DEFAULT_SOURCE}).
   --write           Perform sync write (default when --tag is provided).
 USAGE
@@ -72,58 +67,6 @@ create_snapshot_from_commit() {
   git -C "$repo" archive "$commit" | tar -x -C "$out_dir"
 }
 
-copy_selected_files() {
-  local source_root="$1"
-  local dest_root="$2"
-
-  local tmp_files
-  tmp_files="$(mktemp)"
-
-  find "$source_root/specs" -type f | sed "s#^${source_root}/##" | LC_ALL=C sort > "$tmp_files"
-
-  rm -rf "$dest_root"
-  mkdir -p "$dest_root"
-
-  local include_hits=()
-  local i
-  for ((i = 0; i < ${#INCLUDE_PATTERNS[@]}; i++)); do
-    include_hits+=(0)
-  done
-
-  while IFS= read -r rel; do
-    local include_match=0
-    local idx
-    for ((idx = 0; idx < ${#INCLUDE_PATTERNS[@]}; idx++)); do
-      if [[ "$rel" == ${INCLUDE_PATTERNS[$idx]} ]]; then
-        include_match=1
-        include_hits[$idx]=1
-      fi
-    done
-    [[ "$include_match" -eq 1 ]] || continue
-
-    local exclude_match=0
-    for ex in "${EXCLUDE_PATTERNS[@]}"; do
-      if [[ "$rel" == $ex ]]; then
-        exclude_match=1
-        break
-      fi
-    done
-    [[ "$exclude_match" -eq 0 ]] || continue
-
-    mkdir -p "$dest_root/$(dirname "$rel")"
-    cp "$source_root/$rel" "$dest_root/$rel"
-  done < "$tmp_files"
-
-  rm -f "$tmp_files"
-
-  for ((i = 0; i < ${#INCLUDE_PATTERNS[@]}; i++)); do
-    if [[ "${include_hits[$i]}" -ne 1 ]]; then
-      echo "ERROR: include pattern matched no files: ${INCLUDE_PATTERNS[$i]}" >&2
-      return 1
-    fi
-  done
-}
-
 write_manifest() {
   local snapshot_root="$1"
   local manifest_file="$2"
@@ -144,10 +87,25 @@ extract_lock_value() {
   awk -F': ' -v key="$key" '$1 == key {print $2}' "$file" | sed 's/^"//; s/"$//'
 }
 
+copy_resolved_tree() {
+  local resolved_root="$1"
+  local dest_root="$2"
+
+  rm -rf "$dest_root"
+  mkdir -p "$dest_root"
+
+  while IFS= read -r rel; do
+    [[ "$rel" == "$LOCK_FILENAME" ]] && continue
+    mkdir -p "$dest_root/$(dirname "$rel")"
+    cp "$resolved_root/$rel" "$dest_root/$rel"
+  done < <(cd "$resolved_root" && find . -type f | sed 's#^\./##' | LC_ALL=C sort)
+}
+
 verify_required_files_exist() {
   local snapshot_root="$1"
   local required=(
     "specs/index.md"
+    "specs/impl/shared/makefile_help_output_v1.md"
     "specs/impl/python/index.md"
     "specs/impl/python/runner_build_tool_contract_v1.yaml"
     "specs/impl/python/runner_spec_registry_v1.yaml"
@@ -169,23 +127,37 @@ verify_mode() {
   local source="$1"
 
   [[ -f "$LOCK_FILE" ]] || { echo "ERROR: lock file missing: $LOCK_FILE" >&2; return 1; }
+  [[ -f "$LOCK_HASH_FILE" ]] || { echo "ERROR: lock hash file missing: $LOCK_HASH_FILE" >&2; return 1; }
   [[ -f "$MANIFEST_FILE" ]] || { echo "ERROR: manifest missing: $MANIFEST_FILE" >&2; return 1; }
   [[ -d "$SNAP_ROOT" ]] || { echo "ERROR: snapshot root missing: $SNAP_ROOT" >&2; return 1; }
 
-  local lock_repo lock_tag lock_commit lock_file_count lock_manifest_hash lock_snapshot_root
+  local lock_root lock_runner lock_commit lock_ref lock_repo lock_file_count lock_manifest_hash
+  lock_root="$(extract_lock_value "root_contract_set" "$LOCK_FILE")"
+  lock_runner="$(extract_lock_value "runner" "$LOCK_FILE")"
   lock_repo="$(extract_lock_value "  repo" "$LOCK_FILE")"
-  lock_tag="$(extract_lock_value "  tag" "$LOCK_FILE")"
+  lock_ref="$(extract_lock_value "  ref" "$LOCK_FILE")"
   lock_commit="$(extract_lock_value "  commit" "$LOCK_FILE")"
-  lock_snapshot_root="$(extract_lock_value "  root" "$LOCK_FILE")"
   lock_file_count="$(extract_lock_value "  file_count" "$LOCK_FILE")"
   lock_manifest_hash="$(extract_lock_value "  sha256_manifest" "$LOCK_FILE")"
 
-  [[ -n "$lock_repo" ]] || { echo "ERROR: lock upstream.repo missing" >&2; return 1; }
-  [[ -n "$lock_tag" ]] || { echo "ERROR: lock upstream.tag missing" >&2; return 1; }
-  [[ "$lock_commit" =~ ^[0-9a-f]{40}$ ]] || { echo "ERROR: lock upstream.commit must be 40-char sha" >&2; return 1; }
-  [[ "$lock_snapshot_root" == "specs/upstream/dc-runner-spec" ]] || { echo "ERROR: lock snapshot.root unexpected: $lock_snapshot_root" >&2; return 1; }
+  [[ "$lock_root" == "$ROOT_CONTRACT_SET" ]] || { echo "ERROR: lock root_contract_set mismatch: $lock_root" >&2; return 1; }
+  [[ "$lock_runner" == "$RUNNER" ]] || { echo "ERROR: lock runner mismatch: $lock_runner" >&2; return 1; }
+  [[ -n "$lock_repo" ]] || { echo "ERROR: lock source.repo missing" >&2; return 1; }
+  [[ -n "$lock_ref" ]] || { echo "ERROR: lock source.ref missing" >&2; return 1; }
+  [[ "$lock_commit" =~ ^[0-9a-f]{40}$ || "$lock_commit" == "unknown" ]] || {
+    echo "ERROR: lock source.commit must be 40-char sha or unknown" >&2
+    return 1
+  }
   [[ "$lock_file_count" =~ ^[0-9]+$ ]] || { echo "ERROR: lock integrity.file_count must be integer" >&2; return 1; }
   [[ "$lock_manifest_hash" =~ ^[0-9a-f]{64}$ ]] || { echo "ERROR: lock integrity.sha256_manifest must be sha256" >&2; return 1; }
+
+  local computed_lock_hash expected_lock_hash
+  computed_lock_hash="$(sha256_file "$LOCK_FILE")"
+  expected_lock_hash="$(awk '{print $1}' "$LOCK_HASH_FILE")"
+  [[ "$computed_lock_hash" == "$expected_lock_hash" ]] || {
+    echo "ERROR: resolved lock hash mismatch" >&2
+    return 1
+  }
 
   local tmp_manifest
   tmp_manifest="$(mktemp)"
@@ -197,22 +169,7 @@ verify_mode() {
     return 1
   fi
 
-  local computed_manifest_hash computed_file_count
-  computed_manifest_hash="$(sha256_file "$MANIFEST_FILE")"
-  computed_file_count="$(wc -l < "$MANIFEST_FILE" | tr -d ' ')"
-
   rm -f "$tmp_manifest"
-
-  [[ "$computed_manifest_hash" == "$lock_manifest_hash" ]] || {
-    echo "ERROR: lock manifest hash mismatch" >&2
-    return 1
-  }
-
-  [[ "$computed_file_count" == "$lock_file_count" ]] || {
-    echo "ERROR: lock file_count mismatch" >&2
-    return 1
-  }
-
   verify_required_files_exist "$SNAP_ROOT"
 
   if [[ -n "$source" ]]; then
@@ -227,21 +184,23 @@ verify_mode() {
     fi
 
     local resolved
-    if resolved="$(resolve_ref_in_repo "$source_repo" "$lock_tag" 2>/dev/null)"; then
+    if [[ "$lock_ref" == "WORKTREE" ]]; then
+      :
+    elif resolved="$(resolve_ref_in_repo "$source_repo" "$lock_ref" 2>/dev/null)"; then
       local resolved_commit="${resolved%%;*}"
-      if [[ "$resolved_commit" != "$lock_commit" ]]; then
-        echo "ERROR: lock tag resolves to different commit in source" >&2
+      if [[ "$lock_commit" != "unknown" && "$resolved_commit" != "$lock_commit" ]]; then
+        echo "ERROR: lock ref resolves to different commit in source" >&2
         [[ -n "$temp_repo" ]] && rm -rf "$temp_repo"
         return 1
       fi
     else
-      echo "WARN: lock tag '${lock_tag}' not found in source '${source}'; commit pinned locally only" >&2
+      echo "WARN: lock ref '${lock_ref}' not found in source '${source}'; commit pinned locally only" >&2
     fi
 
     [[ -n "$temp_repo" ]] && rm -rf "$temp_repo"
   fi
 
-  echo "OK: runner-spec snapshot and lock are consistent"
+  echo "OK: resolved runner-spec snapshot and lock are consistent"
 }
 
 write_mode() {
@@ -250,6 +209,7 @@ write_mode() {
 
   [[ -n "$tag" ]] || { echo "ERROR: --tag is required for write mode" >&2; return 2; }
   [[ -n "$source" ]] || source="$DEFAULT_SOURCE"
+  [[ -x "$RESOLVER_BIN" ]] || { echo "ERROR: resolver not executable: $RESOLVER_BIN" >&2; return 1; }
 
   local source_repo=""
   local temp_repo=""
@@ -261,58 +221,59 @@ write_mode() {
     source_repo="$temp_repo/source"
   fi
 
-  local resolved
-  if ! resolved="$(resolve_ref_in_repo "$source_repo" "$tag" 2>/dev/null)"; then
-    echo "ERROR: cannot resolve tag/ref '${tag}' in source '${source}'" >&2
-    [[ -n "$temp_repo" ]] && rm -rf "$temp_repo"
-    return 1
+  local commit=""
+  local ref_kind=""
+  local extract_dir
+  extract_dir="$(mktemp -d)"
+  if [[ "$tag" == "WORKTREE" && -d "$source_repo/.git" ]]; then
+    commit="$(git -C "$source_repo" rev-parse HEAD 2>/dev/null || true)"
+    [[ -n "$commit" ]] || commit="unknown"
+    ref_kind="worktree"
+    (cd "$source_repo" && tar --exclude='.git' -cf - .) | tar -xf - -C "$extract_dir"
+  else
+    local resolved
+    if ! resolved="$(resolve_ref_in_repo "$source_repo" "$tag" 2>/dev/null)"; then
+      echo "ERROR: cannot resolve tag/ref '${tag}' in source '${source}'" >&2
+      [[ -n "$temp_repo" ]] && rm -rf "$temp_repo"
+      rm -rf "$extract_dir"
+      return 1
+    fi
+    commit="${resolved%%;*}"
+    ref_kind="${resolved##*;}"
+    create_snapshot_from_commit "$source_repo" "$commit" "$extract_dir"
   fi
 
-  local commit="${resolved%%;*}"
-  local ref_kind="${resolved##*;}"
-
-  if [[ "$ref_kind" != "tag" ]]; then
+  if [[ "$ref_kind" != "tag" && "$ref_kind" != "worktree" ]]; then
     echo "WARN: '${tag}' resolved as non-tag git ref; release workflow should use immutable tags." >&2
   fi
 
-  local extract_dir
-  extract_dir="$(mktemp -d)"
-  create_snapshot_from_commit "$source_repo" "$commit" "$extract_dir"
+  local resolved_dir
+  resolved_dir="$(mktemp -d)"
+  "$RESOLVER_BIN" resolve \
+    --runner "$RUNNER" \
+    --root "$ROOT_CONTRACT_SET" \
+    --out "$resolved_dir" \
+    --repo-root "$extract_dir" \
+    --source-repo "$source" \
+    --source-ref "$tag" \
+    --source-commit "$commit"
 
-  copy_selected_files "$extract_dir" "$SNAP_ROOT"
+  [[ -f "$resolved_dir/$LOCK_FILENAME" ]] || {
+    echo "ERROR: resolver did not emit ${LOCK_FILENAME}" >&2
+    rm -rf "$extract_dir" "$resolved_dir"
+    [[ -n "$temp_repo" ]] && rm -rf "$temp_repo"
+    return 1
+  }
+
+  copy_resolved_tree "$resolved_dir" "$SNAP_ROOT"
+  cp "$resolved_dir/$LOCK_FILENAME" "$LOCK_FILE"
+  printf '%s  %s\n' "$(sha256_file "$LOCK_FILE")" "${LOCK_FILENAME}" > "$LOCK_HASH_FILE"
   write_manifest "$SNAP_ROOT" "$MANIFEST_FILE"
 
-  local file_count manifest_hash now_utc
-  file_count="$(wc -l < "$MANIFEST_FILE" | tr -d ' ')"
-  manifest_hash="$(sha256_file "$MANIFEST_FILE")"
-  now_utc="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
-
-  mkdir -p "$(dirname "$LOCK_FILE")"
-  cat > "$LOCK_FILE" <<LOCK
-version: 1
-upstream:
-  repo: ${source}
-  tag: ${tag}
-  commit: ${commit}
-  synced_at_utc: "${now_utc}"
-snapshot:
-  root: specs/upstream/dc-runner-spec
-  include:
-    - specs/index.md
-    - specs/impl/python/**
-  exclude:
-    - "**/pending/**"
-    - "**/reviews/**"
-    - "**/snapshots/**"
-integrity:
-  file_count: ${file_count}
-  sha256_manifest: ${manifest_hash}
-LOCK
-
-  rm -rf "$extract_dir"
+  rm -rf "$extract_dir" "$resolved_dir"
   [[ -n "$temp_repo" ]] && rm -rf "$temp_repo"
 
-  echo "OK: synced runner-spec snapshot from ${source} @ ${tag} (${commit})"
+  echo "OK: synced runner-spec resolved contract set from ${source} @ ${tag} (${commit})"
 }
 
 MODE=""

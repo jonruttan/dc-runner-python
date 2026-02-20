@@ -1,0 +1,9 @@
+contract_set_id: python_impl_contract_set
+version: 1
+depends_on: []
+dependency_mode: required
+include_paths:
+  - specs/index.md
+  - specs/impl/python/**
+applies_to_runners:
+  - python

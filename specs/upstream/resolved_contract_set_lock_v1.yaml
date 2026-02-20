@@ -1,0 +1,15 @@
+version: 1
+root_contract_set: python_runner_contract_set
+runner: python
+source:
+  repo: /Users/jon/Workspace/Development/dc-runner-spec
+  ref: WORKTREE
+  commit: 3f45447936d073e1fb164519e99ecdd78f1a3874
+resolved_order:
+- python_impl_contract_set
+- shared_makefile_help_contract_set
+- python_runner_contract_set
+integrity:
+  file_count: 26
+  sha256_manifest: bff936d7bcf38ef4481be4174b712c0380780dc5d95f5f09ad6048d71cba90b1
+  sha256_manifests: f7a24277b8f4105551af03bdc6babff98a7fabee4caf28dbd11fae8d4dddc73d

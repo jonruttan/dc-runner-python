@@ -23,7 +23,8 @@ make spec-sync-check
 ## Runner-Specific Contracts (`dc-runner-spec`)
 
 - Snapshot: `/specs/upstream/dc-runner-spec/`
-- Lock: `/specs/upstream/dc_runner_spec_lock_v1.yaml`
+- Lock: `/specs/upstream/resolved_contract_set_lock_v1.yaml`
+- Lock Hash: `/specs/upstream/resolved_contract_set_lock_v1.sha256`
 - Manifest: `/specs/upstream/dc-runner-spec.manifest.sha256`
 
 Update:
