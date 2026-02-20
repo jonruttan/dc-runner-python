@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-CONTRACT-BLOCK-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: cases must use contract block
 purpose: Enforces top-level contract block requirement for executable cases.
 type: contract.check

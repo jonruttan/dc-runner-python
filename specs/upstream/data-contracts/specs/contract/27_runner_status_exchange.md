@@ -57,6 +57,13 @@ Canonical ingest entrypoint:
 
 - `/scripts/runner_status_ingest.sh`
 
+Consumer validation rules:
+
+- producer report `version` MUST be compatible with
+  `/specs/schema/runner_status_report_v1.yaml`
+- validation context MUST use control-plane schema pin metadata from
+  `/specs/schema/schema_catalog_v1.yaml`
+
 ## Freshness and Enforcement
 
 - Compatibility lanes remain non-blocking for execution verdicts.
@@ -83,4 +90,3 @@ Common failure classes:
 - This contract does not move runner implementation code into `data-contracts`.
 - This contract does not change lane-class ownership semantics in
   `/specs/contract/25_compatibility_matrix.md`.
-

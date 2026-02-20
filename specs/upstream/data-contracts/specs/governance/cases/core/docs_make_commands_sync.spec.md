@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-007
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs use canonical make command entrypoints
 purpose: Keeps contributor docs aligned on the canonical make-based command entrypoints for
   verification and gate execution.

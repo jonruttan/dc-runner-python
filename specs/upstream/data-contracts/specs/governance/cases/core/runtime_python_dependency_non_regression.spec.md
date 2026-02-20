@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-PYDEP-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: python dependency metric is non-regressing
 purpose: Enforces monotonic non-regression for python dependency metrics against checked-in
   baseline.

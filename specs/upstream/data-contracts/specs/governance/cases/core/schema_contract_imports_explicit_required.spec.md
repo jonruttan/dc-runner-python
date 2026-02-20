@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-SCHEMA-CONTRACT-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: contract assertions require explicit imports
 purpose: Ensures cases using var subject define imports.subject via contract imports or step
   imports.

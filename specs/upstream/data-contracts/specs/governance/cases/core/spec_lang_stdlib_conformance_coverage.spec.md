@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-STDLIB-004
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: stdlib conformance coverage files are present
 purpose: Ensures canonical stdlib conformance fixtures are present and discoverable.
 type: contract.check

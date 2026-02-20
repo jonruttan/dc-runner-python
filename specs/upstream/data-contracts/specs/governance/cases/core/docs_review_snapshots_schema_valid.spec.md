@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-015
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: active review snapshots validate against canonical contract
 purpose: Ensures docs/history/reviews/snapshots contains canonical machine-consumable snapshots with valid section order and candidate schema.
 type: contract.check

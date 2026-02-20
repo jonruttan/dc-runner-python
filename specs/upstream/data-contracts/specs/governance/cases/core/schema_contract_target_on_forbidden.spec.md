@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-SCHEMA-CONTRACT-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: contract target and on keys are forbidden
 purpose: Ensures canonical contract steps use imports bindings instead of target/on keys.
 type: contract.check

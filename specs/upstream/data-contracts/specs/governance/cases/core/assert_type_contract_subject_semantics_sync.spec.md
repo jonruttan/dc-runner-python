@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-ASSERT-SUBJECT-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: type contracts define subject semantics
 purpose: Ensures harness and type contracts define target subject semantics and avoid per-type
   operator allowlists.

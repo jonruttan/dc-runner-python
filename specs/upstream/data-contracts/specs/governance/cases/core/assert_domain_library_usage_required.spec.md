@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-ASSERT-PROFILE-004
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: domain conformance checks are library-backed
 purpose: Ensures domain conformance checks use harness.spec_lang domain libraries rather than
   ad hoc inline-only policy.

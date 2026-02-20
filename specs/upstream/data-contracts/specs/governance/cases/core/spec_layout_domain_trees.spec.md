@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-SPECLAYOUT-DOMAIN-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: spec layout uses domain tree directories
 purpose: Ensures conformance, governance, and library specs are organized under domain subdirectories
   with index files.

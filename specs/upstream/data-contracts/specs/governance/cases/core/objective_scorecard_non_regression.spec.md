@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-OBJECTIVE-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: objective scorecard is non-regressing
 purpose: Enforces ratchet non-regression for objective scorecard summary metrics and baseline-note
   integrity.

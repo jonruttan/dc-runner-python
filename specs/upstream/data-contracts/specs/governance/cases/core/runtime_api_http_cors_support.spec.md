@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-APIHTTP-006
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: api.http CORS support surfaces remain synchronized
 purpose: Ensures CORS preflight and normalized cors_json projection are documented and implemented.
 type: contract.check

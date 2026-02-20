@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CONF-PORT-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: conformance cases keep runner logic under harness
 purpose: Ensures portable conformance fixtures do not place runner/setup keys at top level.
 type: contract.check

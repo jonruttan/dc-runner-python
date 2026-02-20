@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-STDLIB-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: spec-lang stdlib profile is complete
 purpose: Ensures the declared stdlib profile symbols are implemented in Python and PHP.
 type: contract.check

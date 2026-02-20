@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-REF-SYMBOLS-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: library exports are referenced
 purpose: Ensures exported library symbols are referenced by case policies/expressions or harness
   exports.

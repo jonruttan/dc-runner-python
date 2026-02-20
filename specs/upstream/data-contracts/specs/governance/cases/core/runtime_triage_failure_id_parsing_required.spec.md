@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-TRIAGE-005
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: triage parser derives failing check ids and prefixes
 purpose: Ensures triage script parses governance ERROR lines and maps check ids to check-prefix
   retries.

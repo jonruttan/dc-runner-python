@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-IMPORT-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: runtime python code uses SETTINGS object instead of settings constants
 purpose: Enforces settings access policy by rejecting DEFAULT and ENV constant imports outside
   settings module.

@@ -2,6 +2,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-FS-EXAMPLES-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs yaml examples prefer domain fs/path helpers over raw ops fs
 purpose: Keeps contributor-facing docs examples aligned with the domain-library-first authoring
   model for filesystem/json/glob/path flows.

@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOC-SEC-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: required trust-model docs declare non-sandboxed trusted-input contract
 purpose: Ensures required docs state that spec execution is not sandboxed and untrusted specs
   are unsafe.

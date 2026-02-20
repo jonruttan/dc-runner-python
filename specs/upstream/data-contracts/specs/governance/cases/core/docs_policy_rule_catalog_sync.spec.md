@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-GEN-007
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: policy rule catalog artifacts are synchronized
 purpose: Ensures generated policy rule JSON and markdown artifacts are up-to-date.
 type: contract.check

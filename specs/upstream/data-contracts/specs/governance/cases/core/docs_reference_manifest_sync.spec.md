@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-QUAL-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: reference index is generated from manifest
 purpose: Ensures reference index markdown remains synchronized with the manifest source of
   truth.

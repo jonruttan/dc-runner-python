@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-NORM-004
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: normalization spec style policy stays profile-driven
 purpose: Ensures conformance style limits and wording remain synchronized with the normalization
   profile and governance scanner constants.

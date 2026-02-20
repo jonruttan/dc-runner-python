@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-REF-PATHS-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: contract paths referenced by specs exist
 purpose: Ensures referenced contract-root paths fail fast when missing.
 type: contract.check

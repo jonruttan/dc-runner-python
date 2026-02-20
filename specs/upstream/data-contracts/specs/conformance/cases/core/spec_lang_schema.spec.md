@@ -1,9 +1,11 @@
 # Conformance Cases
 
-## DCCONF-STDLIB-003
+## DCCONF-SCHEMA-STDLIB-003
 
 ```yaml contract-spec
-id: DCCONF-STDLIB-003
+id: DCCONF-SCHEMA-STDLIB-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: json parsing and type predicates stay deterministic
 purpose: Ensures parsed JSON shapes can be validated with deterministic type predicates.
 type: contract.check
@@ -41,10 +43,12 @@ harness:
       path: /specs/conformance/cases/core/spec_lang_schema.spec.md
 ```
 
-## DCCONF-STDLIB-004
+## DCCONF-SCHEMA-STDLIB-004
 
 ```yaml contract-spec
-id: DCCONF-STDLIB-004
+id: DCCONF-SCHEMA-STDLIB-004
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: parsed payload predicates support deterministic error-shape checks
 purpose: Ensures JSON payload predicate composition remains deterministic for invalid-value
   checks.

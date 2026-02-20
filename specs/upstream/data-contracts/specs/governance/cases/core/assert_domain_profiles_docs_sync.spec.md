@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-ASSERT-PROFILE-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: domain profile docs synchronize with profile schema ids
 purpose: Ensures python/php/http/markdown/makefile profile docs and subject profile schema
   stay synchronized.

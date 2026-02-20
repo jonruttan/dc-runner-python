@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-JOB-HOOKS-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: rust contract.job specs adopt fail and complete lifecycle hooks
 purpose: Ensures Rust job contract-spec cases include when fail and complete dispatches with
   matching hook job metadata.

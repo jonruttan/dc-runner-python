@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-LIBSYM-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: library symbol docs metadata is complete
 purpose: Ensures every contract.export symbol declares required documentation metadata.
 type: contract.check

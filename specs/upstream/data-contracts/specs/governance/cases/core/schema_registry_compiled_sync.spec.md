@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-SCHEMA-REG-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: schema registry compiled artifact is synchronized
 purpose: Ensures checked-in schema registry compiled artifact matches current registry source
   files.

@@ -643,7 +643,7 @@ links:
   policy_ref: specs/contract/policy_v1.yaml#RUNNER_INDEPENDENCE_NON_REGRESSION_REQUIRED
   contract_refs:
   - specs/contract/12_runner_interface.md
-  - specs/governance/cases/core/runner_independence_non_regression.spec.md
+  - specs/governance/cases/retired/runner_independence_non_regression.spec.md
   schema_refs: []
   conformance_case_ids: []
   unit_test_refs:
@@ -704,7 +704,7 @@ links:
   policy_ref: specs/contract/policy_v1.yaml#RUNTIME_RUST_ADAPTER_TRANSITIVE_NO_PYTHON
   contract_refs:
   
-  - specs/governance/cases/core/runtime_rust_adapter_transitive_no_python.spec.md
+  - specs/governance/cases/retired/runtime_rust_adapter_transitive_no_python.spec.md
   schema_refs: []
   conformance_case_ids: []
   unit_test_refs:
@@ -1118,7 +1118,7 @@ links:
   - tests/test_contract_governance_unit.py
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/runtime_runner_interface_gate_sync.spec.md
+  - specs/governance/cases/retired/runtime_runner_interface_gate_sync.spec.md
   - scripts/ci_gate.sh
   - scripts/runner_bin.sh
   - dc-runner-python
@@ -1266,7 +1266,7 @@ links:
   implementation_refs:
   - dc-runner-python
   - dc-runner-rust
-  - specs/governance/cases/core/runtime_cigate_uses_governance_triage_required.spec.md
+  - specs/governance/cases/retired/runtime_cigate_uses_governance_triage_required.spec.md
   notes: CI gate summary routes governance through triage and exposes triage metadata.
 - rule_id: RUNTIME_TRIAGE_ARTIFACTS_EMITTED_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#RUNTIME_TRIAGE_ARTIFACTS_EMITTED_REQUIRED
@@ -1280,7 +1280,7 @@ links:
   implementation_refs:
   - scripts/governance_triage.sh
   - dc-runner-python
-  - specs/governance/cases/core/runtime_triage_artifacts_emitted_required.spec.md
+  - specs/governance/cases/retired/runtime_triage_artifacts_emitted_required.spec.md
   notes: Triage flow emits deterministic machine/human artifacts on failure/stall.
 - rule_id: RUNTIME_TRIAGE_FAILURE_ID_PARSING_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#RUNTIME_TRIAGE_FAILURE_ID_PARSING_REQUIRED
@@ -1348,7 +1348,7 @@ links:
   - scripts/ci_gate.sh
   - dc-runner-python
   - dc-runner-rust
-  - specs/governance/cases/core/runtime_ci_gate_ownership_contract_required.spec.md
+  - specs/governance/cases/retired/runtime_ci_gate_ownership_contract_required.spec.md
   notes: CI gate owns critical in ci_gate.sh and keeps ci-gate-summary broad-only
     without critical toggles.
 - rule_id: RUNTIME_GOVERNANCE_PREFIX_SELECTION_FROM_CHANGED_PATHS
@@ -1456,7 +1456,7 @@ links:
   - dc-runner-python
   - dc-runner-php
   - dc-runner-php
-  - specs/governance/cases/core/runtime_spec_lang_pure_no_effect_builtins.spec.md
+  - specs/governance/cases/retired/runtime_spec_lang_pure_no_effect_builtins.spec.md
   notes: Spec-lang core forbids side-effect builtins; adapters provide normalized
     effect results.
 - rule_id: RUNTIME_DECISIONS_VIA_SPEC_LANG_ONLY
@@ -1572,7 +1572,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/runtime_orchestration_policy_via_spec_lang.spec.md
+  - specs/governance/cases/retired/runtime_orchestration_policy_via_spec_lang.spec.md
   notes: CI gate summary loads a spec-lang decision expression from governance policy
     case.
 - rule_id: ORCHESTRATION_OPS_DEEP_DOT_REQUIRED
@@ -1630,7 +1630,7 @@ links:
   implementation_refs:
   - dc-runner-python
   - dc-runner-rust
-  - specs/governance/cases/core/runtime_runner_interface_subcommands.spec.md
+  - specs/governance/cases/retired/runtime_runner_interface_subcommands.spec.md
   notes: Governance verifies Rust adapter case labels cover required runner-interface
     subcommands.
 - rule_id: RUNTIME_RUST_ADAPTER_NO_DELEGATION
@@ -1644,7 +1644,6 @@ links:
   implementation_refs:
   - dc-runner-rust
   - dc-runner-python
-  - specs/governance/cases/core/runtime_rust_adapter_no_delegate.spec.md
   notes: Governance prevents regression back to shell adapter delegation in the Rust
     lane.
 - rule_id: RUST_PRIMARY_GATE_PATH_REQUIRED
@@ -2291,7 +2290,7 @@ links:
   - scripts/ci_gate.sh
   - scripts/docs_doctor.sh
   - dc-runner-python
-  - specs/governance/cases/core/runtime_public_runner_entrypoint_single.spec.md
+  - specs/governance/cases/retired/runtime_public_runner_entrypoint_single.spec.md
   notes: Gate scripts must reference scripts/runner_bin.sh as the single public
     runner entrypoint.
 - rule_id: RUNTIME_PUBLIC_ENTRYPOINT_RUST_DEFAULT_REQUIRED
@@ -2336,7 +2335,6 @@ links:
   - docs/development.md
   - README.md
   - dc-runner-python
-  - specs/governance/cases/core/runtime_no_public_direct_rust_adapter_docs.spec.md
   notes: Public docs avoid directing users to internal rust adapter paths.
 - rule_id: ASSERT_SUBJECT_PROFILE_JSON_CORE_ONLY
   policy_ref: specs/contract/policy_v1.yaml#ASSERT_SUBJECT_PROFILE_JSON_CORE_ONLY

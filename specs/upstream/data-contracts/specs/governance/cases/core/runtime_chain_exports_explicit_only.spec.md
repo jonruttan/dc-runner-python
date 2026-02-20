@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CHAIN-012
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: chain state sharing uses explicit exports only
 purpose: Ensures chain state propagation is declared through explicit target-derived exports.
 type: contract.check

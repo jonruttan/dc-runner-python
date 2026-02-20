@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-CONFIG-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: python-invoking adapter scripts use shared python-bin resolver helper
 purpose: Keeps shared Python resolver helper contract stable for remaining tooling paths.
 type: contract.check

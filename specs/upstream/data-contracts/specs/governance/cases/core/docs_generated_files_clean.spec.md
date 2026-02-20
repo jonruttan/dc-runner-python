@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-QUAL-008
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: generated docs artifacts are up-to-date
 purpose: Ensures generated reference index, coverage, and docs graph artifacts are kept fresh.
 type: contract.check

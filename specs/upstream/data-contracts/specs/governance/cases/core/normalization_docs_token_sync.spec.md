@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-NORM-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: normalization docs token sync is enforced
 purpose: Ensures schema contract and book docs maintain required mapping-AST wording and forbid
   stale expression-shape tokens.

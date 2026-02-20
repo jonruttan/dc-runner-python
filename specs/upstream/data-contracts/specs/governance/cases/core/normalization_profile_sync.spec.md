@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-NORM-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: normalization profile defines required source-of-truth fields
 purpose: Ensures normalization profile exists and includes all required top-level keys and
   path scopes.

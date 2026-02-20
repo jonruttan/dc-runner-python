@@ -677,7 +677,7 @@ rules:
   rationale: Maintains one-way pressure away from direct interpreter/runtime coupling.
   risk_if_violated: Gate and CI scripts can silently revert to runtime-specific hardcoding.
   references:
-  - specs/governance/cases/core/runner_independence_non_regression.spec.md
+  - specs/governance/cases/retired/runner_independence_non_regression.spec.md
   - specs/governance/metrics/runner_independence_baseline.json
   - dc-runner-python
 - id: RUNTIME_PYTHON_DEPENDENCY_EVIDENCE_REPORTED
@@ -739,7 +739,7 @@ rules:
   rationale: Keeps rust lane ownership explicit and auditable.
   risk_if_violated: Rust path can mask python dependency through transitive delegation.
   references:
-  - specs/governance/cases/core/runtime_rust_adapter_transitive_no_python.spec.md
+  - specs/governance/cases/retired/runtime_rust_adapter_transitive_no_python.spec.md
   - dc-runner-rust
 - id: RUNTIME_DEFAULT_GATE_RUST_ADAPTER_REQUIRED
   introduced_in: v1
@@ -1147,7 +1147,7 @@ rules:
   risk_if_violated: Gate commands fail when switching adapters by SPEC_RUNNER_BIN.
   references:
   - specs/contract/12_runner_interface.md
-  - specs/governance/cases/core/runtime_runner_interface_subcommands.spec.md
+  - specs/governance/cases/retired/runtime_runner_interface_subcommands.spec.md
 - id: RUNTIME_RUST_ADAPTER_NO_DELEGATION
   introduced_in: v1
   scope: governance
@@ -1163,7 +1163,6 @@ rules:
   risk_if_violated: Rust lane gives false confidence and misses Rust adapter regressions.
   references:
   - specs/contract/12_runner_interface.md
-  - specs/governance/cases/core/runtime_rust_adapter_no_delegate.spec.md
 - id: RUST_PRIMARY_GATE_PATH_REQUIRED
   introduced_in: v1
   scope: governance
@@ -1368,7 +1367,7 @@ rules:
   risk_if_violated: Public invocation contract fragments across multiple scripts.
   references:
   - specs/contract/12_runner_interface.md
-  - specs/governance/cases/core/runtime_public_runner_entrypoint_single.spec.md
+  - specs/governance/cases/retired/runtime_public_runner_entrypoint_single.spec.md
 - id: RUNTIME_PUBLIC_ENTRYPOINT_RUST_DEFAULT_REQUIRED
   introduced_in: v1
   scope: governance
@@ -1566,7 +1565,7 @@ rules:
   references:
   - dc-runner-python
   - dc-runner-rust
-  - specs/governance/cases/core/runtime_cigate_uses_governance_triage_required.spec.md
+  - specs/governance/cases/retired/runtime_cigate_uses_governance_triage_required.spec.md
 - id: RUNTIME_TRIAGE_ARTIFACTS_EMITTED_REQUIRED
   introduced_in: v1
   scope: governance
@@ -1582,7 +1581,7 @@ rules:
   references:
   - scripts/governance_triage.sh
   - dc-runner-python
-  - specs/governance/cases/core/runtime_triage_artifacts_emitted_required.spec.md
+  - specs/governance/cases/retired/runtime_triage_artifacts_emitted_required.spec.md
 - id: RUNTIME_TRIAGE_FAILURE_ID_PARSING_REQUIRED
   introduced_in: v1
   scope: governance
@@ -1663,7 +1662,7 @@ rules:
   - scripts/ci_gate.sh
   - dc-runner-python
   - dc-runner-rust
-  - specs/governance/cases/core/runtime_ci_gate_ownership_contract_required.spec.md
+  - specs/governance/cases/retired/runtime_ci_gate_ownership_contract_required.spec.md
 - id: RUNTIME_GOVERNANCE_PREFIX_SELECTION_FROM_CHANGED_PATHS
   introduced_in: v1
   scope: governance
@@ -1723,7 +1722,6 @@ rules:
   risk_if_violated: Users bypass canonical interface and couple workflows to internals.
   references:
   - specs/contract/12_runner_interface.md
-  - specs/governance/cases/core/runtime_no_public_direct_rust_adapter_docs.spec.md
 - id: RUST_PRIMARY_INTERFACE_STABILITY_REQUIRED
   introduced_in: v1
   scope: governance
@@ -1965,7 +1963,7 @@ rules:
   risk_if_violated: Gate behavior hardcodes runtime-specific logic in scripts.
   references:
   - dc-runner-python
-  - specs/governance/cases/core/runtime_orchestration_policy_via_spec_lang.spec.md
+  - specs/governance/cases/retired/runtime_orchestration_policy_via_spec_lang.spec.md
 - id: ORCHESTRATION_OPS_DEEP_DOT_REQUIRED
   introduced_in: v1
   scope: governance
@@ -2160,7 +2158,7 @@ rules:
   references:
   - specs/contract/15_governance_subject_model.md
   - specs/contract/18_governance_subject_extractors.md
-  - specs/governance/cases/core/governance_extractor_only_no_verdict_branching.spec.md
+  - specs/governance/cases/retired/governance_extractor_only_no_verdict_branching.spec.md
 - id: GOVERNANCE_STRUCTURED_ASSERTIONS_REQUIRED
   introduced_in: v1
   scope: governance
@@ -2194,7 +2192,7 @@ rules:
   references:
   - specs/contract/12_runner_interface.md
   
-  - specs/governance/cases/core/runtime_rust_adapter_no_python_exec.spec.md
+  - specs/governance/cases/retired/runtime_rust_adapter_no_python_exec.spec.md
 - id: NORMALIZATION_PROFILE_DEFINED
   introduced_in: v1
   scope: governance
@@ -3804,7 +3802,7 @@ rules:
   references:
   - dc-runner-python
   - dc-runner-rust
-  - specs/governance/cases/core/runtime_gate_fail_fast_behavior_required.spec.md
+  - specs/governance/cases/retired/runtime_gate_fail_fast_behavior_required.spec.md
 - id: RUNTIME_GATE_SKIPPED_STEPS_CONTRACT_REQUIRED
   introduced_in: v1
   scope: governance
@@ -3820,7 +3818,7 @@ rules:
   - dc-runner-python
   - dc-runner-rust
   - specs/contract/24_runtime_profiling_contract.md
-  - specs/governance/cases/core/runtime_gate_skipped_steps_contract_required.spec.md
+  - specs/governance/cases/retired/runtime_gate_skipped_steps_contract_required.spec.md
 - id: RUNTIME_PROFILE_ARTIFACTS_ON_FAIL_REQUIRED
   introduced_in: v1
   scope: governance
@@ -3835,7 +3833,7 @@ rules:
   - dc-runner-python
   - dc-runner-rust
   - specs/contract/24_runtime_profiling_contract.md
-  - specs/governance/cases/core/runtime_profile_artifacts_on_fail_required.spec.md
+  - specs/governance/cases/retired/runtime_profile_artifacts_on_fail_required.spec.md
 - id: RUNTIME_GATE_POLICY_SKIPPED_ROWS_REQUIRED
   introduced_in: v1
   scope: governance
@@ -3849,7 +3847,7 @@ rules:
   references:
   - dc-runner-python
   - dc-runner-rust
-  - specs/governance/cases/core/runtime_orchestration_policy_via_spec_lang.spec.md
+  - specs/governance/cases/retired/runtime_orchestration_policy_via_spec_lang.spec.md
 - id: ASSERT_BLOCK_DECISION_AUTHORITY_REQUIRED
   introduced_in: v1
   scope: governance
@@ -3863,7 +3861,7 @@ rules:
   references:
   - dc-runner-python
   - specs/contract/03_assertions.md
-  - specs/governance/cases/core/runtime_assert_block_decision_authority_required.spec.md
+  - specs/governance/cases/retired/runtime_assert_block_decision_authority_required.spec.md
 - id: META_JSON_TARGET_REQUIRED
   introduced_in: v1
   scope: runtime
@@ -3880,7 +3878,7 @@ rules:
   - dc-runner-python
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/runtime_meta_json_target_required.spec.md
+  - specs/governance/cases/retired/runtime_meta_json_target_required.spec.md
 - id: OPS_OS_CAPABILITY_REQUIRED
   introduced_in: v1
   scope: runtime
@@ -3893,7 +3891,7 @@ rules:
   risk_if_violated: Unbounded process/environment side effects from specs.
   references:
   - dc-runner-python
-  - specs/governance/cases/core/runtime_ops_os_capability_required.spec.md
+  - specs/governance/cases/retired/runtime_ops_os_capability_required.spec.md
 - id: CONTRACT_SPEC_FENCE_REQUIRED
   introduced_in: v1
   scope: runtime

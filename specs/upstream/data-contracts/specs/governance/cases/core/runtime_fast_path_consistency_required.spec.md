@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-TRIAGE-023
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: fast-path consistency is enforced across pre-push and gate scripts
 type: contract.check
 purpose: Ensures fast-path routing tokens remain aligned across local parity, ci gate, and

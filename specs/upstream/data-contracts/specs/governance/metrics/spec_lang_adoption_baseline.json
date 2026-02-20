@@ -952,7 +952,7 @@
       "file": "specs/conformance/cases/core/spec_lang_schema.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 0.0,
-      "id": "DCCONF-STDLIB-003",
+      "id": "DCCONF-SCHEMA-STDLIB-003",
       "library_backed_case": 0.0,
       "library_backed_policy": 0.0,
       "logic_self_contained_ratio": 1.0,
@@ -964,7 +964,7 @@
       "file": "specs/conformance/cases/core/spec_lang_schema.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 0.0,
-      "id": "DCCONF-STDLIB-004",
+      "id": "DCCONF-SCHEMA-STDLIB-004",
       "library_backed_case": 0.0,
       "library_backed_policy": 0.0,
       "logic_self_contained_ratio": 1.0,
@@ -1000,7 +1000,7 @@
       "file": "specs/conformance/cases/core/spec_lang_stdlib.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 0.0,
-      "id": "DCCONF-STDLIB-003",
+      "id": "DCCONF-SCHEMA-STDLIB-003",
       "library_backed_case": 0.0,
       "library_backed_policy": 0.0,
       "logic_self_contained_ratio": 1.0,
@@ -1012,7 +1012,7 @@
       "file": "specs/conformance/cases/core/spec_lang_stdlib.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 0.0,
-      "id": "DCCONF-STDLIB-004",
+      "id": "DCCONF-SCHEMA-STDLIB-004",
       "library_backed_case": 0.0,
       "library_backed_policy": 0.0,
       "logic_self_contained_ratio": 1.0,
@@ -1597,7 +1597,7 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/docs_cli_flags_documented.spec.md",
+      "file": "specs/governance/cases/retired/docs_cli_flags_documented.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-DOCS-REF-005",
@@ -2125,10 +2125,10 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/governance_extractor_only_no_verdict_branching.spec.md",
+      "file": "specs/governance/cases/retired/governance_extractor_only_no_verdict_branching.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
-      "id": "DCGOV-POLICY-REQ-002",
+      "id": "DCGOV-POLICY-REQ-003",
       "library_backed_case": 1.0,
       "library_backed_policy": 1.0,
       "logic_self_contained_ratio": 1.0,
@@ -2176,7 +2176,7 @@
       "file": "specs/governance/cases/core/governance_structured_assertions_required.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
-      "id": "DCGOV-POLICY-REQ-002",
+      "id": "DCGOV-POLICY-REQ-003",
       "library_backed_case": 1.0,
       "library_backed_policy": 1.0,
       "logic_self_contained_ratio": 1.0,
@@ -2605,7 +2605,7 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runner_independence_non_regression.spec.md",
+      "file": "specs/governance/cases/retired/runner_independence_non_regression.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUNTIME-INDEP-002",
@@ -2713,7 +2713,7 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runtime_assertions_via_spec_lang.spec.md",
+      "file": "specs/governance/cases/retired/runtime_assertions_via_spec_lang.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUNTIME-ASSERT-001",
@@ -3013,7 +3013,6 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runtime_no_public_direct_rust_adapter_docs.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUNTIME-ENTRY-004",
@@ -3037,7 +3036,7 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runtime_orchestration_policy_via_spec_lang.spec.md",
+      "file": "specs/governance/cases/retired/runtime_orchestration_policy_via_spec_lang.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUNTIME-ORCH-001",
@@ -3085,7 +3084,6 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runtime_public_runner_default_rust.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUNTIME-ENTRY-002",
@@ -3097,7 +3095,7 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runtime_public_runner_entrypoint_single.spec.md",
+      "file": "specs/governance/cases/retired/runtime_public_runner_entrypoint_single.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUNTIME-ENTRY-001",
@@ -3169,7 +3167,7 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runtime_runner_interface_gate_sync.spec.md",
+      "file": "specs/governance/cases/retired/runtime_runner_interface_gate_sync.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUNTIME-CONFIG-003",
@@ -3181,7 +3179,7 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runtime_runner_interface_subcommands.spec.md",
+      "file": "specs/governance/cases/retired/runtime_runner_interface_subcommands.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUNTIME-CONFIG-004",
@@ -3193,7 +3191,6 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runtime_rust_adapter_no_delegate.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUNTIME-CONFIG-006",
@@ -3205,7 +3202,7 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runtime_rust_adapter_no_python_exec.spec.md",
+      "file": "specs/governance/cases/retired/runtime_rust_adapter_no_python_exec.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUST-PRIMARY-008",
@@ -3217,7 +3214,7 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runtime_rust_adapter_transitive_no_python.spec.md",
+      "file": "specs/governance/cases/retired/runtime_rust_adapter_transitive_no_python.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUNTIME-PYDEP-004",
@@ -3229,7 +3226,6 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runtime_rust_primary_adapter_exec_smoke.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUST-PRIMARY-005",
@@ -3241,7 +3237,6 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runtime_rust_primary_adapter_exec_smoke_success.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUST-PRIMARY-006",
@@ -3253,7 +3248,6 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runtime_rust_primary_gate_path.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUST-PRIMARY-001",
@@ -3265,7 +3259,6 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runtime_rust_primary_interface_stability.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUST-PRIMARY-003",
@@ -3277,7 +3270,6 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runtime_rust_primary_no_python_dependency.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUST-PRIMARY-002",
@@ -3289,7 +3281,6 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runtime_rust_primary_shared_capability_parity.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUST-PRIMARY-004",
@@ -3301,7 +3292,6 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runtime_rust_primary_subcommand_parity.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUST-PRIMARY-007",
@@ -3349,7 +3339,7 @@
       "type": "governance.check"
     },
     {
-      "file": "specs/governance/cases/core/runtime_spec_lang_pure_no_effect_builtins.spec.md",
+      "file": "specs/governance/cases/retired/runtime_spec_lang_pure_no_effect_builtins.spec.md",
       "governance_symbol_resolution": 1.0,
       "has_evaluate": 1.0,
       "id": "DCGOV-RUNTIME-SPECLANG-PURE-001",

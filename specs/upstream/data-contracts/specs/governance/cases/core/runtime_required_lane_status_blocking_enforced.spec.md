@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-STATUS-006
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: required lane status remains blocking
 purpose: Ensures required-lane status outcomes map to blocking policy effects.
 type: contract.check

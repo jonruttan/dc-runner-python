@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: key reference chapters include required sections
 purpose: Keeps the core reference pages structurally complete by requiring stable section
   tokens for author and implementer workflows.

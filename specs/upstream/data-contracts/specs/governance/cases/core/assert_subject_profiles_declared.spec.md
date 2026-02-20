@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-ASSERT-PROFILE-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: subject profile contract artifacts are declared
 purpose: Ensures subject profile contract/schema/type docs and domain libraries are present
   as required artifacts.

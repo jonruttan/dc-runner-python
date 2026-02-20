@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-SPEC-MD-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: canonical executable trees forbid yaml and json case files
 purpose: Ensures no runnable .spec.yaml, .spec.yml, or .spec.json files exist under canonical
   executable case roots.

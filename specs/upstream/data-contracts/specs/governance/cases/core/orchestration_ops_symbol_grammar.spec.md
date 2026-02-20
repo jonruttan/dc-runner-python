@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-OPS-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: orchestration ops symbols follow deep-dot grammar
 purpose: Ensures effect symbols use canonical deep-dot ops names.
 type: contract.check

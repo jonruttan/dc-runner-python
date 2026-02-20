@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-MD-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: markdown checks use structured markdown helper library
 purpose: Prevent brittle plain string-contains markdown assertions in governed docs cases.
 type: contract.check

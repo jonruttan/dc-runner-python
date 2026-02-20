@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOC-V1-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: v1 scope contract doc exists and includes required sections
 purpose: Ensures v1 scope and compatibility commitments remain explicit and discoverable.
 type: contract.check

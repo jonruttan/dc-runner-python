@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-REF-SYMBOLS-004
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: private library symbols are not referenced externally
 purpose: Ensures conformance/governance/impl cases do not reference defines.private symbols
   from library docs.

@@ -10,12 +10,21 @@ rules:
   DCGOV-RUNTIME-CI-003: runtime.matrix_artifacts_emitted
   DCGOV-RUNTIME-CONTRACT-001: runtime.contracts_no_rust_primary_language
   DCGOV-RUNTIME-DOCS-001: runtime.docs_no_required_lane_language
-  DCGOV-DOCS-REF-019: docs.readme_task_usage_paths_present
-  DCGOV-DOCS-REF-020: docs.readme_makefile_cookbook_forbidden
+  DCGOV-DOCS-REF-019: docs.book_spec_purpose_chapters_present
+  DCGOV-DOCS-REF-020: docs.usage_guides_index_sync
   DCGOV-DOCS-REF-021: docs.usage_guides_required_set_present
   DCGOV-DOCS-REF-022: docs.reference_manifest_guide_order_canonical
   DCGOV-DOCS-REF-023: docs.guide_contract_links_valid
   DCGOV-DOCS-REF-024: docs.visual_aids_core_chapters_present
+  DCGOV-DOCS-REF-025: docs.readme_task_usage_paths_present
+  DCGOV-DOCS-REF-026: docs.readme_makefile_cookbook_forbidden
+  DCGOV-DOCS-REF-027: docs.reviews_discovery_workflow_sync
+  DCGOV-POLICY-REQ-003: governance.structured_assertions_required
+  DCGOV-SCHEMA-PIN-001: schema.spec_case_version_present
+  DCGOV-SCHEMA-PIN-002: schema.spec_case_schema_ref_present
+  DCGOV-SCHEMA-PIN-003: schema.spec_case_schema_ref_known
+  DCGOV-SCHEMA-PIN-004: schema.spec_case_version_matches_schema_ref
+  DCGOV-SCHEMA-PIN-005: schema.catalog_contains_active_schema_v1
   DCGOV-DOCS-: docs.
   DCGOV-RUNTIME-: runtime.
   DCGOV-CONTRACT-: contract.

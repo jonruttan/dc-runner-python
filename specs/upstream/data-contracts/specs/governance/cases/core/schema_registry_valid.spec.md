@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-SCHEMA-REG-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: schema registry model is present and valid
 purpose: Ensures schema registry source files and contract docs are present and compile without
   registry errors.

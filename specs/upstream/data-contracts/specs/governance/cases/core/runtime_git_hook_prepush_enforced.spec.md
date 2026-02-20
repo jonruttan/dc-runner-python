@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-PREPUSH-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: managed pre-push hook enforces local parity gate
 purpose: Ensures repository-managed pre-push hook exists and is installable via canonical
   script.

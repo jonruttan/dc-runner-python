@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CHAIN-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: chain cycles are forbidden
 purpose: Ensures direct and indirect harness.chain dependency cycles are rejected.
 type: contract.check

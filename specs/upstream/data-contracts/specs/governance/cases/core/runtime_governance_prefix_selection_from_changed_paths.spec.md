@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-TRIAGE-011
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: governance triage selects prefixes from changed paths
 type: contract.check
 purpose: Ensures triage auto mode derives targeted check prefixes from changed paths before

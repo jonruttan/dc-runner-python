@@ -5,6 +5,8 @@
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: conformance purpose json report
 purpose: Ensures report contract jobs dispatch and write the expected artifact output path.
 type: contract.job
@@ -65,6 +67,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: conformance purpose markdown report
 purpose: Ensures report contract jobs dispatch and write the expected artifact output path.
 type: contract.job
@@ -125,6 +129,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: spec portability json report
 purpose: Ensures report contract jobs dispatch and write the expected artifact output path.
 type: contract.job
@@ -185,6 +191,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-004
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: spec portability markdown report
 purpose: Ensures report contract jobs dispatch and write the expected artifact output path.
 type: contract.job
@@ -245,6 +253,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-005
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: contract assertions json report
 purpose: Ensures report contract jobs dispatch and write the expected artifact output path.
 type: contract.job
@@ -305,6 +315,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-006
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: contract assertions markdown report
 purpose: Ensures report contract jobs dispatch and write the expected artifact output path.
 type: contract.job
@@ -365,6 +377,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-007
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: spec lang adoption json report
 purpose: Ensures report contract jobs dispatch and write the expected artifact output path.
 type: contract.job
@@ -425,6 +439,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-008
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: spec lang adoption markdown report
 purpose: Ensures report contract jobs dispatch and write the expected artifact output path.
 type: contract.job
@@ -485,6 +501,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-009
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: runner independence json report
 purpose: Ensures report contract jobs dispatch and write the expected artifact output path.
 type: contract.job
@@ -545,6 +563,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-010
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: runner independence markdown report
 purpose: Ensures report contract jobs dispatch and write the expected artifact output path.
 type: contract.job
@@ -605,6 +625,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-011
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: python dependency json report
 purpose: Ensures report contract jobs dispatch and write the expected artifact output path.
 type: contract.job
@@ -665,6 +687,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-012
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: python dependency markdown report
 purpose: Ensures report contract jobs dispatch and write the expected artifact output path.
 type: contract.job
@@ -725,6 +749,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-013
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs operability json report
 purpose: Ensures report contract jobs dispatch and write the expected artifact output path.
 type: contract.job
@@ -785,6 +811,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-014
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs operability markdown report
 purpose: Ensures report contract jobs dispatch and write the expected artifact output path.
 type: contract.job
@@ -845,6 +873,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-015
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: objective scorecard json report
 purpose: Ensures report contract jobs dispatch and write the expected artifact output path.
 type: contract.job
@@ -905,6 +935,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-016
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: objective scorecard markdown report
 purpose: Ensures report contract jobs dispatch and write the expected artifact output path.
 type: contract.job
@@ -965,6 +997,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-017
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: spec lang stdlib json report
 purpose: Ensures report contract jobs dispatch and write the expected artifact output path.
 type: contract.job
@@ -1025,6 +1059,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-018
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: spec lang stdlib markdown report
 purpose: Ensures report contract jobs dispatch and write the expected artifact output path.
 type: contract.job

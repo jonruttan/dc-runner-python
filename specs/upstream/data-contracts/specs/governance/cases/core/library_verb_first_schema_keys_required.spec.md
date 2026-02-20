@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-LIB-VERB-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: library schema uses verb-first key names
 purpose: Ensures spec_lang.export authoring uses defines.public/defines.private and rejects
   non-canonical definitions keys.

@@ -2,6 +2,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOMAIN-LIB-HTTP-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: api.http context assertions prefer domain http helpers
 purpose: Enforces `domain.http.*` helper usage for oauth meta assertions in api.http cases
   instead of raw std.object.get projection chains.

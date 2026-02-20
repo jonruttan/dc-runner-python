@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-STDLIB-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: stdlib profile references are synchronized in schema contract and book docs
 purpose: Ensures core docs reference the canonical stdlib profile artifacts.
 type: contract.check

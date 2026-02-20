@@ -8,8 +8,12 @@ maintenance decisions stay predictable.
 - Execute Markdown-embedded `yaml contract-spec` blocks for core types:
   - `text.file`
   - `cli.run`
+- Require explicit schema pinning for every executable case:
+  - `spec_version: 1`
+  - `schema_ref: /specs/schema/schema_v1.md`
 - Enforce stable case shape and assertion DSL from:
   - `specs/schema/schema_v1.md`
+  - `specs/schema/schema_catalog_v1.yaml`
   - `specs/contract/`
   - `specs/schema/registry/v1/*.yaml` (machine source of truth)
 - Maintain deterministic conformance and parity checks across:

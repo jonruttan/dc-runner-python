@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-STATUS-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: runner status matrix schema is defined
 purpose: Ensures aggregated status matrix contract shape is declared for governance and docs.
 type: contract.check

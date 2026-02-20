@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-QUAL-005
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: instruction pages contain required operational sections
 purpose: Ensures docs metadata required sections are present in canonical chapter content.
 type: contract.check

@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-012
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: review prompts stay aligned with canonical snapshot contract
 purpose: Ensures active review prompts reference the review output contract/schema and include canonical output section tokens.
 type: contract.check

@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOC-REGEX-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: regex profile and operator tokens are synchronized across core docs
 purpose: Ensures regex portability linkage and core assertion operator tokens remain aligned
   in contract/schema/policy docs.

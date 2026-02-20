@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCCONF-SCHEMA-REG-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: schema docs include generated registry snapshot markers
 purpose: Ensures generated schema registry snapshot markers and section header are present
   in schema_v1 documentation.

@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-SPEC-MD-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: spec-lang library cases are markdown only
 purpose: Ensures type spec_lang.export cases are authored only in .spec.md files under specs/libraries.
 type: contract.check

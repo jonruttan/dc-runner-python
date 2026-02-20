@@ -11,6 +11,8 @@ Coverage focus:
 
 ```yaml contract-spec
 id: DCCONF-CLI-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: conformance fixture sets explicit cli.run harness.entrypoint
 purpose: Defines portable behavior for explicit cli.run entrypoint when capability is present.
 type: contract.check
@@ -45,6 +47,8 @@ contract:
 
 ```yaml contract-spec
 id: DCCONF-CLI-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: explicit entrypoint drives cli.run behavior deterministically
 purpose: Pins deterministic behavior for explicit harness entrypoint execution.
 type: contract.check

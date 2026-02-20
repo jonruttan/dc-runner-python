@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-SCHEMA-VERB-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: verb-first contract wording remains synchronized
 purpose: Ensures schema/contract/current docs use defines wording and reject non-canonical
   definitions wording.

@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-GEN-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs generator outputs are synchronized
 purpose: Ensures all registry-backed docs generator outputs are up-to-date in check mode.
 type: contract.check

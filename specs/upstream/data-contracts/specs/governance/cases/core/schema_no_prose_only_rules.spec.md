@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-SCHEMA-REG-004
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: schema contract avoids prose-only rules
 purpose: Ensures schema contract docs explicitly tie behavior to registry source-of-truth
   wording.

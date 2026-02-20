@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-TRIAGE-006
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: emergency bypass remains explicit and logged
 purpose: Ensures pre-push bypass remains explicit and emits deterministic warning output.
 type: contract.check

@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CHAIN-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: chain references resolve deterministically
 purpose: Ensures harness.chain step references resolve by contract for
 type: contract.check

@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-CANON-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: specs index links all canonical spec entrypoints
 purpose: Ensures /specs/index.md links every canonical spec subtree and current snapshot.
 type: contract.check

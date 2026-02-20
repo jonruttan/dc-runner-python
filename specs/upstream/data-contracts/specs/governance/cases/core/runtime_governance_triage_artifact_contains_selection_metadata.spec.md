@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-TRIAGE-012
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: triage artifact includes selection metadata
 type: contract.check
 purpose: Ensures governance triage artifacts include selection_source and selected_prefixes

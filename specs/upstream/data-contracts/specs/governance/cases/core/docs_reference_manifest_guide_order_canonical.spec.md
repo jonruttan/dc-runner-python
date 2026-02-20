@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-023
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: reference manifest guide order is canonical
 purpose: Ensures usage guides are listed in canonical numeric order in the reference manifest.
 type: contract.check

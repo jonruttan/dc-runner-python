@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CONF-PORT-004
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: conformance case fields stay aligned with type contract docs
 purpose: Ensures portable fixture top-level keys are declared by each type contract plus common
   schema keys.

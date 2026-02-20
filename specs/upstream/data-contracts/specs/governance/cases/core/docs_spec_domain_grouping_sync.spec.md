@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-SPECDOMAIN-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: spec case catalog domain grouping is synchronized
 purpose: Ensures generated spec case catalog includes stable domain-grouped sections.
 type: contract.check

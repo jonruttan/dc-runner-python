@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-STATUS-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: runner status report schema is defined
 purpose: Ensures runner status exchange producer payload shape is declared and stable.
 type: contract.check

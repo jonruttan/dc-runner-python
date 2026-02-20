@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCCONF-DOMAIN-LIB-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: domain http library defines status helper
 purpose: Ensures domain HTTP library exports reusable status-based assertion helper.
 type: contract.check
@@ -200,6 +202,8 @@ contract:
 
 ```yaml contract-spec
 id: DCCONF-DOMAIN-LIB-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: domain library index references all domain library files
 purpose: Ensures domain index remains synchronized with all domain library spec files.
 type: contract.check

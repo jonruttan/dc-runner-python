@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-LIVENESS-HARDCAP-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: run trace includes hard-cap and kill escalation reason tokens
 purpose: Ensures emergency hard-cap watchdog behavior is represented in trace token taxonomy.
 type: contract.check

@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-018
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs book chapter order is canonical
 purpose: Enforces the hard-cut Learn -> Do -> Debug chapter order and appendix namespace ordering
   in the reference manifest.

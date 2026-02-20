@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-SCHEMA-REG-005
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: required schema type profiles exist
 purpose: Ensures required type profiles are defined in registry for core runtime case types.
 type: contract.check

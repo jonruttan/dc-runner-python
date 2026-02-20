@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-TEST-UNIT-OPT-OUT-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: unit test opt-out usage is measured and non-regressing
 purpose: Tracks unit-test opt-out usage and enforces a non-regression baseline so opt-out
   coverage is reduced over time.

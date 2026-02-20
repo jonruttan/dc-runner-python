@@ -2,6 +2,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOMAIN-LIB-OPS-FS-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: executable specs prefer domain library helpers over raw ops fs symbols
 purpose: Enforces domain.path/domain.fs usage in executable specs and allows raw ops.fs usage
   only in stdlib primitive conformance coverage.

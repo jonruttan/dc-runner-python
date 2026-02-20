@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-LIBSYM-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: library symbol doc params stay in sync
 purpose: Ensures harness.exports params match doc.params names and order.
 type: contract.check

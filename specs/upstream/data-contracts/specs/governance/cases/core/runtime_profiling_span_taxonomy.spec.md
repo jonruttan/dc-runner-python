@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-PROFILE-SPANS-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: run trace records required span taxonomy for timeout diagnosis
 purpose: Ensures the canonical run trace includes required run, case, check, and subprocess
   spans used by timeout diagnostics.

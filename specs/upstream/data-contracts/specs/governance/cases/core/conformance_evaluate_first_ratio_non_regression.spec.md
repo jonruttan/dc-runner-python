@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CONF-SPECLANG-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: conformance evaluate-first ratio is non-regressing
 purpose: Enforces ratchet-style non-regression for conformance evaluate coverage against the
   checked-in spec-lang adoption baseline.

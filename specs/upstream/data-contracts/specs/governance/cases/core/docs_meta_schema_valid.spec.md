@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-QUAL-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs metadata schema is valid for canonical reference chapters
 purpose: Ensures each canonical reference chapter contains valid machine-checkable doc metadata.
 type: contract.check

@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-SPECLAYOUT-INDEX-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: spec domain indexes are synchronized
 purpose: Ensures each domain index tracks all spec files in its subtree and has no stale paths.
 type: contract.check

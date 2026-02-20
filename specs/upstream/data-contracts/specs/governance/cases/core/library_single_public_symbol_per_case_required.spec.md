@@ -2,6 +2,8 @@
 
 ```yaml contract-spec
 id: DCGOV-LIB-SINGLE-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: library cases use single public symbol granularity
 purpose: Ensures each spec_lang.export case defines exactly one symbol under defines.public.
 type: contract.check

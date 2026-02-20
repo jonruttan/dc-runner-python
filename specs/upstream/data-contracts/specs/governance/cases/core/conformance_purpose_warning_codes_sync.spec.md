@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CONF-PURPOSE-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: purpose warning code doc stays in sync with implementation codes
 purpose: Ensures docs for purpose warning codes include all implementation codes and no stale
   entries.

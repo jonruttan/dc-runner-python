@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-ASSERT-CORE-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: assertion docs define universal evaluate core
 purpose: Ensures schema and contract docs consistently define evaluate as the universal assertion
   core and classify other operators as authoring sugar.

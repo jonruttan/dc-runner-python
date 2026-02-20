@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-ARCH-COMPONENTS-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: non-canonical harness workflow duplication is forbidden
 purpose: Prevents harness modules from reintroducing local spec-lang setup and direct assertion-evaluation
   glue after component hard cut.

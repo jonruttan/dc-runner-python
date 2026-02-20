@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-009
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: core and full adoption profile docs stay synchronized
 purpose: Keeps contributor-facing docs aligned on core-check and full-check adoption profile
   wording.

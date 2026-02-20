@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-ARCH-COMPONENTS-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: harnesses must use shared workflow components
 purpose: Enforces hard-cut architecture by requiring shared execution context, assertion engine,
   and subject router wiring in all harnesses.

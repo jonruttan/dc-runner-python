@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-STDLIB-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: spec-lang stdlib symbols are parity-clean across python and php
 purpose: Ensures no profile symbol is missing in either runtime implementation.
 type: contract.check

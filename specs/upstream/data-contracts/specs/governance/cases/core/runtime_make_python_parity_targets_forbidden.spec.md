@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-PREPUSH-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: makefile contains no python parity prepush targets
 purpose: Ensures contributor-facing make targets do not expose python runner lane execution.
 type: contract.check

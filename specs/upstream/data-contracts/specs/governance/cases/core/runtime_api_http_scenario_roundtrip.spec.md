@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-APIHTTP-007
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: api.http scenario roundtrip support remains present
 purpose: Ensures requests-list roundtrip support, step templating, and steps_json targeting
   remain implemented.

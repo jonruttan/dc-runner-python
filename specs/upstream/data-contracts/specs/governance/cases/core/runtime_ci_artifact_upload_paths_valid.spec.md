@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-TRIAGE-013
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: ci workflow uploads artifacts from canonical .artifacts path
 purpose: Ensures CI uploads gate and triage artifacts using a recursive .artifacts path.
 type: contract.check

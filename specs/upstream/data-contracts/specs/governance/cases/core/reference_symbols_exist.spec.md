@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-REF-SYMBOLS-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: referenced library symbols resolve
 purpose: Ensures harness.spec_lang exports and library symbols resolve deterministically.
 type: contract.check

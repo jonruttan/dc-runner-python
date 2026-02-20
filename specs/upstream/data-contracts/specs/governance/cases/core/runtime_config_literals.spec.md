@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-CONFIG-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: runtime python code does not duplicate governed config literals
 purpose: Enforces centralized configuration by rejecting duplicated governed literals in runtime
   python sources.

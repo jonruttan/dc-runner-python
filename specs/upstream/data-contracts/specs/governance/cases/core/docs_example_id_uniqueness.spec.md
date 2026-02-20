@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-QUAL-007
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs example ids are unique
 purpose: Ensures example identifiers are unique across canonical docs metadata.
 type: contract.check

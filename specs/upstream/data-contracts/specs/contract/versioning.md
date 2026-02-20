@@ -2,6 +2,21 @@
 
 Portable contract rules follow a minimal lifecycle model for pre-alpha evolution.
 
+## Version Domains
+
+- **Schema version**: version of the contract-spec schema document (for example
+  `/specs/schema/schema_v1.md`).
+- **Spec-case version pin**: per-case header values in executable
+  `yaml contract-spec` blocks:
+  - `spec_version`
+  - `schema_ref`
+
+Executable cases are valid only when:
+
+- `schema_ref` resolves to an active entry in
+  `/specs/schema/schema_catalog_v1.yaml`
+- `spec_version` equals the schema major referenced by `schema_ref`
+
 ## Lifecycle Fields
 
 Each policy rule in `policy_v1.yaml` uses:

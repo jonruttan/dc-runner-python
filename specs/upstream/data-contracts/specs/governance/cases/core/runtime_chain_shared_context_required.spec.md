@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CHAIN-011
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: chain shared context is declared in dispatcher
 purpose: Ensures chain state, trace, imports, and chain payload surfaces are carried in shared
   runtime context.

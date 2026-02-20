@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-GEN-024
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: runner reference includes semantic sections
 purpose: Ensures generated runner API reference includes summary/defaults/failure modes/examples
   per command.

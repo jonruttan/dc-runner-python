@@ -1,9 +1,11 @@
 # Governance Cases
 
-## DCGOV-DOCS-REF-020
+## DCGOV-DOCS-REF-026
 
 ```yaml contract-spec
-id: DCGOV-DOCS-REF-020
+id: DCGOV-DOCS-REF-026
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: readme avoids makefile onboarding cookbook
 purpose: Keeps README focused on project purpose and usage, not local make workflows.
 type: contract.check

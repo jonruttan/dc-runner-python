@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-TRIAGE-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: governance triage entrypoint exists with required surface
 purpose: Ensures canonical governance triage script exists and exposes required flags.
 type: contract.check

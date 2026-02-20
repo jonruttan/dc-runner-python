@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-SPECLANG-EXPORT-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: non-canonical spec_lang.export type is forbidden after hard cut
 purpose: Ensures executable spec surfaces reject type spec_lang.export and require spec.export
   producer cases.

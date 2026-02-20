@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-016
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: discovery review prompt is present
 purpose: Ensures the discovery-fit self-heal review prompt exists in the canonical active review prompt set.
 type: contract.check

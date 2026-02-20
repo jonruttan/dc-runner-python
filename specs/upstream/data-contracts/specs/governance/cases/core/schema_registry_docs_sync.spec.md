@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-SCHEMA-REG-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: schema registry docs snapshot is synchronized
 purpose: Ensures schema_v1 markdown contains synchronized generated registry snapshot markers
   and tokens.

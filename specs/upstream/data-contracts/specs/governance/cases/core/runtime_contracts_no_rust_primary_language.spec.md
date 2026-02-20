@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-CONTRACT-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: contracts avoid rust-primary language
 purpose: Ensures active contracts remain implementation-agnostic.
 type: contract.check

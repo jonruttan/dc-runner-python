@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-PROFILE-CONTRACT-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: runtime profiling contract artifacts exist and are discoverable
 purpose: Ensures run trace schema and profiling contract docs are present and linked in current
   snapshot notes.

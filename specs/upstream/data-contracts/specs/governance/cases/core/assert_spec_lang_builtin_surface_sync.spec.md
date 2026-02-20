@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-ASSERT-SYNC-005
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: spec-lang builtin surface remains synced across contract and runners
 purpose: Ensures builtin operators documented in the spec-lang contract are implemented in
   both Python and PHP runner evaluators.

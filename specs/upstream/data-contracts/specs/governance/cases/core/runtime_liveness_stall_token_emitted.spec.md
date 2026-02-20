@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-LIVENESS-STALL-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: run trace contains liveness stall reason tokens
 purpose: Ensures watchdog reason tokens for runner/subprocess stall semantics are observable
   in run trace artifacts.

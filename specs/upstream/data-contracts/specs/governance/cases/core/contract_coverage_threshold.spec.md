@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CONTRACT-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: contract must-rule coverage stays complete
 purpose: Ensures all MUST policy rules remain covered by traceability evidence and keeps overall
   contract coverage above a minimum baseline.

@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs reference surface files exist
 purpose: Enforces that the canonical docs reference surface remains complete and cannot silently
   lose required files.

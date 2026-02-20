@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-014
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: review tooling stays synced with canonical candidate schema
 purpose: Ensures snapshot scaffolder and pending conversion tooling both use canonical review snapshot schema fields.
 type: contract.check

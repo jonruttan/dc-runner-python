@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-HOOKS-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: when hooks schema must be valid
 purpose: Enforces when shape and hook expression list requirements.
 type: contract.check

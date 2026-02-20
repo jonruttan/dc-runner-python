@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-APIHTTP-004
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: api.http oauth contract docs remain synchronized
 purpose: Ensures schema and contract docs contain the required api.http OAuth profile tokens.
 type: contract.check

@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-LIB-DOMAIN-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: library paths obey domain ownership
 purpose: Ensures conformance cases use conformance libraries and governance cases use policy/path
   libraries.

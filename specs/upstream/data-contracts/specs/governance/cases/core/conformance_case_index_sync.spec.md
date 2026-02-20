@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CONF-INDEX-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: conformance index stays in sync with fixture ids
 purpose: Ensures conformance case index includes all fixture ids and no stale ids.
 type: contract.check

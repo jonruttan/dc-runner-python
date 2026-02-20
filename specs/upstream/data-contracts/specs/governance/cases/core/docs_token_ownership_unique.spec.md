@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-QUAL-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: doc token ownership is unique
 purpose: Ensures canonical documentation tokens have a single owner page.
 type: contract.check

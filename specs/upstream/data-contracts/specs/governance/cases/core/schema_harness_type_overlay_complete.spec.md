@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-ARCH-COMPONENTS-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: harness type overlays are complete
 purpose: Ensures behavior-heavy harness types publish non-empty schema overlays for machine
   validation and drift prevention.

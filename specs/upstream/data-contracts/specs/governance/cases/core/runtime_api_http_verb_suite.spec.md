@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-APIHTTP-005
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: api.http practical verb suite remains covered and validated
 purpose: Ensures api.http fixtures cover GET/POST/PUT/PATCH/DELETE/HEAD/OPTIONS and reject
   unsupported methods.

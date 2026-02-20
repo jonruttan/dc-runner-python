@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-GEN-022
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: stdlib symbols include examples
 purpose: Ensures generated stdlib reference includes at least one complete example per symbol.
 type: contract.check

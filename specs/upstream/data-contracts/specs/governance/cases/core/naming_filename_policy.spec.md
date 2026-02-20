@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-NAME-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs filenames follow lowercase separator policy
 purpose: Enforces deterministic docs filename shape using underscores for words and hyphens
   for section separators.

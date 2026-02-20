@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCCONF-JOB-004
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: schema registry build via contract.job
 purpose: Ensures script command contracts dispatch and return deterministic success state.
 type: contract.job
@@ -64,6 +66,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-005
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: schema registry check via contract.job
 purpose: Ensures script command contracts dispatch and return deterministic success state.
 type: contract.job
@@ -124,6 +128,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-006
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs lint via contract.job
 purpose: Ensures script command contracts dispatch and return deterministic success state.
 type: contract.job
@@ -181,6 +187,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-007
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs generate build via contract.job
 purpose: Ensures script command contracts dispatch and return deterministic success state.
 type: contract.job
@@ -239,6 +247,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-008
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs generate check via contract.job
 purpose: Ensures script command contracts dispatch and return deterministic success state.
 type: contract.job
@@ -297,6 +307,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-009
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs build reference book via contract.job
 purpose: Ensures script command contracts dispatch and return deterministic success state.
 type: contract.job
@@ -356,6 +368,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-010
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs build check reference book via contract.job
 purpose: Ensures script command contracts dispatch and return deterministic success state.
 type: contract.job
@@ -415,6 +429,8 @@ when:
 
 ```yaml contract-spec
 id: DCCONF-JOB-011
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs graph export via contract.job
 purpose: Ensures script command contracts dispatch and return deterministic success state.
 type: contract.job

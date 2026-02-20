@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-017
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: discovery review prompt remains contract-synced
 purpose: Ensures the discovery-fit prompt references canonical review schema/contracts, required output sections, ordered entrypoint discovery, and explicit self-heal boundaries.
 type: contract.check

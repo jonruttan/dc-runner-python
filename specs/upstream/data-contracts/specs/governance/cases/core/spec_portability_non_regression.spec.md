@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-SPEC-PORT-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: spec-lang self-containment metric is non-regressing
 purpose: Enforces a monotonic ratchet so configured spec-lang self-containment metrics cannot
   decrease from baseline.

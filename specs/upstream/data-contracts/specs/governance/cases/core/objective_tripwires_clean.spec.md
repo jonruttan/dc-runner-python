@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-OBJECTIVE-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: objective tripwires are clean
 purpose: Ensures objective manifest tripwire checks map to valid governance checks and currently
   pass.

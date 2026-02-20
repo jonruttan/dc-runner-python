@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCCONF-CHAIN-EXPORT-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: producer export path must resolve to producer assert step id
 purpose: Ensures from=assert.function exports fail with schema category when export path does
   not resolve to a producer assert step.
@@ -32,6 +34,8 @@ contract:
 
 ```yaml contract-spec
 id: DCCONF-CHAIN-EXPORT-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: producer export source assert step must use class must
 purpose: Ensures from=assert.function exports fail with schema category when source step class
   is not must.

@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-ARCH-COMPONENTS-004
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: harness contract and overlays remain synchronized
 purpose: Verifies contract/current docs and harness type overlays describe the same orchestration.run
   and docs.generate architecture.

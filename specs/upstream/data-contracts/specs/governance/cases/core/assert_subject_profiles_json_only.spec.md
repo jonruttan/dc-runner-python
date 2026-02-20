@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-ASSERT-PROFILE-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: evaluator and schema enforce json-core subjects
 purpose: Ensures subject profile schema and evaluator enforce JSON-core subject values.
 type: contract.check

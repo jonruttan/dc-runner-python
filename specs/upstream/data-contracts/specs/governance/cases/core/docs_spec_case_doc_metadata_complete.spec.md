@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-SPECCASE-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: spec case root doc metadata is complete
 purpose: Ensures contract.export cases declare required root doc metadata fields.
 type: contract.check

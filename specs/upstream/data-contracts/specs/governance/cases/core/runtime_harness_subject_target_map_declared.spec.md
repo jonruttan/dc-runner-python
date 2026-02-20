@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-ARCH-COMPONENTS-005
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: harnesses declare target subject maps
 purpose: Enforces explicit target-to-subject mapping declarations so assertion targets remain
   deterministic and reviewable.

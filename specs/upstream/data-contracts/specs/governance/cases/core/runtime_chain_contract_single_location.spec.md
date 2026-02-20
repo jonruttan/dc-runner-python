@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CHAIN-009
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: chain contract uses harness.chain only
 purpose: Ensures chain declarations appear only at harness.chain and not in alternate top-level
   or type-specific locations.

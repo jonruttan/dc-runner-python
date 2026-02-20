@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-CONFIG-009
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: implicit subject binding is forbidden
 purpose: Ensures evaluator does not inject subject implicitly and requires explicit imports.
 type: contract.check

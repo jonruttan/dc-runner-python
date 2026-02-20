@@ -2,6 +2,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CHAIN-FROM-004
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: executable cases forbid spec_lang includes
 purpose: Ensures executable case types do not use harness.spec_lang.includes and load symbols
   through harness.chain.

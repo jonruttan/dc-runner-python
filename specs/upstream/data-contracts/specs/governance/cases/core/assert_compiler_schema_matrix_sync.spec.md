@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-ASSERT-SYNC-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: compiler behavior stays aligned with universal assertion contract
 purpose: Ensures compiler operator handling, schema wording, and assertion contract wording
   stay synchronized for universal evaluate core semantics.

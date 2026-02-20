@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-CONFIG-005
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: python compatibility lane remains non-blocking
 purpose: Ensures Python compatibility lane exists in CI and is configured as non-blocking.
 type: contract.check

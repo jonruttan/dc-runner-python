@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-SPEC-TOPO-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: specs taxonomy hard-cut layout is canonical
 purpose: Ensures governance utility domains are folded under `/specs/governance/*` and prior root shim paths are removed.
 type: contract.check

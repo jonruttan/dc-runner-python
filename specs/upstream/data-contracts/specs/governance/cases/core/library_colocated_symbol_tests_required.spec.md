@@ -2,6 +2,8 @@
 
 ```yaml contract-spec
 id: DCGOV-LIB-SINGLE-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: library exports are referenced by executable tests
 purpose: Ensures library exported symbols are exercised by colocated or downstream executable
   assertion/policy usage.

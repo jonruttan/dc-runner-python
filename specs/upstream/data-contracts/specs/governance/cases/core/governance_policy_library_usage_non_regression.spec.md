@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-POLICY-LIB-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: governance library-backed policy usage is non-regressing
 purpose: Enforces monotonic non-regression for governance policy expressions that use shared
   spec-lang libraries.

@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-STATUS-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: compatibility status ingestion is configured
 purpose: Ensures status exchange ingestion is wired to release assets and matrix artifacts.
 type: contract.check

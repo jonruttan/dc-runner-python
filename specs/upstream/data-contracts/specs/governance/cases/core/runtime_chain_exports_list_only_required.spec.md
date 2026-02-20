@@ -2,6 +2,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CHAIN-FORM-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: chain exports use list-only canonical form
 purpose: Ensures harness.chain step exports reject non-canonical mapping form and require
   list-form entries.

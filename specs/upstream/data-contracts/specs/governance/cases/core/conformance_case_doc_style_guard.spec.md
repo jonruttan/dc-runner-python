@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CONF-STYLE-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: conformance case documents satisfy style and purpose lint rules
 purpose: Ensures conformance fixtures remain readable, deterministic, and policy-compliant.
 type: contract.check

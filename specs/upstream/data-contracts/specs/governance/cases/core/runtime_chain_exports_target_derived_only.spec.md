@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CHAIN-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: chain exports remain target-derived only
 purpose: Ensures harness.chain step exports declare only explicit target-derived extraction
   keys.

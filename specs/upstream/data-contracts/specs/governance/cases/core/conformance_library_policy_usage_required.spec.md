@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CONF-POLICY-LIB-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: conformance governance checks require library-backed policy calls
 purpose: Ensures conformance-prefixed governance checks use shared spec-lang library wiring
   and evaluate library calls.

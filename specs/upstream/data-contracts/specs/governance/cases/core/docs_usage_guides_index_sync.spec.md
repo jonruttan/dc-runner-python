@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-020
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: usage guides index is synchronized
 purpose: Ensures the guides index includes the canonical guide set.
 type: contract.check

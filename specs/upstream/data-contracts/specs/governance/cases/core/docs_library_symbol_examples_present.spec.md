@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-LIBSYM-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: library symbol docs include examples
 purpose: Ensures each exported symbol has at least one structured documentation example.
 type: contract.check

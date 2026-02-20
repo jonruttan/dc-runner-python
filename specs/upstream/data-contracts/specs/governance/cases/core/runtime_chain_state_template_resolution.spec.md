@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CHAIN-005
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: chain template references resolve against explicit exports
 purpose: Ensures api.http chain templates use declared step export names and fail on unresolved
   references.

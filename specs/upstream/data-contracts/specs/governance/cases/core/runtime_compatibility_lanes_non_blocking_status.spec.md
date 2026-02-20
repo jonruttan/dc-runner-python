@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-CONFIG-007
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: compatibility lanes remain non-blocking
 purpose: Ensures compatibility runtime lanes are present in CI and explicitly non-blocking.
 type: contract.check

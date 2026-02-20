@@ -44,11 +44,11 @@ profiles:
         kind: file_tokens
         path: /README.md
         must_contain:
-          - How Users Use This Repository
+          - How Users Use This Project
           - Author a spec change
           - Validate docs and contract coherence
           - Read compatibility and status telemetry
-          - Debug governance or docs drift
+          - Debug governance or documentation drift
       - id: docs.readme_makefile_cookbook_forbidden
         kind: file_tokens
         path: /README.md
@@ -56,6 +56,21 @@ profiles:
           - make setup
           - make prepush
           - hooks-install
+      - id: schema.spec_case_version_present
+        kind: file_tokens
+        path: /scripts/spec_schema_pin_validate.py
+        must_contain:
+          - missing_spec_version_count
+      - id: schema.spec_case_schema_ref_present
+        kind: file_tokens
+        path: /scripts/spec_schema_pin_validate.py
+        must_contain:
+          - missing_schema_ref_count
+      - id: schema.spec_case_schema_ref_known
+        kind: file_tokens
+        path: /scripts/spec_schema_pin_validate.py
+        must_contain:
+          - unknown_schema_ref_count
   full:
     checks:
       - id: runtime.full_check_set_manifest_required
@@ -138,3 +153,532 @@ profiles:
           - 15_spec_lifecycle.md
           - 25_system_topology.md
           - Mermaid
+      - id: schema.spec_case_version_matches_schema_ref
+        kind: file_tokens
+        path: /scripts/spec_schema_pin_validate.py
+        must_contain:
+          - mismatched_version_count
+      - id: schema.catalog_contains_active_schema_v1
+        kind: file_tokens
+        path: /specs/schema/schema_catalog_v1.yaml
+        must_contain:
+          - schema_id: contract_spec
+          - major: 1
+          - path: /specs/schema/schema_v1.md
+          - status: active
+  optional:
+    checks:
+      - id: schema.spec_case_mixed_major_single_file_forbidden
+        kind: report_only
+      - id: architecture.harness_local_workflow_duplication_forbidden
+        kind: report_only
+      - id: architecture.harness_workflow_components_required
+        kind: report_only
+      - id: assert.adapter_projection_contract_sync
+        kind: report_only
+      - id: assert.compiler_schema_matrix_sync
+        kind: report_only
+      - id: assert.domain_library_usage_required
+        kind: report_only
+      - id: assert.domain_profiles_docs_sync
+        kind: report_only
+      - id: assert.spec_lang_builtin_surface_sync
+        kind: report_only
+      - id: assert.subject_profiles_declared
+        kind: report_only
+      - id: assert.subject_profiles_json_only
+        kind: report_only
+      - id: assert.sugar_compile_only_sync
+        kind: report_only
+      - id: assert.type_contract_subject_semantics_sync
+        kind: report_only
+      - id: assert.universal_core_sync
+        kind: report_only
+      - id: conformance.api_http_portable_shape
+        kind: report_only
+      - id: conformance.case_doc_style_guard
+        kind: report_only
+      - id: conformance.case_index_sync
+        kind: report_only
+      - id: conformance.evaluate_first_ratio_non_regression
+        kind: report_only
+      - id: conformance.extension_requires_capabilities
+        kind: report_only
+      - id: conformance.library_contract_cases_present
+        kind: report_only
+      - id: conformance.library_policy_usage_required
+        kind: report_only
+      - id: conformance.no_runner_logic_outside_harness
+        kind: report_only
+      - id: conformance.purpose_quality_gate
+        kind: report_only
+      - id: conformance.purpose_warning_codes_sync
+        kind: report_only
+      - id: conformance.spec_lang_fixture_library_usage
+        kind: report_only
+      - id: conformance.type_contract_docs
+        kind: report_only
+      - id: conformance.type_contract_field_sync
+        kind: report_only
+      - id: contract.coverage_threshold
+        kind: report_only
+      - id: contract.governance_check
+        kind: report_only
+      - id: docs.adoption_profiles_sync
+        kind: report_only
+      - id: docs.api_http_tutorial_sync
+        kind: report_only
+      - id: docs.book_chapter_order_canonical
+        kind: report_only
+      - id: docs.book_spec_purpose_chapters_present
+        kind: report_only
+      - id: docs.canonical_freshness_strict
+        kind: report_only
+      - id: docs.cli_flags_documented
+        kind: report_only
+      - id: docs.command_examples_verified
+        kind: report_only
+      - id: docs.compatibility_examples_labeled
+        kind: report_only
+      - id: docs.contract_schema_book_sync
+        kind: report_only
+      - id: docs.current_spec_only_contract
+        kind: report_only
+      - id: docs.current_spec_policy_key_names
+        kind: report_only
+      - id: docs.docgen_quality_score_threshold
+        kind: report_only
+      - id: docs.example_id_uniqueness
+        kind: report_only
+      - id: docs.examples_prefer_domain_fs_helpers
+        kind: report_only
+      - id: docs.examples_runnable
+        kind: report_only
+      - id: docs.filename_policy
+        kind: report_only
+      - id: docs.generated_command_meta_no_python_exec
+        kind: report_only
+      - id: docs.generated_files_clean
+        kind: report_only
+      - id: docs.generated_sections_read_only
+        kind: report_only
+      - id: docs.generator_outputs_sync
+        kind: report_only
+      - id: docs.generator_registry_valid
+        kind: report_only
+      - id: docs.governance_check_catalog_sync
+        kind: report_only
+      - id: docs.governance_check_family_map_complete
+        kind: report_only
+      - id: docs.harness_reference_semantics_complete
+        kind: report_only
+      - id: docs.harness_type_catalog_sync
+        kind: report_only
+      - id: docs.index_filename_policy
+        kind: report_only
+      - id: docs.instructions_complete
+        kind: report_only
+      - id: docs.layout_canonical_trees
+        kind: report_only
+      - id: docs.library_symbol_catalog_sync
+        kind: report_only
+      - id: docs.library_symbol_examples_present
+        kind: report_only
+      - id: docs.library_symbol_metadata_complete
+        kind: report_only
+      - id: docs.library_symbol_params_sync
+        kind: report_only
+      - id: docs.make_commands_sync
+        kind: report_only
+      - id: docs.markdown_structured_assertions_required
+        kind: report_only
+      - id: docs.meta_schema_valid
+        kind: report_only
+      - id: docs.metrics_field_catalog_sync
+        kind: report_only
+      - id: docs.no_os_artifact_files
+        kind: report_only
+      - id: docs.operability_non_regression
+        kind: report_only
+      - id: docs.policy_rule_catalog_sync
+        kind: report_only
+      - id: docs.readme_rust_first_coherence
+        kind: report_only
+      - id: docs.reference_index_sync
+        kind: report_only
+      - id: docs.reference_manifest_sync
+        kind: report_only
+      - id: docs.reference_namespace_chapters_sync
+        kind: report_only
+      - id: docs.reference_surface_complete
+        kind: report_only
+      - id: docs.regex_doc_sync
+        kind: report_only
+      - id: docs.release_contract_automation_policy
+        kind: report_only
+      - id: docs.required_sections
+        kind: report_only
+      - id: docs.review_snapshot_template_contract_sync
+        kind: report_only
+      - id: docs.review_snapshots_schema_valid
+        kind: report_only
+      - id: docs.review_tooling_contract_sync
+        kind: report_only
+      - id: docs.reviews_discovery_prompt_contract_sync
+        kind: report_only
+      - id: docs.reviews_discovery_prompt_present
+        kind: report_only
+      - id: docs.reviews_discovery_workflow_sync
+        kind: report_only
+      - id: docs.reviews_namespace_active
+        kind: report_only
+      - id: docs.reviews_prompt_schema_contract_sync
+        kind: report_only
+      - id: docs.runner_api_catalog_sync
+        kind: report_only
+      - id: docs.runner_reference_semantics_complete
+        kind: report_only
+      - id: docs.security_warning_contract
+        kind: report_only
+      - id: docs.spec_case_catalog_sync
+        kind: report_only
+      - id: docs.spec_case_doc_metadata_complete
+        kind: report_only
+      - id: docs.spec_domain_grouping_sync
+        kind: report_only
+      - id: docs.spec_index_reachability
+        kind: report_only
+      - id: docs.spec_lang_builtin_catalog_sync
+        kind: report_only
+      - id: docs.spec_schema_field_catalog_sync
+        kind: report_only
+      - id: docs.stdlib_examples_complete
+        kind: report_only
+      - id: docs.stdlib_symbol_docs_complete
+        kind: report_only
+      - id: docs.token_dependency_resolved
+        kind: report_only
+      - id: docs.token_ownership_unique
+        kind: report_only
+      - id: docs.traceability_catalog_sync
+        kind: report_only
+      - id: docs.usage_guides_index_sync
+        kind: report_only
+      - id: docs.v1_scope_contract
+        kind: report_only
+      - id: governance.extractor_only_no_verdict_branching
+        kind: report_only
+      - id: governance.policy_library_usage_non_regression
+        kind: report_only
+      - id: governance.policy_library_usage_required
+        kind: report_only
+      - id: governance.structured_assertions_required
+        kind: report_only
+      - id: library.colocated_symbol_tests_required
+        kind: report_only
+      - id: library.domain_index_sync
+        kind: report_only
+      - id: library.domain_ownership
+        kind: report_only
+      - id: library.public_surface_model
+        kind: report_only
+      - id: library.single_public_symbol_per_case_required
+        kind: report_only
+      - id: library.verb_first_schema_keys_required
+        kind: report_only
+      - id: naming.filename_policy
+        kind: report_only
+      - id: normalization.docs_token_sync
+        kind: report_only
+      - id: normalization.library_mapping_ast_only
+        kind: report_only
+      - id: normalization.mapping_ast_only
+        kind: report_only
+      - id: normalization.profile_sync
+        kind: report_only
+      - id: normalization.spec_style_sync
+        kind: report_only
+      - id: normalization.virtual_root_paths_only
+        kind: report_only
+      - id: objective.scorecard_non_regression
+        kind: report_only
+      - id: objective.tripwires_clean
+        kind: report_only
+      - id: orchestration.ops_capability_bindings
+        kind: report_only
+      - id: orchestration.ops_registry_sync
+        kind: report_only
+      - id: orchestration.ops_symbol_grammar
+        kind: report_only
+      - id: pending.no_resolved_markers
+        kind: report_only
+      - id: reference.check_ids_exist
+        kind: report_only
+      - id: reference.contract_paths_exist
+        kind: report_only
+      - id: reference.external_refs_policy
+        kind: report_only
+      - id: reference.library_exports_used
+        kind: report_only
+      - id: reference.policy_symbols_resolve
+        kind: report_only
+      - id: reference.private_symbols_forbidden
+        kind: report_only
+      - id: reference.symbols_exist
+        kind: report_only
+      - id: reference.token_anchors_exist
+        kind: report_only
+      - id: runtime.api_http_cors_support
+        kind: report_only
+      - id: runtime.api_http_live_mode_explicit
+        kind: report_only
+      - id: runtime.api_http_oauth_docs_sync
+        kind: report_only
+      - id: runtime.api_http_oauth_env_only
+        kind: report_only
+      - id: runtime.api_http_oauth_no_secret_literals
+        kind: report_only
+      - id: runtime.api_http_parity_contract_sync
+        kind: report_only
+      - id: runtime.api_http_scenario_roundtrip
+        kind: report_only
+      - id: runtime.api_http_verb_suite
+        kind: report_only
+      - id: runtime.assert_block_decision_authority_required
+        kind: report_only
+      - id: runtime.assertions_via_spec_lang
+        kind: report_only
+      - id: runtime.case_contract_block_required
+        kind: report_only
+      - id: runtime.chain_contract_single_location
+        kind: report_only
+      - id: runtime.chain_cycle_forbidden
+        kind: report_only
+      - id: runtime.chain_exports_explicit_only
+        kind: report_only
+      - id: runtime.chain_exports_from_key_required
+        kind: report_only
+      - id: runtime.chain_exports_list_only_required
+        kind: report_only
+      - id: runtime.chain_exports_target_derived_only
+        kind: report_only
+      - id: runtime.chain_fail_fast_default
+        kind: report_only
+      - id: runtime.chain_import_alias_collision_forbidden
+        kind: report_only
+      - id: runtime.chain_imports_consumer_surface_unchanged
+        kind: report_only
+      - id: runtime.chain_library_symbol_exports_valid
+        kind: report_only
+      - id: runtime.chain_ref_scalar_required
+        kind: report_only
+      - id: runtime.chain_reference_resolution
+        kind: report_only
+      - id: runtime.chain_shared_context_required
+        kind: report_only
+      - id: runtime.chain_state_template_resolution
+        kind: report_only
+      - id: runtime.chain_step_class_required
+        kind: report_only
+      - id: runtime.ci_artifact_upload_paths_valid
+        kind: report_only
+      - id: runtime.ci_gate_default_no_python_governance_required
+        kind: report_only
+      - id: runtime.ci_gate_default_report_commands_forbidden
+        kind: report_only
+      - id: runtime.ci_gate_ownership_contract_required
+        kind: report_only
+      - id: runtime.ci_python_lane_non_blocking_required
+        kind: report_only
+      - id: runtime.ci_workflow_critical_gate_required
+        kind: report_only
+      - id: runtime.cigate_uses_governance_triage_required
+        kind: report_only
+      - id: runtime.compatibility_lanes_non_blocking_status
+        kind: report_only
+      - id: runtime.compatibility_matrix_registration_required
+        kind: report_only
+      - id: runtime.compatibility_python_lane_bin_resolver_sync
+        kind: report_only
+      - id: runtime.compatibility_python_lane_dependency_non_regression
+        kind: report_only
+      - id: runtime.config_literals
+        kind: report_only
+      - id: runtime.contract_job_dispatch_in_contract_required
+        kind: report_only
+      - id: runtime.contract_job_hooks_refactor_applied
+        kind: report_only
+      - id: runtime.contract_spec_fence_required
+        kind: report_only
+      - id: runtime.contract_step_asserts_required
+        kind: report_only
+      - id: runtime.domain_library_preferred_for_fs_ops
+        kind: report_only
+      - id: runtime.domain_library_preferred_for_http_helpers
+        kind: report_only
+      - id: runtime.executable_spec_lang_includes_forbidden
+        kind: report_only
+      - id: runtime.fast_path_consistency_required
+        kind: report_only
+      - id: runtime.gate_fail_fast_behavior_required
+        kind: report_only
+      - id: runtime.gate_skipped_steps_contract_required
+        kind: report_only
+      - id: runtime.git_hook_prepush_enforced
+        kind: report_only
+      - id: runtime.governance_prefix_selection_from_changed_paths
+        kind: report_only
+      - id: runtime.governance_triage_artifact_contains_selection_metadata
+        kind: report_only
+      - id: runtime.governance_triage_entrypoint_required
+        kind: report_only
+      - id: runtime.governance_triage_targeted_first_required
+        kind: report_only
+      - id: runtime.harness_exports_location_required
+        kind: report_only
+      - id: runtime.harness_exports_schema_valid
+        kind: report_only
+      - id: runtime.harness_jobs_metadata_map_required
+        kind: report_only
+      - id: runtime.harness_subject_target_map_declared
+        kind: report_only
+      - id: runtime.implicit_subject_binding_forbidden
+        kind: report_only
+      - id: runtime.liveness_hard_cap_token_emitted
+        kind: report_only
+      - id: runtime.liveness_stall_token_emitted
+        kind: report_only
+      - id: runtime.liveness_watchdog_contract_valid
+        kind: report_only
+      - id: runtime.local_ci_parity_entrypoint_documented
+        kind: report_only
+      - id: runtime.local_ci_parity_python_lane_forbidden
+        kind: report_only
+      - id: runtime.local_prepush_broad_governance_forbidden
+        kind: report_only
+      - id: runtime.make_python_parity_targets_forbidden
+        kind: report_only
+      - id: runtime.meta_json_target_required
+        kind: report_only
+      - id: runtime.non_python_lane_no_python_exec
+        kind: report_only
+      - id: runtime.ops_job_capability_required
+        kind: report_only
+      - id: runtime.ops_job_nested_dispatch_forbidden
+        kind: report_only
+      - id: runtime.ops_os_capability_required
+        kind: report_only
+      - id: runtime.ops_os_stdlib_surface_sync
+        kind: report_only
+      - id: runtime.orchestration_policy_via_spec_lang
+        kind: report_only
+      - id: runtime.prepush_uses_governance_triage_required
+        kind: report_only
+      - id: runtime.profile_artifacts_on_fail_required
+        kind: report_only
+      - id: runtime.profiling_contract_artifacts
+        kind: report_only
+      - id: runtime.profiling_redaction_policy
+        kind: report_only
+      - id: runtime.profiling_span_taxonomy
+        kind: report_only
+      - id: runtime.public_runner_entrypoint_single
+        kind: report_only
+      - id: runtime.required_lane_adapter_no_python_exec
+        kind: report_only
+      - id: runtime.required_lane_adapter_transitive_no_python
+        kind: report_only
+      - id: runtime.required_lane_only_prepush_required
+        kind: report_only
+      - id: runtime.required_lane_status_blocking_enforced
+        kind: report_only
+      - id: runtime.runner_certification_artifacts_contract_sync
+        kind: report_only
+      - id: runtime.runner_certification_compat_lanes_non_blocking
+        kind: report_only
+      - id: runtime.runner_certification_registry_valid
+        kind: report_only
+      - id: runtime.runner_certification_required_lane_passes
+        kind: report_only
+      - id: runtime.runner_certification_surfaces_sync
+        kind: report_only
+      - id: runtime.runner_independence_non_regression
+        kind: report_only
+      - id: runtime.runner_interface_gate_sync
+        kind: report_only
+      - id: runtime.runner_interface_subcommands
+        kind: report_only
+      - id: runtime.scope_sync
+        kind: report_only
+      - id: runtime.settings_import_policy
+        kind: report_only
+      - id: runtime.spec_lang_export_type_forbidden
+        kind: report_only
+      - id: runtime.spec_lang_pure_no_effect_builtins
+        kind: report_only
+      - id: runtime.triage_artifacts_emitted_required
+        kind: report_only
+      - id: runtime.triage_bypass_logged_required
+        kind: report_only
+      - id: runtime.triage_failure_id_parsing_required
+        kind: report_only
+      - id: runtime.universal_chain_support_required
+        kind: report_only
+      - id: runtime.when_complete_hook_required_behavior
+        kind: report_only
+      - id: runtime.when_fail_hook_required_behavior
+        kind: report_only
+      - id: runtime.when_hooks_schema_valid
+        kind: report_only
+      - id: runtime.when_ordering_contract_required
+        kind: report_only
+      - id: schema.contract_imports_explicit_required
+        kind: report_only
+      - id: schema.contract_target_on_forbidden
+        kind: report_only
+      - id: schema.harness_contract_overlay_sync
+        kind: report_only
+      - id: schema.harness_type_overlay_complete
+        kind: report_only
+      - id: schema.no_prose_only_rules
+        kind: report_only
+      - id: schema.registry_compiled_sync
+        kind: report_only
+      - id: schema.registry_docs_sync
+        kind: report_only
+      - id: schema.registry_valid
+        kind: report_only
+      - id: schema.type_profiles_complete
+        kind: report_only
+      - id: schema.verb_first_contract_sync
+        kind: report_only
+      - id: spec.contract_assertions_non_regression
+        kind: report_only
+      - id: spec.domain_index_sync
+        kind: report_only
+      - id: spec.executable_surface_markdown_only
+        kind: report_only
+      - id: spec.generated_data_artifacts_not_embedded_in_spec_blocks
+        kind: report_only
+      - id: spec.layout_domain_trees
+        kind: report_only
+      - id: spec.library_cases_markdown_only
+        kind: report_only
+      - id: spec.no_executable_yaml_json_in_case_trees
+        kind: report_only
+      - id: spec.portability_non_regression
+        kind: report_only
+      - id: spec.spec_lang_adoption_non_regression
+        kind: report_only
+      - id: spec.taxonomy_hard_cut_required
+        kind: report_only
+      - id: spec_lang.stdlib_conformance_coverage
+        kind: report_only
+      - id: spec_lang.stdlib_docs_sync
+        kind: report_only
+      - id: spec_lang.stdlib_profile_complete
+        kind: report_only
+      - id: spec_lang.stdlib_py_php_parity
+        kind: report_only
+      - id: tests.unit_opt_out_non_regression
+        kind: report_only

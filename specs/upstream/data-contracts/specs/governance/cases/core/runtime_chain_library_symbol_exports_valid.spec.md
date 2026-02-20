@@ -2,6 +2,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CHAIN-FROM-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: chain assert function imports are valid
 purpose: Ensures from=assert.function step imports include valid symbol path and contract
   shape.

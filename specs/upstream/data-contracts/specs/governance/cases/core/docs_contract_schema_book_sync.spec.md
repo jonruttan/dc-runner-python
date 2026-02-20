@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-006
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: assertion tokens stay aligned across book contract and schema docs
 purpose: Ensures core assertion terminology remains synchronized across author-facing and
   normative specification documents.

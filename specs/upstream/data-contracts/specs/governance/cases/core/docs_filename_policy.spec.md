@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-LAYOUT-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs filenames follow canonical lowercase policy
 purpose: Enforces lowercase, underscore, and hyphen filename policy across docs.
 type: contract.check

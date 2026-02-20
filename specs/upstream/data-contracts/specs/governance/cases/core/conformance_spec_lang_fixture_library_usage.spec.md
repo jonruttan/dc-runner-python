@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CONF-LIB-EXPR-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: spec_lang conformance fixture uses shared helper library calls
 purpose: Ensures spec_lang conformance fixtures reuse shared conformance helper library functions
   for repeated expression patterns.

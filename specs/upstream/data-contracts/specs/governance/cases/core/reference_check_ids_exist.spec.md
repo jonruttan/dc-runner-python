@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-REF-CHECKS-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: governance check ids exist
 purpose: Ensures governance cases only reference registered check ids.
 type: contract.check

@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-LIVENESS-CONTRACT-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: runtime liveness watchdog contract docs and schema are synchronized
 purpose: Ensures liveness controls and reason tokens are declared in runtime profiling contract
   and schema artifacts.

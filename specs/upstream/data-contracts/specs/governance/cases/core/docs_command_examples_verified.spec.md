@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-QUAL-006
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs command and example blocks are validated
 purpose: Ensures runnable example blocks parse/validate unless explicitly opted out.
 type: contract.check

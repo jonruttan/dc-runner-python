@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-022
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: visual aids required in core chapters
 purpose: Ensures docs quality contract enforces Mermaid visual aid requirements for core narrative chapters.
 type: contract.check

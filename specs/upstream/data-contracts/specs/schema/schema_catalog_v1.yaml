@@ -1,0 +1,6 @@
+version: 1
+schemas:
+  - schema_id: contract_spec
+    major: 1
+    path: /specs/schema/schema_v1.md
+    status: active

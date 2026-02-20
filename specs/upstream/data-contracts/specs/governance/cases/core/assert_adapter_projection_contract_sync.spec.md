@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-ASSERT-PROFILE-005
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: harness adapters expose context profile projections
 type: contract.check
 purpose: Ensures core harness adapters expose context_json subject profile targets with profile

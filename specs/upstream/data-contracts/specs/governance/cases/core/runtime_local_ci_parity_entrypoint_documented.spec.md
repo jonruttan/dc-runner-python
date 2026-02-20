@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-PREPUSH-005
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: local ci parity entrypoint is documented for contributors
 purpose: Ensures contributor docs cover parity-default prepush, fast opt-out, and hook installation.
 type: contract.check

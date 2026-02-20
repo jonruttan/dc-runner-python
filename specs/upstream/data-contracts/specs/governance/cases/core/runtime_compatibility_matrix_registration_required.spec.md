@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-CONFIG-008
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: compatibility matrix registration is explicit
 purpose: Ensures runtime lanes are registered in the compatibility matrix contract before
   use.

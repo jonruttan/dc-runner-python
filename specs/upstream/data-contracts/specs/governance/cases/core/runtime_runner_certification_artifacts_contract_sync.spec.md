@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-CERT-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: runner certification artifacts follow contract shape
 purpose: Ensures runner-certify generates contract-shaped JSON and markdown artifacts.
 type: contract.check

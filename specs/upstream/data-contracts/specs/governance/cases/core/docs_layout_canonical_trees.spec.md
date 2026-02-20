@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-LAYOUT-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs layout canonical trees exist
 purpose: Enforces canonical docs root namespaces.
 type: contract.check

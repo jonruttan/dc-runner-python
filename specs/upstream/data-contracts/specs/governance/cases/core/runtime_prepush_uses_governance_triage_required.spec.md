@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-TRIAGE-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: prepush lane uses governance triage entrypoint
 purpose: Ensures prepush parity lane calls governance triage instead of direct broad governance.
 type: contract.check

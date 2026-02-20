@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-NORM-PATHS-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: scoped spec paths use canonical virtual-root form
 purpose: Ensures path-bearing spec fields use canonical virtual-root `/...` form.
 type: contract.check

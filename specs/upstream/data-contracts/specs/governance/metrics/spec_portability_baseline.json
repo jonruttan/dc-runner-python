@@ -1474,7 +1474,7 @@
     {
       "execution_coupling_ratio": 0.15000000000000002,
       "execution_portability_ratio": 0.85,
-      "file": "specs/governance/cases/core/docs_cli_flags_documented.spec.md",
+      "file": "specs/governance/cases/retired/docs_cli_flags_documented.spec.md",
       "id": "DCGOV-DOCS-REF-005",
       "implementation_reliance_ratio": 0.6,
       "leaf_counts": {
@@ -1987,8 +1987,8 @@
     {
       "execution_coupling_ratio": 0.15000000000000002,
       "execution_portability_ratio": 0.85,
-      "file": "specs/governance/cases/core/governance_extractor_only_no_verdict_branching.spec.md",
-      "id": "DCGOV-POLICY-REQ-002",
+      "file": "specs/governance/cases/retired/governance_extractor_only_no_verdict_branching.spec.md",
+      "id": "DCGOV-POLICY-REQ-003",
       "implementation_reliance_ratio": 0.6,
       "leaf_counts": {
         "evaluate": 0,
@@ -2230,7 +2230,7 @@
     {
       "execution_coupling_ratio": 0.15000000000000002,
       "execution_portability_ratio": 0.85,
-      "file": "specs/governance/cases/core/runner_independence_non_regression.spec.md",
+      "file": "specs/governance/cases/retired/runner_independence_non_regression.spec.md",
       "id": "DCGOV-RUNTIME-INDEP-002",
       "implementation_reliance_ratio": 0.6,
       "leaf_counts": {
@@ -2257,7 +2257,7 @@
     {
       "execution_coupling_ratio": 0.15000000000000002,
       "execution_portability_ratio": 0.85,
-      "file": "specs/governance/cases/core/runtime_assertions_via_spec_lang.spec.md",
+      "file": "specs/governance/cases/retired/runtime_assertions_via_spec_lang.spec.md",
       "id": "DCGOV-RUNTIME-ASSERT-001",
       "implementation_reliance_ratio": 0.6,
       "leaf_counts": {
@@ -2311,7 +2311,7 @@
     {
       "execution_coupling_ratio": 0.15000000000000002,
       "execution_portability_ratio": 0.85,
-      "file": "specs/governance/cases/core/runtime_orchestration_policy_via_spec_lang.spec.md",
+      "file": "specs/governance/cases/retired/runtime_orchestration_policy_via_spec_lang.spec.md",
       "id": "DCGOV-RUNTIME-ORCH-001",
       "implementation_reliance_ratio": 0.6,
       "leaf_counts": {
@@ -2392,7 +2392,7 @@
     {
       "execution_coupling_ratio": 0.15000000000000002,
       "execution_portability_ratio": 0.85,
-      "file": "specs/governance/cases/core/runtime_runner_interface_gate_sync.spec.md",
+      "file": "specs/governance/cases/retired/runtime_runner_interface_gate_sync.spec.md",
       "id": "DCGOV-RUNTIME-CONFIG-003",
       "implementation_reliance_ratio": 0.6,
       "leaf_counts": {
@@ -2419,7 +2419,7 @@
     {
       "execution_coupling_ratio": 0.15000000000000002,
       "execution_portability_ratio": 0.85,
-      "file": "specs/governance/cases/core/runtime_runner_interface_subcommands.spec.md",
+      "file": "specs/governance/cases/retired/runtime_runner_interface_subcommands.spec.md",
       "id": "DCGOV-RUNTIME-CONFIG-004",
       "implementation_reliance_ratio": 0.6,
       "leaf_counts": {
@@ -2446,7 +2446,6 @@
     {
       "execution_coupling_ratio": 0.15000000000000002,
       "execution_portability_ratio": 0.85,
-      "file": "specs/governance/cases/core/runtime_rust_adapter_no_delegate.spec.md",
       "id": "DCGOV-RUNTIME-CONFIG-006",
       "implementation_reliance_ratio": 0.6,
       "leaf_counts": {
@@ -2473,7 +2472,7 @@
     {
       "execution_coupling_ratio": 0.15000000000000002,
       "execution_portability_ratio": 0.85,
-      "file": "specs/governance/cases/core/runtime_rust_adapter_no_python_exec.spec.md",
+      "file": "specs/governance/cases/retired/runtime_rust_adapter_no_python_exec.spec.md",
       "id": "DCGOV-RUST-PRIMARY-007",
       "implementation_reliance_ratio": 0.6,
       "leaf_counts": {
@@ -2500,7 +2499,6 @@
     {
       "execution_coupling_ratio": 0.15000000000000002,
       "execution_portability_ratio": 0.85,
-      "file": "specs/governance/cases/core/runtime_rust_primary_adapter_exec_smoke.spec.md",
       "id": "DCGOV-RUST-PRIMARY-005",
       "implementation_reliance_ratio": 0.6,
       "leaf_counts": {
@@ -2527,7 +2525,6 @@
     {
       "execution_coupling_ratio": 0.15000000000000002,
       "execution_portability_ratio": 0.85,
-      "file": "specs/governance/cases/core/runtime_rust_primary_adapter_exec_smoke_success.spec.md",
       "id": "DCGOV-RUST-PRIMARY-006",
       "implementation_reliance_ratio": 0.6,
       "leaf_counts": {
@@ -2554,7 +2551,6 @@
     {
       "execution_coupling_ratio": 0.15000000000000002,
       "execution_portability_ratio": 0.85,
-      "file": "specs/governance/cases/core/runtime_rust_primary_gate_path.spec.md",
       "id": "DCGOV-RUST-PRIMARY-001",
       "implementation_reliance_ratio": 0.6,
       "leaf_counts": {
@@ -2581,7 +2577,6 @@
     {
       "execution_coupling_ratio": 0.15000000000000002,
       "execution_portability_ratio": 0.85,
-      "file": "specs/governance/cases/core/runtime_rust_primary_interface_stability.spec.md",
       "id": "DCGOV-RUST-PRIMARY-003",
       "implementation_reliance_ratio": 0.6,
       "leaf_counts": {
@@ -2608,7 +2603,6 @@
     {
       "execution_coupling_ratio": 0.15000000000000002,
       "execution_portability_ratio": 0.85,
-      "file": "specs/governance/cases/core/runtime_rust_primary_no_python_dependency.spec.md",
       "id": "DCGOV-RUST-PRIMARY-002",
       "implementation_reliance_ratio": 0.6,
       "leaf_counts": {
@@ -2635,7 +2629,6 @@
     {
       "execution_coupling_ratio": 0.15000000000000002,
       "execution_portability_ratio": 0.85,
-      "file": "specs/governance/cases/core/runtime_rust_primary_shared_capability_parity.spec.md",
       "id": "DCGOV-RUST-PRIMARY-004",
       "implementation_reliance_ratio": 0.6,
       "leaf_counts": {
@@ -2662,7 +2655,6 @@
     {
       "execution_coupling_ratio": 0.15000000000000002,
       "execution_portability_ratio": 0.85,
-      "file": "specs/governance/cases/core/runtime_rust_primary_subcommand_parity.spec.md",
       "id": "DCGOV-RUST-PRIMARY-007",
       "implementation_reliance_ratio": 0.6,
       "leaf_counts": {
@@ -2743,7 +2735,7 @@
     {
       "execution_coupling_ratio": 0.15000000000000002,
       "execution_portability_ratio": 0.85,
-      "file": "specs/governance/cases/core/runtime_spec_lang_pure_no_effect_builtins.spec.md",
+      "file": "specs/governance/cases/retired/runtime_spec_lang_pure_no_effect_builtins.spec.md",
       "id": "DCGOV-RUNTIME-SPECLANG-PURE-001",
       "implementation_reliance_ratio": 0.6,
       "leaf_counts": {

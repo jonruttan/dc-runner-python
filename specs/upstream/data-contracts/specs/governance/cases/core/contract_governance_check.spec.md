@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CONTRACT-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: contract governance rules pass via governance harness
 purpose: Ensures contract policy and traceability integrity checks are enforced through the
   governance spec pipeline.

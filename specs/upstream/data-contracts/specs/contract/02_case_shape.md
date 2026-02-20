@@ -3,6 +3,8 @@
 ## Common Keys
 
 - `id` (required)
+- `spec_version` (required integer)
+- `schema_ref` (required absolute virtual-root path)
 - `type` (required)
 - `title` (optional)
 - `harness` (optional mapping)
@@ -13,6 +15,9 @@
 - Machine schema rules are defined in
   `specs/schema/registry/v1/*.yaml`.
 - Unknown top-level keys are schema errors (hard fail).
+- `schema_ref` MUST resolve to an active schema in
+  `specs/schema/schema_catalog_v1.yaml`.
+- `spec_version` MUST match the schema major referenced by `schema_ref`.
 
 ## Harness Namespace Rule
 

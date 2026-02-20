@@ -37,6 +37,8 @@ Related docs/reference schemas:
   registry snapshot section.
 
 - `id` (string, required): stable identifier like `CK-CLI-001`
+- `spec_version` (int, required): schema major used by this case
+- `schema_ref` (string, required): canonical virtual-root schema path
 - `type` (string, required): dispatch key (e.g. `cli.run`)
 - `title` (string, optional): human description
 - `assert_health` (mapping, optional): assertion-health policy override
@@ -58,6 +60,10 @@ Parser behavior:
 - closing fences must use the same fence character and at least the opener
   length
 - `type` is required
+- `spec_version` is required
+- `schema_ref` is required
+- `schema_ref` MUST resolve in `/specs/schema/schema_catalog_v1.yaml`
+- `spec_version` MUST match the schema major encoded by `schema_ref`
 
 `assert_health`:
 

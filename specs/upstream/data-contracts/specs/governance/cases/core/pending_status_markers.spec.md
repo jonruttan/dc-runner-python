@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-PENDING-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: pending specs remain draft-only and must not include resolved/completed markers
 purpose: Ensures pending-spec files do not retain completed markers and keeps completed work
   out of pending.

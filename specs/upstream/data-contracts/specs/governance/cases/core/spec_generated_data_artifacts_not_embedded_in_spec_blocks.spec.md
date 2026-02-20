@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-SPEC-MD-004
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: generated data artifacts do not embed executable spec blocks
 purpose: Ensures machine-native yaml and json data artifact surfaces remain non-executable
   and do not contain yaml contract-spec fences.

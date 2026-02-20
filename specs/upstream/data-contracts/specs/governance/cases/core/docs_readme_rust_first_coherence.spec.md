@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-010
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: readme remains implementation-agnostic and canonical for v1 authoring
 purpose: Ensures root README stays gateway-oriented, implementation-agnostic, and free from prior assertion-surface
   snippets.

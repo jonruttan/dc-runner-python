@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-TRIAGE-009
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: local prepush does not require broad governance
 type: contract.check
 purpose: Ensures local parity flow keeps broad governance out of default prepush path.

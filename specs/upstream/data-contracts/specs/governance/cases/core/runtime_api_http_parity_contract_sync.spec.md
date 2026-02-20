@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-APIHTTP-008
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: api.http python/php parity contract surfaces remain synchronized
 purpose: Ensures python/php api.http implementations and contracts expose shared v1 tokens.
 type: contract.check

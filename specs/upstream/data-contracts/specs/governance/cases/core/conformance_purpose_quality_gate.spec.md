@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CONF-PURPOSE-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: conformance purpose quality remains warning free
 purpose: Ensures conformance purpose lint policy and case purpose text stay clean with no
   accumulated warning debt.

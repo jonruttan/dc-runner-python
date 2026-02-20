@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-GEN-008
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: traceability catalog artifacts are synchronized
 purpose: Ensures generated traceability catalog JSON and markdown artifacts are up-to-date.
 type: contract.check

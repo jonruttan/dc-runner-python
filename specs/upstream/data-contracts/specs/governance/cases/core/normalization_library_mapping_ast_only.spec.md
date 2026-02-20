@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-NORM-005
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: library function expressions use mapping-ast authoring
 purpose: Enforces spec-lang library function defines use canonical mapping-ast expression
   syntax only.

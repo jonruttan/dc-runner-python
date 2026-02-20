@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-SPEC-MD-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: executable spec surfaces are markdown only
 purpose: Ensures all canonical executable case trees are authored as .spec.md and do not use
   runnable yaml/json case files.

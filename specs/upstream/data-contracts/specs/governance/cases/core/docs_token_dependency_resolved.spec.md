@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-QUAL-004
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: doc token dependencies resolve to owner docs
 purpose: Ensures required tokens in doc metadata are owned and present in owner docs.
 type: contract.check

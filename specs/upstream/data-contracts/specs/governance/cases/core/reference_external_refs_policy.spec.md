@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-REF-EXTERNAL-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: external refs require explicit policy and capability
 purpose: Ensures external:// references are deny-by-default and must declare allow policy.
 type: contract.check

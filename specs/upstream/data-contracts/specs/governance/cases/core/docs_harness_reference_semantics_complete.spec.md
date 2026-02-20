@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-GEN-023
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: harness reference includes semantic sections
 purpose: Ensures generated harness reference includes summary/defaults/failure modes/examples
   per case type.

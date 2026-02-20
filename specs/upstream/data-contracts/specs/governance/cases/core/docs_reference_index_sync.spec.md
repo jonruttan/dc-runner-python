@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: reference index stays synced with chapter files
 purpose: Ensures the machine-checked reference index entries stay aligned with the actual
   chapter set and order.

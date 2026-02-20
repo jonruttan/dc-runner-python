@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-GEN-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: generated markdown sections are read-only blocks
 purpose: Ensures configured generated markdown outputs contain valid generated section markers.
 type: contract.check

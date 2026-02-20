@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOC-CURRENT-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: current-spec-only contract forbids prior-schema references and shims
 purpose: Ensures pre-v1 docs and parser paths stay focused on current schema only, without
   prior-spec wording or compatibility rewrites.

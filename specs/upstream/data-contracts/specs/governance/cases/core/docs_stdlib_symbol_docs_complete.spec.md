@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-GEN-021
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: stdlib symbols include semantic docs payload
 purpose: Ensures every stdlib symbol has summary, params, returns, errors, and examples in
   generated catalogs.

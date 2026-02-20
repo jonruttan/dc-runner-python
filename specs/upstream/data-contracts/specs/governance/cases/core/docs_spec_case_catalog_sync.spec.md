@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-SPECCASE-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: spec case catalog artifacts are synchronized
 purpose: Ensures generated spec case catalog and markdown references stay in sync.
 type: contract.check

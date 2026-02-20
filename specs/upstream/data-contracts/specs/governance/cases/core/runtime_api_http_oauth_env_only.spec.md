@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-APIHTTP-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: api.http oauth credentials use env references only
 purpose: Ensures api.http OAuth credential fields are env-reference based and forbid inline
   credential literals.

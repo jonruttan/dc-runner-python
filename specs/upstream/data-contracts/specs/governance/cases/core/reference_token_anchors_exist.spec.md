@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-REF-TOKENS-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: configured token anchors exist
 purpose: Ensures configured token anchors resolve to existing files and token matches.
 type: contract.check

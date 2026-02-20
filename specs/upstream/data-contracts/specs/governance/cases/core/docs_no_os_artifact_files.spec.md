@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-LAYOUT-005
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs tree excludes OS/editor artifact files
 purpose: Prevents tracked filesystem artifacts (for example .DS_Store) in docs surfaces.
 type: contract.check

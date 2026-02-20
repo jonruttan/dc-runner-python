@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-GEN-011
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: spec schema field catalog artifacts are synchronized
 purpose: Ensures generated spec schema field catalog JSON and markdown artifacts are up-to-date.
 type: contract.check

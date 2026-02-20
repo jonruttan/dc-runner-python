@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-GEN-004
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: runner api catalog artifacts are synchronized
 purpose: Ensures generated runner API JSON and markdown artifacts are up-to-date.
 type: contract.check

@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-APIHTTP-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: api.http network oauth/request flows require explicit live mode
 purpose: Ensures network token/request URLs are only used when harness.api_http.mode is explicitly
   live.

@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-APIHTTP-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: api.http oauth specs contain no secret literals
 purpose: Ensures api.http fixtures avoid inline bearer tokens and secret literal OAuth fields.
 type: contract.check

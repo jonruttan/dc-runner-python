@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-SCOPE-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: runtime support scope remains bounded for v1
 purpose: Prevents uncontrolled cross-runtime expansion by enforcing explicit v1 runtime scope
   tokens in contract docs.

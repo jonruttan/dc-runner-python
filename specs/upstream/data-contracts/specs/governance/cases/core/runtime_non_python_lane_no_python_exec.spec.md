@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-PYDEP-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: non-python lanes avoid direct python execution tokens
 purpose: Ensures default gate/orchestration and rust adapter lane files do not contain python
   execution tokens.

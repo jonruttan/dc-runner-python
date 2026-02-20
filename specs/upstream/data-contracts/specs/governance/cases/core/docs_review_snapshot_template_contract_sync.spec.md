@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-013
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: review snapshot template matches canonical contract
 purpose: Ensures docs/history/reviews template enforces canonical section order, table headers, and candidate schema scaffolding.
 type: contract.check

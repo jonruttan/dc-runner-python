@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "runner_id": "rust",
+  "implementation_repo": "dc-runner-rust",
+  "release_version": "local-test",
+  "commit_sha": "0000000000000000000000000000000000000000",
+  "generated_at": "2026-02-20T00:00:00Z",
+  "lane_class": "required",
+  "overall_status": "pass",
+  "fresh_until": "2026-02-23T00:00:00Z",
+  "command_results": [
+    {
+      "command": "governance",
+      "status": "pass",
+      "exit_code": 0,
+      "duration_ms": 100
+    }
+  ],
+  "artifact_refs": [
+    {
+      "url": "https://example.invalid/rust/local-test",
+      "sha256": ""
+    }
+  ]
+}

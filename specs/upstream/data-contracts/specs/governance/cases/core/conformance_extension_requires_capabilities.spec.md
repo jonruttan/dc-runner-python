@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CONF-PORT-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: extension type conformance cases declare requires.capabilities
 purpose: Ensures non-core type fixtures explicitly declare required capabilities for portable
   parity.

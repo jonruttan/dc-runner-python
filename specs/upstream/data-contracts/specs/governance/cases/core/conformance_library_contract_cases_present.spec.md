@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CONF-LIB-CONTRACT-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: conformance library contract coverage cases are present
 purpose: Ensures conformance includes executable evaluate-based coverage for flat spec_lang.export
   defines contract behavior.

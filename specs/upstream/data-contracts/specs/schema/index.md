@@ -7,6 +7,7 @@ Canonical schema sources for executable `contract-spec` documents.
 ## Canonical Files
 
 - `/specs/schema/schema_v1.md`
+- `/specs/schema/schema_catalog_v1.yaml`
 - `/specs/schema/registry/v1/core.yaml`
 - `/specs/schema/registry/v1/assertions.yaml`
 - `/specs/schema/registry/v1/harness.yaml`

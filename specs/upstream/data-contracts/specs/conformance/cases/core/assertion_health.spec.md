@@ -13,6 +13,8 @@ Coverage focus:
 
 ```yaml contract-spec
 id: DCCONF-AH-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: assert_health warn emits diagnostics but case still passes
 purpose: Covers warn mode behavior where diagnostics are emitted but verdict remains pass.
 type: contract.check
@@ -45,6 +47,8 @@ harness:
 
 ```yaml contract-spec
 id: DCCONF-AH-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: assert_health error mode can pass for evaluate-only assertions
 purpose: Confirms error mode does not fail evaluate-only assertions when no assertion-health
   diagnostics are emitted.
@@ -78,6 +82,8 @@ harness:
 
 ```yaml contract-spec
 id: DCCONF-AH-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: invalid assert_health.mode is a schema error
 purpose: Ensures unsupported assert_health modes are rejected as schema violations.
 type: contract.check
@@ -110,6 +116,8 @@ harness:
 
 ```yaml contract-spec
 id: DCCONF-AH-004
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: per-case ignore override can neutralize global strict mode
 purpose: Verifies local mode override can disable stricter global assertion-health settings.
 type: contract.check
@@ -142,6 +150,8 @@ harness:
 
 ```yaml contract-spec
 id: DCCONF-AH-005
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: evaluate-only sibling branches remain valid under assert_health error
 purpose: Confirms evaluate-only non-redundant sibling branches do not trigger AH004 under
   assert_health error mode.
@@ -179,6 +189,8 @@ harness:
 
 ```yaml contract-spec
 id: DCCONF-AH-006
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: evaluate regex portability is handled without sugar diagnostics
 purpose: Confirms evaluate regex assertions are evaluated directly without sugar-level portability
   diagnostics.

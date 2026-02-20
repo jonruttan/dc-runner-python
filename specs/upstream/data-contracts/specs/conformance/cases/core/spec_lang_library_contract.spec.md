@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCCONF-LIB-CONTRACT-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: policy library uses producer harness exports
 purpose: Ensures policy library authoring uses producer-owned harness.exports with assert.function
   source mappings.
@@ -48,6 +50,8 @@ harness:
 
 ```yaml contract-spec
 id: DCCONF-LIB-CONTRACT-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: path library uses producer harness exports
 purpose: Ensures path library authoring uses producer-owned harness.exports with assert.function
   source mappings.
@@ -92,6 +96,8 @@ harness:
 
 ```yaml contract-spec
 id: DCCONF-LIB-CONTRACT-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: policy library index tracks canonical files
 purpose: Ensures generated policy library index includes canonical file references.
 type: contract.check

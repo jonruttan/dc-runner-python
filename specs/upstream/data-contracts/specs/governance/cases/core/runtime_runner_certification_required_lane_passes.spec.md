@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-CERT-004
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: required rust runner certification lane passes
 purpose: Ensures rust required lane certification passes and remains blocking.
 type: contract.check

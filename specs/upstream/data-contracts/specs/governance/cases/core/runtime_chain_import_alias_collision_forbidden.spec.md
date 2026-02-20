@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CHAIN-008
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: chain import alias collisions are forbidden
 purpose: Ensures harness.chain.imports bindings are valid and do not collide or shadow reserved
   symbols.

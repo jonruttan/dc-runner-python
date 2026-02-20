@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CONTRACT-ASSERT-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: contract assertions metric is non-regressing
 purpose: Enforces monotonic non-regression for contract assertions metrics against checked-in
   baseline.

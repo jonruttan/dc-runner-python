@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-OPS-003
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: orchestration ops registries are synchronized and complete
 purpose: Ensures runner tool registries include required fields and declared tool ids.
 type: contract.check

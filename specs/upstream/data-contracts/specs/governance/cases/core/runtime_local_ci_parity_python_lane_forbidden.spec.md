@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-PREPUSH-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: local ci parity script is rust-only
 purpose: Ensures local prepush parity flow contains no python parity lane hooks.
 type: contract.check

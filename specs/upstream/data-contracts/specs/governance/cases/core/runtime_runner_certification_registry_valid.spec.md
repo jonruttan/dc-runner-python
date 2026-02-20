@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-CERT-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: runner certification registry shape is valid
 purpose: Ensures runner certification registry entries are complete and deterministic.
 type: contract.check

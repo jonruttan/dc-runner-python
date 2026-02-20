@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CONF-TYPE-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: conformance case types have matching type contract docs
 purpose: Ensures each type used by portable conformance fixtures is documented under the type-contract
   index.

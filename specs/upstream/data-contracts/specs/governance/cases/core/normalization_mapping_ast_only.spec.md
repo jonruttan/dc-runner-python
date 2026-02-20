@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-NORM-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: normalization enforces mapping-ast-only expression authoring
 purpose: Ensures expression-bearing YAML fields remain mapping-AST only and normalized through
   the unified normalize check.

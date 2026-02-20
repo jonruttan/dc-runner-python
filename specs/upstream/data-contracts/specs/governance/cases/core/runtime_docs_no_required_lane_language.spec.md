@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-DOCS-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs use control-plane language
 purpose: Ensures active docs describe this repository as implementation-agnostic control-plane.
 type: contract.check

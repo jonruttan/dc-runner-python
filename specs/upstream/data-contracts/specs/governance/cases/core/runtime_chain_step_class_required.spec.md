@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CHAIN-007
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: chain steps declare must can cannot class
 purpose: Ensures harness.chain.steps[*].class is explicit and valid for all chained cases.
 type: contract.check

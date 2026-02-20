@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-POLICY-LIB-002
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: governance policy expressions require shared library wiring
 purpose: Ensures governance decision policies use shared spec-lang libraries and call exported
   library symbols.

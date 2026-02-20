@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-PREPUSH-006
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: prepush path is rust-only
 purpose: Ensures prepush entrypoints and hook routing remain rust-only.
 type: contract.check

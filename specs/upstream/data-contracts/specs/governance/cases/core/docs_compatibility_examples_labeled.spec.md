@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-008
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: compatibility examples are explicitly labeled
 purpose: Ensures active documentation keeps Rust as canonical and labels Python/PHP examples
   as non-blocking compatibility lanes.

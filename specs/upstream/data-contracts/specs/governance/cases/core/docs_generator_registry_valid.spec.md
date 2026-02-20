@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-GEN-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: docs generator registry is valid and complete
 purpose: Ensures docs generator registry exists, validates, and includes required surfaces.
 type: contract.check

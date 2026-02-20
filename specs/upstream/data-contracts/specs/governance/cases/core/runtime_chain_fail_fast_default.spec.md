@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-CHAIN-004
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: chain fail_fast defaults stay canonical
 purpose: Ensures harness.chain fail_fast and allow_continue fields preserve bool/default contracts.
 type: contract.check

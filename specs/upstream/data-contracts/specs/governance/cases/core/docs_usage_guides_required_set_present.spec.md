@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-021
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: usage guides required set is present
 purpose: Ensures the reference manifest contains the full canonical usage guide set.
 type: contract.check

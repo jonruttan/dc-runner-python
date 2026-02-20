@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-024
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: guide to contract links are valid
 purpose: Ensures chapter 90 includes guide-to-contract mapping for the canonical guide set.
 type: contract.check

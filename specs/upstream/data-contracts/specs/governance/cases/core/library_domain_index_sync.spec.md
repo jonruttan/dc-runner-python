@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-LIB-INDEX-001
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: library domain indexes are synchronized
 purpose: Ensures each library domain index lists all library files and exported symbols without
   stale entries.

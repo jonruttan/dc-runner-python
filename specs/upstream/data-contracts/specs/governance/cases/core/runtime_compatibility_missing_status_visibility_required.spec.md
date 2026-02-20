@@ -4,6 +4,8 @@
 
 ```yaml contract-spec
 id: DCGOV-RUNTIME-STATUS-005
+spec_version: 1
+schema_ref: /specs/schema/schema_v1.md
 title: missing compatibility status remains visible
 purpose: Ensures missing compatibility status is visible and policy-scored in matrix output.
 type: contract.check
