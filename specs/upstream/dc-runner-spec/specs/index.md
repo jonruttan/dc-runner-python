@@ -9,6 +9,7 @@ Runner-owned implementation specs registry.
 ## Shared
 
 - `/specs/impl/shared/makefile_help_output_v1.md`
+- `/specs/impl/shared/runner_build_tool_task_sets_v1.yaml`
 
 ## Runners
 

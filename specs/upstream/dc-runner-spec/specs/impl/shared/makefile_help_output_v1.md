@@ -2,6 +2,10 @@
 
 All runner repositories with Makefiles SHOULD expose a colorized grouped `help` target.
 
+Related shared build-task taxonomy:
+
+- `/specs/impl/shared/runner_build_tool_task_sets_v1.yaml`
+
 Canonical renderer:
 
 ```make
