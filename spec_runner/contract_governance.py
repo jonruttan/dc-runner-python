@@ -97,11 +97,11 @@ def build_contract_coverage(repo_root: Path) -> list[RuleCoverage]:
         return []
 
     links_by_rule: dict[str, dict[str, Any]] = {}
-    for l in links:
-        if isinstance(l, dict):
-            rid = str(l.get("rule_id", "")).strip()
+    for link_entry in links:
+        if isinstance(link_entry, dict):
+            rid = str(link_entry.get("rule_id", "")).strip()
             if rid and rid not in links_by_rule:
-                links_by_rule[rid] = l
+                links_by_rule[rid] = link_entry
 
     out: list[RuleCoverage] = []
     for r in rules:
@@ -240,27 +240,27 @@ def check_contract_governance(repo_root: Path) -> list[str]:
 
     links_by_rule: dict[str, dict[str, Any]] = {}
     referenced_contract_docs: set[str] = set()
-    for l in links:
-        if not isinstance(l, dict):
+    for link_entry in links:
+        if not isinstance(link_entry, dict):
             errs.append("traceability link entries must be mappings")
             continue
-        rid = str(l.get("rule_id", "")).strip()
+        rid = str(link_entry.get("rule_id", "")).strip()
         if not rid:
             errs.append("traceability link missing rule_id")
             continue
         if rid in links_by_rule:
             errs.append(f"duplicate traceability rule_id: {rid}")
-        links_by_rule[rid] = l
+        links_by_rule[rid] = link_entry
         if rid not in rules_by_id:
             errs.append(f"traceability references unknown policy rule: {rid}")
         want_policy_ref = f"specs/contract/policy_v1.yaml#{rid}"
-        got_policy_ref = str(l.get("policy_ref", "")).strip()
+        got_policy_ref = str(link_entry.get("policy_ref", "")).strip()
         if got_policy_ref != want_policy_ref:
             errs.append(
                 f"traceability policy_ref mismatch for {rid}: "
                 f"expected {want_policy_ref}, got {got_policy_ref or '<missing>'}"
             )
-        cref = l.get("contract_refs") or []
+        cref = link_entry.get("contract_refs") or []
         if isinstance(cref, list):
             for rel in cref:
                 referenced_contract_docs.add(str(rel))

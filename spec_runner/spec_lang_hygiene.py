@@ -44,11 +44,11 @@ class _CompactDumper(yaml.SafeDumper):
     pass
 
 
-def _flow_seq_representer(dumper: yaml.Dumper, data: _FlowSeq) -> yaml.nodes.SequenceNode:
+def _flow_seq_representer(dumper: _CompactDumper, data: _FlowSeq) -> yaml.nodes.SequenceNode:
     return dumper.represent_sequence("tag:yaml.org,2002:seq", list(data), flow_style=True)
 
 
-def _flow_map_representer(dumper: yaml.Dumper, data: _FlowMap) -> yaml.nodes.MappingNode:
+def _flow_map_representer(dumper: _CompactDumper, data: _FlowMap) -> yaml.nodes.MappingNode:
     return dumper.represent_mapping("tag:yaml.org,2002:map", dict(data), flow_style=True)
 
 
@@ -190,7 +190,7 @@ def _imports_any_to_map(raw_imports: Any) -> tuple[dict[str, dict[str, Any]], bo
         return out, True, True
     if not isinstance(raw_imports, list):
         return {}, False, False
-    out: dict[str, dict[str, Any]] = {}
+    bindings: dict[str, dict[str, Any]] = {}
     for raw_item in raw_imports:
         if not isinstance(raw_item, dict):
             return {}, False, False
@@ -218,8 +218,8 @@ def _imports_any_to_map(raw_imports: Any) -> tuple[dict[str, dict[str, Any]], bo
             local_name = alias_map.get(source_name, source_name)
             if not local_name:
                 return {}, False, False
-            out[local_name] = {"from": src, "key": source_name}
-    return out, False, True
+            bindings[local_name] = {"from": src, "key": source_name}
+    return bindings, False, True
 
 
 def _normalize_expr_node(node: Any) -> tuple[Any, bool]:

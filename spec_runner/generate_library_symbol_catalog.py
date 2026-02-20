@@ -184,7 +184,7 @@ def _clean_doc_portability(*, raw: Any, issues: list[str], where: str) -> dict[s
     if not isinstance(raw, dict):
         issues.append(f"{where}: doc.portability must be a mapping")
         return {"python": False, "php": False, "rust": False, "notes": ""}
-    out = {}
+    out: dict[str, Any] = {}
     for key in ("python", "php", "rust"):
         value = raw.get(key)
         if not isinstance(value, bool):

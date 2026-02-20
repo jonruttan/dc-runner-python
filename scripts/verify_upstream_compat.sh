@@ -6,7 +6,17 @@ SYNC_SCRIPT="${ROOT_DIR}/scripts/sync_data_contracts_specs.sh"
 LOCK_FILE="${ROOT_DIR}/specs/upstream/data_contracts_lock_v1.yaml"
 SNAP_ROOT="${ROOT_DIR}/specs/upstream/data-contracts"
 RUNNER_BIN="${ROOT_DIR}/runner_adapter.sh"
-PYTHON_BIN="$(command -v python >/dev/null 2>&1 && echo python || echo python3)"
+if [[ -n "${PYTHON_BIN:-}" ]]; then
+  PYTHON_BIN="${PYTHON_BIN}"
+elif [[ -n "${SPEC_CI_PYTHON:-}" ]]; then
+  PYTHON_BIN="${SPEC_CI_PYTHON}"
+elif [[ -x "${ROOT_DIR}/.venv/bin/python" ]]; then
+  PYTHON_BIN="${ROOT_DIR}/.venv/bin/python"
+elif command -v python >/dev/null 2>&1; then
+  PYTHON_BIN="python"
+else
+  PYTHON_BIN="python3"
+fi
 STRICT=1
 SOURCE=""
 

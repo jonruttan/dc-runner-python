@@ -278,14 +278,14 @@ def _now_iso_utc() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
-def _runner_command(runner_bin: str, runner_impl: str, subcommand: str) -> list[str]:
+def _runner_command(runner_bin: str, runner_impl: str, subcommand: str, *args: str) -> list[str]:
     normalized = runner_bin.replace("\\", "/")
     if normalized.endswith("/runners/public/runner_adapter.sh") or normalized in {
         "runners/public/runner_adapter.sh",
         "./runners/public/runner_adapter.sh",
     }:
-        return [runner_bin, "--impl", runner_impl, subcommand]
-    return [runner_bin, subcommand]
+        return [runner_bin, "--impl", runner_impl, subcommand, *args]
+    return [runner_bin, subcommand, *args]
 
 
 def _python_command() -> list[str]:

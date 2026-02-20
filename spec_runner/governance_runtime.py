@@ -19,7 +19,7 @@ from tempfile import TemporaryDirectory
 from typing import Any, Callable, cast
 
 import yaml
-from spec_runner.assertions import evaluate_internal_assert_tree
+from spec_runner.assertions import eval_assert_tree, evaluate_internal_assert_tree, iter_leaf_assertions
 from spec_runner.codecs import load_external_cases as _load_external_cases_uncached
 from spec_runner.dispatcher import SpecRunContext, iter_cases as _iter_cases_uncached, run_case
 from spec_runner.doc_parser import iter_spec_doc_tests
@@ -35,7 +35,6 @@ from spec_runner.spec_lang import (
     _builtin_arity_table,
     capabilities_from_harness,
     compile_import_bindings,
-    eval_predicate,
 )
 from spec_runner.spec_lang_stdlib_profile import spec_lang_stdlib_report_jsonable
 from spec_runner.spec_lang_libraries import load_spec_lang_symbols_for_case

@@ -14,7 +14,7 @@ authors = [{name = "jon"}]
 dependencies = ["PyYAML>=6"]
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "ruff>=0.8", "mypy>=1.11"]
+dev = ["pytest>=8", "ruff>=0.8", "mypy>=1.11", "types-PyYAML>=6.0.12"]
 
 [tool.setuptools]
 package-dir = {"" = "."}
@@ -26,6 +26,10 @@ include = ["spec_runner*"]
 [tool.mypy]
 python_version = "3.10"
 files = ["spec_runner"]
+
+[[tool.mypy.overrides]]
+module = ["yaml"]
+ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
