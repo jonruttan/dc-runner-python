@@ -545,29 +545,37 @@ def _check_contract_job_dispatch_hard_cut() -> list[str]:
                 f"{rel}:1: NORMALIZATION_CONTRACT_JOB_DISPATCH: case {case_id} legacy harness.job is forbidden; use harness.jobs"
             )
         jobs = harness.get("jobs")
-        if not isinstance(jobs, dict) or not jobs:
+        if not isinstance(jobs, list) or not jobs:
             issues.append(
-                f"{rel}:1: NORMALIZATION_CONTRACT_JOB_DISPATCH: case {case_id} harness.jobs must be non-empty mapping"
+                f"{rel}:1: NORMALIZATION_CONTRACT_JOB_DISPATCH: case {case_id} harness.jobs must be non-empty list"
             )
             continue
-        for name, entry in jobs.items():
-            if not isinstance(name, str) or not name.strip():
-                issues.append(
-                    f"{rel}:1: NORMALIZATION_CONTRACT_JOB_DISPATCH: case {case_id} harness.jobs keys must be non-empty strings"
-                )
+        seen_ids: set[str] = set()
+        for idx, entry in enumerate(jobs):
             if not isinstance(entry, dict):
                 issues.append(
-                    f"{rel}:1: NORMALIZATION_CONTRACT_JOB_DISPATCH: case {case_id} harness.jobs.{name} must be mapping"
+                    f"{rel}:1: NORMALIZATION_CONTRACT_JOB_DISPATCH: case {case_id} harness.jobs[{idx}] must be mapping"
                 )
                 continue
+            job_id = str(entry.get("id", "")).strip()
+            if not job_id:
+                issues.append(
+                    f"{rel}:1: NORMALIZATION_CONTRACT_JOB_DISPATCH: case {case_id} harness.jobs[{idx}].id is required"
+                )
+                continue
+            if job_id in seen_ids:
+                issues.append(
+                    f"{rel}:1: NORMALIZATION_CONTRACT_JOB_DISPATCH: case {case_id} harness.jobs id must be unique ({job_id})"
+                )
+            seen_ids.add(job_id)
             if "ref" in entry:
                 issues.append(
-                    f"{rel}:1: NORMALIZATION_CONTRACT_JOB_DISPATCH: case {case_id} harness.jobs.{name}.ref is forbidden"
+                    f"{rel}:1: NORMALIZATION_CONTRACT_JOB_DISPATCH: case {case_id} harness.jobs[{idx}].ref is forbidden"
                 )
             helper = str(entry.get("helper", "")).strip()
             if not helper:
                 issues.append(
-                    f"{rel}:1: NORMALIZATION_CONTRACT_JOB_DISPATCH: case {case_id} harness.jobs.{name}.helper is required"
+                    f"{rel}:1: NORMALIZATION_CONTRACT_JOB_DISPATCH: case {case_id} harness.jobs[{idx}].helper is required"
                 )
 
         contract = case.get("clauses")
@@ -588,7 +596,7 @@ def _check_contract_job_dispatch_hard_cut() -> list[str]:
 
 def _check_when_hooks_shape() -> list[str]:
     issues: list[str] = []
-    allowed = {"must", "may", "must_not", "fail", "complete"}
+    allowed = {"required", "optional", "fail", "complete"}
     for rel, case in _iter_spec_markdown_cases():
         case_id = str(case.get("id", "<missing>")).strip() or "<missing>"
         harness = case.get("harness")

@@ -149,8 +149,18 @@ def default_type_runners() -> dict[str, TypeRunner]:
     def run_contract_job(case: InternalSpecCase, *, ctx: SpecRunContext) -> None:
         harness = case.harness or {}
         jobs = harness.get("jobs")
-        if not isinstance(jobs, dict):
-            raise RuntimeError("contract.job requires harness.jobs mapping")
+        if not isinstance(jobs, list) or not jobs:
+            raise RuntimeError("contract.job requires non-empty harness.jobs list")
+        seen_ids: set[str] = set()
+        for idx, job in enumerate(jobs):
+            if not isinstance(job, dict):
+                raise RuntimeError(f"contract.job harness.jobs[{idx}] must be mapping")
+            job_id = str(job.get("id", "")).strip()
+            if not job_id:
+                raise RuntimeError(f"contract.job harness.jobs[{idx}].id is required")
+            if job_id in seen_ids:
+                raise RuntimeError(f"contract.job harness.jobs id must be unique: {job_id}")
+            seen_ids.add(job_id)
         del ctx
         return
 

@@ -352,8 +352,12 @@ def spec_portability_report_jsonable(repo_root: Path, config: dict[str, Any] | N
             expect = case.get("expect")
             has_expect_impl = False
             if isinstance(expect, dict):
-                impl = expect.get("impl")
-                has_expect_impl = isinstance(impl, dict) and len(impl) > 0
+                overrides = expect.get("overrides")
+                if isinstance(overrides, list) and len(overrides) > 0:
+                    has_expect_impl = True
+                else:
+                    impl = expect.get("impl")
+                    has_expect_impl = isinstance(impl, dict) and len(impl) > 0
 
             requires = case.get("requires")
             caps = []
@@ -393,7 +397,7 @@ def spec_portability_report_jsonable(repo_root: Path, config: dict[str, Any] | N
                     f"non-evaluate leaf share {non_eval_leaf}/{total_leaf}"
                 )
             if penalties["expect_impl_overlay"] > 0:
-                reasons.append("expect.impl overlay present")
+                reasons.append("expect.overrides overlay present")
             if penalties["runtime_specific_capability"] > 0:
                 reasons.append("runtime-specific capability declared")
             if penalties["non_core_type"] > 0:

@@ -7584,21 +7584,33 @@ def _scan_runtime_harness_jobs_metadata_map_required(
             violations.append(f"{doc_path.relative_to(root)}: case {case_id} harness must be mapping")
             continue
         jobs = harness_map.get("jobs")
-        if not isinstance(jobs, dict) or not jobs:
+        if not isinstance(jobs, list) or not jobs:
             violations.append(
-                f"{doc_path.relative_to(root)}: case {case_id} harness.jobs must be non-empty mapping"
+                f"{doc_path.relative_to(root)}: case {case_id} harness.jobs must be non-empty list"
             )
             continue
-        for name, entry in jobs.items():
+        seen_ids: set[str] = set()
+        for idx, entry in enumerate(jobs):
             if not isinstance(entry, dict):
                 violations.append(
-                    f"{doc_path.relative_to(root)}: case {case_id} harness.jobs.{name} must be mapping"
+                    f"{doc_path.relative_to(root)}: case {case_id} harness.jobs[{idx}] must be mapping"
                 )
                 continue
+            name = str(entry.get("id", "")).strip()
+            if not name:
+                violations.append(
+                    f"{doc_path.relative_to(root)}: case {case_id} harness.jobs[{idx}].id is required"
+                )
+                continue
+            if name in seen_ids:
+                violations.append(
+                    f"{doc_path.relative_to(root)}: case {case_id} harness.jobs id must be unique ({name})"
+                )
+            seen_ids.add(name)
             helper = str(entry.get("helper", "")).strip()
             if not helper:
                 violations.append(
-                    f"{doc_path.relative_to(root)}: case {case_id} harness.jobs.{name}.helper is required"
+                    f"{doc_path.relative_to(root)}: case {case_id} harness.jobs[{idx}].helper is required"
                 )
     return violations
 
@@ -7616,11 +7628,11 @@ def _scan_runtime_harness_job_legacy_forbidden(root: Path, *, harness: dict | No
                 f"{doc_path.relative_to(root)}: case {case_id} legacy harness.job is forbidden"
             )
         jobs = harness_map.get("jobs") if isinstance(harness_map, dict) else None
-        if isinstance(jobs, dict):
-            for name, entry in jobs.items():
+        if isinstance(jobs, list):
+            for idx, entry in enumerate(jobs):
                 if isinstance(entry, dict) and "ref" in entry:
                     violations.append(
-                        f"{doc_path.relative_to(root)}: case {case_id} harness.jobs.{name}.ref is forbidden"
+                        f"{doc_path.relative_to(root)}: case {case_id} harness.jobs[{idx}].ref is forbidden"
                     )
     return violations
 
@@ -7808,11 +7820,15 @@ def _scan_runtime_contract_job_hooks_refactor_applied(
             violations.append(f"{rel}: case {case_id} harness must be mapping")
             continue
         jobs = harness_map.get("jobs")
-        if not isinstance(jobs, dict):
-            violations.append(f"{rel}: case {case_id} harness.jobs must be mapping")
+        if not isinstance(jobs, list):
+            violations.append(f"{rel}: case {case_id} harness.jobs must be list")
             continue
         for hook_job in ("on_fail", "on_complete"):
-            entry = jobs.get(hook_job)
+            entry = None
+            for job in jobs:
+                if isinstance(job, dict) and str(job.get("id", "")).strip() == hook_job:
+                    entry = job
+                    break
             if not isinstance(entry, dict):
                 violations.append(f"{rel}: case {case_id} missing harness.jobs.{hook_job}")
 
@@ -11195,7 +11211,7 @@ _CHECKS: dict[str, GovernanceCheck] = {
     "runtime.case_contract_block_required": _scan_runtime_case_contract_block_required,
     "runtime.contract_step_asserts_required": _scan_runtime_contract_step_asserts_required,
     "runtime.contract_job_dispatch_in_contract_required": _scan_runtime_contract_job_dispatch_in_contract_required,
-    "runtime.harness_jobs_metadata_map_required": _scan_runtime_harness_jobs_metadata_map_required,
+    "runtime.harness_jobs_metadata_list_required": _scan_runtime_harness_jobs_metadata_map_required,
     "runtime.ops_job_capability_required": _scan_runtime_ops_job_capability_required,
     "runtime.ops_job_nested_dispatch_forbidden": _scan_runtime_ops_job_nested_dispatch_forbidden,
     "runtime.when_hooks_schema_valid": _scan_runtime_when_hooks_schema_valid,

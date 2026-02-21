@@ -131,7 +131,10 @@ def load_expected_results(
             raise ValueError(f"conformance case expect.portable must include status: {p} cases[{i}]")
 
         merged: dict[str, Any] = {"id": case_id, **portable}
+        spec_version = int(c.get("spec_version", 1) or 1)
         impl_map = raw_expect.get("impl")
+        if impl_map is not None and spec_version >= 2:
+            raise ValueError(f"conformance case expect.impl is forbidden in v2: {p} cases[{i}]")
         if impl_map is not None:
             if not isinstance(impl_map, dict):
                 raise TypeError(f"conformance case expect.impl must be a mapping: {p} cases[{i}]")
@@ -142,6 +145,26 @@ def load_expected_results(
                         f"conformance case expect.impl.{impl} must be a mapping: {p} cases[{i}]"
                     )
                 merged.update({k: v for k, v in impl_exp.items() if k in ("status", "category", "message_tokens")})
+        overrides = raw_expect.get("overrides")
+        if overrides is not None:
+            if not isinstance(overrides, list):
+                raise TypeError(f"conformance case expect.overrides must be a list: {p} cases[{i}]")
+            seen_runners: set[str] = set()
+            for j, row in enumerate(overrides):
+                if not isinstance(row, dict):
+                    raise TypeError(f"conformance case expect.overrides[{j}] must be a mapping: {p} cases[{i}]")
+                runner = str(row.get("runner", "")).strip()
+                if not runner:
+                    raise ValueError(
+                        f"conformance case expect.overrides[{j}].runner is required: {p} cases[{i}]"
+                    )
+                if runner in seen_runners:
+                    raise ValueError(
+                        f"conformance case expect.overrides runner must be unique ({runner}): {p} cases[{i}]"
+                    )
+                seen_runners.add(runner)
+                if runner == impl:
+                    merged.update({k: v for k, v in row.items() if k in ("status", "category", "message_tokens")})
         out[case_id] = _parse_expected_entry(merged, where=f"{p} cases[{i}] expect")
     return out
 
