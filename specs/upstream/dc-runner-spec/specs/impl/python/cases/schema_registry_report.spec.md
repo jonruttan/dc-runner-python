@@ -1,7 +1,3 @@
-# Python Schema Registry Report Command Cases
-
-## DCIMPL-PY-SCHEMA-REG-001
-
 ```yaml contract-spec
 id: DCIMPL-PY-SCHEMA-REG-001
 title: schema_registry_report_main writes report file
@@ -39,7 +35,6 @@ contract:
       - wrote .artifacts/schema-registry-impl-case.json
 ```
 
-## DCIMPL-PY-SCHEMA-REG-002
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCHEMA-REG-002

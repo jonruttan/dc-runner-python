@@ -1,7 +1,3 @@
-# Python Script CLI Cases: Catalog Generators
-
-## DCIMPL-PY-SCRIPT-CATALOG-001
-
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CATALOG-001
 title: generate governance check catalog help renders usage
@@ -36,7 +32,6 @@ contract:
       - --doc-out
 ```
 
-## DCIMPL-PY-SCRIPT-CATALOG-002
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CATALOG-002
@@ -72,7 +67,6 @@ contract:
       - unrecognized arguments
 ```
 
-## DCIMPL-PY-SCRIPT-CATALOG-003
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CATALOG-003
@@ -108,7 +102,6 @@ contract:
       - --doc-out
 ```
 
-## DCIMPL-PY-SCRIPT-CATALOG-004
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CATALOG-004
@@ -144,7 +137,6 @@ contract:
       - unrecognized arguments
 ```
 
-## DCIMPL-PY-SCRIPT-CATALOG-005
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CATALOG-005
@@ -180,7 +172,6 @@ contract:
       - --doc-out
 ```
 
-## DCIMPL-PY-SCRIPT-CATALOG-006
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CATALOG-006
@@ -216,7 +207,6 @@ contract:
       - unrecognized arguments
 ```
 
-## DCIMPL-PY-SCRIPT-CATALOG-007
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CATALOG-007
@@ -252,7 +242,6 @@ contract:
       - --doc-out
 ```
 
-## DCIMPL-PY-SCRIPT-CATALOG-008
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CATALOG-008
@@ -288,7 +277,6 @@ contract:
       - unrecognized arguments
 ```
 
-## DCIMPL-PY-SCRIPT-CATALOG-009
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CATALOG-009
@@ -324,7 +312,6 @@ contract:
       - --doc-out
 ```
 
-## DCIMPL-PY-SCRIPT-CATALOG-010
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CATALOG-010
@@ -360,7 +347,6 @@ contract:
       - unrecognized arguments
 ```
 
-## DCIMPL-PY-SCRIPT-CATALOG-011
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CATALOG-011
@@ -396,7 +382,6 @@ contract:
       - --doc-out
 ```
 
-## DCIMPL-PY-SCRIPT-CATALOG-012
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CATALOG-012
@@ -432,7 +417,6 @@ contract:
       - unrecognized arguments
 ```
 
-## DCIMPL-PY-SCRIPT-CATALOG-013
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CATALOG-013
@@ -468,7 +452,6 @@ contract:
       - --schema-doc-out
 ```
 
-## DCIMPL-PY-SCRIPT-CATALOG-014
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CATALOG-014
@@ -504,7 +487,6 @@ contract:
       - unrecognized arguments
 ```
 
-## DCIMPL-PY-SCRIPT-CATALOG-015
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CATALOG-015
@@ -540,7 +522,6 @@ contract:
       - --doc-out
 ```
 
-## DCIMPL-PY-SCRIPT-CATALOG-016
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CATALOG-016

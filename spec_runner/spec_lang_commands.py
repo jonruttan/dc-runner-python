@@ -93,14 +93,14 @@ def _load_conformance_export_functions() -> dict[str, list[object]]:
             params = exp.get("params")
             if not isinstance(params, list) or not params or not all(isinstance(x, str) and x.strip() for x in params):
                 raise RuntimeError(f"{symbol_name} must declare non-empty string params list")
-            contract = raw_case.get("contract")
-            if not isinstance(contract, dict):
-                raise RuntimeError(f"{symbol_name} producer case must include contract mapping")
-            assert_steps = contract.get("steps")
-            if not isinstance(assert_steps, list):
-                raise RuntimeError(f"{symbol_name} producer case contract.steps must be a list")
+            clauses = raw_case.get("clauses")
+            if not isinstance(clauses, dict):
+                raise RuntimeError(f"{symbol_name} producer case must include clauses mapping")
+            predicates = clauses.get("predicates")
+            if not isinstance(predicates, list):
+                raise RuntimeError(f"{symbol_name} producer case clauses.predicates must be a list")
             found_step = False
-            for step in assert_steps:
+            for step in predicates:
                 if not isinstance(step, dict):
                     continue
                 if str(step.get("id", "")).strip() != step_id:

@@ -1,5 +1,3 @@
-# docs.examples_prefer_domain_fs_helpers
-
 ```yaml contract-spec
 id: DCGOV-DOCS-FS-EXAMPLES-001
 spec_version: 1

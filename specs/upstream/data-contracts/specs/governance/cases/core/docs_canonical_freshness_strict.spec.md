@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-DOCS-CANON-003
-
 ```yaml contract-spec
 id: DCGOV-DOCS-CANON-003
 spec_version: 1

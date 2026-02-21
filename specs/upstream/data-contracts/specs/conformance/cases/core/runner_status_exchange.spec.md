@@ -1,7 +1,3 @@
-# Runner Status Exchange Conformance Cases
-
-## DCCONF-RSTAT-001
-
 ```yaml contract-spec
 id: DCCONF-RSTAT-001
 spec_version: 1
@@ -31,7 +27,6 @@ contract:
       - command_results
 ```
 
-## DCCONF-RSTAT-002
 
 ```yaml contract-spec
 id: DCCONF-RSTAT-002
@@ -62,7 +57,6 @@ contract:
       - freshness_state
 ```
 
-## DCCONF-RSTAT-003
 
 ```yaml contract-spec
 id: DCCONF-RSTAT-003
@@ -93,7 +87,6 @@ contract:
       - --enforce-freshness
 ```
 
-## DCCONF-RSTAT-004
 
 ```yaml contract-spec
 id: DCCONF-RSTAT-004
@@ -124,7 +117,6 @@ contract:
       - non_blocking_fail
 ```
 
-## DCCONF-RSTAT-005
 
 ```yaml contract-spec
 id: DCCONF-RSTAT-005

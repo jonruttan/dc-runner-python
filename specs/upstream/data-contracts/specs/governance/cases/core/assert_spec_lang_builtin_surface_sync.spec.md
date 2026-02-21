@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-ASSERT-SYNC-005
-
 ```yaml contract-spec
 id: DCGOV-ASSERT-SYNC-005
 spec_version: 1

@@ -1,9 +1,6 @@
-# Failure Context Conformance Cases
-
 These fixtures ensure assertion failures expose stable context tokens so
 debugging and parity checks remain deterministic.
 
-## DCCONF-ERR-001
 
 ```yaml contract-spec
 id: DCCONF-ERR-001

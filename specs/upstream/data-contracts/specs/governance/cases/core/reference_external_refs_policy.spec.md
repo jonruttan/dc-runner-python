@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-REF-EXTERNAL-001
-
 ```yaml contract-spec
 id: DCGOV-REF-EXTERNAL-001
 spec_version: 1

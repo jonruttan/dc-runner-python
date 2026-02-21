@@ -302,7 +302,7 @@ def run(case, *, ctx) -> None:
         except (OSError, ValueError):
             stdout_path_exists = False
     mode = resolve_assert_health_mode(t, env=runtime_env)
-    diags = lint_assert_tree(t.get("contract", []) or [])
+    diags = lint_assert_tree(t.get("clauses", []) or [])
     warning_lines: list[str] = []
     if diags and mode == "error":
         raise AssertionError(format_assertion_health_error(diags))

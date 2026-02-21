@@ -1,7 +1,3 @@
-# Python Script CLI Cases: Portability and Migration
-
-## DCIMPL-PY-SCRIPT-PORT-001
-
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-PORT-001
 title: spec_portability_report writes json artifact
@@ -37,7 +33,6 @@ contract:
       - wrote .artifacts/spec-portability-script-case.json
 ```
 
-## DCIMPL-PY-SCRIPT-PORT-002
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-PORT-002
@@ -74,7 +69,6 @@ contract:
       - invalid choice
 ```
 
-## DCIMPL-PY-SCRIPT-PORT-003
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-PORT-003
@@ -110,7 +104,6 @@ contract:
       - --cases
 ```
 
-## DCIMPL-PY-SCRIPT-PORT-004
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-PORT-004
@@ -146,7 +139,6 @@ contract:
       - unrecognized arguments
 ```
 
-## DCIMPL-PY-SCRIPT-PORT-005
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-PORT-005
@@ -182,7 +174,6 @@ contract:
       - --write
 ```
 
-## DCIMPL-PY-SCRIPT-PORT-006
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-PORT-006
@@ -217,7 +208,6 @@ contract:
       - paths
 ```
 
-## DCIMPL-PY-SCRIPT-PORT-007
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-PORT-007
@@ -254,7 +244,6 @@ contract:
       - wrote .artifacts/conformance-purpose-script-case.json
 ```
 
-## DCIMPL-PY-SCRIPT-PORT-008
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-PORT-008

@@ -1,7 +1,3 @@
-# Python Docs Lint Command Cases
-
-## DCIMPL-PY-DOCSLINT-001
-
 ```yaml contract-spec
 id: DCIMPL-PY-DOCSLINT-001
 title: docs_lint_main passes for canonical reference manifest
@@ -35,7 +31,6 @@ contract:
       - 'OK: docs lint passed'
 ```
 
-## DCIMPL-PY-DOCSLINT-002
 
 ```yaml contract-spec
 id: DCIMPL-PY-DOCSLINT-002

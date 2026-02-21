@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-RUNTIME-CONTRACT-BLOCK-001
-
 ```yaml contract-spec
 id: DCGOV-RUNTIME-CONTRACT-BLOCK-001
 spec_version: 1

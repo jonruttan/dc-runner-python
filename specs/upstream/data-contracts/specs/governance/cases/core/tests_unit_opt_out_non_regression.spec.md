@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-TEST-UNIT-OPT-OUT-001
-
 ```yaml contract-spec
 id: DCGOV-TEST-UNIT-OPT-OUT-001
 spec_version: 1

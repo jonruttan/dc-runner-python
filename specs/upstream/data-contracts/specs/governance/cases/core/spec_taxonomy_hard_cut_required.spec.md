@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-SPEC-TOPO-001
-
 ```yaml contract-spec
 id: DCGOV-SPEC-TOPO-001
 spec_version: 1

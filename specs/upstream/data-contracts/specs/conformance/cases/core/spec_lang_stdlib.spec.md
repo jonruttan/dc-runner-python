@@ -1,7 +1,3 @@
-# Conformance Cases
-
-## DCCONF-STDLIB-001
-
 ```yaml contract-spec
 id: DCCONF-STDLIB-001
 spec_version: 1
@@ -49,7 +45,6 @@ harness:
       path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
-## DCCONF-STDLIB-002
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-002
@@ -98,7 +93,6 @@ harness:
       path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
-## DCCONF-SCHEMA-STDLIB-003
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-003
@@ -158,7 +152,6 @@ harness:
       path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
-## DCCONF-SCHEMA-STDLIB-004
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-004
@@ -232,7 +225,6 @@ harness:
       path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
-## DCCONF-STDLIB-005
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-005
@@ -309,7 +301,6 @@ harness:
       path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
-## DCCONF-STDLIB-006
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-006
@@ -345,7 +336,6 @@ harness:
       path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
-## DCCONF-STDLIB-007
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-007
@@ -401,7 +391,6 @@ harness:
       path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
-## DCCONF-STDLIB-008
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-008
@@ -438,7 +427,6 @@ harness:
       path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
-## DCCONF-STDLIB-009
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-009
@@ -489,7 +477,6 @@ harness:
       path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
-## DCCONF-STDLIB-010
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-010
@@ -525,7 +512,6 @@ harness:
       path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
-## DCCONF-STDLIB-011
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-011
@@ -583,7 +569,6 @@ harness:
       path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
-## DCCONF-STDLIB-012
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-012
@@ -617,7 +602,6 @@ harness:
       path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
-## DCCONF-STDLIB-013
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-013
@@ -666,7 +650,6 @@ harness:
       path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
-## DCCONF-STDLIB-014
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-014

@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-SCHEMA-REG-004
-
 ```yaml contract-spec
 id: DCGOV-SCHEMA-REG-004
 spec_version: 1

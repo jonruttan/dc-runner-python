@@ -1,5 +1,3 @@
-# library.colocated_symbol_tests_required
-
 ```yaml contract-spec
 id: DCGOV-LIB-SINGLE-002
 spec_version: 1

@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-CONTRACT-ASSERT-002
-
 ```yaml contract-spec
 id: DCGOV-CONTRACT-ASSERT-002
 spec_version: 1

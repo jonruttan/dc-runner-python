@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-CHAIN-001
-
 ```yaml contract-spec
 id: DCGOV-CHAIN-001
 spec_version: 1

@@ -1,5 +1,3 @@
-# runtime.domain_library_preferred_for_http_helpers
-
 ```yaml contract-spec
 id: DCGOV-DOMAIN-LIB-HTTP-001
 spec_version: 1

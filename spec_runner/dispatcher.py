@@ -122,7 +122,7 @@ def default_type_runners() -> dict[str, TypeRunner]:
         merged_harness.pop("check", None)
         raw["harness"] = merged_harness
         for k, v in config_map.items():
-            if k in {"id", "type", "title", "purpose", "contract", "when", "harness", "requires", "expect", "assert_health"}:
+            if k in {"id", "type", "title", "purpose", "clauses", "when", "harness", "requires", "expect", "assert_health"}:
                 continue
             raw[k] = v
         adapted_case = replace(

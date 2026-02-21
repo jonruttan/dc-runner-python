@@ -1,7 +1,3 @@
-# Python Validate Conformance Report Command Cases
-
-## DCIMPL-PY-VALREP-001
-
 ```yaml contract-spec
 id: DCIMPL-PY-VALREP-001
 title: validate_report_main passes for valid report payload
@@ -36,7 +32,6 @@ contract:
       - 'OK: valid conformance report'
 ```
 
-## DCIMPL-PY-VALREP-002
 
 ```yaml contract-spec
 id: DCIMPL-PY-VALREP-002

@@ -1,7 +1,3 @@
-# Chain Exports Conformance Cases
-
-## DCCONF-CHAIN-EXPORT-002
-
 ```yaml contract-spec
 id: DCCONF-CHAIN-EXPORT-002
 spec_version: 1
@@ -30,7 +26,6 @@ contract:
   steps: []
 ```
 
-## DCCONF-CHAIN-EXPORT-003
 
 ```yaml contract-spec
 id: DCCONF-CHAIN-EXPORT-003

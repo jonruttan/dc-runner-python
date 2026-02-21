@@ -1,7 +1,3 @@
-# Conformance Cases
-
-## DCCONF-SCHEMA-STDLIB-003
-
 ```yaml contract-spec
 id: DCCONF-SCHEMA-STDLIB-003
 spec_version: 1
@@ -43,7 +39,6 @@ harness:
       path: /specs/conformance/cases/core/spec_lang_schema.spec.md
 ```
 
-## DCCONF-SCHEMA-STDLIB-004
 
 ```yaml contract-spec
 id: DCCONF-SCHEMA-STDLIB-004

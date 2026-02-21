@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-SCHEMA-VERB-001
-
 ```yaml contract-spec
 id: DCGOV-SCHEMA-VERB-001
 spec_version: 1

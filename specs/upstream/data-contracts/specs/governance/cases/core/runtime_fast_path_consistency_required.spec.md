@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-RUNTIME-TRIAGE-023
-
 ```yaml contract-spec
 id: DCGOV-RUNTIME-TRIAGE-023
 spec_version: 1

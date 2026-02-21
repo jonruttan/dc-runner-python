@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-OBJECTIVE-002
-
 ```yaml contract-spec
 id: DCGOV-OBJECTIVE-002
 spec_version: 1

@@ -1,7 +1,3 @@
-# Assertions Policy Library
-
-## LIB-POLICY-ASSERT-001
-
 ```yaml contract-spec
 id: LIB-POLICY-ASSERT-001
 type: contract.export
@@ -78,7 +74,6 @@ library:
   tags: [policy, assertions]
 ```
 
-## LIB-POLICY-ASSERT-900
 
 ```yaml contract-spec
 id: LIB-POLICY-ASSERT-900

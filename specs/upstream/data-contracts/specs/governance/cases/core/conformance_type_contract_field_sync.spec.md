@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-CONF-PORT-004
-
 ```yaml contract-spec
 id: DCGOV-CONF-PORT-004
 spec_version: 1

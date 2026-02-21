@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-DOCS-LIBSYM-001
-
 ```yaml contract-spec
 id: DCGOV-DOCS-LIBSYM-001
 spec_version: 1

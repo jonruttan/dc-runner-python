@@ -1,5 +1,3 @@
-# runtime.chain_exports_from_key_required
-
 ```yaml contract-spec
 id: DCGOV-CHAIN-FROM-001
 spec_version: 1

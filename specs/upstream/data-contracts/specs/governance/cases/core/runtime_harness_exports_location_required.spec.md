@@ -1,5 +1,3 @@
-# runtime_harness_exports_location_required
-
 ```yaml contract-spec
 id: DCGOV-HARNESS-EXPORTS-001
 spec_version: 1

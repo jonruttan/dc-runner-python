@@ -2432,7 +2432,7 @@ def _scan_governance_structured_assertions_required(root: Path, *, harness: dict
         check_id = str(case.get("check", "")).strip()
         if check_id in ignore_checks:
             continue
-        assert_tree = case.get("contract", []) or []
+        assert_tree = case.get("clauses", []) or []
         has_structured_target = False
         text_pass_only = True
 
@@ -2840,7 +2840,7 @@ def _scan_conformance_api_http_portable_shape(root: Path, *, harness: dict | Non
         else:
             violations.append(f"{case_id}: api.http requires request mapping or requests list")
 
-        targets = _collect_assert_targets(case.get("contract", []))
+        targets = _collect_assert_targets(case.get("clauses", []))
         for t in targets:
             if t not in allowed_assert_targets:
                 violations.append(
@@ -4110,7 +4110,7 @@ def _scan_runtime_domain_library_preferred_for_http_helpers(
             rel_doc = _rel_path(root, doc_path)
             if rel_doc in _RAW_HTTP_META_ALLOWED_CASE_FILES:
                 continue
-            assert_tree = case.get("contract", []) or []
+            assert_tree = case.get("clauses", []) or []
             leaf_rows: list[tuple[str, str, object, bool]] = []
             def _collect_leaf(leaf: dict, *, inherited_target: str | None = None, assert_path: str = "assert") -> None:
                 del assert_path
@@ -4658,7 +4658,7 @@ def _scan_conformance_spec_lang_preferred(root: Path, *, harness: dict | None = 
                     if op != "evaluate":
                         non_evaluate_ops.add(op)
 
-            _collect_ops(spec.test.get("contract", []) or [])
+            _collect_ops(spec.test.get("clauses", []) or [])
             case_id = str(spec.test.get("id", "<unknown>")).strip() or "<unknown>"
             all_rows.append(
                 {
@@ -4766,7 +4766,7 @@ def _scan_impl_evaluate_first_required(root: Path, *, harness: dict | None = Non
                 except ValueError:
                     rel = str(spec.doc_path)
                 non_evaluate_ops: set[str] = set()
-                _collect_non_eval_ops(spec.test.get("contract", []) or [], non_evaluate_ops)
+                _collect_non_eval_ops(spec.test.get("clauses", []) or [], non_evaluate_ops)
                 case_id = str(spec.test.get("id", "<unknown>")).strip() or "<unknown>"
                 is_allowlisted = case_id in allow_case_ids
                 all_rows.append(
@@ -4931,7 +4931,7 @@ def _scan_conformance_spec_lang_fixture_library_usage(root: Path, *, harness: di
         if str(case.get("type", "")).strip() not in {"text.file", "contract.check"}:
             continue
         lib_ok = any(str(x).strip() == required_library_path for x in _collect_chain_library_refs(case))
-        calls = _count_helper_calls(case.get("contract"))
+        calls = _count_helper_calls(case.get("clauses"))
         total_calls += calls
         if case_id in required_case_ids:
             seen_required.add(case_id)
@@ -4985,7 +4985,7 @@ def _scan_conformance_library_contract_cases_present(
         case = spec.test if isinstance(spec.test, dict) else {}
         case_id = str(case.get("id", "<unknown>")).strip() or "<unknown>"
         found_case_ids.add(case_id)
-        raw_assert = case.get("contract")
+        raw_assert = case.get("clauses")
         if isinstance(raw_assert, list) and any(True for _ in _iter_evaluate_expr_nodes(raw_assert)):
             evaluate_case_ids.add(case_id)
 
@@ -6121,7 +6121,7 @@ def _scan_docs_markdown_structured_assertions_required(root: Path, *, harness: d
             for row in iter_leaf_assertions(leaf, target_override=inherited_target):
                 leaf_rows.append(row)
 
-        assert_tree = case.get("contract", []) or []
+        assert_tree = case.get("clauses", []) or []
         try:
             eval_assert_tree(assert_tree, eval_leaf=_collect_leaf)
         except Exception as exc:  # noqa: BLE001
@@ -7243,7 +7243,7 @@ def _scan_schema_contract_target_on_forbidden(root: Path, *, harness: dict | Non
     violations: list[str] = []
     for doc_path, case in _iter_all_spec_cases(root):
         case_id = str(case.get("id", "<unknown>")).strip() or "<unknown>"
-        contract = case.get("contract")
+        contract = case.get("clauses")
         if not isinstance(contract, dict):
             continue
         defaults = contract.get("defaults")
@@ -7340,7 +7340,7 @@ def _scan_schema_contract_imports_explicit_required(root: Path, *, harness: dict
     violations: list[str] = []
     for doc_path, case in _iter_all_spec_cases(root):
         case_id = str(case.get("id", "<unknown>")).strip() or "<unknown>"
-        contract = case.get("contract")
+        contract = case.get("clauses")
         if not isinstance(contract, dict):
             continue
         defaults = contract.get("defaults")
@@ -7527,7 +7527,7 @@ def _scan_runtime_contract_step_asserts_required(root: Path, *, harness: dict | 
 
     for doc_path, case in _iter_docs_spec_cases(root):
         case_id = str(case.get("id", "<unknown>")).strip() or "<unknown>"
-        _walk(case.get("contract"), rel=doc_path.relative_to(root).as_posix(), case_id=case_id, path="contract")
+        _walk(case.get("clauses"), rel=doc_path.relative_to(root).as_posix(), case_id=case_id, path="contract")
     return violations
 
 
@@ -7549,7 +7549,7 @@ def _scan_runtime_legacy_checks_key_forbidden(root: Path, *, harness: dict | Non
 
     for doc_path, case in _iter_docs_spec_cases(root):
         case_id = str(case.get("id", "<unknown>")).strip() or "<unknown>"
-        _walk(case.get("contract"), rel=doc_path.relative_to(root).as_posix(), case_id=case_id, path="contract")
+        _walk(case.get("clauses"), rel=doc_path.relative_to(root).as_posix(), case_id=case_id, path="contract")
     return violations
 
 
@@ -7562,7 +7562,7 @@ def _scan_runtime_contract_job_dispatch_in_contract_required(
         if str(case.get("type", "")).strip() != "contract.job":
             continue
         case_id = str(case.get("id", "<unknown>")).strip() or "<unknown>"
-        raw = yaml.safe_dump(case.get("contract"), sort_keys=False)
+        raw = yaml.safe_dump(case.get("clauses"), sort_keys=False)
         if "ops.job.dispatch" not in raw:
             violations.append(
                 f"{doc_path.relative_to(root)}: case {case_id} contract.job must dispatch via contract ops.job.dispatch"
@@ -7629,7 +7629,7 @@ def _scan_runtime_ops_job_capability_required(root: Path, *, harness: dict | Non
     del harness
     violations: list[str] = []
     for doc_path, case in _iter_docs_spec_cases(root):
-        contract = case.get("contract")
+        contract = case.get("clauses")
         raw = yaml.safe_dump(contract, sort_keys=False)
         if "ops.job.dispatch" not in raw:
             continue
@@ -7827,7 +7827,7 @@ def _scan_runtime_contract_job_hooks_refactor_applied(
         if not _has_dispatch_for_job(complete_hook, "on_complete"):
             violations.append(f"{rel}: case {case_id} when.complete must dispatch on_complete")
 
-        contract = case.get("contract")
+        contract = case.get("clauses")
         if not _contract_dispatches_main(contract):
             violations.append(f"{rel}: case {case_id} contract must retain ops.job.dispatch main assertion")
     return violations
@@ -9949,7 +9949,7 @@ def _collect_global_symbol_references(root: Path) -> set[str]:
                 policy = h.get("evaluate")
                 if isinstance(policy, list):
                     referenced.update(sym for sym in _collect_var_symbols(policy) if "." in sym)
-            raw_assert = case.get("contract")
+            raw_assert = case.get("clauses")
             if isinstance(raw_assert, list):
                 for expr in _iter_evaluate_expr_nodes(raw_assert):
                     referenced.update(sym for sym in _collect_var_symbols(expr) if "." in sym)
@@ -10235,7 +10235,7 @@ def _scan_reference_private_symbols_forbidden(root: Path, *, harness: dict | Non
                             sym = str(raw).strip()
                             if sym and "." in sym:
                                 refs.add(sym)
-            raw_assert = case.get("contract")
+            raw_assert = case.get("clauses")
             if isinstance(raw_assert, list):
                 for expr in _iter_evaluate_expr_nodes(raw_assert):
                     refs.update(sym for sym in _collect_var_symbols(expr) if "." in sym)
@@ -11355,7 +11355,7 @@ def run_governance_check(case, *, ctx) -> None:
     )
 
     assert_tree = compile_assert_tree(
-        t.get("contract"),
+        t.get("clauses"),
         raw_expect=t.get("expect"),
         type_name="contract.check",
         strict_steps=True,

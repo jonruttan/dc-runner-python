@@ -1,7 +1,3 @@
-# Python Script CLI Cases: CI and Parity
-
-## DCIMPL-PY-SCRIPT-CI-001
-
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CI-001
 title: ci_gate_summary command help renders usage
@@ -36,7 +32,6 @@ contract:
       - --runner-bin
 ```
 
-## DCIMPL-PY-SCRIPT-CI-002
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CI-002
@@ -71,7 +66,6 @@ contract:
       - --runner-bin
 ```
 
-## DCIMPL-PY-SCRIPT-CI-003
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CI-003
@@ -107,7 +101,6 @@ contract:
       - --cases
 ```
 
-## DCIMPL-PY-SCRIPT-CI-004
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CI-004
@@ -144,7 +137,6 @@ contract:
       - invalid int value
 ```
 
-## DCIMPL-PY-SCRIPT-CI-005
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CI-005
@@ -185,7 +177,6 @@ contract:
       - --case-file-pattern
 ```
 
-## DCIMPL-PY-SCRIPT-CI-006
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CI-006
@@ -226,7 +217,6 @@ contract:
       - case-file-pattern
 ```
 
-## DCIMPL-PY-SCRIPT-CI-007
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CI-007
@@ -264,7 +254,6 @@ contract:
       - --case-file-pattern <glob>
 ```
 
-## DCIMPL-PY-SCRIPT-CI-008
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CI-008
@@ -301,7 +290,6 @@ contract:
       - --case-formats requires at least one format
 ```
 
-## DCIMPL-PY-SCRIPT-CI-009
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-CI-009

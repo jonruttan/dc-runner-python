@@ -691,8 +691,8 @@ def _normalize_case(case: dict[str, Any]) -> tuple[dict[str, Any], bool]:
     changed = False
 
     if "contract" in out:
-        norm_contract, ch = _normalize_contract(out.get("contract"))
-        out["contract"] = norm_contract
+        norm_contract, ch = _normalize_contract(out.get("clauses"))
+        out["clauses"] = norm_contract
         changed = changed or ch
 
     when = out.get("when")
@@ -1704,7 +1704,7 @@ def _lint_contract(case: dict[str, Any], *, issues: list[SpecLangIssue], path: P
                 )
         return names
 
-    contract = case.get("contract")
+    contract = case.get("clauses")
     if contract is None:
         _append_issue(
             issues,

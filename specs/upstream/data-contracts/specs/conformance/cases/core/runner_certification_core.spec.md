@@ -1,7 +1,3 @@
-# Runner Certification Core Conformance Cases
-
-## DCCONF-RCERT-001
-
 ```yaml contract-spec
 id: DCCONF-RCERT-001
 spec_version: 1
@@ -28,7 +24,6 @@ contract:
       - contract-spec
 ```
 
-## DCCONF-RCERT-002
 
 ```yaml contract-spec
 id: DCCONF-RCERT-002

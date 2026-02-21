@@ -33,22 +33,13 @@ class MarkdownYamlSpecCodec:
 
     def load_cases(self, path: Path) -> list[dict[str, Any]]:
         raw = path.read_text(encoding="utf-8")
-        out: list[dict[str, Any]] = []
-        for block in _iter_spec_test_blocks(raw):
-            payload = yaml.safe_load(block) or {}
-            if isinstance(payload, dict):
-                tests = [payload]
-            elif isinstance(payload, list):
-                tests = payload
-            else:
-                raise TypeError(f"contract-spec block in {path} must be a mapping or a list of mappings")
-            for t in tests:
-                if not isinstance(t, dict):
-                    raise TypeError(f"contract-spec block in {path} contains a non-mapping test")
-                if "id" not in t or "type" not in t:
-                    raise ValueError(f"contract-spec in {path} must include 'id' and 'type'")
-                out.append(t)
-        return out
+        blocks = list(_iter_spec_test_blocks(raw))
+        if len(blocks) != 1:
+            raise ValueError(
+                f"contract-spec markdown in {path} must contain exactly one yaml contract-spec block"
+            )
+        payload = yaml.safe_load(blocks[0]) or {}
+        return _expand_suite_payload(path, payload)
 
 
 class YamlSpecFileCodec:
@@ -60,20 +51,7 @@ class YamlSpecFileCodec:
 
     def load_cases(self, path: Path) -> list[dict[str, Any]]:
         payload = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
-        if isinstance(payload, dict):
-            tests = [payload]
-        elif isinstance(payload, list):
-            tests = payload
-        else:
-            raise TypeError(f"spec file {path} must be a mapping or a list of mappings")
-        out: list[dict[str, Any]] = []
-        for t in tests:
-            if not isinstance(t, dict):
-                raise TypeError(f"spec file {path} contains a non-mapping test")
-            if "id" not in t or "type" not in t:
-                raise ValueError(f"spec in {path} must include 'id' and 'type'")
-            out.append(t)
-        return out
+        return _expand_suite_payload(path, payload)
 
 
 class JsonSpecFileCodec:
@@ -85,20 +63,46 @@ class JsonSpecFileCodec:
 
     def load_cases(self, path: Path) -> list[dict[str, Any]]:
         payload = json.loads(path.read_text(encoding="utf-8"))
-        if isinstance(payload, dict):
-            tests = [payload]
-        elif isinstance(payload, list):
-            tests = payload
-        else:
-            raise TypeError(f"spec file {path} must be a mapping or a list of mappings")
-        out: list[dict[str, Any]] = []
-        for t in tests:
-            if not isinstance(t, dict):
-                raise TypeError(f"spec file {path} contains a non-mapping test")
-            if "id" not in t or "type" not in t:
-                raise ValueError(f"spec in {path} must include 'id' and 'type'")
-            out.append(t)
-        return out
+        return _expand_suite_payload(path, payload)
+
+
+def _expand_suite_payload(path: Path, payload: Any) -> list[dict[str, Any]]:
+    if not isinstance(payload, dict):
+        raise TypeError(f"contract-spec suite in {path} must be a mapping")
+    if "contracts" not in payload:
+        raise ValueError(f"contract-spec suite in {path} must define contracts")
+    contracts = payload.get("contracts")
+    if not isinstance(contracts, list) or not contracts:
+        raise ValueError(f"contract-spec suite in {path} contracts must be a non-empty list")
+    spec_version = payload.get("spec_version")
+    schema_ref = payload.get("schema_ref")
+    if spec_version is None or schema_ref is None:
+        raise ValueError(f"contract-spec suite in {path} must include spec_version and schema_ref")
+
+    defaults_raw = payload.get("defaults")
+    defaults = dict(defaults_raw) if isinstance(defaults_raw, dict) else {}
+    suite_level: dict[str, Any] = {}
+    for key in ("spec_version", "schema_ref", "title", "purpose", "domain"):
+        if key in payload:
+            suite_level[key] = payload.get(key)
+
+    out: list[dict[str, Any]] = []
+    for idx, item in enumerate(contracts):
+        if not isinstance(item, dict):
+            raise TypeError(f"contract-spec suite in {path} contracts[{idx}] must be a mapping")
+        merged = dict(defaults)
+        merged.update(item)
+        for key, value in suite_level.items():
+            if key not in merged:
+                merged[key] = value
+        if "id" not in merged:
+            raise ValueError(f"contract-spec in {path} contracts[{idx}] must include 'id'")
+        if "type" not in merged:
+            raise ValueError(
+                f"contract-spec in {path} contracts[{idx}] must include 'type' or suite.defaults.type"
+            )
+        out.append(merged)
+    return out
 
 
 def default_codecs() -> dict[str, ExternalCaseCodec]:

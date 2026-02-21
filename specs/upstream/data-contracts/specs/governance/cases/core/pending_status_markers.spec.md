@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-PENDING-001
-
 ```yaml contract-spec
 id: DCGOV-PENDING-001
 spec_version: 1

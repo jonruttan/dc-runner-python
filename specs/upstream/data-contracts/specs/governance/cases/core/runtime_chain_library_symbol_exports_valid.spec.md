@@ -1,5 +1,3 @@
-# runtime.chain_library_symbol_exports_valid
-
 ```yaml contract-spec
 id: DCGOV-CHAIN-FROM-003
 spec_version: 1

@@ -1,7 +1,3 @@
-# Python Contract Coverage Report Command Cases
-
-## DCIMPL-PY-CONTRACT-REP-001
-
 ```yaml contract-spec
 id: DCIMPL-PY-CONTRACT-REP-001
 title: contract_coverage_report_main emits json payload to stdout
@@ -40,7 +36,6 @@ contract:
       - '"rules"'
 ```
 
-## DCIMPL-PY-CONTRACT-REP-002
 
 ```yaml contract-spec
 id: DCIMPL-PY-CONTRACT-REP-002

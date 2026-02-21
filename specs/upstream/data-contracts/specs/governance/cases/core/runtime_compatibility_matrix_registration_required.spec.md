@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-RUNTIME-CONFIG-008
-
 ```yaml contract-spec
 id: DCGOV-RUNTIME-CONFIG-008
 spec_version: 1

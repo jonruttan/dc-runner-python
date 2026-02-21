@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-ASSERT-COMPILE-001
-
 ```yaml contract-spec
 id: DCGOV-ASSERT-COMPILE-001
 spec_version: 1

@@ -1,7 +1,3 @@
-# Python Script CLI Cases: Docs Generate and Style
-
-## DCIMPL-PY-SCRIPT-DOCS-001
-
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-DOCS-001
 title: docs_generate_all help renders usage
@@ -36,7 +32,6 @@ contract:
       - --surface
 ```
 
-## DCIMPL-PY-SCRIPT-DOCS-002
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-DOCS-002
@@ -74,7 +69,6 @@ contract:
       - 1
 ```
 
-## DCIMPL-PY-SCRIPT-DOCS-003
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-DOCS-003
@@ -110,7 +104,6 @@ contract:
       - --cases
 ```
 
-## DCIMPL-PY-SCRIPT-DOCS-004
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-DOCS-004
@@ -148,7 +141,6 @@ contract:
       - unknown surface_id
 ```
 
-## DCIMPL-PY-SCRIPT-DOCS-005
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-DOCS-005
@@ -184,7 +176,6 @@ contract:
       - --write
 ```
 
-## DCIMPL-PY-SCRIPT-DOCS-006
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-DOCS-006
@@ -220,7 +211,6 @@ contract:
       - formatting is canonical
 ```
 
-## DCIMPL-PY-SCRIPT-DOCS-007
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-DOCS-007
@@ -268,7 +258,6 @@ contract:
       - wrote .artifacts/docs-build-reference-graph.json
 ```
 
-## DCIMPL-PY-SCRIPT-DOCS-008
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-DOCS-008

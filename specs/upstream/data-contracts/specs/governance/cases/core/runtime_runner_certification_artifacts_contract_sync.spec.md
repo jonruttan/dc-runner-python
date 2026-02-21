@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-RUNTIME-CERT-003
-
 ```yaml contract-spec
 id: DCGOV-RUNTIME-CERT-003
 spec_version: 1

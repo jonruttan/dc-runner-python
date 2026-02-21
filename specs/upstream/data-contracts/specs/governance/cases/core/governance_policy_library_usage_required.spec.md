@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-POLICY-LIB-002
-
 ```yaml contract-spec
 id: DCGOV-POLICY-LIB-002
 spec_version: 1

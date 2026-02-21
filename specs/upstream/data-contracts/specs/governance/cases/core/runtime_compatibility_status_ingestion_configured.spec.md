@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-RUNTIME-STATUS-003
-
 ```yaml contract-spec
 id: DCGOV-RUNTIME-STATUS-003
 spec_version: 1

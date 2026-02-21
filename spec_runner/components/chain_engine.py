@@ -485,7 +485,7 @@ def _compile_assert_function(
         raise ValueError(
             f"chain step {step.id} import {import_name} requires non-empty path for from=assert.function"
         )
-    raw_assert = producer_case.raw_case.get("contract")
+    raw_assert = producer_case.raw_case.get("clauses")
     if isinstance(raw_assert, list):
         source_step: dict[str, Any] | None = None
         for item in raw_assert:
@@ -564,14 +564,14 @@ def _producer_cache_key(producer_case: InternalSpecCase) -> tuple[str, str]:
 
         signature = json.dumps(
             {
-                "contract": raw.get("contract"),
+                "contract": raw.get("clauses"),
                 "chain": (raw.get("harness") or {}).get("chain") if isinstance(raw.get("harness"), dict) else None,
             },
             sort_keys=True,
             separators=(",", ":"),
         )
     except Exception:
-        signature = repr(raw.get("contract")) + "|" + repr((raw.get("harness") or {}).get("chain"))
+        signature = repr(raw.get("clauses")) + "|" + repr((raw.get("harness") or {}).get("chain"))
     return (f"{resolved}::{producer_case.id}", signature)
 
 

@@ -450,7 +450,7 @@ def _check_contract_terminology_hard_cut() -> list[str]:
             issues.append(
                 f"{rel}:1: NORMALIZATION_CONTRACT_TERMS: case {case_id} legacy top-level assert key is forbidden; use contract"
             )
-        contract = case.get("contract")
+        contract = case.get("clauses")
         if contract is None:
             issues.append(
                 f"{rel}:1: NORMALIZATION_CONTRACT_TERMS: case {case_id} missing required contract key"
@@ -570,7 +570,7 @@ def _check_contract_job_dispatch_hard_cut() -> list[str]:
                     f"{rel}:1: NORMALIZATION_CONTRACT_JOB_DISPATCH: case {case_id} harness.jobs.{name}.helper is required"
                 )
 
-        contract = case.get("contract")
+        contract = case.get("clauses")
         raw = yaml.safe_dump(contract, sort_keys=False)
         if "ops.job.dispatch" not in raw:
             issues.append(

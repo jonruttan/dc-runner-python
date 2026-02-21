@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-SPECLAYOUT-DOMAIN-001
-
 ```yaml contract-spec
 id: DCGOV-SPECLAYOUT-DOMAIN-001
 spec_version: 1

@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-OPS-004
-
 ```yaml contract-spec
 id: DCGOV-OPS-004
 spec_version: 1

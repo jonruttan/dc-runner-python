@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-DOCS-GEN-006
-
 ```yaml contract-spec
 id: DCGOV-DOCS-GEN-006
 spec_version: 1

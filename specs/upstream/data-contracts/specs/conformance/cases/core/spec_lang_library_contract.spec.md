@@ -1,7 +1,3 @@
-# Spec-Lang Library Contract Conformance Cases
-
-## DCCONF-LIB-CONTRACT-001
-
 ```yaml contract-spec
 id: DCCONF-LIB-CONTRACT-001
 spec_version: 1
@@ -46,7 +42,6 @@ harness:
       path: /specs/libraries/policy/policy_core.spec.md
 ```
 
-## DCCONF-LIB-CONTRACT-002
 
 ```yaml contract-spec
 id: DCCONF-LIB-CONTRACT-002
@@ -92,7 +87,6 @@ harness:
       path: /specs/libraries/path/path_core.spec.md
 ```
 
-## DCCONF-LIB-CONTRACT-003
 
 ```yaml contract-spec
 id: DCCONF-LIB-CONTRACT-003

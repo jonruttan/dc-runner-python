@@ -1,7 +1,3 @@
-# Python Script CLI Cases: Normalization
-
-## DCIMPL-PY-SCRIPT-NORM-001
-
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-NORM-001
 title: normalize_docs_layout help renders usage
@@ -36,7 +32,6 @@ contract:
       - --profile
 ```
 
-## DCIMPL-PY-SCRIPT-NORM-002
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-NORM-002
@@ -73,7 +68,6 @@ contract:
       - not allowed with argument
 ```
 
-## DCIMPL-PY-SCRIPT-NORM-003
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-NORM-003
@@ -109,7 +103,6 @@ contract:
       - --scope
 ```
 
-## DCIMPL-PY-SCRIPT-NORM-004
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-NORM-004

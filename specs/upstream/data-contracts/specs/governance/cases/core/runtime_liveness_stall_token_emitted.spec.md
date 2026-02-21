@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-LIVENESS-STALL-001
-
 ```yaml contract-spec
 id: DCGOV-LIVENESS-STALL-001
 spec_version: 1

@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-ARCH-COMPONENTS-001
-
 ```yaml contract-spec
 id: DCGOV-ARCH-COMPONENTS-001
 spec_version: 1

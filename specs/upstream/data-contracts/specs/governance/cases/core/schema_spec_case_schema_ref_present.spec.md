@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-SCHEMA-PIN-002
-
 ```yaml contract-spec
 id: DCGOV-SCHEMA-PIN-002
 spec_version: 1

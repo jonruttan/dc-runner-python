@@ -340,7 +340,7 @@ def spec_portability_report_jsonable(repo_root: Path, config: dict[str, Any] | N
             segment = _match_segment(rel_path, cfg["segment_rules"])
 
             try:
-                ops = _collect_leaf_ops(case.get("contract", []) or [])
+                ops = _collect_leaf_ops(case.get("clauses", []) or [])
             except BaseException as exc:  # noqa: BLE001
                 scan_errors.append(f"{rel_path}: case {case_id}: failed to inspect assert tree ({exc})")
                 continue

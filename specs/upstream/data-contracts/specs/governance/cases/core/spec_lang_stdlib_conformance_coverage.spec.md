@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-STDLIB-004
-
 ```yaml contract-spec
 id: DCGOV-STDLIB-004
 spec_version: 1

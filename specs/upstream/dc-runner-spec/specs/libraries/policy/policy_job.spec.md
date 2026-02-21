@@ -1,7 +1,3 @@
-# Job Policy Library
-
-## LIB-POLICY-JOB-001
-
 ```yaml contract-spec
 id: LIB-POLICY-JOB-001
 type: contract.export
@@ -58,7 +54,6 @@ library:
   tags: [policy, job]
 ```
 
-## LIB-POLICY-JOB-900
 
 ```yaml contract-spec
 id: LIB-POLICY-JOB-900

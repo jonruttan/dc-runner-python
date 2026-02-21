@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-DOCS-REF-015
-
 ```yaml contract-spec
 id: DCGOV-DOCS-REF-015
 spec_version: 1

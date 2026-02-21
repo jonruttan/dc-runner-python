@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-RUNTIME-PREPUSH-001
-
 ```yaml contract-spec
 id: DCGOV-RUNTIME-PREPUSH-001
 spec_version: 1

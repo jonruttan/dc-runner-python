@@ -1,5 +1,3 @@
-# CLI Entry Point Conformance Cases
-
 These fixtures pin down entrypoint resolution behavior for `type: cli.run`.
 
 Coverage focus:
@@ -7,7 +5,6 @@ Coverage focus:
 - explicit `harness.entrypoint` behavior
 - capability-gated skip behavior for runtimes without `cli.run`
 
-## DCCONF-CLI-001
 
 ```yaml contract-spec
 id: DCCONF-CLI-001
@@ -43,7 +40,6 @@ contract:
   steps: []
 ```
 
-## DCCONF-CLI-002
 
 ```yaml contract-spec
 id: DCCONF-CLI-002

@@ -1,5 +1,3 @@
-# runtime_chain_imports_consumer_surface_unchanged
-
 ```yaml contract-spec
 id: DCGOV-HARNESS-EXPORTS-004
 spec_version: 1

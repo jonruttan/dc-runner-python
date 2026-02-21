@@ -1,7 +1,3 @@
-# Spec Lang Conformance Cases
-
-## DCCONF-EXPR-001
-
 ```yaml contract-spec
 id: DCCONF-EXPR-001
 spec_version: 1
@@ -42,7 +38,6 @@ contract:
         - 'version: 1'
 ```
 
-## DCCONF-EXPR-002
 
 ```yaml contract-spec
 id: DCCONF-EXPR-002
@@ -87,7 +82,6 @@ contract:
         - '#'
 ```
 
-## DCCONF-EXPR-003
 
 ```yaml contract-spec
 id: DCCONF-EXPR-003
@@ -148,7 +142,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-004
 
 ```yaml contract-spec
 id: DCCONF-EXPR-004
@@ -185,7 +178,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-005
 
 ```yaml contract-spec
 id: DCCONF-EXPR-005
@@ -221,7 +213,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-006
 
 ```yaml contract-spec
 id: DCCONF-EXPR-006
@@ -258,7 +249,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-007
 
 ```yaml contract-spec
 id: DCCONF-EXPR-007
@@ -314,7 +304,6 @@ contract:
           - 1000
 ```
 
-## DCCONF-EXPR-008
 
 ```yaml contract-spec
 id: DCCONF-EXPR-008
@@ -362,7 +351,6 @@ contract:
         - 'version: 1'
 ```
 
-## DCCONF-EXPR-009
 
 ```yaml contract-spec
 id: DCCONF-EXPR-009
@@ -408,7 +396,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-010
 
 ```yaml contract-spec
 id: DCCONF-EXPR-010
@@ -453,7 +440,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-011
 
 ```yaml contract-spec
 id: DCCONF-EXPR-011
@@ -507,7 +493,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-012
 
 ```yaml contract-spec
 id: DCCONF-EXPR-012
@@ -565,7 +550,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-013
 
 ```yaml contract-spec
 id: DCCONF-EXPR-013
@@ -621,7 +605,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-014
 
 ```yaml contract-spec
 id: DCCONF-EXPR-014
@@ -718,7 +701,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-015
 
 ```yaml contract-spec
 id: DCCONF-EXPR-015
@@ -798,7 +780,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-016
 
 ```yaml contract-spec
 id: DCCONF-EXPR-016
@@ -843,7 +824,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-017
 
 ```yaml contract-spec
 id: DCCONF-EXPR-017
@@ -890,7 +870,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-018
 
 ```yaml contract-spec
 id: DCCONF-EXPR-018
@@ -933,7 +912,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-019
 
 ```yaml contract-spec
 id: DCCONF-EXPR-019
@@ -1058,7 +1036,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-020
 
 ```yaml contract-spec
 id: DCCONF-EXPR-020
@@ -1163,7 +1140,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-021
 
 ```yaml contract-spec
 id: DCCONF-EXPR-021
@@ -1246,7 +1222,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-022
 
 ```yaml contract-spec
 id: DCCONF-EXPR-022
@@ -1335,7 +1310,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-023
 
 ```yaml contract-spec
 id: DCCONF-EXPR-023
@@ -1519,7 +1493,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-EXPR-024
 
 ```yaml contract-spec
 id: DCCONF-EXPR-024

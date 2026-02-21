@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-DOCS-QUAL-005
-
 ```yaml contract-spec
 id: DCGOV-DOCS-QUAL-005
 spec_version: 1

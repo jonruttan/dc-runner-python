@@ -1,5 +1,3 @@
-# library.single_public_symbol_per_case_required
-
 ```yaml contract-spec
 id: DCGOV-LIB-SINGLE-001
 spec_version: 1

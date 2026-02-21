@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-ASSERT-PROFILE-002
-
 ```yaml contract-spec
 id: DCGOV-ASSERT-PROFILE-002
 spec_version: 1

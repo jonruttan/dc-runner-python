@@ -1,7 +1,3 @@
-# Python Script CLI Cases: Quality and Registry Reports
-
-## DCIMPL-PY-SCRIPT-QUALITY-001
-
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-QUALITY-001
 title: objective_scorecard_report writes json artifact
@@ -37,7 +33,6 @@ contract:
       - wrote .artifacts/objective-scorecard-script-case.json
 ```
 
-## DCIMPL-PY-SCRIPT-QUALITY-002
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-QUALITY-002
@@ -74,7 +69,6 @@ contract:
       - invalid choice
 ```
 
-## DCIMPL-PY-SCRIPT-QUALITY-003
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-QUALITY-003
@@ -112,7 +106,6 @@ contract:
       - wrote .artifacts/spec-lang-adoption-script-case.json
 ```
 
-## DCIMPL-PY-SCRIPT-QUALITY-004
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-QUALITY-004
@@ -150,7 +143,6 @@ contract:
       - unsupported quality report
 ```
 
-## DCIMPL-PY-SCRIPT-QUALITY-005
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-QUALITY-005
@@ -189,7 +181,6 @@ contract:
       - wrote .artifacts/schema-registry-script-case.json
 ```
 
-## DCIMPL-PY-SCRIPT-QUALITY-006
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-QUALITY-006

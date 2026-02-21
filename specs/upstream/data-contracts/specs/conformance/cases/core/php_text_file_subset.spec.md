@@ -1,7 +1,3 @@
-# PHP Text File Subset Conformance Cases
-
-## DCCONF-PHP-TEXT-001
-
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-001
 spec_version: 1
@@ -32,7 +28,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-PHP-TEXT-002
 
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-002
@@ -64,7 +59,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-PHP-TEXT-003
 
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-003
@@ -96,7 +90,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-PHP-TEXT-004
 
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-004
@@ -132,7 +125,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-PHP-TEXT-005
 
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-005
@@ -168,7 +160,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-PHP-TEXT-006
 
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-006
@@ -204,7 +195,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-PHP-TEXT-007
 
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-007
@@ -240,7 +230,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-PHP-TEXT-008
 
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-008
@@ -282,7 +271,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-PHP-TEXT-009
 
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-009
@@ -317,7 +305,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-PHP-TEXT-010
 
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-010
@@ -352,7 +339,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-PHP-TEXT-011
 
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-011
@@ -387,7 +373,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-PHP-TEXT-012
 
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-012
@@ -428,7 +413,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-PHP-TEXT-013
 
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-013
@@ -467,7 +451,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-PHP-TEXT-014
 
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-014

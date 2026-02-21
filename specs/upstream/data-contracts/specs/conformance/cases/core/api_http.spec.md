@@ -1,7 +1,3 @@
-# API HTTP Conformance Fixtures
-
-## DCCONF-API-001
-
 ```yaml contract-spec
 id: DCCONF-API-001
 spec_version: 1
@@ -48,7 +44,6 @@ harness:
         url: /specs/conformance/cases/fixtures/api_http_ok.json
 ```
 
-## DCCONF-API-002
 
 ```yaml contract-spec
 id: DCCONF-API-002
@@ -88,7 +83,6 @@ harness:
         method: GET
 ```
 
-## DCCONF-API-003
 
 ```yaml contract-spec
 id: DCCONF-API-003
@@ -129,7 +123,6 @@ harness:
         url: /specs/conformance/cases/fixtures/api_http_ok.json
 ```
 
-## DCCONF-API-004
 
 ```yaml contract-spec
 id: DCCONF-API-004
@@ -170,7 +163,6 @@ harness:
           name: sample
 ```
 
-## DCCONF-API-005
 
 ```yaml contract-spec
 id: DCCONF-API-005
@@ -208,7 +200,6 @@ harness:
         url: /specs/conformance/cases/fixtures/api_http_item_abc-123.json
 ```
 
-## DCCONF-API-006
 
 ```yaml contract-spec
 id: DCCONF-API-006
@@ -246,7 +237,6 @@ harness:
         url: /specs/conformance/cases/fixtures/api_http_item_abc-123.json
 ```
 
-## DCCONF-API-007
 
 ```yaml contract-spec
 id: DCCONF-API-007
@@ -286,7 +276,6 @@ harness:
         url: /specs/conformance/cases/fixtures/api_http_deleted.json
 ```
 
-## DCCONF-API-008
 
 ```yaml contract-spec
 id: DCCONF-API-008
@@ -324,7 +313,6 @@ harness:
         url: /specs/conformance/cases/fixtures/api_http_ok.json
 ```
 
-## DCCONF-API-009
 
 ```yaml contract-spec
 id: DCCONF-API-009
@@ -362,7 +350,6 @@ harness:
         url: /specs/conformance/cases/fixtures/api_http_ok.json
 ```
 
-## DCCONF-API-010
 
 ```yaml contract-spec
 id: DCCONF-API-010
@@ -402,7 +389,6 @@ harness:
         url: /specs/conformance/cases/fixtures/api_http_ok.json
 ```
 
-## DCCONF-API-011
 
 ```yaml contract-spec
 id: DCCONF-API-011
@@ -446,7 +432,6 @@ harness:
           request_method: POST
 ```
 
-## DCCONF-API-012
 
 ```yaml contract-spec
 id: DCCONF-API-012
@@ -504,7 +489,6 @@ contract:
       - steps_json
 ```
 
-## DCCONF-API-013
 
 ```yaml contract-spec
 id: DCCONF-API-013
@@ -563,7 +547,6 @@ contract:
       - env_ref
 ```
 
-## DCCONF-API-014
 
 ```yaml contract-spec
 id: DCCONF-API-014
@@ -610,7 +593,6 @@ contract:
       - '200'
 ```
 
-## DCCONF-API-015
 
 ```yaml contract-spec
 id: DCCONF-API-015
@@ -658,7 +640,6 @@ contract:
       - '200'
 ```
 
-## DCCONF-API-016
 
 ```yaml contract-spec
 id: DCCONF-API-016
@@ -707,7 +688,6 @@ contract:
       - '200'
 ```
 
-## DCCONF-API-017
 
 ```yaml contract-spec
 id: DCCONF-API-017

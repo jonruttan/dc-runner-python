@@ -1,7 +1,3 @@
-# Python Script CLI Cases: Governance Runner
-
-## DCIMPL-PY-SCRIPT-GOV-001
-
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-GOV-001
 title: governance runner help renders usage
@@ -36,7 +32,6 @@ contract:
       - --check-prefix
 ```
 
-## DCIMPL-PY-SCRIPT-GOV-002
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-GOV-002
@@ -75,7 +70,6 @@ contract:
       - case-file-pattern
 ```
 
-## DCIMPL-PY-SCRIPT-GOV-003
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-GOV-003
@@ -114,7 +108,6 @@ contract:
       - selected zero cases
 ```
 
-## DCIMPL-PY-SCRIPT-GOV-004
 
 ```yaml contract-spec
 id: DCIMPL-PY-SCRIPT-GOV-004

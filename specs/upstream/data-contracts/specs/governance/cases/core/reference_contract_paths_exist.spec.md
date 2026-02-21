@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-REF-PATHS-001
-
 ```yaml contract-spec
 id: DCGOV-REF-PATHS-001
 spec_version: 1

@@ -1,7 +1,3 @@
-# Runner Job Script Contract Cases
-
-## DCCONF-JOB-004
-
 ```yaml contract-spec
 id: DCCONF-JOB-004
 spec_version: 1
@@ -62,7 +58,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-005
 
 ```yaml contract-spec
 id: DCCONF-JOB-005
@@ -124,7 +119,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-006
 
 ```yaml contract-spec
 id: DCCONF-JOB-006
@@ -183,7 +177,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-007
 
 ```yaml contract-spec
 id: DCCONF-JOB-007
@@ -243,7 +236,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-008
 
 ```yaml contract-spec
 id: DCCONF-JOB-008
@@ -303,7 +295,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-009
 
 ```yaml contract-spec
 id: DCCONF-JOB-009
@@ -364,7 +355,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-010
 
 ```yaml contract-spec
 id: DCCONF-JOB-010
@@ -425,7 +415,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-011
 
 ```yaml contract-spec
 id: DCCONF-JOB-011

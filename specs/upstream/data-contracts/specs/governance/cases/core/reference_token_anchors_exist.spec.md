@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-REF-TOKENS-001
-
 ```yaml contract-spec
 id: DCGOV-REF-TOKENS-001
 spec_version: 1

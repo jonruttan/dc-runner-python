@@ -1,7 +1,3 @@
-# Text Policy Library
-
-## LIB-POLICY-TEXT-001
-
 ```yaml contract-spec
 id: LIB-POLICY-TEXT-001
 type: contract.export
@@ -65,7 +61,6 @@ library:
   tags: [policy, text]
 ```
 
-## LIB-POLICY-TEXT-900
 
 ```yaml contract-spec
 id: LIB-POLICY-TEXT-900

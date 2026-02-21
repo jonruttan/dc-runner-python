@@ -368,7 +368,7 @@ def spec_lang_adoption_report_jsonable(repo_root: Path, config: dict[str, Any] |
             except ValueError:
                 rel_path = str(doc_path)
             segment = _match_segment(rel_path, rules)
-            ops = _collect_leaf_ops(case.get("contract", []) or [])
+            ops = _collect_leaf_ops(case.get("clauses", []) or [])
             total_leaf = len(ops)
             eval_leaf = sum(1 for op in ops if op == "evaluate")
             logic_ratio = 1.0 if total_leaf == 0 else _safe_ratio(eval_leaf, total_leaf, default=1.0)

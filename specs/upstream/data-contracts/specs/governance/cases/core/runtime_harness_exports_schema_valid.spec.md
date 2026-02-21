@@ -1,5 +1,3 @@
-# runtime_harness_exports_schema_valid
-
 ```yaml contract-spec
 id: DCGOV-HARNESS-EXPORTS-003
 spec_version: 1

@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-RUNTIME-APIHTTP-005
-
 ```yaml contract-spec
 id: DCGOV-RUNTIME-APIHTTP-005
 spec_version: 1

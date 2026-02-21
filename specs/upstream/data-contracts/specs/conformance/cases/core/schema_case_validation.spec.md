@@ -1,7 +1,3 @@
-# Schema Case Validation Conformance Cases
-
-## DCCONF-SCHEMA-CASE-001
-
 ```yaml contract-spec
 id: DCCONF-SCHEMA-CASE-001
 spec_version: 1
@@ -33,7 +29,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-SCHEMA-CASE-002
 
 ```yaml contract-spec
 id: DCCONF-SCHEMA-CASE-002

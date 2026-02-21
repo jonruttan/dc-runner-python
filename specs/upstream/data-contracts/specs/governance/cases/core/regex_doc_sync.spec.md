@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-DOC-REGEX-001
-
 ```yaml contract-spec
 id: DCGOV-DOC-REGEX-001
 spec_version: 1

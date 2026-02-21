@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-LIVENESS-HARDCAP-001
-
 ```yaml contract-spec
 id: DCGOV-LIVENESS-HARDCAP-001
 spec_version: 1

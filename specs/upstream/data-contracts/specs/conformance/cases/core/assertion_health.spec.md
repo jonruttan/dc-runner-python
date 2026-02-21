@@ -1,5 +1,3 @@
-# Assertion Health Conformance Cases
-
 These fixtures validate assertion-health behavior independent of a specific
 runtime implementation.
 
@@ -9,7 +7,6 @@ Coverage focus:
 - canonical diagnostic codes (`AH001`-`AH005`)
 - expected outcome category (`pass` vs assertion/schema failure)
 
-## DCCONF-AH-001
 
 ```yaml contract-spec
 id: DCCONF-AH-001
@@ -43,7 +40,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-AH-002
 
 ```yaml contract-spec
 id: DCCONF-AH-002
@@ -78,7 +74,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-AH-003
 
 ```yaml contract-spec
 id: DCCONF-AH-003
@@ -112,7 +107,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-AH-004
 
 ```yaml contract-spec
 id: DCCONF-AH-004
@@ -146,7 +140,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-AH-005
 
 ```yaml contract-spec
 id: DCCONF-AH-005
@@ -185,7 +178,6 @@ harness:
     config: {}
 ```
 
-## DCCONF-AH-006
 
 ```yaml contract-spec
 id: DCCONF-AH-006

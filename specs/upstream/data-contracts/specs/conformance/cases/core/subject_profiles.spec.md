@@ -1,7 +1,3 @@
-# Subject Profiles Conformance Cases
-
-## DCCONF-PROFILE-001
-
 ```yaml contract-spec
 id: DCCONF-PROFILE-001
 spec_version: 1
@@ -42,7 +38,6 @@ harness:
       path: /specs/schema/subject_profiles_v1.yaml
 ```
 
-## DCCONF-PROFILE-002
 
 ```yaml contract-spec
 id: DCCONF-PROFILE-002

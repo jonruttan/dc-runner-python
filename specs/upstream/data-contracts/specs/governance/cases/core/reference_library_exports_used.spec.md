@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-REF-SYMBOLS-003
-
 ```yaml contract-spec
 id: DCGOV-REF-SYMBOLS-003
 spec_version: 1

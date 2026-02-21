@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-PROFILE-SPANS-001
-
 ```yaml contract-spec
 id: DCGOV-PROFILE-SPANS-001
 spec_version: 1

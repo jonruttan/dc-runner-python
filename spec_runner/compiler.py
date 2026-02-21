@@ -277,10 +277,6 @@ def _validate_contract_export_docs(raw_case: dict[str, Any]) -> list[str]:
     return issues
 
 
-def _looks_like_assert_step_v1(item: Any) -> bool:
-    return isinstance(item, dict) and "id" in item and ("asserts" in item or "assert" in item)
-
-
 def _normalize_step_assert_list(raw: Any, *, step_path: str) -> list[Any]:
     if isinstance(raw, dict):
         return [raw]
@@ -406,8 +402,8 @@ def _lower_expect_steps(raw_expect: Any) -> list[dict[str, Any]]:
     return out
 
 
-def _normalize_contract_steps(raw_assert: Any, *, raw_expect: Any, assert_path: str) -> list[dict[str, Any]]:
-    # Canonical contract form: mapping with defaults + steps.
+def _normalize_clause_predicates(raw_assert: Any, *, raw_expect: Any, assert_path: str) -> list[dict[str, Any]]:
+    # Canonical clause form: mapping with defaults + predicates.
     if isinstance(raw_assert, dict):
         defaults_raw = raw_assert.get("defaults")
         defaults = defaults_raw if isinstance(defaults_raw, dict) else {}
@@ -430,11 +426,11 @@ def _normalize_contract_steps(raw_assert: Any, *, raw_expect: Any, assert_path: 
                 )
             raise ValueError(f"{assert_path}.imports must use list form: [{'{from, names, as?}'}]")
         default_imports = _normalize_imports(root_imports_raw, field_path=f"{assert_path}.imports")
-        raw_steps = raw_assert.get("steps")
+        raw_steps = raw_assert.get("predicates")
         if raw_steps is None:
             raw_steps = []
         if not isinstance(raw_steps, list):
-            raise TypeError(f"{assert_path}.steps must be a list")
+            raise TypeError(f"{assert_path}.predicates must be a list")
         synthetic = _lower_expect_steps(raw_expect)
         all_steps = list(raw_steps) + synthetic
         if not all_steps:
@@ -442,37 +438,37 @@ def _normalize_contract_steps(raw_assert: Any, *, raw_expect: Any, assert_path: 
         out: list[dict[str, Any]] = []
         for idx, raw_step in enumerate(all_steps):
             if not isinstance(raw_step, dict):
-                raise TypeError(f"{assert_path}.steps[{idx}] must be a mapping")
+                raise TypeError(f"{assert_path}.predicates[{idx}] must be a mapping")
             if "class" in raw_step:
-                raise ValueError(f"{assert_path}.steps[{idx}].class is removed; use required")
+                raise ValueError(f"{assert_path}.predicates[{idx}].class is removed; use required")
             required = raw_step.get("required", default_required)
             if not isinstance(required, bool):
-                raise TypeError(f"{assert_path}.steps[{idx}].required must be boolean")
+                raise TypeError(f"{assert_path}.predicates[{idx}].required must be boolean")
             priority = raw_step.get("priority", 1)
             if not isinstance(priority, int) or priority < 1:
-                raise ValueError(f"{assert_path}.steps[{idx}].priority must be int >= 1")
+                raise ValueError(f"{assert_path}.predicates[{idx}].priority must be int >= 1")
             severity = raw_step.get("severity", 1)
             if not isinstance(severity, int) or severity < 1:
-                raise ValueError(f"{assert_path}.steps[{idx}].severity must be int >= 1")
+                raise ValueError(f"{assert_path}.predicates[{idx}].severity must be int >= 1")
             purpose_raw = raw_step.get("purpose")
             purpose: str | None = None
             if purpose_raw is not None:
                 purpose = str(purpose_raw).strip()
                 if not purpose:
-                    raise ValueError(f"{assert_path}.steps[{idx}].purpose must be non-empty when provided")
+                    raise ValueError(f"{assert_path}.predicates[{idx}].purpose must be non-empty when provided")
             step_id = str(raw_step.get("id", "")).strip() or f"step_{idx + 1:03d}"
             if "target" in raw_step or "on" in raw_step:
-                raise ValueError(f"{assert_path}.steps[{idx}].target/on is forbidden; use imports")
+                raise ValueError(f"{assert_path}.predicates[{idx}].target/on is forbidden; use imports")
             if isinstance(raw_step.get("imports"), dict):
                 raise ValueError(
-                    f"{assert_path}.steps[{idx}].imports must use list form: [{'{from, names, as?}'}]"
+                    f"{assert_path}.predicates[{idx}].imports must use list form: [{'{from, names, as?}'}]"
                 )
-            step_imports = _normalize_imports(raw_step.get("imports"), field_path=f"{assert_path}.steps[{idx}].imports")
+            step_imports = _normalize_imports(raw_step.get("imports"), field_path=f"{assert_path}.predicates[{idx}].imports")
             merged_imports = dict(default_imports)
             merged_imports.update(step_imports)
             if "assert" not in raw_step:
-                raise ValueError(f"{assert_path}.steps[{idx}].assert is required")
-            checks = _normalize_step_assert_list(raw_step.get("assert"), step_path=f"{assert_path}.steps[{idx}]")
+                raise ValueError(f"{assert_path}.predicates[{idx}].assert is required")
+            checks = _normalize_step_assert_list(raw_step.get("assert"), step_path=f"{assert_path}.predicates[{idx}]")
             out.append(
                 {
                     "id": step_id,
@@ -486,22 +482,14 @@ def _normalize_contract_steps(raw_assert: Any, *, raw_expect: Any, assert_path: 
             )
         return out
 
-    # Accept v1 only for migration tooling compatibility.
-    if isinstance(raw_assert, list):
-        if not raw_assert:
-            return []
-        if not all(_looks_like_assert_step_v1(x) for x in raw_assert):
-            raise ValueError("contract must use canonical form (mapping with defaults/steps)")
-        return list(raw_assert)
-
     if raw_assert is None:
         synthetic = _lower_expect_steps(raw_expect)
-        return _normalize_contract_steps(
-            {"defaults": {}, "steps": synthetic},
+        return _normalize_clause_predicates(
+            {"defaults": {}, "predicates": synthetic},
             raw_expect=None,
             assert_path=assert_path,
         )
-    raise TypeError("contract must be a mapping")
+    raise TypeError("clauses must be a mapping")
 
 
 def compile_assert_tree(
@@ -513,7 +501,7 @@ def compile_assert_tree(
     assert_path: str = "contract",
     strict_steps: bool = True,
 ) -> InternalAssertNode:
-    normalized_steps = _normalize_contract_steps(raw_assert, raw_expect=raw_expect, assert_path=assert_path)
+    normalized_steps = _normalize_clause_predicates(raw_assert, raw_expect=raw_expect, assert_path=assert_path)
     if not normalized_steps:
         return GroupNode(op="MUST", target=inherited_target, children=[], assert_path=assert_path)
 
@@ -523,7 +511,7 @@ def compile_assert_tree(
         assert isinstance(raw_step, dict)
         step_id = str(raw_step.get("id", "")).strip()
         if not step_id:
-            raise ValueError(f"{assert_path}.steps[{idx}].id must be a non-empty string")
+            raise ValueError(f"{assert_path}.predicates[{idx}].id must be a non-empty string")
         if step_id in seen_ids:
             raise ValueError(f"{assert_path} has duplicate step id: {step_id}")
         seen_ids.add(step_id)
@@ -534,16 +522,16 @@ def compile_assert_tree(
         purpose = str(purpose_raw).strip() if isinstance(purpose_raw, str) and str(purpose_raw).strip() else None
         step_imports = raw_step.get("imports")
         if not isinstance(step_imports, dict):
-            raise TypeError(f"{assert_path}.steps[{idx}].imports must be a mapping")
+            raise TypeError(f"{assert_path}.predicates[{idx}].imports must be a mapping")
         raw_checks = raw_step.get("asserts")
         if not isinstance(raw_checks, list) or not raw_checks:
-            raise TypeError(f"{assert_path}.steps[{idx}].assert must be a non-empty mapping or list")
+            raise TypeError(f"{assert_path}.predicates[{idx}].assert must be a non-empty mapping or list")
         children: list[InternalAssertNode] = [
             _compile_assert_expr_leaf(
                 check,
                 target=None,
                 imports=dict(step_imports),
-                assert_path=f"{assert_path}.steps[{idx}].assert[{cidx}]",
+                assert_path=f"{assert_path}.predicates[{idx}].assert[{cidx}]",
             )
             for cidx, check in enumerate(raw_checks)
         ]
@@ -552,7 +540,7 @@ def compile_assert_tree(
                 op="MUST",
                 target=None,
                 children=children,
-                assert_path=f"{assert_path}.steps[{idx}]<{step_id}>",
+                assert_path=f"{assert_path}.predicates[{idx}]<{step_id}>",
                 required=required,
                 priority=priority,
                 severity=severity,
@@ -592,13 +580,14 @@ def compile_external_case(raw_case: dict[str, Any], *, doc_path: Path) -> Intern
         if export_doc_issues:
             raise ValueError("; ".join(export_doc_issues))
         # Producer-only case type: exported callables are compiled from raw
-        # contract step asserts via chain_engine, not from runtime assertion targets.
-        assert_tree = GroupNode(op="MUST", target=None, children=[], assert_path="contract")
+        # clause predicates via chain_engine, not from runtime assertion targets.
+        assert_tree = GroupNode(op="MUST", target=None, children=[], assert_path="clauses")
     else:
         assert_tree = compile_assert_tree(
-            raw_case.get("contract"),
+            raw_case.get("clauses"),
             raw_expect=raw_case.get("expect"),
             type_name=type_name,
+            assert_path="clauses",
             strict_steps=True,
         )
 

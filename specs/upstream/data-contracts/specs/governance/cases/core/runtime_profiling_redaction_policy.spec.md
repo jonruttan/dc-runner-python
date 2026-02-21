@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-PROFILE-REDACT-001
-
 ```yaml contract-spec
 id: DCGOV-PROFILE-REDACT-001
 spec_version: 1

@@ -1,7 +1,3 @@
-# Governance Cases
-
-## DCGOV-RUNTIME-JOB-DISPATCH-004
-
 ```yaml contract-spec
 id: DCGOV-RUNTIME-JOB-DISPATCH-004
 spec_version: 1

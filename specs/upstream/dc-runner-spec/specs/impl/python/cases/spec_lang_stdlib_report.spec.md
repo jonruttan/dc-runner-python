@@ -1,7 +1,3 @@
-# Python Spec-Lang Stdlib Report Command Cases
-
-## DCIMPL-PY-STDLIB-REP-001
-
 ```yaml contract-spec
 id: DCIMPL-PY-STDLIB-REP-001
 title: spec_lang_stdlib_report_main emits json by default
@@ -37,7 +33,6 @@ contract:
       - '"summary"'
 ```
 
-## DCIMPL-PY-STDLIB-REP-002
 
 ```yaml contract-spec
 id: DCIMPL-PY-STDLIB-REP-002

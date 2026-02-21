@@ -1,7 +1,3 @@
-# Domain Library Conformance Cases
-
-## DCCONF-DOMAIN-LIB-001
-
 ```yaml contract-spec
 id: DCCONF-DOMAIN-LIB-001
 spec_version: 1
@@ -198,7 +194,6 @@ contract:
       - 'type: spec.export'
 ```
 
-## DCCONF-DOMAIN-LIB-002
 
 ```yaml contract-spec
 id: DCCONF-DOMAIN-LIB-002

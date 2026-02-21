@@ -1,8 +1,3 @@
-# Runner Job Report Contract Cases
-
-
-## DCCONF-JOB-REP-001
-
 ```yaml contract-spec
 id: DCCONF-JOB-REP-001
 spec_version: 1
@@ -63,7 +58,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-REP-002
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-002
@@ -125,7 +119,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-REP-003
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-003
@@ -187,7 +180,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-REP-004
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-004
@@ -249,7 +241,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-REP-005
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-005
@@ -311,7 +302,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-REP-006
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-006
@@ -373,7 +363,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-REP-007
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-007
@@ -435,7 +424,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-REP-008
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-008
@@ -497,7 +485,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-REP-009
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-009
@@ -559,7 +546,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-REP-010
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-010
@@ -621,7 +607,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-REP-011
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-011
@@ -683,7 +668,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-REP-012
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-012
@@ -745,7 +729,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-REP-013
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-013
@@ -807,7 +790,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-REP-014
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-014
@@ -869,7 +851,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-REP-015
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-015
@@ -931,7 +912,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-REP-016
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-016
@@ -993,7 +973,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-REP-017
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-017
@@ -1055,7 +1034,6 @@ when:
     - on_complete
 ```
 
-## DCCONF-JOB-REP-018
 
 ```yaml contract-spec
 id: DCCONF-JOB-REP-018

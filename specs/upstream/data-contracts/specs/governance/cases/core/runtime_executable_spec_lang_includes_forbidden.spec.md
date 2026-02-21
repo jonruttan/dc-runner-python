@@ -1,5 +1,3 @@
-# runtime.executable_spec_lang_includes_forbidden
-
 ```yaml contract-spec
 id: DCGOV-CHAIN-FROM-004
 spec_version: 1

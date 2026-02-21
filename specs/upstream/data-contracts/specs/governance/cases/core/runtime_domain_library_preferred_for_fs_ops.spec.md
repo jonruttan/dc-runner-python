@@ -1,5 +1,3 @@
-# runtime.domain_library_preferred_for_fs_ops
-
 ```yaml contract-spec
 id: DCGOV-DOMAIN-LIB-OPS-FS-001
 spec_version: 1

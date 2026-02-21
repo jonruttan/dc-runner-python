@@ -904,7 +904,7 @@ def run(case, *, ctx) -> None:
     ctx.set_case_targets(case_key=case_key, targets=targets)
     run_assertions_with_context(
         assert_tree=case.assert_tree,
-        raw_assert_spec=t.get("contract", []) or [],
+        raw_assert_spec=t.get("clauses", []) or [],
         raw_case=t,
         ctx=ctx,
         execution=execution,

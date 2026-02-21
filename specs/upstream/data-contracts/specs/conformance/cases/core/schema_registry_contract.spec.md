@@ -1,7 +1,3 @@
-# Schema Registry Contract Conformance Cases
-
-## DCCONF-SCHEMA-REG-001
-
 ```yaml contract-spec
 id: DCCONF-SCHEMA-REG-001
 spec_version: 1
