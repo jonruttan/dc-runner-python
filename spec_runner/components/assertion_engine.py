@@ -74,10 +74,15 @@ def run_assertions_with_context(
         )
 
     def _to_clause(payload: dict[str, Any]) -> HookClauseContext:
+        required = bool(payload.get("required", True))
+        requirement = str(payload.get("requirement", "required" if required else "optional")).strip() or (
+            "required" if required else "optional"
+        )
         return HookClauseContext(
             index=int(payload.get("index", 0)),
             id=payload.get("id"),
-            class_name=str(payload.get("class", "MUST")),
+            requirement=requirement,
+            required=required,
             assert_path=str(payload.get("assert_path", "contract")),
             target=payload.get("target"),
         )
@@ -86,22 +91,18 @@ def run_assertions_with_context(
         return HookTotals(
             passed_clauses=int(payload.get("passed_clauses", 0)),
             failed_clauses=int(payload.get("failed_clauses", 0)),
-            must_passed=int(payload.get("MUST_passed", 0)),
-            may_passed=int(payload.get("MAY_passed", 0)),
-            must_not_passed=int(payload.get("MUST_NOT_passed", 0)),
+            required_passed=int(payload.get("required_passed", payload.get("MUST_passed", 0))),
+            optional_passed=int(payload.get("optional_passed", payload.get("MAY_passed", 0))),
         )
 
     def _on_clause_pass(clause: dict[str, Any], totals: dict[str, int]) -> None:
-        cls = str(clause.get("class", "")).strip()
-        event_map = {"MUST": "must", "MAY": "may", "MUST_NOT": "must_not"}
-        event = event_map.get(cls)
-        if event is not None:
-            _run_event(
-                event,
-                clause=_to_clause(clause),
-                status="pass",
-                totals=_to_totals(totals),
-            )
+        event = "required" if bool(clause.get("required", True)) else "optional"
+        _run_event(
+            event,
+            clause=_to_clause(clause),
+            status="pass",
+            totals=_to_totals(totals),
+        )
 
     def _on_clause_fail(clause: dict[str, Any], exc: BaseException, totals: dict[str, int]) -> None:
         nonlocal fail_hook_ran
@@ -125,7 +126,8 @@ def run_assertions_with_context(
             clause=HookClauseContext(
                 index=max(int(totals.get("passed_clauses", 0)) - 1, 0),
                 id=None,
-                class_name="MUST",
+                requirement="required",
+                required=True,
                 assert_path="contract",
                 target=None,
             ),

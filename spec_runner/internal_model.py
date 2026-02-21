@@ -21,6 +21,11 @@ class GroupNode:
     target: str | None
     children: list["InternalAssertNode"]
     assert_path: str
+    required: bool = True
+    priority: int = 1
+    severity: int = 1
+    purpose: str | None = None
+    is_step: bool = False
 
 
 InternalAssertNode = GroupNode | PredicateLeaf

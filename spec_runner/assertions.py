@@ -343,11 +343,13 @@ def evaluate_internal_assert_tree(
 
     def _clause_from_node(node: InternalAssertNode, *, index: int) -> dict[str, Any]:
         if isinstance(node, GroupNode):
-            class_name = node.op
+            required = bool(node.required)
+            requirement = "required" if required else "optional"
             target = node.target
             assert_path = node.assert_path
         else:
-            class_name = "MUST"
+            required = True
+            requirement = "required"
             target = node.target
             assert_path = node.assert_path
         clause_id: str | None = None
@@ -356,7 +358,11 @@ def evaluate_internal_assert_tree(
         return {
             "index": int(index),
             "id": clause_id,
-            "class": class_name,
+            "required": required,
+            "requirement": requirement,
+            "priority": int(node.priority) if isinstance(node, GroupNode) else 1,
+            "severity": int(node.severity) if isinstance(node, GroupNode) else 1,
+            "purpose": node.purpose if isinstance(node, GroupNode) else None,
             "assert_path": assert_path,
             "target": target,
         }
@@ -364,9 +370,8 @@ def evaluate_internal_assert_tree(
     totals: dict[str, int] = {
         "passed_clauses": 0,
         "failed_clauses": 0,
-        "MUST_passed": 0,
-        "MAY_passed": 0,
-        "MUST_NOT_passed": 0,
+        "required_passed": 0,
+        "optional_passed": 0,
     }
     if isinstance(assert_tree, GroupNode) and assert_tree.op == "MUST":
         clauses: list[InternalAssertNode] = list(assert_tree.children)
@@ -378,16 +383,19 @@ def evaluate_internal_assert_tree(
         try:
             _eval_node(clause)
             totals["passed_clauses"] += 1
-            class_key = f"{clause_ctx['class']}_passed"
-            if class_key in totals:
-                totals[class_key] += 1
+            if bool(clause_ctx.get("required", True)):
+                totals["required_passed"] += 1
+            else:
+                totals["optional_passed"] += 1
             if on_clause_pass is not None:
                 on_clause_pass(clause_ctx, dict(totals))
         except BaseException as exc:  # noqa: BLE001
             totals["failed_clauses"] += 1
-            if on_clause_fail is not None:
-                on_clause_fail(clause_ctx, exc, dict(totals))
-            raise
+            if bool(clause_ctx.get("required", True)):
+                if on_clause_fail is not None:
+                    on_clause_fail(clause_ctx, exc, dict(totals))
+                raise
+            continue
 
     if on_complete is not None:
         on_complete(dict(totals))

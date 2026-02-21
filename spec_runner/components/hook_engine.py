@@ -7,14 +7,15 @@ from typing import Any, Mapping
 from spec_runner.spec_lang import eval_expr
 from spec_runner.spec_lang_yaml_ast import SpecLangYamlAstError, compile_yaml_expr_to_sexpr
 
-_HOOK_KEYS = ("must", "may", "must_not", "fail", "complete")
+_HOOK_KEYS = ("required", "optional", "fail", "complete")
 
 
 @dataclass(frozen=True)
 class HookClauseContext:
     index: int
     id: str | None
-    class_name: str
+    requirement: str
+    required: bool
     assert_path: str
     target: str | None
 
@@ -23,9 +24,8 @@ class HookClauseContext:
 class HookTotals:
     passed_clauses: int
     failed_clauses: int
-    must_passed: int
-    may_passed: int
-    must_not_passed: int
+    required_passed: int
+    optional_passed: int
 
 
 def parse_on_hooks(*, raw_case: Mapping[str, Any]) -> dict[str, list[Any]]:
@@ -90,7 +90,8 @@ def build_hook_event_envelope(
         "clause": {
             "index": int(clause.index),
             "id": clause.id,
-            "class": clause.class_name,
+            "requirement": clause.requirement,
+            "required": bool(clause.required),
             "assert_path": clause.assert_path,
             "target": clause.target,
         },
@@ -102,9 +103,8 @@ def build_hook_event_envelope(
         "totals": {
             "passed_clauses": int(totals.passed_clauses),
             "failed_clauses": int(totals.failed_clauses),
-            "must_passed": int(totals.must_passed),
-            "may_passed": int(totals.may_passed),
-            "must_not_passed": int(totals.must_not_passed),
+            "required_passed": int(totals.required_passed),
+            "optional_passed": int(totals.optional_passed),
         },
     }
     if failure is not None:
