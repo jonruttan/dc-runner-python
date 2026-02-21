@@ -160,7 +160,7 @@ verify_required_files_exist() {
     "specs/contract/policy_v1.yaml"
     "specs/contract/traceability_v1.yaml"
     "specs/schema/index.md"
-    "specs/schema/runner_certification_registry_v1.yaml"
+    "specs/schema/runner_certification_registry_v2.yaml"
     "specs/schema/runner_reference_v1.yaml"
     "specs/governance/index.md"
     "specs/governance/check_sets_v1.yaml"

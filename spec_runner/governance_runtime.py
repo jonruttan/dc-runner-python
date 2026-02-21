@@ -8457,12 +8457,20 @@ def _scan_runtime_runner_certification_registry_valid(
         return [f"{path}:1: invalid YAML ({exc})"]
     if not isinstance(payload, dict):
         return [f"{path}:1: expected mapping root"]
+    version = payload.get("version")
+    if version != 2:
+        violations.append(f"{path}:1: registry version must be 2")
+    cert_schema_ref = str(payload.get("certificate_schema_ref", "")).strip()
+    if cert_schema_ref != "/specs/schema/runner_execution_certificate_v2.yaml":
+        violations.append(
+            f"{path}:1: certificate_schema_ref must be /specs/schema/runner_execution_certificate_v2.yaml"
+        )
     runners = payload.get("runners")
     if not isinstance(runners, list) or not runners:
         return [f"{path}:1: runners must be a non-empty list"]
     seen: set[str] = set()
     valid_classes = {"required", "compatibility_non_blocking"}
-    valid_status = {"active", "planned", "retired"}
+    valid_status = {"active", "planned", "retired", "disabled"}
     for idx, item in enumerate(runners, start=1):
         if not isinstance(item, dict):
             violations.append(f"{path}:1: runners[{idx}] must be a mapping")
@@ -8564,11 +8572,36 @@ def _scan_runtime_runner_certification_artifacts_contract_sync(
             if not isinstance(payload, dict):
                 violations.append(".artifacts/runner-certification-rust.json:1: artifact must be JSON object")
             else:
-                for key in ("runner", "summary", "checks"):
+                for key in (
+                    "version",
+                    "runner",
+                    "execution_intent",
+                    "equivalence",
+                    "summary",
+                    "checks",
+                    "proof",
+                ):
                     if key not in payload:
                         violations.append(
                             f".artifacts/runner-certification-rust.json:1: missing artifact key `{key}`"
                         )
+                if payload.get("version") != 2:
+                    violations.append(".artifacts/runner-certification-rust.json:1: version must be 2")
+                execution_intent = payload.get("execution_intent")
+                if not isinstance(execution_intent, dict):
+                    violations.append(
+                        ".artifacts/runner-certification-rust.json:1: execution_intent must be a mapping"
+                    )
+                equivalence = payload.get("equivalence")
+                if not isinstance(equivalence, dict) or not str(equivalence.get("intent_hash", "")).strip():
+                    violations.append(
+                        ".artifacts/runner-certification-rust.json:1: equivalence.intent_hash required"
+                    )
+                proof = payload.get("proof")
+                if not isinstance(proof, dict) or not str(proof.get("payload_sha256", "")).strip():
+                    violations.append(
+                        ".artifacts/runner-certification-rust.json:1: proof.payload_sha256 required"
+                    )
     if not md_path.exists():
         violations.append(".artifacts/runner-certification-rust.md:1: certification markdown artifact missing")
     return violations

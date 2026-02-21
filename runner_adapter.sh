@@ -17,6 +17,9 @@ subcommand="${1:-}"
 shift || true
 
 case "$subcommand" in
+  runner-certify)
+    exec "${PYTHON_BIN}" -m spec_runner.runner_certify "$@"
+    ;;
   style-check)
     exec "${PYTHON_BIN}" -m spec_runner.spec_lang_commands spec-lang-lint "$@"
     ;;
@@ -58,12 +61,12 @@ case "$subcommand" in
     ;;
   "")
     echo "ERROR: missing subcommand" >&2
-    echo "Usage: ./runner_adapter.sh {style-check|job-run|governance|conformance|spec-runner} <args...>" >&2
+    echo "Usage: ./runner_adapter.sh {runner-certify|style-check|job-run|governance|conformance|spec-runner} <args...>" >&2
     exit 2
     ;;
   *)
     echo "ERROR: unsupported subcommand: $subcommand" >&2
-    echo "Usage: ./runner_adapter.sh {style-check|job-run|governance|conformance|spec-runner} <args...>" >&2
+    echo "Usage: ./runner_adapter.sh {runner-certify|style-check|job-run|governance|conformance|spec-runner} <args...>" >&2
     exit 2
     ;;
 esac
