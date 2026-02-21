@@ -6,7 +6,7 @@ import hashlib
 import json
 import subprocess
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import yaml
 
@@ -45,7 +45,7 @@ def _load_registry(root: Path) -> tuple[Path, dict[str, Any]]:
 def _normalize_intent(entry: dict[str, Any]) -> dict[str, Any]:
     checks = sorted({str(x).strip() for x in (entry.get("required_core_checks") or []) if str(x).strip()})
     cases = sorted({str(x).strip() for x in (entry.get("required_core_cases") or []) if str(x).strip()})
-    subset_rows = []
+    subset_rows: list[dict[str, Any]] = []
     for item in (entry.get("command_contract_subset") or []):
         if not isinstance(item, dict):
             continue
@@ -55,7 +55,13 @@ def _normalize_intent(entry: dict[str, Any]) -> dict[str, Any]:
         args = [str(x) for x in (item.get("args") or [])]
         expect_exit = sorted({int(x) for x in (item.get("expect_exit") or [0])})
         subset_rows.append({"name": name, "args": args, "expect_exit": expect_exit})
-    subset_rows.sort(key=lambda row: (row["name"], "\x1f".join(row["args"]), ",".join(map(str, row["expect_exit"]))))
+    subset_rows.sort(
+        key=lambda row: (
+            str(row["name"]),
+            "\x1f".join(cast(list[str], row["args"])),
+            ",".join(map(str, cast(list[int], row["expect_exit"]))),
+        )
+    )
     return {
         "required_core_checks": checks,
         "required_core_cases": cases,
@@ -198,9 +204,14 @@ def main(argv: list[str] | None = None) -> int:
     payload_hash = _sha256_hex(_canonical_json(payload))
     payload["proof"]["payload_sha256"] = payload_hash
 
-    artifacts = entry.get("artifact_contract") if isinstance(entry.get("artifact_contract"), dict) else {}
-    json_out = str(artifacts.get("json_out", "/.artifacts/runner-certification-{runner}.json")).replace("{runner}", runner_id)
-    md_out = str(artifacts.get("md_out", "/.artifacts/runner-certification-{runner}.md")).replace("{runner}", runner_id)
+    artifacts_any = entry.get("artifact_contract")
+    artifacts: dict[str, Any] = artifacts_any if isinstance(artifacts_any, dict) else {}
+    json_out = str(artifacts.get("json_out", "/.artifacts/runner-certification-{runner}.json")).replace(
+        "{runner}", runner_id
+    )
+    md_out = str(artifacts.get("md_out", "/.artifacts/runner-certification-{runner}.md")).replace(
+        "{runner}", runner_id
+    )
     json_path = root / json_out.lstrip("/")
     md_path = root / md_out.lstrip("/")
     json_path.parent.mkdir(parents=True, exist_ok=True)

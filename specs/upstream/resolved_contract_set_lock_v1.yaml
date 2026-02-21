@@ -11,6 +11,6 @@ resolved_order:
 - shared_runner_build_tool_task_sets_contract_set
 - python_runner_contract_set
 integrity:
-  file_count: 32
+  file_count: 33
   sha256_manifest: f884c9f2726b50527301ace11d1257743527622085bdfcaa564fe73704ec9b5d
   sha256_manifests: 5bdad32680a134b72fdb8528b7705c748bc8c494e95bff3421e63b77afd7a8bc
