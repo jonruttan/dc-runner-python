@@ -1,0 +1,573 @@
+version: 1
+surfaces:
+- surface_id: reference_book
+  source_type: manifest_yaml
+  inputs:
+  - /docs/book/reference_manifest.yaml
+  - /docs/book
+  - /docs/book/guides
+  - /specs/01_schema/runner_status_report_v1.yaml
+  - /specs/01_schema/runner_status_matrix_v1.yaml
+  - /specs/02_contracts/27_runner_status_exchange.md
+  outputs:
+  - /docs/book/reference_index.md
+  - /docs/book/reference_coverage.md
+  - /docs/book/docs_graph.json
+  generator: docs_build_reference
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/10_docs_quality.md
+  - /specs/02_contracts/12_runner_interface.md
+  determinism_hash_fields:
+  - outputs
+  read_only_sections: []
+  template_path: /docs/book/templates/passthrough_text.md
+  output_mode: full_file
+  data_sources:
+  - id: content
+    source_type: generated_artifact
+    path: /docs/book/reference_index.md
+- surface_id: schema_docs
+  source_type: registry_yaml
+  inputs:
+  - /specs/01_schema/registry/v1
+  - /specs/01_schema/registry_schema_v1.yaml
+  outputs:
+  - /specs/01_schema/schema_v1.md
+  generator: generate_schema_docs
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/21_schema_registry_contract.md
+  determinism_hash_fields:
+  - outputs
+  read_only_sections: []
+  template_path: /docs/book/templates/passthrough_text.md
+  output_mode: full_file
+  data_sources:
+  - id: content
+    source_type: generated_artifact
+    path: /specs/01_schema/schema_v1.md
+- surface_id: docs_graph
+  source_type: manifest_yaml
+  inputs:
+  - /docs/book/reference_manifest.yaml
+  - /docs/book
+  - /docs/book/guides
+  outputs:
+  - /docs/book/docs_graph.json
+  generator: docs_build_reference
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/10_docs_quality.md
+  determinism_hash_fields:
+  - outputs
+  read_only_sections: []
+  template_path: /docs/book/templates/passthrough_text.md
+  output_mode: full_file
+  data_sources:
+  - id: content
+    source_type: generated_artifact
+    path: /docs/book/docs_graph.json
+- surface_id: runner_api_catalog
+  source_type: code_scan
+  inputs:
+  - /scripts/runner_bin.sh
+  - /dc-runner-python
+  - /specs/01_schema/dc_runner_rust_lock_v1.yaml
+  outputs:
+  - /.artifacts/runner-api-catalog.json
+  - /docs/book/91_appendix_runner_api_reference.md
+  generator: generate_runner_api_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/12_runner_interface.md
+  
+  determinism_hash_fields:
+  - summary
+  - commands
+  read_only_sections:
+  - /docs/book/91_appendix_runner_api_reference.md
+  template_path: /docs/book/templates/runner_api_catalog_template.md
+  output_mode: markers
+  marker_surface_id: runner_api_catalog
+  data_sources:
+  - id: runner
+    source_type: generated_artifact
+    path: /.artifacts/runner-api-catalog.json
+- surface_id: harness_type_catalog
+  source_type: registry_yaml
+  inputs:
+  - /specs/01_schema/registry/v1
+  - /specs/01_schema/registry_schema_v1.yaml
+  outputs:
+  - /.artifacts/harness-type-catalog.json
+  - /docs/book/92_appendix_harness_type_reference.md
+  generator: generate_harness_type_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/04_harness.md
+  - /specs/01_schema/schema_v1.md
+  determinism_hash_fields:
+  - summary
+  - type_profiles
+  read_only_sections:
+  - /docs/book/92_appendix_harness_type_reference.md
+  template_path: /docs/book/templates/harness_type_catalog_template.md
+  output_mode: markers
+  marker_surface_id: harness_type_catalog
+  data_sources:
+  - id: harness
+    source_type: generated_artifact
+    path: /.artifacts/harness-type-catalog.json
+- surface_id: library_symbol_reference
+  source_type: manifest_yaml
+  inputs:
+  - /specs/libraries
+  - /specs/01_schema/schema_v1.md
+  outputs:
+  - /.artifacts/library-symbol-catalog.json
+  - /docs/book/93j_library_symbol_reference.md
+  - /docs/book/93k_library_symbol_index.md
+  generator: generate_library_symbol_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/14_spec_lang_libraries.md
+  - /specs/02_contracts/10_docs_quality.md
+  determinism_hash_fields:
+  - summary
+  - modules
+  - symbols
+  read_only_sections:
+  - /docs/book/93j_library_symbol_reference.md
+  - /docs/book/93k_library_symbol_index.md
+  template_path: /docs/book/templates/library_symbol_reference_template.md
+  output_mode: markers
+  marker_surface_id: library_symbol_reference
+  data_sources:
+  - id: catalog
+    source_type: generated_artifact
+    path: /.artifacts/library-symbol-catalog.json
+- surface_id: spec_case_reference
+  source_type: manifest_yaml
+  inputs:
+  - /specs
+  - /specs/01_schema/schema_v1.md
+  outputs:
+  - /.artifacts/spec-case-catalog.json
+  - /docs/book/93l_spec_case_reference.md
+  - /docs/book/93m_spec_case_index.md
+  generator: generate_spec_case_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/02_case_shape.md
+  - /specs/02_contracts/10_docs_quality.md
+  determinism_hash_fields:
+  - summary
+  - types
+  - cases
+  read_only_sections:
+  - /docs/book/93l_spec_case_reference.md
+  - /docs/book/93m_spec_case_index.md
+  template_path: /docs/book/templates/spec_case_reference_template.md
+  output_mode: markers
+  marker_surface_id: spec_case_reference
+  data_sources:
+  - id: catalog
+    source_type: generated_artifact
+    path: /.artifacts/spec-case-catalog.json
+- surface_id: spec_case_templates_reference
+  source_type: manifest_yaml
+  inputs:
+  - /specs/01_schema/schema_v1.md
+  - /specs/02_contracts/02_case_shape.md
+  - /specs/02_contracts/03_assertions.md
+  - /specs/02_contracts/04_harness.md
+  outputs:
+  - /.artifacts/spec-case-templates.json
+  - /docs/book/93n_spec_case_templates_reference.md
+  generator: generate_spec_case_templates
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/02_case_shape.md
+  - /specs/02_contracts/10_docs_quality.md
+  determinism_hash_fields:
+  - version
+  - contract_check
+  - contract_job
+  - contract_export
+  read_only_sections:
+  - /docs/book/93n_spec_case_templates_reference.md
+  template_path: /docs/book/templates/spec_case_templates_reference_template.md
+  output_mode: markers
+  marker_surface_id: spec_case_templates_reference
+  data_sources:
+  - id: templates
+    source_type: generated_artifact
+    path: /.artifacts/spec-case-templates.json
+- surface_id: spec_lang_builtin_catalog
+  source_type: code_scan
+  inputs:
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  outputs:
+  - /.artifacts/spec-lang-builtin-catalog.json
+  - /docs/book/93_appendix_spec_lang_builtin_catalog.md
+  generator: generate_spec_lang_builtin_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/03b_spec_lang_v1.md
+  - /specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  determinism_hash_fields:
+  - summary
+  - builtins
+  read_only_sections:
+  - /docs/book/93_appendix_spec_lang_builtin_catalog.md
+  template_path: /docs/book/templates/spec_lang_builtin_catalog_template.md
+  output_mode: markers
+  marker_surface_id: spec_lang_builtin_catalog
+  data_sources:
+  - id: stdlib
+    source_type: generated_artifact
+    path: /.artifacts/spec-lang-builtin-catalog.json
+  quality_requirements:
+    min_score: 0.95
+    required_sections:
+    - summary
+    - params
+    - returns
+    - errors
+    - examples
+- surface_id: spec_lang_namespace_core
+  source_type: code_scan
+  inputs:
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  outputs:
+  - /docs/book/93a_std_core.md
+  generator: generate_spec_lang_builtin_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/19_spec_lang_stdlib_profile_v1.md
+  determinism_hash_fields:
+  - namespaces
+  read_only_sections:
+  - /docs/book/93a_std_core.md
+  template_path: /docs/book/templates/spec_lang_namespace_core_template.md
+  output_mode: markers
+  marker_surface_id: spec_lang_namespace_core
+  data_sources:
+  - id: stdlib
+    source_type: generated_artifact
+    path: /.artifacts/spec-lang-builtin-catalog.json
+- surface_id: spec_lang_namespace_logic
+  source_type: code_scan
+  inputs:
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  outputs:
+  - /docs/book/93b_std_logic.md
+  generator: generate_spec_lang_builtin_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/19_spec_lang_stdlib_profile_v1.md
+  determinism_hash_fields:
+  - namespaces
+  read_only_sections:
+  - /docs/book/93b_std_logic.md
+  template_path: /docs/book/templates/spec_lang_namespace_logic_template.md
+  output_mode: markers
+  marker_surface_id: spec_lang_namespace_logic
+  data_sources:
+  - id: stdlib
+    source_type: generated_artifact
+    path: /.artifacts/spec-lang-builtin-catalog.json
+- surface_id: spec_lang_namespace_math
+  source_type: code_scan
+  inputs:
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  outputs:
+  - /docs/book/93c_std_math.md
+  generator: generate_spec_lang_builtin_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/19_spec_lang_stdlib_profile_v1.md
+  determinism_hash_fields:
+  - namespaces
+  read_only_sections:
+  - /docs/book/93c_std_math.md
+  template_path: /docs/book/templates/spec_lang_namespace_math_template.md
+  output_mode: markers
+  marker_surface_id: spec_lang_namespace_math
+  data_sources:
+  - id: stdlib
+    source_type: generated_artifact
+    path: /.artifacts/spec-lang-builtin-catalog.json
+- surface_id: spec_lang_namespace_string
+  source_type: code_scan
+  inputs:
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  outputs:
+  - /docs/book/93d_std_string.md
+  generator: generate_spec_lang_builtin_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/19_spec_lang_stdlib_profile_v1.md
+  determinism_hash_fields:
+  - namespaces
+  read_only_sections:
+  - /docs/book/93d_std_string.md
+  template_path: /docs/book/templates/spec_lang_namespace_string_template.md
+  output_mode: markers
+  marker_surface_id: spec_lang_namespace_string
+  data_sources:
+  - id: stdlib
+    source_type: generated_artifact
+    path: /.artifacts/spec-lang-builtin-catalog.json
+- surface_id: spec_lang_namespace_collection
+  source_type: code_scan
+  inputs:
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  outputs:
+  - /docs/book/93e_std_collection.md
+  generator: generate_spec_lang_builtin_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/19_spec_lang_stdlib_profile_v1.md
+  determinism_hash_fields:
+  - namespaces
+  read_only_sections:
+  - /docs/book/93e_std_collection.md
+  template_path: /docs/book/templates/spec_lang_namespace_collection_template.md
+  output_mode: markers
+  marker_surface_id: spec_lang_namespace_collection
+  data_sources:
+  - id: stdlib
+    source_type: generated_artifact
+    path: /.artifacts/spec-lang-builtin-catalog.json
+- surface_id: spec_lang_namespace_object
+  source_type: code_scan
+  inputs:
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  outputs:
+  - /docs/book/93f_std_object.md
+  generator: generate_spec_lang_builtin_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/19_spec_lang_stdlib_profile_v1.md
+  determinism_hash_fields:
+  - namespaces
+  read_only_sections:
+  - /docs/book/93f_std_object.md
+  template_path: /docs/book/templates/spec_lang_namespace_object_template.md
+  output_mode: markers
+  marker_surface_id: spec_lang_namespace_object
+  data_sources:
+  - id: stdlib
+    source_type: generated_artifact
+    path: /.artifacts/spec-lang-builtin-catalog.json
+- surface_id: spec_lang_namespace_type
+  source_type: code_scan
+  inputs:
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  outputs:
+  - /docs/book/93g_std_type.md
+  generator: generate_spec_lang_builtin_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/19_spec_lang_stdlib_profile_v1.md
+  determinism_hash_fields:
+  - namespaces
+  read_only_sections:
+  - /docs/book/93g_std_type.md
+  template_path: /docs/book/templates/spec_lang_namespace_type_template.md
+  output_mode: markers
+  marker_surface_id: spec_lang_namespace_type
+  data_sources:
+  - id: stdlib
+    source_type: generated_artifact
+    path: /.artifacts/spec-lang-builtin-catalog.json
+- surface_id: spec_lang_namespace_set
+  source_type: code_scan
+  inputs:
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  outputs:
+  - /docs/book/93h_std_set.md
+  generator: generate_spec_lang_builtin_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/19_spec_lang_stdlib_profile_v1.md
+  determinism_hash_fields:
+  - namespaces
+  read_only_sections:
+  - /docs/book/93h_std_set.md
+  template_path: /docs/book/templates/spec_lang_namespace_set_template.md
+  output_mode: markers
+  marker_surface_id: spec_lang_namespace_set
+  data_sources:
+  - id: stdlib
+    source_type: generated_artifact
+    path: /.artifacts/spec-lang-builtin-catalog.json
+- surface_id: spec_lang_namespace_json_schema_fn_null
+  source_type: code_scan
+  inputs:
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  outputs:
+  - /docs/book/93i_std_json_schema_fn_null.md
+  generator: generate_spec_lang_builtin_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/19_spec_lang_stdlib_profile_v1.md
+  determinism_hash_fields:
+  - namespaces
+  read_only_sections:
+  - /docs/book/93i_std_json_schema_fn_null.md
+  template_path: /docs/book/templates/spec_lang_namespace_json_schema_fn_null_template.md
+  output_mode: markers
+  marker_surface_id: spec_lang_namespace_json_schema_fn_null
+  data_sources:
+  - id: stdlib
+    source_type: generated_artifact
+    path: /.artifacts/spec-lang-builtin-catalog.json
+- surface_id: policy_rule_catalog
+  source_type: registry_yaml
+  inputs:
+  - /specs/02_contracts/policy_v1.yaml
+  outputs:
+  - /.artifacts/policy-rule-catalog.json
+  - /docs/book/94_appendix_contract_policy_reference.md
+  generator: generate_policy_rule_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/10_docs_quality.md
+  - /specs/02_contracts/policy_v1.yaml
+  determinism_hash_fields:
+  - summary
+  - rules
+  read_only_sections:
+  - /docs/book/94_appendix_contract_policy_reference.md
+  template_path: /docs/book/templates/policy_rule_catalog_template.md
+  output_mode: markers
+  marker_surface_id: policy_rule_catalog
+  data_sources:
+  - id: policy
+    source_type: generated_artifact
+    path: /.artifacts/policy-rule-catalog.json
+- surface_id: traceability_catalog
+  source_type: registry_yaml
+  inputs:
+  - /specs/02_contracts/traceability_v1.yaml
+  outputs:
+  - /.artifacts/traceability-catalog.json
+  - /docs/book/95_appendix_traceability_reference.md
+  generator: generate_traceability_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/10_docs_quality.md
+  - /specs/02_contracts/traceability_v1.yaml
+  determinism_hash_fields:
+  - summary
+  - links
+  read_only_sections:
+  - /docs/book/95_appendix_traceability_reference.md
+  template_path: /docs/book/templates/traceability_catalog_template.md
+  output_mode: markers
+  marker_surface_id: traceability_catalog
+  data_sources:
+  - id: trace
+    source_type: generated_artifact
+    path: /.artifacts/traceability-catalog.json
+- surface_id: governance_check_catalog
+  source_type: code_scan
+  inputs:
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/04_governance/cases/core
+  outputs:
+  - /.artifacts/governance-check-catalog.json
+  - /docs/book/96_appendix_governance_checks_reference.md
+  generator: generate_governance_check_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/10_docs_quality.md
+  - /specs/02_contracts/15_governance_subject_model.md
+  determinism_hash_fields:
+  - summary
+  - checks
+  read_only_sections:
+  - /docs/book/96_appendix_governance_checks_reference.md
+  template_path: /docs/book/templates/governance_check_catalog_template.md
+  output_mode: markers
+  marker_surface_id: governance_check_catalog
+  data_sources:
+  - id: checks
+    source_type: generated_artifact
+    path: /.artifacts/governance-check-catalog.json
+- surface_id: metrics_field_catalog
+  source_type: code_scan
+  inputs:
+  - /specs/01_schema/runner_certification_registry_v1.yaml
+  - /specs/metrics
+  outputs:
+  - /.artifacts/metrics-field-catalog.json
+  - /docs/book/97_appendix_metrics_reference.md
+  generator: generate_metrics_field_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/17_objective_metrics.md
+  - /specs/02_contracts/10_docs_quality.md
+  determinism_hash_fields:
+  - summary
+  - baselines
+  read_only_sections:
+  - /docs/book/97_appendix_metrics_reference.md
+  template_path: /docs/book/templates/metrics_field_catalog_template.md
+  output_mode: markers
+  marker_surface_id: metrics_field_catalog
+  data_sources:
+  - id: metrics
+    source_type: generated_artifact
+    path: /.artifacts/metrics-field-catalog.json
+- surface_id: spec_schema_field_catalog
+  source_type: registry_yaml
+  inputs:
+  - /specs/01_schema/registry/v1
+  - /specs/01_schema/registry_schema_v1.yaml
+  outputs:
+  - /.artifacts/spec-schema-field-catalog.json
+  - /specs/01_schema/schema_v1.md
+  - /docs/book/98_appendix_spec_case_shape_reference.md
+  generator: generate_spec_schema_field_catalog
+  check_mode_supported: true
+  owner_contract_docs:
+  - /specs/02_contracts/21_schema_registry_contract.md
+  - /specs/02_contracts/10_docs_quality.md
+  determinism_hash_fields:
+  - summary
+  - top_level_fields
+  - type_profiles
+  read_only_sections:
+  - /specs/01_schema/schema_v1.md
+  - /docs/book/98_appendix_spec_case_shape_reference.md
+  template_path: /docs/book/templates/spec_schema_field_catalog_template.md
+  output_mode: markers
+  marker_surface_id: spec_schema_field_catalog
+  data_sources:
+  - id: schema
+    source_type: generated_artifact
+    path: /.artifacts/spec-schema-field-catalog.json

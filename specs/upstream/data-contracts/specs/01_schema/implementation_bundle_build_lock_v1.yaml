@@ -1,0 +1,40 @@
+version: 1
+title: implementation_bundle_build_lock_v1
+type: object
+required:
+  - version
+  - runner_id
+  - base_package_sha256
+  - overlay_sha256
+  - result_package_sha256
+  - resolved_files_sha256
+  - built_at
+  - tooling_version
+properties:
+  version:
+    type: integer
+    const: 1
+  runner_id:
+    type: string
+    enum:
+      - rust
+      - python
+      - php
+  base_package_sha256:
+    type: string
+    minLength: 1
+  overlay_sha256:
+    type: string
+    minLength: 1
+  result_package_sha256:
+    type: string
+    minLength: 1
+  resolved_files_sha256:
+    type: string
+    minLength: 1
+  built_at:
+    type: string
+    minLength: 1
+  tooling_version:
+    type: string
+    minLength: 1

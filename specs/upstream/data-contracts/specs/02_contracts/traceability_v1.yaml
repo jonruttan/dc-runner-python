@@ -1,0 +1,4421 @@
+version: 1
+title: Data Contracts Contract Traceability
+links:
+- rule_id: SERVICE_BINDINGS_RESOURCE_ID_IO_ONLY
+  policy_ref: specs/02_contracts/policy_v1.yaml#SERVICE_BINDINGS_RESOURCE_ID_IO_ONLY
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids:
+  - DCCONF-SCHEMA-CASE-022
+  unit_test_refs: []
+  implementation_refs: []
+  notes: Contract bindings must route runtime service payloads only through declared assets/artifacts ids.
+- rule_id: RESOURCE_SYMBOLS_EXPLICIT_DECLARATION_AND_WIRING
+  policy_ref: specs/02_contracts/policy_v1.yaml#RESOURCE_SYMBOLS_EXPLICIT_DECLARATION_AND_WIRING
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids:
+  - DCCONF-SCHEMA-CASE-026
+  unit_test_refs: []
+  implementation_refs: []
+  notes: Asset/artifact symbols are usable only when suite-declared and explicitly wired.
+- rule_id: BINDINGS_SERVICE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#BINDINGS_SERVICE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids:
+  - DCCONF-SCHEMA-CASE-025
+  unit_test_refs: []
+  implementation_refs: []
+  notes: Effective binding service is required after defaults merge; default
+    runtime service fallback is forbidden.
+- rule_id: ROOT_BINDINGS_FORBIDDEN
+  policy_ref: specs/02_contracts/policy_v1.yaml#ROOT_BINDINGS_FORBIDDEN
+  contract_refs:
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids:
+  - DCCONF-BIND-ROOT-001
+  unit_test_refs: []
+  implementation_refs: []
+  notes: Root bindings are forbidden in v1; bindings must be declared per contract.
+- rule_id: V2_DEFAULTS_SURFACE_NARROWED
+  policy_ref: specs/02_contracts/policy_v1.yaml#V2_DEFAULTS_SURFACE_NARROWED
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/registry/v1/core.yaml
+  - specs/01_schema/registry/v1/assertions.yaml
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids:
+  - DCCONF-SCHEMA-CASE-001
+  unit_test_refs: []
+  implementation_refs: []
+  notes: Only services and contract-binding defaults surfaces are allowed in v1.
+- rule_id: HARNESS_STRUCTURED_SCAN_CONFIG_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#HARNESS_STRUCTURED_SCAN_CONFIG_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/registry/v1/core.yaml
+  - specs/01_schema/registry/v1/harness.yaml
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids:
+  - DCCONF-SCHEMA-CASE-035
+  unit_test_refs: []
+  implementation_refs: []
+  notes: Harness scan config uses explicit structured keys.
+- rule_id: SERVICE_CONFIG_LOCATORS_VIA_ASSET_IDS_ONLY
+  policy_ref: specs/02_contracts/policy_v1.yaml#SERVICE_CONFIG_LOCATORS_VIA_ASSET_IDS_ONLY
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs: []
+  notes: Service config locators must route consumed inputs through asset IDs.
+- rule_id: CLI_RUN_ENTRYPOINT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CLI_RUN_ENTRYPOINT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_harness_cli_run_unit.py
+  - tests/test_conformance_runner_unit.py
+  implementation_refs:
+  - dc-runner-python
+  notes: Explicit entrypoint is required for all exec.command cases.
+- rule_id: CLI_RUN_SAFE_MODE_RESTRICTS_HOOKS
+  policy_ref: specs/02_contracts/policy_v1.yaml#CLI_RUN_SAFE_MODE_RESTRICTS_HOOKS
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_harness_cli_run_unit.py
+  implementation_refs:
+  - dc-runner-python
+  notes: Python safe mode disables hooks when enabled.
+- rule_id: CLI_RUN_ENV_ALLOWLIST_CONTROL
+  policy_ref: specs/02_contracts/policy_v1.yaml#CLI_RUN_ENV_ALLOWLIST_CONTROL
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_php_spec_runner_unit.py
+  implementation_refs:
+  - dc-runner-php
+  notes: PHP runner supports allowlisting ambient env for exec.command subprocesses.
+- rule_id: CLI_RUN_CONFORMANCE_EXPLICIT_ENTRYPOINT
+  policy_ref: specs/02_contracts/policy_v1.yaml#CLI_RUN_CONFORMANCE_EXPLICIT_ENTRYPOINT
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/06_conformance.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_contract_governance_unit.py
+  - tests/test_conformance_runner_unit.py
+  implementation_refs: []
+  notes: Conformance seed fixtures include explicit harness.entrypoint values.
+- rule_id: CLI_RUN_CONFORMANCE_NO_ENV_DEPENDENCY
+  policy_ref: specs/02_contracts/policy_v1.yaml#CLI_RUN_CONFORMANCE_NO_ENV_DEPENDENCY
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/06_conformance.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_contract_governance_unit.py
+  - tests/test_conformance_runner_unit.py
+  implementation_refs: []
+  notes: Conformance fixtures are explicit and do not depend on ambient entrypoint
+    values.
+- rule_id: SPEC_LANG_EVALUATE_LIST_SHAPE
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_EVALUATE_LIST_SHAPE
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/03b_spec_lang_v1.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_assertions_unit.py
+  - tests/test_spec_lang_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-php
+  - dc-runner-php
+  notes: Evaluate leaves accept mapping-AST expression nodes and reject malformed/canonical
+    forms.
+- rule_id: SPEC_LANG_PREFERRED_AUTHORING
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_PREFERRED_AUTHORING
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/07_portable_spec_authoring.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/conformance_spec_lang_preferred.spec.md
+  notes: Governance enforces evaluate-only assertion authoring in conformance and
+    governance case surfaces.
+- rule_id: SPEC_LANG_PURE_EVALUATOR
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_PURE_EVALUATOR
+  contract_refs:
+  - specs/02_contracts/03b_spec_lang_v1.md
+  - specs/02_contracts/06_conformance.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_spec_lang_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-php
+  - dc-runner-php
+  notes: Evaluator core is deterministic and pure for supported forms.
+- rule_id: SPEC_LANG_PROPER_TCO_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_PROPER_TCO_REQUIRED
+  contract_refs:
+  - specs/02_contracts/03b_spec_lang_v1.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_spec_lang_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-php
+  - dc-runner-php
+  notes: Tail-position call is implemented via iterative trampoline loops.
+- rule_id: SPEC_LANG_EVAL_BUDGETS_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_EVAL_BUDGETS_REQUIRED
+  contract_refs:
+  - specs/02_contracts/03b_spec_lang_v1.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_spec_lang_unit.py
+  - tests/test_harness_cli_run_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-php
+  - dc-runner-php
+  notes: Steps/nodes/literal/timeout budgets are enforced with deterministic failure
+    reasons.
+- rule_id: SPEC_LANG_ERROR_CLASSIFICATION
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_ERROR_CLASSIFICATION
+  contract_refs:
+  - specs/02_contracts/03b_spec_lang_v1.md
+  - specs/02_contracts/05_errors.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_spec_lang_unit.py
+  - tests/test_conformance_parity_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-php
+  notes: Conformance maps evaluate failures to schema/assertion/runtime categories.
+- rule_id: SPEC_LANG_CURRY_ALL_BUILTINS
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_CURRY_ALL_BUILTINS
+  contract_refs:
+  - specs/02_contracts/03b_spec_lang_v1.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_spec_lang_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-php
+  - dc-runner-php
+  notes: Builtins support deterministic currying and over-application diagnostics.
+- rule_id: SPEC_LANG_SET_ALGEBRA_PARITY
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_SET_ALGEBRA_PARITY
+  contract_refs:
+  - specs/02_contracts/03b_spec_lang_v1.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_spec_lang_unit.py
+  - tests/test_conformance_parity_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-php
+  - dc-runner-php
+  notes: Set algebra semantics are parity-tested and deterministic.
+- rule_id: SPEC_LANG_DEEP_EQUALITY_DETERMINISTIC
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_DEEP_EQUALITY_DETERMINISTIC
+  contract_refs:
+  - specs/02_contracts/03b_spec_lang_v1.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_spec_lang_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-php
+  notes: Deep structural equality drives set/membership deterministically.
+- rule_id: SPEC_LANG_COLLECTION_FORMS_CONTRACTED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_COLLECTION_FORMS_CONTRACTED
+  contract_refs:
+  - specs/02_contracts/03b_spec_lang_v1.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_spec_lang_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-php
+  notes: Collection transforms remain contracted and conformance-covered.
+- rule_id: SPEC_LANG_LIBRARY_REUSE_MODEL
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_LIBRARY_REUSE_MODEL
+  contract_refs:
+  - specs/02_contracts/14_spec_lang_libraries.md
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_spec_lang_libraries_unit.py
+  - tests/test_spec_lang_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  notes: Library symbol loading and evaluation wiring are deterministic and covered
+    by unit tests.
+- rule_id: GOVERNANCE_SUBJECT_MODEL_SPEC_LANG_DECISIONS
+  policy_ref: specs/02_contracts/policy_v1.yaml#GOVERNANCE_SUBJECT_MODEL_SPEC_LANG_DECISIONS
+  contract_refs:
+  - specs/02_contracts/15_governance_subject_model.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  notes: Initial governance checks use subject extraction with spec-lang decision
+    expressions.
+- rule_id: DOC_NORMATIVE_PAGE_TRACEABILITY
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOC_NORMATIVE_PAGE_TRACEABILITY
+  contract_refs:
+  - specs/02_contracts/00_design_goals.md
+  - specs/02_contracts/versioning.md
+  - specs/02_contracts/01_discovery.md
+  - specs/02_contracts/02_case_shape.md
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/03a_regex_portability_v1.md
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/05_errors.md
+  - specs/02_contracts/06_conformance.md
+  - specs/02_contracts/07_portable_spec_authoring.md
+  - specs/02_contracts/08_v1_scope.md
+  - specs/02_contracts/09_internal_representation.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  notes: Governance enforces traceability coverage across normative contract pages.
+- rule_id: DOC_REGEX_PROFILE_LINKAGE
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOC_REGEX_PROFILE_LINKAGE
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/03a_regex_portability_v1.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  notes: Governance checks profile references across assertion, schema, and policy
+    docs.
+- rule_id: DOC_ASSERTION_OPERATOR_DOC_SYNC
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOC_ASSERTION_OPERATOR_DOC_SYNC
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  notes: Governance checks synchronized core operator tokens between docs.
+- rule_id: CONFORMANCE_EXPECT_OVERLAY_RESOLUTION
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONFORMANCE_EXPECT_OVERLAY_RESOLUTION
+  contract_refs:
+  - specs/02_contracts/06_conformance.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_conformance_runner_unit.py
+  - tests/test_php_conformance_subset_unit.py
+  implementation_refs:
+  - dc-runner-python
+  notes: Conformance expectations resolve portable baseline with implementation overlays.
+- rule_id: CONFORMANCE_CASE_STYLE_GUARD
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONFORMANCE_CASE_STYLE_GUARD
+  contract_refs:
+  - specs/02_contracts/06_conformance.md
+  - specs/03_conformance/style.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  notes: Governance enforces conformance case docs[] readability/style constraints.
+- rule_id: CONFORMANCE_REQUIRES_CAPABILITIES_POLICY
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONFORMANCE_REQUIRES_CAPABILITIES_POLICY
+  contract_refs:
+  - specs/02_contracts/06_conformance.md
+  - specs/03_conformance/report_format.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_conformance_runner_unit.py
+  - tests/test_validate_conformance_report_unit.py
+  implementation_refs:
+  - dc-runner-python
+  notes: Conformance runner enforces requires.capabilities with skip/fail policy.
+- rule_id: PORTABLE_SPEC_CANONICAL_SINGLE_SET
+  policy_ref: specs/02_contracts/policy_v1.yaml#PORTABLE_SPEC_CANONICAL_SINGLE_SET
+  contract_refs:
+  - specs/02_contracts/06_conformance.md
+  - specs/02_contracts/07_portable_spec_authoring.md
+  - specs/03_conformance/index.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_contract_governance_unit.py
+  - tests/test_conformance_runner_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Portable behavior source is the canonical conformance case set.
+- rule_id: PORTABLE_SPEC_EXPECT_PORTABLE_IMPL_OVERLAY
+  policy_ref: specs/02_contracts/policy_v1.yaml#PORTABLE_SPEC_EXPECT_PORTABLE_IMPL_OVERLAY
+  contract_refs:
+  - specs/02_contracts/06_conformance.md
+  - specs/02_contracts/07_portable_spec_authoring.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_conformance_runner_unit.py
+  - tests/test_php_conformance_subset_unit.py
+  implementation_refs:
+  - dc-runner-python
+  notes: Expectations resolve from portable baseline with optional runtime overlays.
+- rule_id: PORTABLE_SPEC_DETERMINISM_BY_CONSTRUCTION
+  policy_ref: specs/02_contracts/policy_v1.yaml#PORTABLE_SPEC_DETERMINISM_BY_CONSTRUCTION
+  contract_refs:
+  - specs/02_contracts/06_conformance.md
+  - specs/02_contracts/07_portable_spec_authoring.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_conformance_runner_unit.py
+  implementation_refs:
+  - dc-runner-python
+  notes: Portable cases should avoid ambient dependencies and express variability
+    explicitly.
+- rule_id: CONFORMANCE_NO_AMBIENT_ASSUMPTIONS_GUARD
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONFORMANCE_NO_AMBIENT_ASSUMPTIONS_GUARD
+  contract_refs:
+  - specs/02_contracts/06_conformance.md
+  - specs/02_contracts/07_portable_spec_authoring.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/conformance_no_ambient_assumptions.spec.md
+  notes: Governance enforces ambient env/time/random token bans in portable conformance
+    case content.
+- rule_id: CONFORMANCE_PURPOSE_QUALITY_GATE
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONFORMANCE_PURPOSE_QUALITY_GATE
+  contract_refs:
+  - specs/02_contracts/06_conformance.md
+  - specs/03_conformance/purpose_lint_v1.yaml
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_conformance_purpose_report_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Governance enforces conformance purpose warning budget and policy integrity.
+- rule_id: SPEC_PORTABILITY_METRIC_REPORTED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_PORTABILITY_METRIC_REPORTED
+  contract_refs:
+  - specs/02_contracts/07_portable_spec_authoring.md
+  - specs/04_governance/cases/core/spec_portability_metric.spec.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_spec_portability_unit.py
+  - dc-runner-python
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - scripts/spec_portability_report.py
+  - dc-runner-python
+  notes: Portability metric report generation and governance wiring are covered by
+    unit and script tests.
+- rule_id: SPEC_PORTABILITY_NON_REGRESSION_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_PORTABILITY_NON_REGRESSION_REQUIRED
+  contract_refs:
+  - specs/02_contracts/07_portable_spec_authoring.md
+  - specs/04_governance/cases/core/spec_core/spec_portability_non_regression.spec.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_spec_portability_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/metrics/spec_portability_baseline.json
+  notes: Governance enforces monotonic non-regression for configured spec-lang self-containment
+    metrics.
+- rule_id: SPEC_LANG_ADOPTION_METRIC_REPORTED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_ADOPTION_METRIC_REPORTED
+  contract_refs:
+  - specs/02_contracts/07_portable_spec_authoring.md
+  - specs/04_governance/cases/core/spec_lang_adoption_metric.spec.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_quality_metrics_unit.py
+  - dc-runner-python
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - scripts/spec_lang_adoption_report.py
+  - dc-runner-python
+  notes: Spec-lang adoption metric report and governance wiring are covered by unit/script
+    tests.
+- rule_id: SPEC_LANG_ADOPTION_NON_REGRESSION_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_ADOPTION_NON_REGRESSION_REQUIRED
+  contract_refs:
+  - specs/02_contracts/07_portable_spec_authoring.md
+  - specs/04_governance/cases/core/spec_core/spec_lang_adoption_non_regression.spec.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_quality_metrics_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/metrics/spec_lang_adoption_baseline.json
+  notes: Governance enforces non-regression on configured spec-lang adoption metrics.
+- rule_id: GOVERNANCE_SYMBOL_RESOLUTION_RATIO_NON_REGRESSION
+  policy_ref: specs/02_contracts/policy_v1.yaml#GOVERNANCE_SYMBOL_RESOLUTION_RATIO_NON_REGRESSION
+  contract_refs:
+  - specs/02_contracts/14_spec_lang_libraries.md
+  - specs/02_contracts/18_governance_subject_extractors.md
+  - specs/04_governance/cases/core/spec_core/spec_lang_adoption_non_regression.spec.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_quality_metrics_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/metrics/spec_lang_adoption_baseline.json
+  notes: Spec-lang adoption ratchet enforces governance policy symbol resolution ratio
+    non-regression.
+- rule_id: LIBRARY_PUBLIC_SURFACE_RATIO_NON_REGRESSION
+  policy_ref: specs/02_contracts/policy_v1.yaml#LIBRARY_PUBLIC_SURFACE_RATIO_NON_REGRESSION
+  contract_refs:
+  - specs/02_contracts/14_spec_lang_libraries.md
+  - specs/04_governance/cases/core/spec_core/spec_lang_adoption_non_regression.spec.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_quality_metrics_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/metrics/spec_lang_adoption_baseline.json
+  notes: Spec-lang adoption ratchet enforces library public surface ratio non-regression.
+- rule_id: CONFORMANCE_EVALUATE_FIRST_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONFORMANCE_EVALUATE_FIRST_REQUIRED
+  contract_refs:
+  - specs/02_contracts/07_portable_spec_authoring.md
+  - specs/03_conformance/style.md
+  - specs/04_governance/cases/core/conformance_evaluate_first_ratio_non_regression.spec.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_quality_metrics_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/metrics/spec_lang_adoption_baseline.json
+  notes: Conformance evaluate-only coverage is pinned by baseline-backed non-regression
+    checks.
+- rule_id: CONFORMANCE_SPEC_LANG_FIXTURE_LIBRARY_USAGE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONFORMANCE_SPEC_LANG_FIXTURE_LIBRARY_USAGE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/07_portable_spec_authoring.md
+  - specs/04_governance/cases/core/conformance_spec_lang_fixture_library_usage.spec.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/05_libraries/conformance/assertion_core.spec.md
+  notes: Governance enforces helper-library reuse in spec_lang conformance fixtures.
+- rule_id: GOVERNANCE_POLICY_LIBRARY_USAGE_NON_REGRESSION
+  policy_ref: specs/02_contracts/policy_v1.yaml#GOVERNANCE_POLICY_LIBRARY_USAGE_NON_REGRESSION
+  contract_refs:
+  - specs/02_contracts/18_governance_subject_extractors.md
+  - specs/04_governance/cases/core/spec_core/governance_policy_library_usage_non_regression.spec.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_quality_metrics_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/metrics/spec_lang_adoption_baseline.json
+  notes: Governance ratchets shared library usage for policy expressions and fails
+    regressions.
+- rule_id: RUNNER_INDEPENDENCE_METRIC_REPORTED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNNER_INDEPENDENCE_METRIC_REPORTED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  - specs/04_governance/cases/core/runner_independence_metric.spec.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_quality_metrics_unit.py
+  - dc-runner-python
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - scripts/runner_independence_report.py
+  - dc-runner-python
+  notes: Runner-independence metric report generation and governance wiring are covered
+    by tests.
+- rule_id: RUNNER_INDEPENDENCE_NON_REGRESSION_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNNER_INDEPENDENCE_NON_REGRESSION_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_quality_metrics_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/metrics/runner_independence_baseline.json
+  notes: Governance enforces non-regression on configured runner-independence metrics.
+- rule_id: RUNTIME_PYTHON_DEPENDENCY_EVIDENCE_REPORTED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_PYTHON_DEPENDENCY_EVIDENCE_REPORTED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  - specs/04_governance/cases/core/runtime_python_dependency_metric.spec.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_quality_metrics_unit.py
+  - dc-runner-python
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - scripts/python_dependency_report.py
+  - dc-runner-python
+  notes: Python-dependency evidence report is generated and enforced through governance.
+- rule_id: RUNTIME_PYTHON_DEPENDENCY_NON_REGRESSION_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_PYTHON_DEPENDENCY_NON_REGRESSION_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  - specs/04_governance/cases/core/runtime_python_dependency_non_regression.spec.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_quality_metrics_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/metrics/python_dependency_baseline.json
+  notes: Python-dependency metrics are ratcheted with checked-in baseline values.
+- rule_id: RUNTIME_NON_PYTHON_LANES_FORBID_PYTHON_EXEC
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_NON_PYTHON_LANES_FORBID_PYTHON_EXEC
+  contract_refs:
+  
+  - specs/04_governance/cases/core/runtime_non_python_lane_no_python_exec.spec.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_quality_metrics_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Non-python lane token checks are enforced using python-dependency report
+    inputs.
+- rule_id: RUNTIME_RUST_ADAPTER_TRANSITIVE_NO_PYTHON
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_RUST_ADAPTER_TRANSITIVE_NO_PYTHON
+  contract_refs:
+  
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-rust
+  notes: Rust adapter shell boundary avoids direct transitive python delegation tokens.
+- rule_id: RUNTIME_DEFAULT_GATE_RUST_ADAPTER_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_DEFAULT_GATE_RUST_ADAPTER_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_quality_metrics_unit.py
+  implementation_refs:
+  - scripts/ci_gate.sh
+  - scripts/ci_gate.sh
+  - scripts/control_plane.sh
+  notes: Default gate scripts now set rust adapter as default runner interface boundary.
+- rule_id: RUNTIME_PYTHON_USAGE_SCOPED_TO_PYTHON_RUNNER
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_PYTHON_USAGE_SCOPED_TO_PYTHON_RUNNER
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_quality_metrics_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/runtime_python_dependency_metric.spec.md
+  - specs/04_governance/cases/core/runtime_non_python_lane_no_python_exec.spec.md
+  notes: Python usage is scoped to explicit python-runner surfaces via python-dependency
+    metric and lane checks.
+- rule_id: DOCS_OPERABILITY_METRIC_REPORTED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_OPERABILITY_METRIC_REPORTED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  - specs/04_governance/cases/core/docs_operability_metric.spec.md
+  schema_refs:
+  - specs/01_schema/docs_schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_quality_metrics_unit.py
+  - dc-runner-python
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - scripts/docs_operability_report.py
+  - dc-runner-python
+  notes: Docs-operability metric report generation and governance wiring are covered
+    by tests.
+- rule_id: DOCS_OPERABILITY_NON_REGRESSION_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_OPERABILITY_NON_REGRESSION_REQUIRED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  - specs/04_governance/cases/core/project_docs/docs_operability_non_regression.spec.md
+  schema_refs:
+  - specs/01_schema/docs_schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_quality_metrics_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/metrics/docs_operability_baseline.json
+  notes: Governance enforces non-regression on configured docs-operability metrics.
+- rule_id: CONTRACT_ASSERTIONS_METRIC_REPORTED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONTRACT_ASSERTIONS_METRIC_REPORTED
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  - specs/04_governance/cases/core/contract_assertions_metric.spec.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_quality_metrics_unit.py
+  - dc-runner-python
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - scripts/contract_assertions_report.py
+  - dc-runner-python
+  notes: Contract-assertions metric report generation and governance wiring are covered
+    by tests.
+- rule_id: CONTRACT_ASSERTIONS_NON_REGRESSION_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONTRACT_ASSERTIONS_NON_REGRESSION_REQUIRED
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  - specs/04_governance/cases/core/spec_core/contract_assertions_non_regression.spec.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_quality_metrics_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/metrics/contract_assertions_baseline.json
+  notes: Governance enforces non-regression on configured contract-assertions metrics.
+- rule_id: SPEC_PORTABILITY_THRESHOLD_ENFORCED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_PORTABILITY_THRESHOLD_ENFORCED
+  contract_refs:
+  - specs/02_contracts/07_portable_spec_authoring.md
+  - specs/04_governance/cases/core/spec_portability_metric.spec.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_spec_portability_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Threshold support is present in config/report model and can be enforced via
+    governance config when enabled.
+- rule_id: DOCS_REF_SURFACE_COMPLETE
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_REF_SURFACE_COMPLETE
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  - docs/book/reference_index.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Governance enforces required reference surface file presence.
+- rule_id: DOCS_REFERENCE_INDEX_SYNC
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_REFERENCE_INDEX_SYNC
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  - docs/book/reference_index.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Reference index entries must match actual chapter files and order.
+- rule_id: DOCS_REQUIRED_SECTIONS_PRESENT
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_REQUIRED_SECTIONS_PRESENT
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  - docs/book/20_case_model.md
+  - docs/book/30_assertion_model.md
+  - docs/book/90_reference_guide.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Required section tokens in reference chapters are hard-gated.
+- rule_id: DOCS_EXAMPLES_RUNNABLE_OR_EXPLICITLY_OPTED_OUT
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_EXAMPLES_RUNNABLE_OR_EXPLICITLY_OPTED_OUT
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Invalid docs[] examples fail unless an explicit opt-out marker with reason is
+    present.
+- rule_id: DOCS_CLI_FLAGS_DOCUMENTED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_CLI_FLAGS_DOCUMENTED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  - docs/development.md
+  - dc-runner-python
+  - dc-runner-php
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Public runner flags extracted from script parsers must be documented.
+- rule_id: DOCS_CONTRACT_SCHEMA_BOOK_TOKEN_SYNC
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_CONTRACT_SCHEMA_BOOK_TOKEN_SYNC
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  - docs/book/30_assertion_model.md
+  - specs/02_contracts/03_assertions.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Core assertion token vocabulary remains synchronized across book/contract/schema
+    docs.
+- rule_id: DOCS_META_SCHEMA_VALID
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_META_SCHEMA_VALID
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/docs_schema_v1.md
+  - specs/01_schema/reference_manifest_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_docs_lint_unit.py
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_meta_schema_valid.spec.md
+  notes: Reference chapter docs metadata blocks are schema-validated.
+- rule_id: DOCS_REFERENCE_MANIFEST_SYNC
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_REFERENCE_MANIFEST_SYNC
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  - docs/book/reference_manifest.yaml
+  schema_refs:
+  - specs/01_schema/reference_manifest_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_docs_build_reference_unit.py
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - scripts/docs_build_reference.py
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_reference_manifest_sync.spec.md
+  notes: Reference index generation/sync is enforced against manifest source data.
+- rule_id: DOCS_TOKEN_OWNERSHIP_UNIQUE
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_TOKEN_OWNERSHIP_UNIQUE
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/docs_schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_docs_lint_unit.py
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_token_ownership_unique.spec.md
+  notes: Canonical docs tokens must have exactly one owner page.
+- rule_id: DOCS_TOKEN_DEPENDENCY_RESOLVED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_TOKEN_DEPENDENCY_RESOLVED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/docs_schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_docs_lint_unit.py
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_token_dependency_resolved.spec.md
+  notes: Requires-token dependencies must resolve to owner docs and owner content.
+- rule_id: DOCS_INSTRUCTIONS_REQUIRED_SECTIONS
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_INSTRUCTIONS_REQUIRED_SECTIONS
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/docs_schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_docs_lint_unit.py
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_instructions_complete.spec.md
+  notes: Instruction docs must retain required operational sections.
+- rule_id: DOCS_COMMAND_EXAMPLES_VERIFIED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_COMMAND_EXAMPLES_VERIFIED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/docs_schema_v1.md
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_docs_lint_unit.py
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_command_examples_verified.spec.md
+  notes: Docs examples are validated or explicitly opted out with reason.
+- rule_id: DOCS_EXAMPLE_IDS_UNIQUE
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_EXAMPLE_IDS_UNIQUE
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/docs_schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_docs_lint_unit.py
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_example_id_uniqueness.spec.md
+  notes: Example identifiers remain unique across canonical docs metadata.
+- rule_id: DOCS_GENERATED_ARTIFACTS_FRESH
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_GENERATED_ARTIFACTS_FRESH
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  - docs/book/reference_manifest.yaml
+  schema_refs:
+  - specs/01_schema/reference_manifest_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_docs_build_reference_unit.py
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - scripts/docs_build_reference.py
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_generated_files_clean.spec.md
+  notes: Generated docs artifacts must stay synchronized with manifest and metadata.
+- rule_id: DOCS_MAKE_COMMANDS_SYNC
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_MAKE_COMMANDS_SYNC
+  contract_refs:
+  - README.md
+  - docs/development.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Governance enforces canonical make command entrypoints in core contributor
+    docs.
+- rule_id: DOCS_ADOPTION_PROFILES_SYNC
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_ADOPTION_PROFILES_SYNC
+  contract_refs:
+  - specs/02_contracts/11_adoption_profiles.md
+  - README.md
+  - docs/development.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_adoption_profiles_sync.spec.md
+  - dc-runner-python
+  notes: Governance enforces synchronized Core/Full adoption profile docs and commands.
+- rule_id: DOCS_RELEASE_CONTRACT_AUTOMATION_ONLY
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_RELEASE_CONTRACT_AUTOMATION_ONLY
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  - docs/release_checklist.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_release_contract_automation_policy.spec.md
+  - dc-runner-python
+  notes: Release guidance is automation-first and forbids manual sequential checklist
+    choreography.
+- rule_id: RUNTIME_RUNNER_INTERFACE_GATE_SYNC
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_RUNNER_INTERFACE_GATE_SYNC
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - scripts/ci_gate.sh
+  - scripts/runner_bin.sh
+  - dc-runner-python
+  notes: Governance enforces runner-interface boundary usage in gate shell scripts.
+- rule_id: RUNTIME_LOCAL_CI_PARITY_PYTHON_LANE_FORBIDDEN
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_LOCAL_CI_PARITY_PYTHON_LANE_FORBIDDEN
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - scripts/ci_gate.sh
+  - specs/04_governance/cases/core/runtime_local_ci_parity_python_lane_forbidden.spec.md
+  notes: Local ci parity path is rust-only and forbids python lane execution.
+- rule_id: RUNTIME_MAKE_PYTHON_PARITY_TARGETS_FORBIDDEN
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_MAKE_PYTHON_PARITY_TARGETS_FORBIDDEN
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - Makefile
+  - specs/04_governance/cases/core/runtime_make_python_parity_targets_forbidden.spec.md
+  notes: Contributor make targets avoid python parity runtime lanes.
+- rule_id: RUNTIME_RUST_ONLY_PREPUSH_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_RUST_ONLY_PREPUSH_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - scripts/ci_gate.sh
+  - .githooks/pre-push
+  - Makefile
+  - specs/04_governance/cases/core/runtime_rust_only_prepush_required.spec.md
+  notes: End-to-end prepush entrypoints stay rust-only.
+- rule_id: RUNTIME_GIT_HOOK_PREPUSH_ENFORCED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_GIT_HOOK_PREPUSH_ENFORCED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - .githooks/pre-push
+  - scripts/ci_gate.sh
+  - Makefile
+  - specs/04_governance/cases/core/runtime_git_hook_prepush_enforced.spec.md
+  notes: Managed pre-push hook and installer enforce local parity checks before push.
+- rule_id: RUNTIME_FAST_PATH_CONSISTENCY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_FAST_PATH_CONSISTENCY_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - scripts/ci_gate.sh
+  - scripts/ci_gate.sh
+  - .githooks/pre-push
+  - specs/04_governance/cases/core/runtime_fast_path_consistency_required.spec.md
+  notes: Fast-path tokens remain consistent across local parity, ci gate, and pre-push
+    hook entrypoints.
+- rule_id: RUNTIME_RUST_ADAPTER_TARGET_FALLBACK_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_RUST_ADAPTER_TARGET_FALLBACK_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-rust
+  notes: Rust adapter provides host-target fallback and strict-mode override.
+- rule_id: RUNTIME_LOCAL_CI_PARITY_ENTRYPOINT_DOCUMENTED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_LOCAL_CI_PARITY_ENTRYPOINT_DOCUMENTED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  - docs/development.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - README.md
+  - docs/development.md
+  - docs/book/60_runner_and_gates.md
+  - docs/book/80_troubleshooting.md
+  - specs/04_governance/cases/core/runtime_local_ci_parity_entrypoint_documented.spec.md
+  notes: Contributor docs describe parity default prepush, fast mode, hook install,
+    and bypass semantics.
+- rule_id: RUNTIME_GOVERNANCE_TRIAGE_ENTRYPOINT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_GOVERNANCE_TRIAGE_ENTRYPOINT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  - specs/02_contracts/24_runtime_profiling_contract.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - scripts/governance_triage.sh
+  - specs/04_governance/check_prefix_map_v1.yaml
+  - specs/04_governance/cases/core/runtime_governance_triage_entrypoint_required.spec.md
+  notes: Canonical governance triage entrypoint surface and modes are enforced.
+- rule_id: RUNTIME_PREPUSH_GOVERNANCE_TRIAGE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_PREPUSH_GOVERNANCE_TRIAGE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - scripts/ci_gate.sh
+  - specs/04_governance/cases/core/runtime_prepush_uses_governance_triage_required.spec.md
+  notes: Prepush governance step must use triage entrypoint.
+- rule_id: RUNTIME_CIGATE_GOVERNANCE_TRIAGE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_CIGATE_GOVERNANCE_TRIAGE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  - specs/02_contracts/24_runtime_profiling_contract.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-rust
+  notes: CI gate summary routes governance through triage and exposes triage metadata.
+- rule_id: RUNTIME_TRIAGE_ARTIFACTS_EMITTED_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_TRIAGE_ARTIFACTS_EMITTED_REQUIRED
+  contract_refs:
+  - specs/02_contracts/24_runtime_profiling_contract.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - scripts/governance_triage.sh
+  - dc-runner-python
+  notes: Triage flow emits deterministic machine/human artifacts on failure/stall.
+- rule_id: RUNTIME_TRIAGE_FAILURE_ID_PARSING_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_TRIAGE_FAILURE_ID_PARSING_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - scripts/governance_triage.sh
+  - specs/04_governance/check_prefix_map_v1.yaml
+  - specs/04_governance/cases/core/runtime_triage_failure_id_parsing_required.spec.md
+  notes: Triage parser extracts error check ids and maps them to targeted prefixes.
+- rule_id: RUNTIME_TRIAGE_BYPASS_LOGGING_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_TRIAGE_BYPASS_LOGGING_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - .githooks/pre-push
+  - specs/04_governance/cases/core/runtime_triage_bypass_logged_required.spec.md
+  notes: Emergency bypass remains explicit and logged.
+- rule_id: RUNTIME_GOVERNANCE_TRIAGE_TARGETED_FIRST_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_GOVERNANCE_TRIAGE_TARGETED_FIRST_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - scripts/governance_triage.sh
+  - specs/04_governance/cases/core/runtime_governance_triage_targeted_first_required.spec.md
+  notes: Auto triage defaults to targeted-first with broad-first explicit mode.
+- rule_id: RUNTIME_LOCAL_PREPUSH_BROAD_GOVERNANCE_FORBIDDEN
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_LOCAL_PREPUSH_BROAD_GOVERNANCE_FORBIDDEN
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - scripts/ci_gate.sh
+  - specs/04_governance/cases/core/runtime_local_prepush_broad_governance_forbidden.spec.md
+  notes: Local prepush keeps broad governance out of default flow.
+- rule_id: RUNTIME_CI_GATE_OWNERSHIP_CONTRACT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_CI_GATE_OWNERSHIP_CONTRACT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - scripts/ci_gate.sh
+  - dc-runner-python
+  - dc-runner-rust
+  notes: CI gate owns critical in ci_gate.sh and keeps ci-gate-summary broad-only
+    without critical toggles.
+- rule_id: RUNTIME_GOVERNANCE_PREFIX_SELECTION_FROM_CHANGED_PATHS
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_GOVERNANCE_PREFIX_SELECTION_FROM_CHANGED_PATHS
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - scripts/governance_triage.sh
+  - specs/04_governance/cases/core/runtime_governance_prefix_selection_from_changed_paths.spec.md
+  notes: Triage resolves changed-path prefixes before fallback prefix sets.
+- rule_id: RUNTIME_GOVERNANCE_TRIAGE_ARTIFACT_SELECTION_METADATA_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_GOVERNANCE_TRIAGE_ARTIFACT_SELECTION_METADATA_REQUIRED
+  contract_refs:
+  - specs/02_contracts/24_runtime_profiling_contract.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - scripts/governance_triage.sh
+  - specs/04_governance/cases/core/runtime_governance_triage_artifact_contains_selection_metadata.spec.md
+  notes: Triage artifacts includes selected prefixes, source, and broad-required flags.
+- rule_id: RUNTIME_CI_ARTIFACT_UPLOAD_PATHS_VALID
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_CI_ARTIFACT_UPLOAD_PATHS_VALID
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - .github/workflows/ci.yml
+  - specs/04_governance/cases/core/runner_contract/runtime_ci_artifact_upload_paths_valid.spec.md
+  notes: CI workflow uses recursive .artifacts upload paths so diagnostics are retained.
+- rule_id: RUNTIME_SCOPE_BOUNDED_FOR_V1
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_SCOPE_BOUNDED_FOR_V1
+  contract_refs:
+  - specs/02_contracts/08_v1_scope.md
+  - specs/02_contracts/13_runtime_scope.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_contract_governance_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/runtime_scope_sync.spec.md
+  notes: Governance keeps v1 runtime support scope explicitly bounded to declared
+    targets.
+- rule_id: RUNTIME_ASSERTIONS_VIA_SPEC_LANG
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_ASSERTIONS_VIA_SPEC_LANG
+  contract_refs:
+  - specs/02_contracts/09_internal_representation.md
+  - specs/02_contracts/03b_spec_lang_v1.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_php_conformance_subset_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-php
+  - dc-runner-php
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  notes: Governance enforces spec-lang-backed assertion execution paths for runtime
+    scanners/runners.
+- rule_id: CONTRACT_MUST_RULE_COVERAGE_COMPLETE
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONTRACT_MUST_RULE_COVERAGE_COMPLETE
+  contract_refs:
+  - specs/02_contracts/policy_v1.yaml
+  - specs/02_contracts/traceability_v1.yaml
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_contract_governance_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Governance enforces complete coverage for active MUST contract rules.
+- rule_id: SPEC_LANG_PURE_NO_EFFECT_BUILTINS
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_PURE_NO_EFFECT_BUILTINS
+  contract_refs:
+  - specs/02_contracts/03b_spec_lang_v1.md
+  - specs/02_contracts/09_internal_representation.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_spec_lang_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-php
+  - dc-runner-php
+  notes: Spec-lang core forbids side-effect builtins; adapters provide normalized
+    effect results.
+- rule_id: RUNTIME_DECISIONS_VIA_SPEC_LANG_ONLY
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_DECISIONS_VIA_SPEC_LANG_ONLY
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/09_internal_representation.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_compiler_unit.py
+  - tests/test_harness_cli_run_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  notes: Runtime assertions compile external operators to spec-lang and evaluate through
+    one engine.
+- rule_id: ASSERT_UNIVERSAL_CORE_EVALUATE_ONLY
+  policy_ref: specs/02_contracts/policy_v1.yaml#ASSERT_UNIVERSAL_CORE_EVALUATE_ONLY
+  contract_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/09_internal_representation.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_compiler_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/assert_universal_core_sync.spec.md
+  notes: Universal assertion core is evaluate; sugar operators compile into evaluate-equivalent
+    expressions.
+- rule_id: ASSERT_SUGAR_OPERATORS_COMPILE_ONLY
+  policy_ref: specs/02_contracts/policy_v1.yaml#ASSERT_SUGAR_OPERATORS_COMPILE_ONLY
+  contract_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/09_internal_representation.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_compiler_unit.py
+  - tests/test_assertions_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/assert_sugar_compile_only_sync.spec.md
+  notes: Sugar ops remain authoring convenience only; runtime uses compiled checks.
+- rule_id: ASSERT_TARGET_CONTRACT_SUBJECT_DRIVEN
+  policy_ref: specs/02_contracts/policy_v1.yaml#ASSERT_TARGET_CONTRACT_SUBJECT_DRIVEN
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/types/text_file.md
+  - specs/02_contracts/types/cli_run.md
+  - specs/02_contracts/types/api_http.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/assert_type_contract_subject_semantics_sync.spec.md
+  notes: Type contracts define subject semantics and availability responsibilities.
+- rule_id: ASSERT_COMPILER_SCHEMA_MATRIX_SYNC
+  policy_ref: specs/02_contracts/policy_v1.yaml#ASSERT_COMPILER_SCHEMA_MATRIX_SYNC
+  contract_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/09_internal_representation.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_compiler_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/assert_compiler_schema_matrix_sync.spec.md
+  notes: Governance enforces compiler/schema/contract alignment for universal evaluate
+    model.
+- rule_id: GOVERNANCE_DECISIONS_VIA_SPEC_LANG_ONLY
+  policy_ref: specs/02_contracts/policy_v1.yaml#GOVERNANCE_DECISIONS_VIA_SPEC_LANG_ONLY
+  contract_refs:
+  - specs/02_contracts/15_governance_subject_model.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/conformance_spec_lang_preferred.spec.md
+  notes: Governance decision expressions are configured as spec-lang data in harness
+    config.
+- rule_id: ORCHESTRATION_POLICY_VIA_SPEC_LANG_ONLY
+  policy_ref: specs/02_contracts/policy_v1.yaml#ORCHESTRATION_POLICY_VIA_SPEC_LANG_ONLY
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  notes: CI gate summary loads a spec-lang decision expression from governance policy
+    case.
+- rule_id: ORCHESTRATION_OPS_DEEP_DOT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#ORCHESTRATION_OPS_DEEP_DOT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_ops_namespace_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/orchestration_ops_symbol_grammar.spec.md
+  notes: Ops effect symbols are validated against deep-dot canonical grammar.
+- rule_id: ORCHESTRATION_OPS_REGISTRY_DECLARED_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#ORCHESTRATION_OPS_REGISTRY_DECLARED_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/orchestration_result_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_harness_orchestration_run_unit.py
+  implementation_refs:
+  - specs/04_governance/tools/python/tools_v1.yaml
+  - specs/04_governance/tools/rust/tools_v1.yaml
+  - dc-runner-python
+  - specs/04_governance/cases/core/orchestration_ops_registry_sync.spec.md
+  notes: Orchestration tools registry must declare effect symbols, capabilities, and
+    schema refs.
+- rule_id: ORCHESTRATION_OPS_CAPABILITY_BINDING_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#ORCHESTRATION_OPS_CAPABILITY_BINDING_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_harness_orchestration_run_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/orchestration_ops_capability_bindings.spec.md
+  notes: Orchestration cases must bind required capability ids for selected tools.
+- rule_id: RUNTIME_RUNNER_INTERFACE_SUBCOMMANDS_DECLARED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_RUNNER_INTERFACE_SUBCOMMANDS_DECLARED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-rust
+  notes: Governance verifies Rust adapter case labels cover required runner-interface
+    subcommands.
+- rule_id: RUNTIME_RUST_ADAPTER_NO_DELEGATION
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_RUST_ADAPTER_NO_DELEGATION
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-rust
+  - dc-runner-python
+  notes: Governance prevents regression back to shell adapter delegation in the Rust
+    lane.
+- rule_id: RUST_PRIMARY_GATE_PATH_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUST_PRIMARY_GATE_PATH_REQUIRED
+  contract_refs:
+  
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - .github/workflows/ci.yml
+  - dc-runner-python
+  - specs/04_governance/cases/core/runner_contract/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+  notes: Rust-primary CI lane requirement is enforced through runner-interface CI
+    lane checks.
+- rule_id: RUST_PRIMARY_NO_PYTHON_GATE_DEPENDENCY
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUST_PRIMARY_NO_PYTHON_GATE_DEPENDENCY
+  contract_refs:
+  
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - scripts/ci_gate.sh
+  - scripts/ci_gate.sh
+  - scripts/control_plane.sh
+  - dc-runner-python
+  - specs/04_governance/cases/core/runner_contract/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+  notes: Gate orchestration remains runner-interface based without direct Python command
+    coupling.
+- rule_id: RUST_PRIMARY_INTERFACE_STABILITY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUST_PRIMARY_INTERFACE_STABILITY_REQUIRED
+  contract_refs:
+  
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-rust
+  - dc-runner-python
+  - specs/04_governance/cases/core/runner_contract/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+  notes: Rust adapter preserves required runner-interface command surface.
+- rule_id: RUST_PRIMARY_SHARED_CAPABILITY_PARITY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUST_PRIMARY_SHARED_CAPABILITY_PARITY_REQUIRED
+  contract_refs:
+  
+  - specs/02_contracts/06_conformance.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_conformance_parity_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - scripts/ci_gate.sh
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/runner_contract/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+  notes: Rust-primary-compatible gate flow retains shared-capability parity step.
+- rule_id: RUST_PRIMARY_ADAPTER_EXEC_SMOKE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUST_PRIMARY_ADAPTER_EXEC_SMOKE_REQUIRED
+  contract_refs:
+  
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-rust
+  - dc-runner-python
+  - specs/04_governance/cases/core/runner_contract/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+  notes: Rust-primary governance includes an executable smoke check for adapter command
+    behavior.
+- rule_id: RUST_PRIMARY_SUBCOMMAND_PARITY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUST_PRIMARY_SUBCOMMAND_PARITY_REQUIRED
+  contract_refs:
+  
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-rust
+  - dc-runner-rust
+  - dc-runner-python
+  - specs/04_governance/cases/core/runner_contract/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+  notes: Governance enforces parity between shell adapter and Rust CLI subcommand
+    surfaces.
+- rule_id: RUST_PRIMARY_DOCS_ADOPTION_SYNC
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUST_PRIMARY_DOCS_ADOPTION_SYNC
+  contract_refs:
+  
+  - specs/02_contracts/11_adoption_profiles.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - README.md
+  - docs/development.md
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_adoption_profiles_sync.spec.md
+  notes: Adoption profile docs remain synchronized during Rust-primary normalization.
+- rule_id: OBJECTIVE_METRIC_MANIFEST_VALID
+  policy_ref: specs/02_contracts/policy_v1.yaml#OBJECTIVE_METRIC_MANIFEST_VALID
+  contract_refs:
+  - specs/02_contracts/17_objective_metrics.md
+  schema_refs:
+  - specs/01_schema/objective_metrics_schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_objective_scorecard_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - specs/04_governance/metrics/objective_manifest.yaml
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/objective_scorecard_metric.spec.md
+  notes: Objective manifest remains schema-valid and includes required objective IDs.
+- rule_id: OBJECTIVE_SCORECARD_REPORTED
+  policy_ref: specs/02_contracts/policy_v1.yaml#OBJECTIVE_SCORECARD_REPORTED
+  contract_refs:
+  - specs/02_contracts/17_objective_metrics.md
+  schema_refs:
+  - specs/01_schema/objective_metrics_schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_objective_scorecard_unit.py
+  - dc-runner-python
+  - dc-runner-python
+  implementation_refs:
+  - scripts/objective_scorecard_report.py
+  - dc-runner-python
+  - scripts/runner_bin.sh
+  - dc-runner-python
+  - specs/04_governance/cases/core/objective_scorecard_metric.spec.md
+  notes: Objective scorecard is generated as JSON/Markdown artifacts.
+- rule_id: OBJECTIVE_SCORECARD_NON_REGRESSION_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#OBJECTIVE_SCORECARD_NON_REGRESSION_REQUIRED
+  contract_refs:
+  - specs/02_contracts/17_objective_metrics.md
+  schema_refs:
+  - specs/01_schema/objective_metrics_schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_objective_scorecard_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - specs/04_governance/metrics/objective_scorecard_baseline.json
+  - dc-runner-python
+  - specs/04_governance/cases/core/objective_scorecard_non_regression.spec.md
+  notes: Objective scorecard summary values are ratchet-gated by baseline.
+- rule_id: OBJECTIVE_TRIPWIRES_ENFORCED
+  policy_ref: specs/02_contracts/policy_v1.yaml#OBJECTIVE_TRIPWIRES_ENFORCED
+  contract_refs:
+  - specs/02_contracts/17_objective_metrics.md
+  schema_refs:
+  - specs/01_schema/objective_metrics_schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - specs/04_governance/metrics/objective_manifest.yaml
+  - dc-runner-python
+  - specs/04_governance/cases/core/objective_tripwires_clean.spec.md
+  notes: Tripwire check IDs in objective manifest must map to passing governance checks.
+- rule_id: OBJECTIVE_COURSE_CORRECTION_POLICY_DEFINED
+  policy_ref: specs/02_contracts/policy_v1.yaml#OBJECTIVE_COURSE_CORRECTION_POLICY_DEFINED
+  contract_refs:
+  - specs/02_contracts/17_objective_metrics.md
+  schema_refs:
+  - specs/01_schema/objective_metrics_schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_objective_scorecard_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - specs/04_governance/metrics/baseline_update_notes.yaml
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/objective_scorecard_non_regression.spec.md
+  notes: Baseline update metadata notes are hash-pinned and required by governance.
+- rule_id: SPEC_LANG_LIBRARY_INCLUDE_FORMAT_SCOPE
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_LIBRARY_INCLUDE_FORMAT_SCOPE
+  contract_refs:
+  - specs/02_contracts/14_spec_lang_libraries.md
+  - specs/02_contracts/03b_spec_lang_v1.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_spec_lang_libraries_unit.py
+  - tests/test_codecs_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Library include formats allow md/yaml while executable case discovery stays
+    markdown-default unless explicitly enabled.
+- rule_id: NAMING_FILENAME_STRICT_SEPARATORS
+  policy_ref: specs/02_contracts/policy_v1.yaml#NAMING_FILENAME_STRICT_SEPARATORS
+  contract_refs:
+  - AGENTS.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/naming_filename_policy.spec.md
+  notes: Filename stems are governance-checked for lowercase + underscore word separators
+    + hyphen section separators.
+- rule_id: GOVERNANCE_EXTRACTOR_ONLY_NO_VERDICT_BRANCHING
+  policy_ref: specs/02_contracts/policy_v1.yaml#GOVERNANCE_EXTRACTOR_ONLY_NO_VERDICT_BRANCHING
+  contract_refs:
+  - specs/02_contracts/15_governance_subject_model.md
+  - specs/02_contracts/18_governance_subject_extractors.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  notes: Per-check policy verdict branching is replaced by extractor output + central
+    policy engine.
+- rule_id: GOVERNANCE_STRUCTURED_ASSERTIONS_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#GOVERNANCE_STRUCTURED_ASSERTIONS_REQUIRED
+  contract_refs:
+  - specs/02_contracts/15_governance_subject_model.md
+  - specs/02_contracts/18_governance_subject_extractors.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/governance_structured_assertions_required.spec.md
+  notes: Governance cases use structured result targets for assertion truth instead
+    of PASS text coupling.
+- rule_id: RUNTIME_RUST_ADAPTER_NO_PYTHON_EXEC
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_RUST_ADAPTER_NO_PYTHON_EXEC
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_rust_runner_interface_unit.py
+  implementation_refs:
+  - dc-runner-rust
+  - dc-runner-rust
+  - dc-runner-python
+  notes: Rust runner interface source must avoid direct Python execution token coupling.
+- rule_id: NORMALIZATION_PROFILE_DEFINED
+  policy_ref: specs/02_contracts/policy_v1.yaml#NORMALIZATION_PROFILE_DEFINED
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/03b_spec_lang_v1.md
+  schema_refs:
+  - specs/01_schema/normalization_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/normalization_profile_sync.spec.md
+  notes: Normalization profile structure is governance-enforced.
+- rule_id: NORMALIZATION_CHECK_GATE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#NORMALIZATION_CHECK_GATE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  schema_refs:
+  - specs/01_schema/normalization_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - dc-runner-python
+  implementation_refs:
+  - scripts/normalize_repo.py
+  - scripts/runner_bin.sh
+  - dc-runner-python
+  - Makefile
+  notes: Normalize check is included in smoke/full gate command paths.
+- rule_id: NORMALIZATION_MAPPING_AST_ONLY
+  policy_ref: specs/02_contracts/policy_v1.yaml#NORMALIZATION_MAPPING_AST_ONLY
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/03b_spec_lang_v1.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/01_schema/normalization_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_spec_lang_yaml_ast_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - scripts/normalize_repo.py
+  - specs/04_governance/cases/core/spec_core/normalization_mapping_ast_only.spec.md
+  notes: Mapping-AST-only syntax is enforced through compiler and normalization checks.
+- rule_id: NORMALIZATION_CONTRACT_SCHEMA_BOOK_SYNC
+  policy_ref: specs/02_contracts/policy_v1.yaml#NORMALIZATION_CONTRACT_SCHEMA_BOOK_SYNC
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/03b_spec_lang_v1.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/01_schema/normalization_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - dc-runner-python
+  implementation_refs:
+  - scripts/normalize_repo.py
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/normalization_docs_token_sync.spec.md
+  notes: Required/forbidden token rules keep schema/contract/book wording aligned.
+- rule_id: NORMALIZATION_FIX_COMMAND_AVAILABLE
+  policy_ref: specs/02_contracts/policy_v1.yaml#NORMALIZATION_FIX_COMMAND_AVAILABLE
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  schema_refs:
+  - specs/01_schema/normalization_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - scripts/normalize_repo.py
+  - scripts/runner_bin.sh
+  - Makefile
+  - specs/04_governance/cases/core/spec_core/normalization_spec_style_sync.spec.md
+  notes: Explicit normalize-fix path is available for local authoring.
+- rule_id: NORMALIZATION_VIRTUAL_ROOT_PATHS_ONLY
+  policy_ref: specs/02_contracts/policy_v1.yaml#NORMALIZATION_VIRTUAL_ROOT_PATHS_ONLY
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/14_spec_lang_libraries.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_virtual_paths_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/normalization_virtual_root_paths_only.spec.md
+  notes: Scoped path fields normalize to canonical virtual-root `/...` form.
+- rule_id: REFERENCE_CONTRACT_PATHS_EXIST
+  policy_ref: specs/02_contracts/policy_v1.yaml#REFERENCE_CONTRACT_PATHS_EXIST
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/reference_contract_paths_exist.spec.md
+  notes: Governance validates referenced in-root paths exist before runtime.
+- rule_id: REFERENCE_SYMBOLS_EXIST
+  policy_ref: specs/02_contracts/policy_v1.yaml#REFERENCE_SYMBOLS_EXIST
+  contract_refs:
+  - specs/02_contracts/14_spec_lang_libraries.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_spec_lang_libraries_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/reference_symbols_exist.spec.md
+  notes: Library exports/symbol references are validated early.
+- rule_id: REFERENCE_LIBRARY_EXPORTS_USED
+  policy_ref: specs/02_contracts/policy_v1.yaml#REFERENCE_LIBRARY_EXPORTS_USED
+  contract_refs:
+  - specs/02_contracts/14_spec_lang_libraries.md
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/reference_library_exports_used.spec.md
+  notes: Library defines.public symbols must be referenced by policies/expressions
+    or harness exports.
+- rule_id: REFERENCE_PRIVATE_SYMBOLS_FORBIDDEN
+  policy_ref: specs/02_contracts/policy_v1.yaml#REFERENCE_PRIVATE_SYMBOLS_FORBIDDEN
+  contract_refs:
+  - specs/02_contracts/14_spec_lang_libraries.md
+  - specs/02_contracts/18_governance_subject_extractors.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/reference_private_symbols_forbidden.spec.md
+  notes: defines.private symbols are forbidden from external case policy/assertion
+    references.
+- rule_id: REFERENCE_CHECK_IDS_EXIST
+  policy_ref: specs/02_contracts/policy_v1.yaml#REFERENCE_CHECK_IDS_EXIST
+  contract_refs:
+  - specs/02_contracts/15_governance_subject_model.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/reference_check_ids_exist.spec.md
+  notes: Governance case check ids must map to registered scanner ids.
+- rule_id: REFERENCE_EXTERNAL_REFS_POLICY
+  policy_ref: specs/02_contracts/policy_v1.yaml#REFERENCE_EXTERNAL_REFS_POLICY
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/18_governance_subject_extractors.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_virtual_paths_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/reference_external_refs_policy.spec.md
+  notes: External refs are deny-by-default and capability/policy gated.
+- rule_id: REFERENCE_TOKEN_ANCHORS_EXIST
+  policy_ref: specs/02_contracts/policy_v1.yaml#REFERENCE_TOKEN_ANCHORS_EXIST
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/reference_token_anchors_exist.spec.md
+  notes: Token anchor references are checked for file existence and token presence.
+- rule_id: SPEC_LAYOUT_DOMAIN_TREES
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LAYOUT_DOMAIN_TREES
+  contract_refs:
+  - specs/02_contracts/01_discovery.md
+  - specs/02_contracts/06_conformance.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/spec_layout_domain_trees.spec.md
+  notes: Domain-tree directories are required for conformance/governance/libraries
+    spec surfaces.
+- rule_id: SPEC_DOMAIN_INDEX_SYNC
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_DOMAIN_INDEX_SYNC
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/spec_domain_index_sync.spec.md
+  notes: Domain index files are checked for completeness and stale entries.
+- rule_id: LIBRARY_DOMAIN_OWNERSHIP
+  policy_ref: specs/02_contracts/policy_v1.yaml#LIBRARY_DOMAIN_OWNERSHIP
+  contract_refs:
+  - specs/02_contracts/14_spec_lang_libraries.md
+  - specs/02_contracts/18_governance_subject_extractors.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/library_domain_ownership.spec.md
+  notes: Governance enforces domain ownership boundaries for harness.spec_lang.includes.
+- rule_id: LIBRARY_DOMAIN_INDEX_SYNC
+  policy_ref: specs/02_contracts/policy_v1.yaml#LIBRARY_DOMAIN_INDEX_SYNC
+  contract_refs:
+  - specs/02_contracts/14_spec_lang_libraries.md
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/library_domain_index_sync.spec.md
+  notes: Library domain indexes are checked for complete file and exported symbol
+    inventory coverage.
+- rule_id: LIBRARY_PUBLIC_SURFACE_MODEL
+  policy_ref: specs/02_contracts/policy_v1.yaml#LIBRARY_PUBLIC_SURFACE_MODEL
+  contract_refs:
+  - specs/02_contracts/14_spec_lang_libraries.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_spec_lang_libraries_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/library_public_surface_model.spec.md
+  notes: spec_lang.export shape enforcement requires defines.public/defines.private
+    scopes.
+- rule_id: LIBRARY_SINGLE_PUBLIC_SYMBOL_PER_CASE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#LIBRARY_SINGLE_PUBLIC_SYMBOL_PER_CASE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/14_spec_lang_libraries.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - scripts/normalize_repo.py
+  - scripts/split_library_cases_per_symbol.py
+  notes: Library cases are function-granular with one public symbol per case.
+- rule_id: LIBRARY_COLOCATED_SYMBOL_TESTS_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#LIBRARY_COLOCATED_SYMBOL_TESTS_REQUIRED
+  contract_refs:
+  - specs/02_contracts/14_spec_lang_libraries.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/library_colocated_symbol_tests_required.spec.md
+  notes: Library files must include colocated executable non-library tests.
+- rule_id: SPEC_LANG_STDLIB_PROFILE_DEFINED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_STDLIB_PROFILE_DEFINED
+  contract_refs:
+  - specs/02_contracts/03b_spec_lang_v1.md
+  - specs/02_contracts/19_spec_lang_stdlib_profile_v1.md
+  schema_refs:
+  - specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/spec_lang_stdlib_profile_complete.spec.md
+  notes: Defines canonical stdlib profile source of truth for implementation and docs
+    parity checks.
+- rule_id: SPEC_LANG_STDLIB_PROFILE_COMPLETE
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_STDLIB_PROFILE_COMPLETE
+  contract_refs:
+  - specs/02_contracts/19_spec_lang_stdlib_profile_v1.md
+  schema_refs:
+  - specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/spec_lang_stdlib_profile_complete.spec.md
+  notes: Governance fails when any profile symbol is missing in Python or PHP implementations.
+- rule_id: SPEC_LANG_STDLIB_PY_PHP_PARITY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_STDLIB_PY_PHP_PARITY_REQUIRED
+  contract_refs:
+  - specs/02_contracts/19_spec_lang_stdlib_profile_v1.md
+  schema_refs:
+  - specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - tests/test_conformance_parity_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-php
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/spec_lang_stdlib_py_php_parity.spec.md
+  notes: Python and PHP symbol surfaces must remain parity-clean against profile symbols.
+- rule_id: SPEC_LANG_STDLIB_DOCS_SYNC_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_STDLIB_DOCS_SYNC_REQUIRED
+  contract_refs:
+  - specs/02_contracts/03b_spec_lang_v1.md
+  - specs/02_contracts/19_spec_lang_stdlib_profile_v1.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/spec_lang_stdlib_docs_sync.spec.md
+  notes: Core docs must reference the canonical stdlib profile contract artifacts.
+- rule_id: SPEC_LANG_STDLIB_CONFORMANCE_COVERAGE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_STDLIB_CONFORMANCE_COVERAGE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/06_conformance.md
+  - specs/02_contracts/19_spec_lang_stdlib_profile_v1.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/spec_lang_stdlib_conformance_coverage.spec.md
+  notes: Required stdlib conformance fixture files must exist and remain in canonical
+    paths.
+- rule_id: RUNTIME_SINGLE_PUBLIC_RUNNER_ENTRYPOINT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_SINGLE_PUBLIC_RUNNER_ENTRYPOINT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - scripts/ci_gate.sh
+  - scripts/ci_gate.sh
+  - scripts/control_plane.sh
+  - dc-runner-python
+  notes: Gate scripts must reference scripts/runner_bin.sh as the single public
+    runner entrypoint.
+- rule_id: RUNTIME_PUBLIC_ENTRYPOINT_RUST_DEFAULT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_PUBLIC_ENTRYPOINT_RUST_DEFAULT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - scripts/runner_bin.sh
+  - dc-runner-python
+  - specs/04_governance/cases/core/runner_contract/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+  notes: Canonical runner adapter defaults to rust implementation mode.
+- rule_id: RUNTIME_RUNNER_ADAPTER_PYTHON_IMPL_FORBIDDEN
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_RUNNER_ADAPTER_PYTHON_IMPL_FORBIDDEN
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - scripts/runner_bin.sh
+  - dc-runner-python
+  - specs/04_governance/cases/core/runner_contract/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+  notes: Runtime runner adapter rejects python impl selection with normalization guidance.
+- rule_id: RUNTIME_PUBLIC_DOCS_NO_DIRECT_RUST_ADAPTER_INVOCATION
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_PUBLIC_DOCS_NO_DIRECT_RUST_ADAPTER_INVOCATION
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - docs/development.md
+  - README.md
+  - dc-runner-python
+  notes: Public docs avoid directing users to internal rust adapter paths.
+- rule_id: ASSERT_SUBJECT_PROFILE_JSON_CORE_ONLY
+  policy_ref: specs/02_contracts/policy_v1.yaml#ASSERT_SUBJECT_PROFILE_JSON_CORE_ONLY
+  contract_refs:
+  - specs/02_contracts/20_subject_profiles_v1.md
+  - specs/02_contracts/03b_spec_lang_v1.md
+  schema_refs:
+  - specs/01_schema/subject_profiles_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/assert_subject_profiles_json_only.spec.md
+  notes: Enforces JSON-core subject model in profile schema and evaluator subject
+    validation.
+- rule_id: ASSERT_CONTEXT_PROJECTION_CONTRACT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#ASSERT_CONTEXT_PROJECTION_CONTRACT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/20_subject_profiles_v1.md
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/01_schema/subject_profiles_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/assert_adapter_projection_contract_sync.spec.md
+  notes: Requires context_json projection targets and profile metadata in core harness
+    adapters.
+- rule_id: ASSERT_DOMAIN_ASSERTIONS_LIBRARY_BACKED
+  policy_ref: specs/02_contracts/policy_v1.yaml#ASSERT_DOMAIN_ASSERTIONS_LIBRARY_BACKED
+  contract_refs:
+  - specs/02_contracts/14_spec_lang_libraries.md
+  - specs/02_contracts/07_portable_spec_authoring.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_quality_metrics_unit.py
+  implementation_refs:
+  - specs/05_libraries/domain/http_core.spec.md
+  - specs/05_libraries/domain/make_core.spec.md
+  - specs/05_libraries/domain/markdown_core.spec.md
+  - specs/05_libraries/domain/php_core.spec.md
+  - specs/05_libraries/domain/python_core.spec.md
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/assert_domain_library_usage_required.spec.md
+  notes: Domain assertion scenarios must be library-backed rather than ad hoc inline-only
+    expression patterns.
+- rule_id: ASSERT_ADAPTER_PROJECTION_SYNC_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#ASSERT_ADAPTER_PROJECTION_SYNC_REQUIRED
+  contract_refs:
+  - specs/02_contracts/20_subject_profiles_v1.md
+  schema_refs:
+  - specs/01_schema/subject_profiles_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - specs/02_contracts/types/python_profile.md
+  - specs/02_contracts/types/php_profile.md
+  - specs/02_contracts/types/http_profile.md
+  - specs/02_contracts/types/markdown_profile.md
+  - specs/02_contracts/types/makefile_profile.md
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/assert_domain_profiles_docs_sync.spec.md
+  notes: Keeps profile docs and schema declarations synchronized.
+- rule_id: ASSERT_NO_NON_JSON_EVALUATOR_TYPES
+  policy_ref: specs/02_contracts/policy_v1.yaml#ASSERT_NO_NON_JSON_EVALUATOR_TYPES
+  contract_refs:
+  - specs/02_contracts/03b_spec_lang_v1.md
+  - specs/02_contracts/20_subject_profiles_v1.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_spec_lang_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/assert_subject_profiles_json_only.spec.md
+  notes: Evaluator rejects non-JSON subject values; adapters project native values
+    to JSON.
+- rule_id: EXECUTABLE_SURFACES_MUST_BE_SPEC_MD
+  policy_ref: specs/02_contracts/policy_v1.yaml#EXECUTABLE_SURFACES_MUST_BE_SPEC_MD
+  contract_refs:
+  - specs/02_contracts/01_discovery.md
+  - specs/02_contracts/02_case_shape.md
+  - specs/02_contracts/08_v1_scope.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/spec_executable_surface_markdown_only.spec.md
+  notes: Enforces .spec.md as the canonical executable authoring surface.
+- rule_id: EXECUTABLE_DISCOVERY_MARKDOWN_ONLY
+  policy_ref: specs/02_contracts/policy_v1.yaml#EXECUTABLE_DISCOVERY_MARKDOWN_ONLY
+  contract_refs:
+  - specs/02_contracts/01_discovery.md
+  - specs/02_contracts/08_v1_scope.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_codecs_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/spec_no_executable_yaml_json_in_case_trees.spec.md
+  notes: Canonical executable trees reject non-markdown format opt-ins.
+- rule_id: DATA_ARTIFACT_SURFACES_MUST_REMAIN_MACHINE_FILES
+  policy_ref: specs/02_contracts/policy_v1.yaml#DATA_ARTIFACT_SURFACES_MUST_REMAIN_MACHINE_FILES
+  contract_refs:
+  - specs/02_contracts/08_v1_scope.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/spec_generated_data_artifacts_not_embedded_in_spec_blocks.spec.md
+  notes: Keeps baselines/manifests/schemas as machine data and forbids executable
+    fences in those artifacts.
+- rule_id: NO_EXECUTABLE_YAML_JSON_CASES_IN_CANONICAL_TREES
+  policy_ref: specs/02_contracts/policy_v1.yaml#NO_EXECUTABLE_YAML_JSON_CASES_IN_CANONICAL_TREES
+  contract_refs:
+  - specs/02_contracts/01_discovery.md
+  - specs/02_contracts/08_v1_scope.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_codecs_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/spec_core/spec_no_executable_yaml_json_in_case_trees.spec.md
+  - specs/04_governance/cases/core/spec_core/spec_library_cases_markdown_only.spec.md
+  notes: Forbids runnable yaml/json spec case files in canonical executable trees.
+- rule_id: SCHEMA_REGISTRY_SOURCE_OF_TRUTH_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SCHEMA_REGISTRY_SOURCE_OF_TRUTH_REQUIRED
+  contract_refs:
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/registry/v1/core.yaml
+  - specs/01_schema/registry_schema_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_schema_registry_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Registry YAML profiles are the source of truth for executable case-shape
+    constraints.
+- rule_id: SCHEMA_REGISTRY_VALIDATION_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SCHEMA_REGISTRY_VALIDATION_REQUIRED
+  contract_refs:
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/registry/v1/core.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_schema_validator_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Registry-driven case validation executes before harness dispatch.
+- rule_id: SCHEMA_DOCS_GENERATED_FROM_REGISTRY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SCHEMA_DOCS_GENERATED_FROM_REGISTRY_REQUIRED
+  contract_refs:
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - scripts/generate_schema_docs.py
+  notes: Generated schema snapshot markers in schema_v1 must stay synchronized with
+    registry data.
+- rule_id: SCHEMA_UNKNOWN_KEYS_HARD_FAIL
+  policy_ref: specs/02_contracts/policy_v1.yaml#SCHEMA_UNKNOWN_KEYS_HARD_FAIL
+  contract_refs:
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/registry/v1/core.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_schema_validator_unit.py
+  implementation_refs:
+  - dc-runner-python
+  notes: Unknown top-level case keys are hard-failed as schema violations.
+- rule_id: SCHEMA_TYPE_PROFILE_COVERAGE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SCHEMA_TYPE_PROFILE_COVERAGE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/registry/v1/types/cli_run.yaml
+  - specs/01_schema/registry/v1/types/text_file.yaml
+  - specs/01_schema/registry/v1/types/governance_check.yaml
+  - specs/01_schema/registry/v1/types/spec_lang_library.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_schema_registry_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Governance enforces required type-profile coverage for core executable surfaces.
+- rule_id: SCHEMA_PROSE_ONLY_RULES_FORBIDDEN
+  policy_ref: specs/02_contracts/policy_v1.yaml#SCHEMA_PROSE_ONLY_RULES_FORBIDDEN
+  contract_refs:
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  notes: Schema contract wording must reference registry-backed machine constraints.
+- rule_id: DOCS_GENERATOR_REGISTRY_DEFINED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_GENERATOR_REGISTRY_DEFINED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs:
+  - specs/01_schema/docs_generator_registry_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - scripts/docs_generate_all.py
+  - specs/04_governance/cases/core/project_docs/docs_generator_registry_valid.spec.md
+  notes: Validates docs generator registry structure and required surfaces.
+- rule_id: DOCS_GENERATOR_ORCHESTRATOR_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_GENERATOR_ORCHESTRATOR_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs:
+  - specs/01_schema/docs_generator_registry_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - scripts/docs_generate_all.py
+  - scripts/runner_bin.sh
+  - dc-runner-python
+  - dc-runner-rust
+  notes: Ensures a single docs generation orchestrator command path.
+- rule_id: DOCS_GENERATED_SURFACES_SYNC_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_GENERATED_SURFACES_SYNC_REQUIRED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/docs_generator_registry_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - scripts/docs_generate_all.py
+  - specs/04_governance/cases/core/project_docs/docs_generator_outputs_sync.spec.md
+  notes: Hard-fails when any declared generated docs surface is stale.
+- rule_id: DOCS_GENERATED_SECTIONS_READ_ONLY
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_GENERATED_SECTIONS_READ_ONLY
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/docs_generator_registry_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - scripts/docs_generate_all.py
+  - specs/04_governance/cases/core/project_docs/docs_generated_sections_read_only.spec.md
+  notes: Enforces generated marker boundaries for mixed manual/generated docs.
+- rule_id: DOCS_API_CATALOGS_GENERATED_AND_SYNCED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_API_CATALOGS_GENERATED_AND_SYNCED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs:
+  - specs/01_schema/runner_api_catalog_v1.yaml
+  - specs/01_schema/harness_type_catalog_v1.yaml
+  - specs/01_schema/spec_lang_builtin_catalog_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_generate_runner_api_catalog_unit.py
+  - tests/test_generate_harness_type_catalog_unit.py
+  - tests/test_generate_spec_lang_builtin_catalog_unit.py
+  implementation_refs:
+  - scripts/generate_runner_api_catalog.py
+  - scripts/generate_harness_type_catalog.py
+  - scripts/generate_spec_lang_builtin_catalog.py
+  - specs/04_governance/cases/core/project_docs/docs_runner_api_catalog_sync.spec.md
+  - specs/04_governance/cases/core/project_docs/docs_harness_type_catalog_sync.spec.md
+  - specs/04_governance/cases/core/project_docs/docs_spec_lang_builtin_catalog_sync.spec.md
+  notes: Catalog generators define and verify machine-backed API documentation surfaces.
+- rule_id: DOCS_POLICY_RULE_CATALOG_SYNC_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_POLICY_RULE_CATALOG_SYNC_REQUIRED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/docs_generator_registry_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_generate_policy_rule_catalog_unit.py
+  implementation_refs:
+  - scripts/generate_policy_rule_catalog.py
+  - specs/04_governance/cases/core/project_docs/docs_policy_rule_catalog_sync.spec.md
+  notes: Policy rule catalog docs surface is generated from policy_v1 rule source.
+- rule_id: DOCS_TRACEABILITY_CATALOG_SYNC_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_TRACEABILITY_CATALOG_SYNC_REQUIRED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/docs_generator_registry_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_generate_traceability_catalog_unit.py
+  implementation_refs:
+  - scripts/generate_traceability_catalog.py
+  - specs/04_governance/cases/core/project_docs/docs_traceability_catalog_sync.spec.md
+  notes: Traceability catalog docs surface is generated from traceability link source.
+- rule_id: DOCS_GOVERNANCE_CHECK_CATALOG_SYNC_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_GOVERNANCE_CHECK_CATALOG_SYNC_REQUIRED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/docs_generator_registry_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_generate_governance_check_catalog_unit.py
+  implementation_refs:
+  - scripts/generate_governance_check_catalog.py
+  - specs/04_governance/cases/core/project_docs/docs_governance_check_catalog_sync.spec.md
+  notes: Governance check inventory and case map are generated from runtime registration.
+- rule_id: DOCS_METRICS_FIELD_CATALOG_SYNC_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_METRICS_FIELD_CATALOG_SYNC_REQUIRED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/docs_generator_registry_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_generate_metrics_field_catalog_unit.py
+  implementation_refs:
+  - scripts/generate_metrics_field_catalog.py
+  - specs/04_governance/cases/core/project_docs/docs_metrics_field_catalog_sync.spec.md
+  notes: Metrics baseline field inventory is generated and synchronized.
+- rule_id: DOCS_SPEC_SCHEMA_FIELD_CATALOG_SYNC_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_SPEC_SCHEMA_FIELD_CATALOG_SYNC_REQUIRED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/docs_generator_registry_v1.yaml
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_generate_spec_schema_field_catalog_unit.py
+  implementation_refs:
+  - scripts/generate_spec_schema_field_catalog.py
+  - specs/04_governance/cases/core/project_docs/docs_spec_schema_field_catalog_sync.spec.md
+  notes: Schema field catalog is generated from compiled registry into schema and
+    book references.
+- rule_id: DOCS_GENERATOR_REPORT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_GENERATOR_REPORT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/docs_generator_registry_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - scripts/docs_generate_all.py
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_generator_outputs_sync.spec.md
+  notes: Ensures docs generator execution emits deterministic report artifacts.
+- rule_id: DOCS_LAYOUT_CANONICAL_TREES_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_LAYOUT_CANONICAL_TREES_REQUIRED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  - specs/02_contracts/22_docs_information_architecture.md
+  schema_refs:
+  - specs/01_schema/docs_layout_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_layout_canonical_trees.spec.md
+  notes: Enforces canonical docs tree roots and forbids canonical review root.
+- rule_id: DOCS_INDEX_FILENAME_INDEX_MD_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_INDEX_FILENAME_INDEX_MD_REQUIRED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  - specs/02_contracts/22_docs_information_architecture.md
+  schema_refs:
+  - specs/01_schema/docs_layout_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_index_filename_policy.spec.md
+  notes: Requires `index.md` for docs directory index files and forbids docs-local
+    README index files.
+- rule_id: DOCS_FILENAME_POLICY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_FILENAME_POLICY_REQUIRED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  - specs/02_contracts/22_docs_information_architecture.md
+  schema_refs:
+  - specs/01_schema/docs_layout_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_filename_policy.spec.md
+  notes: Enforces lowercase/no-space docs filename policy.
+- rule_id: DOCS_REVIEWS_NAMESPACE_ACTIVE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_REVIEWS_NAMESPACE_ACTIVE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/22_docs_information_architecture.md
+  schema_refs:
+  - specs/01_schema/docs_layout_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_reviews_namespace_active.spec.md
+  notes: Requires `docs/history/reviews` for active review assets and treats the historical review archive root as archive-only.
+- rule_id: DOCS_NO_OS_ARTIFACT_FILES_TRACKED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_NO_OS_ARTIFACT_FILES_TRACKED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/docs_layout_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - scripts/normalize_docs_layout.py
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_no_os_artifact_files.spec.md
+  notes: Hard-fails tracked OS/editor artifacts files under docs.
+- rule_id: DOCS_BOOK_CHAPTER_ORDER_CANONICAL
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_BOOK_CHAPTER_ORDER_CANONICAL
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - docs/book/reference_manifest.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_book_chapter_order_canonical.spec.md
+  notes: Enforces canonical Learn -> Do -> Debug chapter order and appendix order.
+- rule_id: DOCS_BOOK_APPENDIX_CATALOG_NAMESPACE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_BOOK_APPENDIX_CATALOG_NAMESPACE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/docs_generator_registry_v1.yaml
+  - docs/book/reference_manifest.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - scripts/docs_generate_all.py
+  - specs/04_governance/cases/core/project_docs/docs_book_chapter_order_canonical.spec.md
+  notes: Keeps generated catalog chapters in `9x_appendix_*` namespace.
+- rule_id: DOCS_SPEC_LANG_GUIDE_BEFORE_REFERENCE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_SPEC_LANG_GUIDE_BEFORE_REFERENCE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - docs/book/reference_manifest.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_book_chapter_order_canonical.spec.md
+  notes: Enforces guide chapter before strict spec-lang reference chapter.
+- rule_id: API_HTTP_OAUTH_HARNESS_PROFILE_SUPPORTED
+  policy_ref: specs/02_contracts/policy_v1.yaml#API_HTTP_OAUTH_HARNESS_PROFILE_SUPPORTED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/types/api_http.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_harness_api_http_unit.py
+  implementation_refs:
+  - dc-runner-python
+  notes: request.http harness supports OAuth client-credentials profile.
+- rule_id: API_HTTP_OAUTH_ENV_REF_ONLY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#API_HTTP_OAUTH_ENV_REF_ONLY_REQUIRED
+  contract_refs:
+  - specs/02_contracts/types/api_http.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_harness_api_http_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Enforces env-ref-only OAuth credential fields.
+- rule_id: API_HTTP_OAUTH_SECRET_REDACTION_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#API_HTTP_OAUTH_SECRET_REDACTION_REQUIRED
+  contract_refs:
+  - specs/02_contracts/types/http_profile.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_harness_api_http_unit.py
+  implementation_refs:
+  - dc-runner-python
+  notes: Context profile and diagnostics avoid token/secret leakage.
+- rule_id: API_HTTP_DETERMINISTIC_DEFAULT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#API_HTTP_DETERMINISTIC_DEFAULT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_harness_api_http_unit.py
+  implementation_refs:
+  - dc-runner-python
+  notes: Deterministic mode is the default request.http execution lane.
+- rule_id: API_HTTP_LIVE_MODE_EXPLICIT_OPT_IN_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#API_HTTP_LIVE_MODE_EXPLICIT_OPT_IN_REQUIRED
+  contract_refs:
+  - specs/02_contracts/types/api_http.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_harness_api_http_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Network token/request flows require explicit live-mode opt-in.
+- rule_id: API_HTTP_VERB_SUITE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#API_HTTP_VERB_SUITE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/types/api_http.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_harness_api_http_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-php
+  notes: Practical REST verb suite is validated and rejects unsupported methods.
+- rule_id: API_HTTP_CORS_PRELIGHT_AND_ACTUAL_SUPPORTED
+  policy_ref: specs/02_contracts/policy_v1.yaml#API_HTTP_CORS_PRELIGHT_AND_ACTUAL_SUPPORTED
+  contract_refs:
+  - specs/02_contracts/types/api_http.md
+  - specs/02_contracts/types/http_profile.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_harness_api_http_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - specs/05_libraries/domain/http_core.spec.md
+  notes: CORS preflight request constraints and normalized response projection are
+    explicit.
+- rule_id: API_HTTP_SCENARIO_ROUNDTRIP_SUPPORTED
+  policy_ref: specs/02_contracts/policy_v1.yaml#API_HTTP_SCENARIO_ROUNDTRIP_SUPPORTED
+  contract_refs:
+  - specs/02_contracts/types/api_http.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_harness_api_http_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-php
+  notes: Scenario requests execute ordered round-trip flow with step interpolation.
+- rule_id: API_HTTP_SCENARIO_DETERMINISTIC_LIFECYCLE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#API_HTTP_SCENARIO_DETERMINISTIC_LIFECYCLE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/types/api_http.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_harness_api_http_unit.py
+  implementation_refs:
+  - dc-runner-python
+  notes: Setup/probe/teardown semantics are deterministic with teardown in finally
+    behavior.
+- rule_id: API_HTTP_PY_PHP_BEHAVIOR_PARITY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#API_HTTP_PY_PHP_BEHAVIOR_PARITY_REQUIRED
+  contract_refs:
+  - specs/02_contracts/types/api_http.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_conformance_parity_unit.py
+  - tests/test_php_spec_runner_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-php
+  notes: Shared request.http fixture outcomes stay parity-consistent across python/php
+    lanes.
+- rule_id: API_HTTP_TUTORIAL_COVERAGE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#API_HTTP_TUTORIAL_COVERAGE_REQUIRED
+  contract_refs:
+  - docs/book/60_runner_and_gates.md
+  - docs/book/80_troubleshooting.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  notes: Docs include contributor tutorials for REST verbs, CORS, and round-trip scenarios.
+- rule_id: DOCS_STDLIB_SYMBOL_DESCRIPTION_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_STDLIB_SYMBOL_DESCRIPTION_REQUIRED
+  contract_refs:
+  - specs/02_contracts/19_spec_lang_stdlib_profile_v1.md
+  schema_refs:
+  - specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_generate_spec_lang_reference_docgen_unit.py
+  implementation_refs:
+  - scripts/generate_spec_lang_builtin_catalog.py
+  - docs/book/93a_std_core.md
+  - docs/book/93i_std_json_schema_fn_null.md
+  notes: Generated namespace chapter payloads include semantic symbol docs.
+- rule_id: DOCS_STDLIB_EXAMPLES_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_STDLIB_EXAMPLES_REQUIRED
+  contract_refs:
+  - specs/02_contracts/19_spec_lang_stdlib_profile_v1.md
+  schema_refs:
+  - specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_generate_spec_lang_reference_docgen_unit.py
+  implementation_refs:
+  - scripts/generate_spec_lang_builtin_catalog.py
+  notes: Each symbol includes deterministic examples.
+- rule_id: DOCS_REFERENCE_NAMESPACE_CHAPTERS_SYNC_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_REFERENCE_NAMESPACE_CHAPTERS_SYNC_REQUIRED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/docs_generator_registry_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - docs/book/reference_manifest.yaml
+  notes: Governance enforces namespace chapter presence and manifest synchronization.
+- rule_id: DOCS_RUNNER_COMMAND_SEMANTICS_DOC_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_RUNNER_COMMAND_SEMANTICS_DOC_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs:
+  - specs/01_schema/runner_reference_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_generate_runner_reference_docgen_unit.py
+  implementation_refs:
+  - scripts/generate_runner_api_catalog.py
+  notes: Runner reference output includes behavior/default/failure/example sections.
+- rule_id: DOCS_HARNESS_FIELD_SEMANTICS_DOC_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_HARNESS_FIELD_SEMANTICS_DOC_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/harness_reference_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_generate_harness_reference_docgen_unit.py
+  implementation_refs:
+  - scripts/generate_harness_type_catalog.py
+  notes: Harness reference output includes behavior/default/failure/example sections.
+- rule_id: DOCS_DOCGEN_OUTPUT_MIN_QUALITY_SCORE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_DOCGEN_OUTPUT_MIN_QUALITY_SCORE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs:
+  - specs/01_schema/docs_generator_registry_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_docs_docgen_quality_checks_unit.py
+  implementation_refs:
+  - dc-runner-python
+  notes: Governance enforces quality score threshold over generated catalog artifacts.
+- rule_id: DOCS_MARKDOWN_STRUCTURED_ASSERTIONS_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_MARKDOWN_STRUCTURED_ASSERTIONS_REQUIRED
+  contract_refs:
+  - specs/02_contracts/types/markdown_profile.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/05_libraries/domain/markdown_core.spec.md
+  notes: Markdown docs assertions should use structured helper checks over plain
+    contains checks.
+- rule_id: HARNESS_WORKFLOW_COMPONENTS_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#HARNESS_WORKFLOW_COMPONENTS_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  notes: Shared component workflow is required across all harness types.
+- rule_id: HARNESS_LOCAL_WORKFLOW_DUPLICATION_FORBIDDEN
+  policy_ref: specs/02_contracts/policy_v1.yaml#HARNESS_LOCAL_WORKFLOW_DUPLICATION_FORBIDDEN
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  notes: Governance forbids canonical per-harness workflow tokens.
+- rule_id: HARNESS_TYPE_OVERLAY_COMPLETE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#HARNESS_TYPE_OVERLAY_COMPLETE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/registry/v1/types/orchestration_run.yaml
+  - specs/01_schema/registry/v1/types/docs_generate.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  notes: Overlay completeness is hard-failed by governance.
+- rule_id: HARNESS_CONTRACT_OVERLAY_SYNC_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#HARNESS_CONTRACT_OVERLAY_SYNC_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  - specs/current.md
+  schema_refs:
+  - specs/01_schema/registry/v1/types/orchestration_run.yaml
+  - specs/01_schema/registry/v1/types/docs_generate.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  notes: Contract prose and overlays must remain aligned.
+- rule_id: HARNESS_SUBJECT_TARGET_MAP_DECLARED
+  policy_ref: specs/02_contracts/policy_v1.yaml#HARNESS_SUBJECT_TARGET_MAP_DECLARED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Harnesses must declare explicit target mapping for assertions.
+- rule_id: CHAIN_REFERENCE_CONTRACT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CHAIN_REFERENCE_CONTRACT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_dispatcher_unit.py
+  - tests/test_chain_engine_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Chain references use scalar ref format [path][#case_id], are schema-checked,
+    and resolve deterministically.
+- rule_id: CHAIN_EXPORTS_EXPLICIT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CHAIN_EXPORTS_EXPLICIT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_chain_engine_unit.py
+  implementation_refs:
+  - dc-runner-python
+  notes: Producer symbol ownership flows through explicit root function export declarations.
+- rule_id: CHAIN_EXPORTS_FROM_KEY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CHAIN_EXPORTS_FROM_KEY_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_chain_engine_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - scripts/normalize_repo.py
+  notes: Root function exports must use from key only.
+- rule_id: CHAIN_EXPORTS_LIST_ONLY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CHAIN_EXPORTS_LIST_ONLY_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_chain_engine_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - scripts/normalize_repo.py
+  notes: Harness exports are list-only and mapping-form entries are rejected.
+- rule_id: CHAIN_LIBRARY_SYMBOL_EXPORTS_VALID
+  policy_ref: specs/02_contracts/policy_v1.yaml#CHAIN_LIBRARY_SYMBOL_EXPORTS_VALID
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/14_spec_lang_libraries.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_chain_engine_unit.py
+  - tests/test_spec_lang_libraries_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  notes: from=assert.function harness exports require explicit symbol path, with compile-only
+    resolution.
+- rule_id: CHAIN_FAIL_FAST_DEFAULT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CHAIN_FAIL_FAST_DEFAULT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_chain_engine_unit.py
+  implementation_refs:
+  - dc-runner-python
+  notes: Chain execution defaults to fail-fast true when not specified.
+- rule_id: CHAIN_CYCLE_FORBIDDEN
+  policy_ref: specs/02_contracts/policy_v1.yaml#CHAIN_CYCLE_FORBIDDEN
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Governance and runtime recursion guards reject direct and indirect cycles.
+- rule_id: CHAIN_SHARED_CONTEXT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CHAIN_SHARED_CONTEXT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_harness_api_http_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Shared runtime context carries chain_state and chain_trace across prerequisite
+    execution.
+- rule_id: UNIVERSAL_CHAIN_SUPPORT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#UNIVERSAL_CHAIN_SUPPORT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_dispatcher_unit.py
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Dispatcher executes chain orchestration before all executable harness dispatch
+    paths.
+- rule_id: CHAIN_STEP_CLASS_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CHAIN_STEP_CLASS_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_chain_engine_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Chain step classes are explicit and validated as must/may/must_not.
+- rule_id: CHAIN_IMPORT_ALIAS_COLLISION_FORBIDDEN
+  policy_ref: specs/02_contracts/policy_v1.yaml#CHAIN_IMPORT_ALIAS_COLLISION_FORBIDDEN
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - tests/test_chain_engine_unit.py
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Chain import alias maps are validated for unknown names, collisions, and
+    reserved symbol shadowing.
+- rule_id: CHAIN_CONTRACT_SINGLE_LOCATION_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CHAIN_CONTRACT_SINGLE_LOCATION_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - scripts/normalize_repo.py
+  notes: Chain declarations are constrained to harness.chain and alternate locations
+    are rejected.
+- rule_id: EXECUTABLE_SPEC_LANG_INCLUDES_FORBIDDEN
+  policy_ref: specs/02_contracts/policy_v1.yaml#EXECUTABLE_SPEC_LANG_INCLUDES_FORBIDDEN
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - scripts/normalize_repo.py
+  notes: Executable cases must chain-load symbols; includes are library-only.
+- rule_id: LIBRARY_VERB_FIRST_SCHEMA_KEYS_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#LIBRARY_VERB_FIRST_SCHEMA_KEYS_REQUIRED
+  contract_refs:
+  - specs/02_contracts/14_spec_lang_libraries.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/01_schema/registry/v1/types/spec_lang_library.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  notes: Library contract and governance enforce verb-first defines.public/private
+    schema keys.
+- rule_id: SCHEMA_VERB_FIRST_CONTRACT_SYNC_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SCHEMA_VERB_FIRST_CONTRACT_SYNC_REQUIRED
+  contract_refs:
+  - specs/02_contracts/14_spec_lang_libraries.md
+  - specs/current.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  notes: Governance enforces defines wording alignment across schema, contract, and
+    current snapshot docs.
+- rule_id: RUNTIME_PROFILING_CONTRACT_ARTIFACTS_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_PROFILING_CONTRACT_ARTIFACTS_REQUIRED
+  contract_refs:
+  - specs/02_contracts/24_runtime_profiling_contract.md
+  - specs/current.md
+  schema_refs:
+  - specs/01_schema/run_trace_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Ensures runtime profiling contract and schema artifacts remain present and
+    wired into governance.
+- rule_id: RUNTIME_PROFILING_REDACTION_POLICY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_PROFILING_REDACTION_POLICY_REQUIRED
+  contract_refs:
+  - specs/02_contracts/24_runtime_profiling_contract.md
+  schema_refs:
+  - specs/01_schema/run_trace_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Profiling artifacts redact secret-like values and forbid raw env value emission.
+- rule_id: RUNTIME_PROFILING_SPAN_TAXONOMY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_PROFILING_SPAN_TAXONOMY_REQUIRED
+  contract_refs:
+  - specs/02_contracts/24_runtime_profiling_contract.md
+  schema_refs:
+  - specs/01_schema/run_trace_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-rust
+  notes: Runtime profiling traces include required run/case/check/subprocess span
+    taxonomy.
+- rule_id: RUNTIME_GATE_FAIL_FAST_BEHAVIOR_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_GATE_FAIL_FAST_BEHAVIOR_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  - specs/02_contracts/24_runtime_profiling_contract.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-rust
+  - dc-runner-python
+  notes: Gate orchestration defaults to deterministic fail-fast and emits explicit
+    abort markers.
+- rule_id: RUNTIME_GATE_SKIPPED_STEPS_CONTRACT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_GATE_SKIPPED_STEPS_CONTRACT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/24_runtime_profiling_contract.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-rust
+  - dc-runner-python
+  notes: Gate summary payload includes deterministic skipped-tail metadata for fail-fast
+    runs.
+- rule_id: RUNTIME_PROFILE_ARTIFACTS_ON_FAIL_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_PROFILE_ARTIFACTS_ON_FAIL_REQUIRED
+  contract_refs:
+  - specs/02_contracts/24_runtime_profiling_contract.md
+  schema_refs:
+  - specs/01_schema/run_trace_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-rust
+  - dc-runner-python
+  notes: Failing gate runs with profile-on-fail enabled emit diagnostic trace artifacts.
+- rule_id: RUNTIME_GATE_POLICY_SKIPPED_ROWS_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_GATE_POLICY_SKIPPED_ROWS_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  - specs/02_contracts/18_governance_subject_extractors.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-rust
+  - dc-runner-python
+  notes: Policy evaluation considers full rows including skipped statuses to preserve
+    fail-fast correctness.
+- rule_id: ASSERT_BLOCK_DECISION_AUTHORITY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#ASSERT_BLOCK_DECISION_AUTHORITY_REQUIRED
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/15_governance_subject_model.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  notes: Governance verdict authority is encoded in assert blocks only.
+- rule_id: META_JSON_TARGET_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#META_JSON_TARGET_REQUIRED
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  notes: executable harnesses expose meta_json assertion target.
+- rule_id: OPS_OS_CAPABILITY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#OPS_OS_CAPABILITY_REQUIRED
+  contract_refs:
+  - specs/02_contracts/03b_spec_lang_v1.md
+  schema_refs:
+  - specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: ops.os builtins are capability-gated and declared in stdlib profile.
+- rule_id: CONTRACT_SPEC_FENCE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONTRACT_SPEC_FENCE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/02_case_shape.md
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Executable markdown discovery requires contract-spec fence token.
+- rule_id: CASE_CONTRACT_BLOCK_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CASE_CONTRACT_BLOCK_REQUIRED
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: Top-level contract block is required for executable cases.
+- rule_id: CONTRACT_STEP_ASSERTS_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONTRACT_STEP_ASSERTS_REQUIRED
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  - dc-runner-python
+  notes: Contract step-form nodes require asserts list.
+- rule_id: CONTRACT_JOB_DISPATCH_IN_CONTRACT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONTRACT_JOB_DISPATCH_IN_CONTRACT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/03b_spec_lang_v1.md
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-rust
+  - dc-runner-rust
+  notes: contract.job helper execution is initiated from contract assertions via ops.job.dispatch.
+- rule_id: HARNESS_JOBS_METADATA_LIST_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#HARNESS_JOBS_METADATA_LIST_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-rust
+  notes: harness job metadata uses clauses.config.jobs[] list entries.
+- rule_id: OPS_JOB_CAPABILITY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#OPS_JOB_CAPABILITY_REQUIRED
+  contract_refs:
+  - specs/02_contracts/03b_spec_lang_v1.md
+  schema_refs:
+  - specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-rust
+  notes: ops.job.dispatch requires explicit ops.job capability.
+- rule_id: OPS_JOB_NESTED_DISPATCH_FORBIDDEN
+  policy_ref: specs/02_contracts/policy_v1.yaml#OPS_JOB_NESTED_DISPATCH_FORBIDDEN
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs:
+  - specs/01_schema/spec_lang_stdlib_profile_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-rust
+  notes: nested dispatch produces deterministic runtime.dispatch.nested_forbidden
+    token.
+- rule_id: WHEN_HOOKS_SCHEMA_VALID
+  policy_ref: specs/02_contracts/policy_v1.yaml#WHEN_HOOKS_SCHEMA_VALID
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - scripts/normalize_repo.py
+  - dc-runner-python
+  notes: when shape and allowed key contract are validated.
+- rule_id: WHEN_CLASS_HOOK_ORDER_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#WHEN_CLASS_HOOK_ORDER_REQUIRED
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: class hooks execute after successful clause pass and before complete.
+- rule_id: WHEN_FAIL_HOOK_ON_FIRST_FAILURE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#WHEN_FAIL_HOOK_ON_FIRST_FAILURE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  notes: fail hook is guarded to run only once on first failure.
+- rule_id: WHEN_COMPLETE_HOOK_AFTER_FINAL_CLASS_HOOK_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#WHEN_COMPLETE_HOOK_AFTER_FINAL_CLASS_HOOK_REQUIRED
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  notes: complete hook executes after full successful clause lifecycle.
+- rule_id: WHEN_HOOK_FAILURE_FAILFAST_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#WHEN_HOOK_FAILURE_FAILFAST_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-rust
+  notes: hook evaluation failures are runtime-fatal and abort execution.
+- rule_id: CONTRACT_JOB_FAIL_COMPLETE_HOOK_PATTERN_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONTRACT_JOB_FAIL_COMPLETE_HOOK_PATTERN_REQUIRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - dc-runner-python
+  notes: rust contract.job specs use when fail/complete dispatch hooks with paired
+    hook job metadata.
+- rule_id: DOCS_SPEC_IA_CANONICAL_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_SPEC_IA_CANONICAL_REQUIRED
+  contract_refs:
+  - specs/02_contracts/01_docs_architecture.md
+  - specs/02_contracts/02_docs_style.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_spec_index_reachability.spec.md
+  notes: Governance scanner enforces canonical spec index reachability links.
+- rule_id: GOVERNANCE_CHECK_FAMILY_MAP_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#GOVERNANCE_CHECK_FAMILY_MAP_REQUIRED
+  contract_refs:
+  - specs/02_contracts/15_governance_subject_model.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - specs/04_governance/check_catalog_map_v1.yaml
+  - dc-runner-python
+  - specs/04_governance/cases/core/project_docs/docs_governance_check_family_map_complete.spec.md
+  notes: Governance checks are mapped to deterministic check-id families.
+- rule_id: DOCS_FRESHNESS_STRICT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_FRESHNESS_STRICT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/01_docs_architecture.md
+  - specs/02_contracts/02_docs_style.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - dc-runner-python
+  - scripts/docs_inventory.py
+  - specs/04_governance/cases/core/project_docs/docs_canonical_freshness_strict.spec.md
+  notes: Strict docs freshness checker is enforced in governance and CI gates.
+- rule_id: RUNTIME_RUNNER_STATUS_REPORT_SCHEMA_VALID
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_RUNNER_STATUS_REPORT_SCHEMA_VALID
+  contract_refs:
+  - specs/02_contracts/27_runner_status_exchange.md
+  schema_refs:
+  - specs/01_schema/runner_status_report_v1.yaml
+  conformance_case_ids:
+  - DCCONF-RSTAT-001
+  unit_test_refs:
+  - dc-runner-rust
+  implementation_refs:
+  - specs/01_schema/runner_status_report_v1.yaml
+  - specs/04_governance/cases/core/runner_contract/runtime_runner_status_report_schema_valid.spec.md
+  notes: Producer status payload schema is explicit and governance-enforced.
+- rule_id: RUNTIME_RUNNER_STATUS_MATRIX_SCHEMA_VALID
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_RUNNER_STATUS_MATRIX_SCHEMA_VALID
+  contract_refs:
+  - specs/02_contracts/27_runner_status_exchange.md
+  schema_refs:
+  - specs/01_schema/runner_status_matrix_v1.yaml
+  conformance_case_ids:
+  - DCCONF-RSTAT-002
+  unit_test_refs:
+  - dc-runner-rust
+  implementation_refs:
+  - specs/01_schema/runner_status_matrix_v1.yaml
+  - specs/04_governance/cases/core/runner_contract/runtime_runner_status_matrix_schema_valid.spec.md
+  notes: Matrix schema keeps ingest outputs deterministic and machine-readable.
+- rule_id: RUNTIME_COMPATIBILITY_STATUS_INGESTION_CONFIGURED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_COMPATIBILITY_STATUS_INGESTION_CONFIGURED
+  contract_refs:
+  - specs/02_contracts/25_compatibility_matrix.md
+  - specs/02_contracts/27_runner_status_exchange.md
+  schema_refs:
+  - specs/01_schema/runner_certification_registry_v1.yaml
+  conformance_case_ids:
+  - DCCONF-RSTAT-003
+  unit_test_refs:
+  - dc-runner-rust
+  implementation_refs:
+  - scripts/runner_status_ingest.sh
+  - specs/04_governance/cases/core/runner_contract/runtime_compatibility_status_ingestion_configured.spec.md
+  notes: Compatibility status exchange is pinned to release-asset ingestion.
+- rule_id: RUNTIME_COMPATIBILITY_STATUS_FRESHNESS_WITHIN_SLO
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_COMPATIBILITY_STATUS_FRESHNESS_WITHIN_SLO
+  contract_refs:
+  - specs/02_contracts/25_compatibility_matrix.md
+  - specs/02_contracts/27_runner_status_exchange.md
+  schema_refs:
+  - specs/01_schema/runner_status_matrix_v1.yaml
+  conformance_case_ids:
+  - DCCONF-RSTAT-003
+  unit_test_refs:
+  - dc-runner-rust
+  implementation_refs:
+  - scripts/runner_status_ingest.sh
+  - scripts/ci_gate.sh
+  - specs/04_governance/cases/core/runner_contract/runtime_compatibility_status_freshness_within_slo.spec.md
+  notes: Active compatibility telemetry older than 72 hours is treated as stale.
+- rule_id: RUNTIME_COMPATIBILITY_MISSING_STATUS_VISIBILITY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_COMPATIBILITY_MISSING_STATUS_VISIBILITY_REQUIRED
+  contract_refs:
+  - specs/02_contracts/27_runner_status_exchange.md
+  schema_refs:
+  - specs/01_schema/runner_status_matrix_v1.yaml
+  conformance_case_ids:
+  - DCCONF-RSTAT-004
+  unit_test_refs:
+  - dc-runner-rust
+  implementation_refs:
+  - scripts/runner_status_ingest.sh
+  - specs/04_governance/cases/core/runner_contract/runtime_compatibility_missing_status_visibility_required.spec.md
+  notes: Missing compatibility status is surfaced and policy-scored explicitly.
+- rule_id: RUNTIME_REQUIRED_LANE_STATUS_BLOCKING_ENFORCED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_REQUIRED_LANE_STATUS_BLOCKING_ENFORCED
+  contract_refs:
+  - specs/02_contracts/25_compatibility_matrix.md
+  - specs/02_contracts/27_runner_status_exchange.md
+  schema_refs:
+  - specs/01_schema/runner_status_matrix_v1.yaml
+  conformance_case_ids:
+  - DCCONF-RSTAT-005
+  unit_test_refs:
+  - dc-runner-rust
+  implementation_refs:
+  - scripts/runner_status_ingest.sh
+  - specs/04_governance/cases/core/runner_contract/runtime_required_lane_status_blocking_enforced.spec.md
+  notes: Required-lane status remains merge-blocking under status exchange.
+- rule_id: CONTROL_PLANE_STATUS_INGEST_INTEGRITY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONTROL_PLANE_STATUS_INGEST_INTEGRITY_REQUIRED
+  contract_refs:
+  - specs/02_contracts/25_compatibility_matrix.md
+  schema_refs:
+  - specs/01_schema/runner_status_matrix_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - .github/workflows/ci.yml
+  - scripts/runner_status_ingest.sh
+  - specs/04_governance/cases/core/runner_contract/runtime_status_ingest_job_present.spec.md
+  - specs/04_governance/cases/core/runtime_matrix_artifacts_emitted.spec.md
+  notes: Control-plane CI must emit status-ingest artifacts deterministically.
+- rule_id: CONTROL_PLANE_CI_RUNTIME_EXECUTION_FORBIDDEN
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONTROL_PLANE_CI_RUNTIME_EXECUTION_FORBIDDEN
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - .github/workflows/ci.yml
+  - scripts/ci_gate.sh
+  - scripts/ci_gate.sh
+  - scripts/ci_gate.sh
+  - specs/04_governance/cases/core/runner_contract/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+  notes: Runtime lane execution is externalized to runner repositories.
+- rule_id: CONTROL_PLANE_DOCS_TASK_USAGE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONTROL_PLANE_DOCS_TASK_USAGE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - README.md
+  - specs/04_governance/cases/core/project_docs/docs_readme_task_usage_paths_present.spec.md
+  - specs/04_governance/cases/core/project_docs/docs_readme_makefile_cookbook_forbidden.spec.md
+  notes: README must function as usage entrypoint, not build cookbook.
+- rule_id: CONTROL_PLANE_LANGUAGE_AGNOSTIC_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONTROL_PLANE_LANGUAGE_AGNOSTIC_REQUIRED
+  contract_refs:
+  - specs/02_contracts/10_docs_quality.md
+  - specs/02_contracts/12_runner_interface.md
+  - specs/02_contracts/25_compatibility_matrix.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - specs/04_governance/cases/core/runner_contract/runtime_contracts_no_rust_primary_language.spec.md
+  - specs/04_governance/cases/core/runner_contract/runtime_docs_no_required_lane_language.spec.md
+  notes: Active docs and contracts avoid implementation-specific primary-lane language.
+- rule_id: SPEC_LANG_POLICY_SOURCE_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SPEC_LANG_POLICY_SOURCE_REQUIRED
+  contract_refs:
+  - specs/02_contracts/15_governance_subject_model.md
+  - specs/02_contracts/18_governance_subject_extractors.md
+  - specs/02_contracts/28_spec_lang_policy_execution.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - scripts/control_plane.sh
+  - specs/04_governance/cases/core/spec_core/governance_policy_source_spec_lang_required.spec.md
+  notes: Policy verdict authority is delegated to governance spec surfaces.
+- rule_id: SHELL_DECISION_LOGIC_FORBIDDEN
+  policy_ref: specs/02_contracts/policy_v1.yaml#SHELL_DECISION_LOGIC_FORBIDDEN
+  contract_refs:
+  - specs/02_contracts/28_spec_lang_policy_execution.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - scripts/control_plane.sh
+  - scripts/ci_gate.sh
+  - scripts/ci_gate.sh
+  - scripts/ci_gate.sh
+  - scripts/ci_gate.sh
+  - specs/04_governance/cases/core/runner_contract/runtime_shell_policy_branches_forbidden.spec.md
+  notes: Shell scripts stay orchestration-only for covered governance domains.
+- rule_id: ARTIFACT_COMPATIBILITY_DURING_CUTOVER
+  policy_ref: specs/02_contracts/policy_v1.yaml#ARTIFACT_COMPATIBILITY_DURING_CUTOVER
+  contract_refs:
+  - specs/02_contracts/28_spec_lang_policy_execution.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - scripts/governance_catalog_validate.sh
+  - scripts/spec_schema_pin_validate.sh
+  - scripts/governance_optional_report.sh
+  - specs/04_governance/cases/core/runtime_artifact_contract_compatibility_preserved.spec.md
+  notes: Extractor artifacts retain stable paths and key contract compatibility.
+- rule_id: POLICY_CHAIN_ENTRY_CASES_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#POLICY_CHAIN_ENTRY_CASES_REQUIRED
+  contract_refs:
+  - specs/02_contracts/28_spec_lang_policy_execution.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - specs/04_governance/cases/core/spec_core/runtime_chain_entry_cases_present.spec.md
+  - specs/04_governance/cases/core/spec_core/runtime_governance_catalog_pipeline_chain.spec.md
+  - specs/04_governance/cases/core/spec_core/runtime_schema_pin_pipeline_chain.spec.md
+  - specs/04_governance/cases/core/runtime_optional_report_pipeline_chain.spec.md
+  - specs/04_governance/cases/core/runner_contract/runtime_status_ingest_pipeline_chain.spec.md
+  - specs/04_governance/cases/core/runner_contract/runtime_control_plane_gate_pipeline_chain.spec.md
+  notes: Chain entry cases are required for multi-step policy domains.
+- rule_id: INGEST_POLICY_VERDICTS_SPEC_OWNED
+  policy_ref: specs/02_contracts/policy_v1.yaml#INGEST_POLICY_VERDICTS_SPEC_OWNED
+  contract_refs:
+  - specs/02_contracts/28_spec_lang_policy_execution.md
+  schema_refs:
+  - specs/01_schema/runner_status_matrix_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - scripts/runner_status_ingest.sh
+  - specs/04_governance/cases/core/runner_contract/runtime_ingest_policy_branches_forbidden.spec.md
+  - specs/04_governance/cases/core/runner_contract/runtime_status_ingest_pipeline_chain.spec.md
+  notes: Ingest shell emits facts while governance decides policy outcomes.
+- rule_id: POLICY_LIBRARY_EXPORTS_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#POLICY_LIBRARY_EXPORTS_REQUIRED
+  contract_refs:
+  - specs/02_contracts/28_spec_lang_policy_execution.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - specs/05_libraries/policy/policy_governance_catalog.spec.md
+  - specs/05_libraries/policy/policy_schema_pin.spec.md
+  - specs/05_libraries/policy/policy_status_ingest.spec.md
+  - specs/05_libraries/policy/policy_ci_gate.spec.md
+  - specs/04_governance/cases/core/spec_core/runtime_policy_library_exports_resolve.spec.md
+  notes: Reusable policy exports are mandatory dependencies for chain entry checks.
+- rule_id: RUNNER_PACK_MANIFESTS_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNNER_PACK_MANIFESTS_REQUIRED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - specs/00_core/packs/index.md
+  - specs/00_core/packs/runner_contract_pack_v1.yaml
+  - specs/00_core/packs/spec_core_maintenance_pack_v1.yaml
+  - specs/00_core/packs/project_docs_maintenance_pack_v1.yaml
+  - specs/04_governance/cases/core/spec_core/packs_manifest_index_present.spec.md
+  notes: Runner-ingestible pack manifests are canonical control-plane interfaces.
+- rule_id: RUNNER_CLI_PORTABLE_CONTRACT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNNER_CLI_PORTABLE_CONTRACT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/29_runner_cli_interface.md
+  schema_refs:
+  - specs/01_schema/runner_cli_contract_v1.yaml
+  conformance_case_ids:
+  - DCCONF-RCLI-001
+  - DCCONF-RCLI-002
+  - DCCONF-RCLI-003
+  - DCCONF-RCLI-004
+  - DCCONF-RCLI-005
+  - DCCONF-RCLI-006
+  - DCCONF-RCLI-007
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/runner_cli/runner_cli_required_help.spec.md
+  - specs/03_conformance/cases/runner_cli/runner_cli_required_governance.spec.md
+  - specs/03_conformance/cases/runner_cli/runner_cli_required_conformance.spec.md
+  - specs/03_conformance/cases/runner_cli/runner_cli_required_contract_spec_format_check.spec.md
+  - specs/03_conformance/cases/runner_cli/runner_cli_required_contract_spec_format_write.spec.md
+  - specs/03_conformance/cases/runner_cli/runner_cli_unknown_command.spec.md
+  - specs/03_conformance/cases/runner_cli/runner_cli_optional_capability_negotiation.spec.md
+  notes: Portable CLI interface is required while runtime-specific subcommands remain optional.
+- rule_id: CONTRACT_SPEC_FORMATTER_COMMAND_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONTRACT_SPEC_FORMATTER_COMMAND_REQUIRED
+  contract_refs:
+  - specs/02_contracts/29_runner_cli_interface.md
+  schema_refs:
+  - specs/01_schema/runner_cli_contract_v1.yaml
+  conformance_case_ids:
+  - DCCONF-RCLI-006
+  - DCCONF-RCLI-007
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/runner_cli/runner_cli_required_contract_spec_format_check.spec.md
+  - specs/03_conformance/cases/runner_cli/runner_cli_required_contract_spec_format_write.spec.md
+  notes: Portable formatter command contract covers both check and write modes.
+- rule_id: CONTRACT_SPEC_V2_KEY_ORDER_CANONICAL
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONTRACT_SPEC_V2_KEY_ORDER_CANONICAL
+  contract_refs:
+  - specs/02_contracts/29_runner_cli_interface.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/style.md
+  - specs/04_governance/cases/core/spec_core/normalization_contract_spec_key_order_v1.spec.md
+  notes: Phase-in governance check starts report-only before blocking rollout.
+- rule_id: SERVICE_IMPORTS_COMPACT_ALIAS_SUPPORTED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SERVICE_IMPORTS_COMPACT_ALIAS_SUPPORTED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/01_schema/service_contract_catalog_v1.yaml
+  - specs/01_schema/registry/v1/core.yaml
+  conformance_case_ids:
+  - DCCONF-SCHEMA-CASE-027
+  - DCCONF-SCHEMA-CASE-028
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/core/services_entries_imports_compact.spec.md
+  notes: Service imports support canonical mapping rows normalized to canonical rows.
+- rule_id: SERVICE_IMPORTS_COMPACT_ALIAS_PREFERRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SERVICE_IMPORTS_COMPACT_ALIAS_PREFERRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/01_schema/registry/v1/core.yaml
+  conformance_case_ids:
+  - DCCONF-SCHEMA-CASE-027
+  - DCCONF-SCHEMA-CASE-028
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/core/services_entries_imports_compact.spec.md
+  notes: Compact service-import aliases are the preferred authoring style; canonical rows remain valid for alias mapping.
+- rule_id: CLAUSE_IMPORTS_COMPACT_ALIAS_PREFERRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CLAUSE_IMPORTS_COMPACT_ALIAS_PREFERRED
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/01_schema/registry/v1/core.yaml
+  conformance_case_ids:
+  - DCCONF-SCHEMA-ALIAS-002
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/core/schema_alias_registry_harmonization.spec.md
+  notes: Clause and check imports prefer canonical rowes while keeping canonical rows valid.
+- rule_id: CONTRACT_BINDINGS_MAPPING_FORM_PREFERRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONTRACT_BINDINGS_MAPPING_FORM_PREFERRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/01_schema/registry/v1/core.yaml
+  conformance_case_ids:
+  - DCCONF-SCHEMA-ALIAS-003
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/core/schema_alias_registry_harmonization.spec.md
+  notes: Mapping-form bindings are preferred when defaults can remove repeated row keys.
+- rule_id: CONTRACT_BINDINGS_IO_COMPACT_ALIAS_SUPPORTED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONTRACT_BINDINGS_IO_COMPACT_ALIAS_SUPPORTED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/01_schema/registry/v1/core.yaml
+  - specs/01_schema/registry/v1/core.yaml
+  conformance_case_ids:
+  - DCCONF-SCHEMA-CASE-037
+  - DCCONF-SCHEMA-CASE-038
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/core/schema_case_validation.spec.md
+  notes: Binding inputs/outputs support canonical mapping rows normalized to canonical endpoint rows.
+- rule_id: CONTRACT_BINDINGS_IO_COMPACT_ALIAS_VALIDATION_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONTRACT_BINDINGS_IO_COMPACT_ALIAS_VALIDATION_REQUIRED
+  contract_refs:
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/01_schema/registry/v1/core.yaml
+  conformance_case_ids:
+  - DCCONF-SCHEMA-CASE-039
+  - DCCONF-SCHEMA-CASE-040
+  - DCCONF-SCHEMA-CASE-041
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/core/schema_case_validation.spec.md
+  notes: Mixed-form, empty-string, and duplicate endpoint compact binding rows are hard-fail validation checks.
+- rule_id: CONTRACT_BINDINGS_IO_COMPACT_ALIAS_PREFERRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CONTRACT_BINDINGS_IO_COMPACT_ALIAS_PREFERRED
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/01_schema/registry/v1/core.yaml
+  conformance_case_ids:
+  - DCCONF-SCHEMA-CASE-037
+  - DCCONF-SCHEMA-CASE-038
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/core/schema_case_validation.spec.md
+  notes: Compact binding I/O is preferred when no alias/path metadata is required.
+- rule_id: SERVICE_IMPORTS_COMPACT_ALIAS_VALIDATION_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SERVICE_IMPORTS_COMPACT_ALIAS_VALIDATION_REQUIRED
+  contract_refs:
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/01_schema/service_contract_catalog_v1.yaml
+  - specs/01_schema/registry/v1/core.yaml
+  conformance_case_ids:
+  - DCCONF-SCHEMA-CASE-029
+  - DCCONF-SCHEMA-CASE-030
+  - DCCONF-SCHEMA-CASE-031
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/core/services_entries_imports_compact.spec.md
+  notes: Mixed item-kind imports, duplicate names, and catalog-invalid names are hard-fail schema checks.
+- rule_id: CLAUSE_IMPORTS_SHORT_ALIAS_SUPPORTED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CLAUSE_IMPORTS_SHORT_ALIAS_SUPPORTED
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/01_schema/registry/v1/assertions.yaml
+  - specs/01_schema/registry/v1/core.yaml
+  conformance_case_ids:
+  - DCCONF-SCHEMA-CASE-032
+  - DCCONF-SCHEMA-CASE-033
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/core/services_entries_imports_compact.spec.md
+  notes: Clause and check bare-string aliases normalize to canonical from=service rows.
+- rule_id: CLAUSE_IMPORTS_SHORT_ALIAS_RESOLUTION_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CLAUSE_IMPORTS_SHORT_ALIAS_RESOLUTION_REQUIRED
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/01_schema/registry/v1/assertions.yaml
+  - specs/01_schema/registry/v1/core.yaml
+  conformance_case_ids:
+  - DCCONF-SCHEMA-CASE-034
+  - DCCONF-SCHEMA-CASE-035
+  - DCCONF-SCHEMA-CASE-036
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/core/services_entries_imports_compact.spec.md
+  notes: Clause short alias requires bindings.defaults.service and valid service import resolution.
+- rule_id: ALIAS_GRAMMAR_SINGLE_SOURCE_REQUIRED_V2
+  policy_ref: specs/02_contracts/policy_v1.yaml#ALIAS_GRAMMAR_SINGLE_SOURCE_REQUIRED_V2
+  contract_refs:
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/registry/v1/core.yaml
+  - specs/01_schema/registry/v1/assertions.yaml
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids:
+  - DCCONF-SCHEMA-ALIAS-001
+  - DCCONF-SCHEMA-ALIAS-002
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/core/schema_alias_registry_harmonization.spec.md
+  notes: Alias grammar is centralized in the v1 core/assertions registries with one deterministic normalization contract.
+- rule_id: REQUIREDNESS_MODEL_HARMONIZED_V2
+  policy_ref: specs/02_contracts/policy_v1.yaml#REQUIREDNESS_MODEL_HARMONIZED_V2
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids:
+  - DCCONF-SCHEMA-ALIAS-003
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/core/schema_alias_registry_harmonization.spec.md
+  notes: Requiredness semantics are explicitly defined as explicit-required/optional/effective-required.
+- rule_id: SERVICES_INTEGRATION_TYPES_ONLY_V2
+  policy_ref: specs/02_contracts/policy_v1.yaml#SERVICES_INTEGRATION_TYPES_ONLY_V2
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/01_schema/service_contract_catalog_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/core/schema_case_validation.spec.md
+  notes: v1 service type surface is integration-only and rejects canonical assert/ops categories.
+- rule_id: SERVICES_MODE_PROFILE_COMPATIBILITY_V2
+  policy_ref: specs/02_contracts/policy_v1.yaml#SERVICES_MODE_PROFILE_COMPATIBILITY_V2
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/01_schema/service_contract_catalog_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/core/schema_case_validation.spec.md
+  notes: Service profile tokens are mode-style and validated against integration type catalog.
+- rule_id: SERVICE_IMPLEMENTATIONS_MUST_OWN_INTEGRATION_LIBS
+  policy_ref: specs/02_contracts/policy_v1.yaml#SERVICE_IMPLEMENTATIONS_MUST_OWN_INTEGRATION_LIBS
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/35_service_plugin_runtime.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/core/api_http.spec.md
+  notes: Integration libraries are implementation-owned by services and not core runner orchestration.
+- rule_id: RUNTIME_PLUGIN_LOAD_REQUIRES_SIGNATURE_AND_LOCK_PIN
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_PLUGIN_LOAD_REQUIRES_SIGNATURE_AND_LOCK_PIN
+  contract_refs:
+  - specs/02_contracts/35_service_plugin_runtime.md
+  schema_refs:
+  - specs/01_schema/service_plugin_manifest_v1.yaml
+  - specs/01_schema/service_plugin_lock_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs: []
+  notes: Runtime-loaded plugin integrity is enforced through lock pinning, digest checks, and signatures.
+- rule_id: SERVICE_RESOLUTION_MUST_BE_TYPE_PROFILE_EXACT
+  policy_ref: specs/02_contracts/policy_v1.yaml#SERVICE_RESOLUTION_MUST_BE_TYPE_PROFILE_EXACT
+  contract_refs:
+  - specs/02_contracts/35_service_plugin_runtime.md
+  schema_refs:
+  - specs/01_schema/service_contract_catalog_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/core/schema_case_validation.spec.md
+  notes: Service resolution is deterministic and exact on `type/profile`.
+- rule_id: BUILTIN_AND_PLUGIN_MODES_MUST_BE_BEHAVIORALLY_EQUIVALENT
+  policy_ref: specs/02_contracts/policy_v1.yaml#BUILTIN_AND_PLUGIN_MODES_MUST_BE_BEHAVIORALLY_EQUIVALENT
+  contract_refs:
+  - specs/02_contracts/35_service_plugin_runtime.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs: []
+  notes: Built-in and plugin packaging modes must remain behaviorally equivalent.
+- rule_id: EXPLICIT_REFERENCE_IDENTITY_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#EXPLICIT_REFERENCE_IDENTITY_REQUIRED
+  contract_refs:
+  - specs/02_contracts/03_assertions.md
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  - specs/01_schema/registry/v1/assertions.yaml
+  - specs/01_schema/registry/v1/core.yaml
+  conformance_case_ids:
+  - DCCONF-IMPLICIT-ID-003
+  - DCCONF-IMPLICIT-ID-004
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/core/implicit_ids_v1.spec.md
+  notes: Reference identity surfaces require explicit authored ids; synthetic labels are invalid reference values.
+- rule_id: SYNTHETIC_LABELS_DIAGNOSTICS_ONLY
+  policy_ref: specs/02_contracts/policy_v1.yaml#SYNTHETIC_LABELS_DIAGNOSTICS_ONLY
+  contract_refs:
+  - specs/02_contracts/04_harness.md
+  - specs/02_contracts/21_schema_registry_contract.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids:
+  - DCCONF-IMPLICIT-ID-001
+  - DCCONF-IMPLICIT-ID-002
+  - DCCONF-IMPLICIT-ID-004
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/core/implicit_ids_v1.spec.md
+  notes: Optional docs/docs-owner ids may omit explicit ids; runtimes may emit diagnostics-only synthetic labels.
+- rule_id: RUNNER_BUILD_TOOL_CONTRACT_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNNER_BUILD_TOOL_CONTRACT_REQUIRED
+  contract_refs:
+  - specs/02_contracts/30_build_tool_command_set.md
+  schema_refs:
+  - specs/01_schema/runner_build_tool_contract_v1.yaml
+  conformance_case_ids:
+  - DCCONF-BTOOL-001
+  - DCCONF-BTOOL-002
+  - DCCONF-BTOOL-003
+  - DCCONF-BTOOL-004
+  - DCCONF-BTOOL-005
+  unit_test_refs: []
+  implementation_refs:
+  - specs/03_conformance/cases/runner_build_tool/runner_build_tool_required_core.spec.md
+  - specs/03_conformance/cases/runner_build_tool/runner_build_tool_required_sync.spec.md
+  - specs/03_conformance/cases/runner_build_tool/runner_build_tool_required_compat.spec.md
+  - specs/03_conformance/cases/runner_build_tool/runner_build_tool_may_catalog.spec.md
+  - specs/03_conformance/cases/runner_build_tool/runner_build_tool_manifest_path.spec.md
+  - specs/00_core/packs/runner_contract_pack_v1.yaml
+  notes: Build-tool command semantics are portable and tool-agnostic across runner repos.
+- rule_id: CORE_SCRIPT_ALLOWLIST_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#CORE_SCRIPT_ALLOWLIST_REQUIRED
+  contract_refs:
+  - specs/02_contracts/28_spec_lang_policy_execution.md
+  schema_refs:
+  - specs/01_schema/core_script_allowlist_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - specs/04_governance/cases/core/spec_core/runtime_core_script_allowlist_enforced.spec.md
+  - specs/04_governance/cases/core/project_docs/runtime_non_core_scripts_not_in_active_docs.spec.md
+  - specs/04_governance/cases/core/spec_core/runtime_non_core_scripts_not_in_active_policy_traceability.spec.md
+  notes: Active entrypoints are restricted to the canonical 8-script core set.
+- rule_id: SHARED_RUNNER_LOGIC_SPEC_OWNED
+  policy_ref: specs/02_contracts/policy_v1.yaml#SHARED_RUNNER_LOGIC_SPEC_OWNED
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  - specs/02_contracts/21_schema_registry_contract.md
+  - specs/02_contracts/28_spec_lang_policy_execution.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - specs/04_governance/cases/core/spec_core/runtime_governance_catalog_pipeline_chain.spec.md
+  - specs/04_governance/cases/core/spec_core/runtime_schema_pin_pipeline_chain.spec.md
+  - specs/04_governance/cases/core/runtime_optional_report_pipeline_chain.spec.md
+  - specs/05_libraries/policy/policy_governance_catalog.spec.md
+  - specs/05_libraries/policy/policy_schema_pin.spec.md
+  - specs/05_libraries/policy/policy_ci_gate.spec.md
+  - scripts/control_plane.sh
+  - scripts/governance_catalog_validate.sh
+  - scripts/spec_schema_pin_validate.sh
+  - scripts/governance_optional_report.sh
+  notes: Shared governance semantics are spec-defined and runner-executed; shell scripts remain thin transport emitters.
+- rule_id: REPO_BOUNDARY_CANONICAL_SCHEMA_AUTHORITY
+  policy_ref: specs/02_contracts/policy_v1.yaml#REPO_BOUNDARY_CANONICAL_SCHEMA_AUTHORITY
+  contract_refs:
+  - specs/00_core/repo_boundary_charter.md
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs:
+  - specs/01_schema/schema_v1.md
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - ../dc-runner-spec/specs/index.md
+  - ../dc-runner-spec/README.md
+  notes: Canonical schema authority is data-contracts; runner specs consume schema via schema_ref.
+- rule_id: REPO_BOUNDARY_RUNNER_TREE_TOKENS_FORBIDDEN_IN_CANONICAL_TREES
+  policy_ref: specs/02_contracts/policy_v1.yaml#REPO_BOUNDARY_RUNNER_TREE_TOKENS_FORBIDDEN_IN_CANONICAL_TREES
+  contract_refs:
+  - specs/00_core/repo_boundary_charter.md
+  - specs/02_contracts/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - scripts/governance_boundary_validate.sh
+  - scripts/control_plane.sh
+  notes: Governance enforces forbidden runner tree tokens across canonical docs/spec trees.
+- rule_id: ACTIVE_SHELL_SCRIPTS_WRAPPER_ONLY
+  policy_ref: specs/02_contracts/policy_v1.yaml#ACTIVE_SHELL_SCRIPTS_WRAPPER_ONLY
+  contract_refs:
+  - specs/02_contracts/12_runner_interface.md
+  - specs/02_contracts/29_runner_cli_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - scripts/control_plane.sh
+  - scripts/ci_gate.sh
+  - scripts/governance_catalog_validate.sh
+  - scripts/spec_schema_pin_validate.sh
+  - scripts/governance_optional_report.sh
+  - scripts/governance_boundary_validate.sh
+  - scripts/runner_status_ingest.sh
+  notes: Active shell scripts delegate to runner command/spec execution surfaces only.
+- rule_id: RETIRED_SCRIPT_TREE_REMOVED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RETIRED_SCRIPT_TREE_REMOVED
+  contract_refs:
+  - specs/00_core/repo_boundary_charter.md
+  schema_refs:
+  - specs/01_schema/core_script_allowlist_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - specs/04_governance/check_sets_v1.yaml
+  notes: Retired script tree removed and no longer represented in canonical allowlist.
+- rule_id: REPO_BOUNDARY_NEW_SPEC_REPOS_FORBIDDEN
+  policy_ref: specs/02_contracts/policy_v1.yaml#REPO_BOUNDARY_NEW_SPEC_REPOS_FORBIDDEN
+  contract_refs:
+  - specs/00_core/repo_boundary_charter.md
+  - specs/02_contracts/12_runner_interface.md
+  - specs/02_contracts/33_bundle_package_management.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - specs/04_governance/cases/core/runner_contract/runtime_runner_bundle_package_contract_defined.spec.md
+  notes: Governance and contract docs enforce the canonical allowlist of spec authority repositories.

@@ -1,0 +1,59 @@
+version: 2
+certificate_schema_ref: /specs/01_schema/runner_execution_certificate_v1.yaml
+runners:
+  - runner_id: rust
+    class: required
+    status: active
+    entrypoints:
+      public_adapter: /scripts/runner_bin.sh
+      implementation_repo: dc-runner-rust
+    required_core_checks: []
+    required_core_cases: []
+    command_contract_subset: []
+    artifact_contract:
+      json_out: /.artifacts/runner-certification-{runner}.json
+      md_out: /.artifacts/runner-certification-{runner}.md
+    status_exchange:
+      source_kind: release_asset
+      release_api_url: file://__ROOT__/specs/03_conformance/cases/fixtures/status_exchange/local_release_rust.json
+      report_asset_name: runner-status-report-v1.json
+      matrix_role: required
+      freshness_slo_hours: 72
+
+  - runner_id: python
+    class: compatibility_non_blocking
+    status: active
+    entrypoints:
+      public_adapter: /scripts/runner_bin.sh
+      implementation_repo: dc-runner-python
+    required_core_checks: []
+    required_core_cases: []
+    command_contract_subset: []
+    artifact_contract:
+      json_out: /.artifacts/runner-certification-{runner}.json
+      md_out: /.artifacts/runner-certification-{runner}.md
+    status_exchange:
+      source_kind: release_asset
+      release_api_url: file://__ROOT__/specs/03_conformance/cases/fixtures/status_exchange/local_release_python.json
+      report_asset_name: runner-status-report-v1.json
+      matrix_role: compatibility
+      freshness_slo_hours: 72
+
+  - runner_id: php
+    class: compatibility_non_blocking
+    status: active
+    entrypoints:
+      public_adapter: /scripts/runner_bin.sh
+      implementation_repo: dc-runner-php
+    required_core_checks: []
+    required_core_cases: []
+    command_contract_subset: []
+    artifact_contract:
+      json_out: /.artifacts/runner-certification-{runner}.json
+      md_out: /.artifacts/runner-certification-{runner}.md
+    status_exchange:
+      source_kind: release_asset
+      release_api_url: file://__ROOT__/specs/03_conformance/cases/fixtures/status_exchange/local_release_php.json
+      report_asset_name: runner-status-report-v1.json
+      matrix_role: compatibility
+      freshness_slo_hours: 72

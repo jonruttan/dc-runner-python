@@ -108,15 +108,15 @@ else
   "$SYNC_SCRIPT" --check
 fi
 
-assert_file "specs/contract/index.md"
-assert_file "specs/contract/policy_v1.yaml"
-assert_file "specs/contract/traceability_v1.yaml"
+assert_file "specs/02_contracts/index.md"
+assert_file "specs/02_contracts/policy_v1.yaml"
+assert_file "specs/02_contracts/traceability_v1.yaml"
 assert_file "specs/01_schema/index.md"
 assert_file "specs/01_schema/runner_reference_v1.yaml"
 assert_file "specs/01_schema/runner_certification_registry_v1.yaml"
-assert_file "specs/governance/index.md"
-assert_file "specs/governance/check_sets_v1.yaml"
-assert_file "specs/governance/cases/core/index.md"
+assert_file "specs/04_governance/index.md"
+assert_file "specs/04_governance/check_sets_v1.yaml"
+assert_file "specs/04_governance/cases/core/index.md"
 
 for cmd in runner-certify style-check job-run governance conformance spec-runner; do
   assert_runner_supports_subcommand "$cmd"

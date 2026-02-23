@@ -1,0 +1,24 @@
+version: 1
+id: schema.type_migration_map.v1
+mappings:
+  text.file:
+    to_type: contract.check
+    profile: read.text
+  cli.run:
+    to_type: contract.check
+    profile: exec.command
+  api.http:
+    to_type: contract.check
+    profile: request.http
+  governance.check:
+    to_type: contract.check
+    profile: governance.scan
+  spec.export:
+    to_type: contract.export
+  docs.generate:
+    to_type: contract.job
+    profile: generate.docs
+    helper: helper.docs.generate_all
+  orchestration.run:
+    to_type: contract.job
+    helper: helper.orchestration.run

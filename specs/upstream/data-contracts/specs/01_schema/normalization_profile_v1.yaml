@@ -1,0 +1,130 @@
+version: 1
+title: Data Contracts Normalization Profile
+paths:
+  virtual_root_scoped_fields:
+  - path
+  - includes
+  - cases_path
+  - baseline_path
+  - manifest_path
+  - index_out
+  - coverage_out
+  - graph_out
+  - required_paths
+  - adapter_path
+  - cli_main_path
+  - required_library_path
+  external_ref_scheme: external://provider/id
+  specs:
+  - specs
+  contracts:
+  - specs/02_contracts
+  - specs/01_schema
+  - specs/00_core/current.md
+  - docs/book
+  tests:
+  - tests
+docs_layout:
+  profile_path: specs/01_schema/docs_layout_profile_v1.yaml
+  canonical_roots:
+  - /docs/book
+  - /specs
+  - runner-owned implementation docs
+  forbidden_roots: []
+  index_filename: index.md
+  required_index_dirs:
+  - /docs/book
+  - runner-owned implementation docs
+  - /specs
+  - /specs/02_contracts
+  - /specs/03_conformance
+  - /specs/03_conformance/cases
+  - /specs/04_governance
+  - /dc-runner-php
+  forbidden_filenames:
+  - README.md
+  - .DS_Store
+expression:
+  mapping_ast_only: true
+  lit_required_for_collections: true
+  zero_arg_requires_list: true
+  expression_fields:
+  - evaluate
+  - evaluate
+spec_style:
+  conformance_max_block_lines: 120
+  expression_layout:
+    style: block_first
+    forbid_flow_for_non_trivial: true
+    allow_trivial_flow_atoms:
+    - var
+    - lit_scalar
+docs_token_sync:
+  rules:
+  - id: NORMALIZATION_OPS_DEEP_DOT_WORDING
+    file: specs/02_contracts/04_harness.md
+    must_contain:
+    - "ops.fs.file.read"
+    - "ops.proc.command.exec"
+    must_not_contain:
+    - "ops.fs.read_file"
+    - "ops.proc.exec"
+  - id: NORMALIZATION_SCHEMA_MAPPING_AST_WORDING
+    file: specs/01_schema/schema_v1.md
+    must_contain:
+    - "mapping AST"
+    - "operator-keyed mappings"
+    must_not_contain:
+    - "list-encoded spec-lang expressions"
+  - id: NORMALIZATION_CONTRACT_ASSERTIONS_MAPPING_AST_WORDING
+    file: specs/02_contracts/03_assertions.md
+    must_contain:
+    - "operator-keyed mapping AST"
+    must_not_contain:
+    - "YAML list S-expressions"
+  - id: NORMALIZATION_CONTRACT_SPECLANG_MAPPING_AST_WORDING
+    file: specs/02_contracts/03b_spec_lang_v1.md
+    must_contain:
+    - "operator-keyed mapping AST"
+    - "list-token form"
+    must_not_contain:
+    - "Expression encoding is YAML list S-expression form"
+  - id: NORMALIZATION_BOOK_ASSERTIONS_MAPPING_AST_WORDING
+    file: docs/book/30_assertion_model.md
+    must_contain:
+    - "operator-keyed mapping AST"
+    must_not_contain:
+    - "YAML list S-expressions"
+  - id: NORMALIZATION_BOOK_REFERENCE_MAPPING_AST_WORDING
+    file: docs/book/90_reference_guide.md
+    must_contain:
+    - "operator-keyed mapping AST"
+    must_not_contain:
+    - "YAML list s-expressions"
+  - id: NORMALIZATION_LIBRARY_DEFINES_WORDING
+    file: specs/02_contracts/14_spec_lang_libraries.md
+    must_contain:
+    - "harness.exports"
+    - "from: assert.function"
+    must_not_contain:
+    - "defines.public"
+    - "defines.private"
+    - "definitions.public"
+    - "definitions.private"
+replacements:
+  rules:
+  - id: NORMALIZATION_REWRITE_SCHEMA_EVALUATE_SHAPE
+    file: specs/01_schema/schema_v1.md
+    edits:
+    - old: "evaluate` values MUST be list-encoded spec-lang expressions"
+      new: "evaluate` values MUST be lists of operator-keyed mapping AST expressions"
+  - id: NORMALIZATION_REWRITE_CONFORMANCE_STYLE_BLOCK_SIZE
+    file: specs/03_conformance/style.md
+    edits:
+    - old: "each fenced block should stay small (50 lines max) for readability"
+      new: "each fenced block should stay small (120 lines max) for readability"
+  - id: NORMALIZATION_REWRITE_CONFORMANCE_STYLE_LAYOUT
+    file: specs/03_conformance/style.md
+    edits:
+    - old: "Prefer condensed inline args for short expressions (for example\n`eq: [{add: [1, 2]}, 3]`) while preserving mapping-AST semantics."
+      new: "Use block-first multiline expression formatting for operator trees.\nFlow style is reserved for trivial atoms only (for example `{var: subject}`\nand short scalar `lit` nodes). Nested operator arguments MUST remain multiline."

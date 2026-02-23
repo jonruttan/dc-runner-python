@@ -1,0 +1,59 @@
+version: 1
+title: harness_contract_catalog_v1
+kind: harness_contract_catalog
+unknown_harness_behavior: hard_fail
+harnesses:
+  - name: check
+    description: Check/evaluation harness binding for assertion-driven cases.
+    required_top_level:
+      - harness
+      - clauses
+    required_clauses:
+      - profile
+      - config
+    allowed_clauses:
+      - profile
+      - config
+      - defaults
+      - imports
+      - predicates
+    required_companions: []
+    allowed_export_modes:
+      - function
+  - name: export
+    description: Producer/export harness binding for reusable symbol declarations.
+    required_top_level:
+      - harness
+      - clauses
+      - docs
+    required_clauses:
+      - profile
+      - config
+    allowed_clauses:
+      - profile
+      - config
+      - defaults
+      - imports
+      - predicates
+    required_companions:
+      - docs
+      - library
+    allowed_export_modes:
+      - function
+  - name: job
+    description: Job/dispatch harness binding for helper and workflow orchestration.
+    required_top_level:
+      - harness
+      - clauses
+    required_clauses:
+      - profile
+      - config
+    allowed_clauses:
+      - profile
+      - config
+      - defaults
+      - imports
+      - predicates
+    required_companions: []
+    allowed_export_modes:
+      - function

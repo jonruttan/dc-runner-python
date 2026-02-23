@@ -1,0 +1,50 @@
+version: 1
+title: runner_bundle_lock_v1
+type: object
+required:
+  - version
+  - runner_id
+  - root_bundle_id
+  - bundle_version
+  - source
+  - resolved_bundle_lock_sha256
+  - updated_at
+properties:
+  version:
+    type: integer
+    const: 1
+  runner_id:
+    type: string
+    minLength: 1
+  root_bundle_id:
+    type: string
+    minLength: 1
+  bundle_version:
+    type: string
+    minLength: 1
+  source:
+    type: object
+    required:
+      - repo
+      - release_tag
+      - asset_url
+      - sha256
+    properties:
+      repo:
+        type: string
+        minLength: 1
+      release_tag:
+        type: string
+        minLength: 1
+      asset_url:
+        type: string
+        minLength: 1
+      sha256:
+        type: string
+        minLength: 1
+  resolved_bundle_lock_sha256:
+    type: string
+    minLength: 1
+  updated_at:
+    type: string
+    minLength: 1

@@ -1,0 +1,160 @@
+version: 1
+title: service_contract_catalog_v1
+kind: service_contract_catalog
+unknown_service_type_behavior: hard_fail
+adapters:
+- type: io.http
+  allowed_profiles:
+  - request.http
+  required_config_keys: []
+  allowed_function_op_prefixes:
+  - ops.http.
+  - domain.http.
+  allowed_io:
+  - input
+  - output
+  - bidirectional
+  available_imports_by_profile:
+    request.http:
+    - pipe_identity
+    - assert_truth
+    - get_json
+    - post_json
+  import_validation_scope: type_profile
+- type: io.mysql
+  allowed_profiles:
+  - mysql.query
+  - mysql.normalize
+  required_config_keys: []
+  allowed_function_op_prefixes:
+  - ops.mysql.
+  - domain.mysql.
+  allowed_io:
+  - input
+  - output
+  - bidirectional
+  available_imports_by_profile:
+    mysql.query:
+    - query
+    - normalize
+    mysql.normalize:
+    - query
+    - normalize
+  import_validation_scope: type_profile
+- type: io.fs
+  allowed_profiles:
+  - read.text
+  - fs.readwrite
+  required_config_keys: []
+  allowed_function_op_prefixes:
+  - ops.fs.
+  - domain.fs.
+  allowed_io:
+  - input
+  - output
+  - bidirectional
+  available_imports_by_profile:
+    read.text:
+    - pipe_identity
+    - assert_truth
+    - read_text
+    - write_text
+    fs.readwrite:
+    - read_text
+    - write_text
+  import_validation_scope: type_profile
+- type: io.system
+  allowed_profiles:
+  - exec.command
+  - system.exec
+  required_config_keys: []
+  allowed_function_op_prefixes:
+  - ops.proc.
+  - ops.time.
+  - domain.system.
+  allowed_io:
+  - input
+  - output
+  - bidirectional
+  available_imports_by_profile:
+    exec.command:
+    - pipe_identity
+    - assert_truth
+    - exec
+    - now
+    system.exec:
+    - exec
+    - now
+  import_validation_scope: type_profile
+- type: io.docs
+  allowed_profiles:
+  - generate.docs
+  required_config_keys: []
+  allowed_function_op_prefixes:
+  - ops.docs.
+  - domain.docs.
+  allowed_io:
+  - input
+  - output
+  - bidirectional
+  available_imports_by_profile:
+    generate.docs:
+    - pipe_identity
+    - assert_truth
+    - render_docs
+  import_validation_scope: type_profile
+binding_runtime_contract:
+  execution_timing: once_per_contract_before_predicates
+  io_adapter_action: artifact_ids_only
+  binding_service_requirement: contracts.clauses[].bindings.rows[].service is required;
+    no implicit/default service resolution
+  required_mappings:
+    inputs: contracts.clauses[].bindings.rows[].inputs[].from -> artifacts[].id (direction=input|bidirectional)
+    outputs: contracts.clauses[].bindings.rows[].outputs[].to -> artifacts[].id (direction=output|bidirectional)
+  service_config_usage: static_only_no_runtime_payload_adapter_action
+  bound_symbol_format: service_id.import_name
+  binding_import_validation:
+  - binding_import_must_be_declared_on_service_exposes
+  - declared_import_must_exist_in_available_imports_by_profile
+service_locator_contract_v2:
+  direct_locator_keys_forbidden:
+  - path
+  - url
+  - token_url
+  - template_path
+  - output_path
+  - ref
+  locator_reference_rule: service config external locators must route through
+    asset ids using `*_asset_id` fields for consumed resources and artifact ids for produced outputs.
+  profile_locator_fields:
+    read.text:
+    - adapters[].defaults.config.source_asset_id
+    - adapters[].actions[].config.source_asset_id
+    request.http:
+    - adapters[].defaults.config.request.asset_id
+    - adapters[].actions[].config.request.asset_id
+    - adapters[].defaults.config.requests[].asset_id
+    - adapters[].actions[].config.requests[].asset_id
+    - adapters[].defaults.config.api_http.auth.oauth.token_asset_id
+    - adapters[].actions[].config.api_http.auth.oauth.token_asset_id
+    - adapters[].defaults.config.use[].asset_id
+    - adapters[].actions[].config.use[].asset_id
+    generate.docs:
+    - adapters[].defaults.config.docs_generate.template_asset_id
+    - adapters[].actions[].config.docs_generate.template_asset_id
+    - adapters[].defaults.config.docs_generate.output_artifact_id
+    - adapters[].actions[].config.docs_generate.output_artifact_id
+    - adapters[].defaults.config.docs_generate.data_sources[].asset_id
+    - adapters[].actions[].config.docs_generate.data_sources[].asset_id
+  artifact_resolution:
+  - every consumed *_asset_id resolves to assets[].id
+  - every consumed *_asset_ids[] entry resolves to assets[].id
+  - every produced *_artifact_id resolves to artifacts[].id
+import_declaration_shape_v2:
+  adapters[].defaults.imports: list[mapping]
+  adapters[].defaults.imports[].names: list[string]
+  adapters[].defaults.imports[].as: mapping(optional)
+  adapters[].actions[].imports: list[mapping]
+  adapters[].actions[].imports[].names: list[string]
+  adapters[].actions[].imports[].as: mapping(optional)
+  prior_compact_form: invalid

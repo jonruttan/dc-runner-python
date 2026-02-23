@@ -1,0 +1,41 @@
+```yaml contract-spec
+spec_version: 1
+schema_ref: "/specs/01_schema/schema_v1.md"
+contracts:
+  clauses:
+  - id: DCGOV-RUNTIME-CORE-001
+    title: core script allowlist enforced
+    purpose: Ensures canonical script allowlist is declared and stable.
+    harness:
+      root: "."
+      scripts_manifest:
+        path: "/specs/01_schema/core_script_allowlist_v1.yaml"
+        required_tokens:
+        - bundle
+        - control_plane.sh
+        - ci_gate.sh
+        - runner_status_ingest.sh
+        - runner_bin.sh
+        - governance_catalog_validate.sh
+        - spec_schema_pin_validate.sh
+        - governance_optional_report.sh
+        - governance_triage.sh
+      check:
+        profile: governance.scan
+        config:
+          check: runtime.core_script_allowlist_enforced
+    asserts:
+      imports:
+      - from: asset
+        names:
+        - violation_count
+      checks:
+      - id: assert_1
+        assert:
+          call:
+          - var: policy.assert.no_violations
+          - std.object.assoc:
+            - violation_count
+            - var: violation_count
+            - lit: {}
+```

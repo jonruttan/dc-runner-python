@@ -1,0 +1,160 @@
+type: runtime.runner_execution_certificate
+version: 2
+required:
+  - version
+  - runner
+  - execution_intent
+  - equivalence
+  - summary
+  - checks
+  - proof
+fields:
+  version:
+    type: integer
+    const: 2
+  runner:
+    type: object
+    required:
+      - runner_id
+      - class
+      - status
+      - blocking
+      - implementation_repo
+      - commit_sha
+      - certified_at
+    fields:
+      runner_id:
+        type: string
+      class:
+        type: string
+        enum: [required, compatibility_non_blocking]
+      status:
+        type: string
+        enum: [active, planned, disabled]
+      blocking:
+        type: boolean
+      implementation_repo:
+        type: string
+      commit_sha:
+        type: string
+      certified_at:
+        type: string
+        format: date-time
+  execution_intent:
+    type: object
+    required:
+      - required_core_checks
+      - required_core_cases
+      - command_contract_subset
+      - registry_ref
+    fields:
+      required_core_checks:
+        type: array
+        items:
+          type: string
+      required_core_cases:
+        type: array
+        items:
+          type: string
+      command_contract_subset:
+        type: array
+        items:
+          type: object
+          required:
+            - name
+            - args
+            - expect_exit
+          fields:
+            name:
+              type: string
+            args:
+              type: array
+              items:
+                type: string
+            expect_exit:
+              type: array
+              items:
+                type: integer
+      registry_ref:
+        type: object
+        required:
+          - path
+          - version
+        fields:
+          path:
+            type: string
+          version:
+            type: integer
+            const: 2
+  equivalence:
+    type: object
+    required:
+      - normalization_version
+      - hash_algorithm
+      - intent_hash
+    fields:
+      normalization_version:
+        type: string
+        const: intent-v1
+      hash_algorithm:
+        type: string
+        const: sha256
+      intent_hash:
+        type: string
+  summary:
+    type: object
+    required:
+      - status
+      - passed
+      - failed
+      - skipped
+      - blocking
+    fields:
+      status:
+        type: string
+        enum: [pass, fail]
+      passed:
+        type: integer
+      failed:
+        type: integer
+      skipped:
+        type: integer
+      blocking:
+        type: boolean
+  checks:
+    type: array
+    items:
+      type: object
+      required:
+        - group
+        - id
+        - status
+        - exit_code
+        - detail
+      fields:
+        group:
+          type: string
+        id:
+          type: string
+        status:
+          type: string
+          enum: [pass, fail, skip]
+        exit_code:
+          type: integer
+        detail:
+          type: string
+        duration_ms:
+          type: integer
+        evidence_ref:
+          type: string
+  proof:
+    type: object
+    required:
+      - canonicalization
+      - payload_sha256
+    fields:
+      canonicalization:
+        type: string
+        const: json-c14n-v1
+      payload_sha256:
+        type: string

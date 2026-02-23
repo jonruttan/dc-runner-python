@@ -1,0 +1,9 @@
+{
+  "tag_name": "local-test",
+  "assets": [
+    {
+      "name": "runner-status-report-v1.json",
+      "browser_download_url": "file://__ROOT__/specs/03_conformance/cases/fixtures/status_exchange/runner-status-report-v1.python.json"
+    }
+  ]
+}

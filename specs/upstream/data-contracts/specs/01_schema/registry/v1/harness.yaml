@@ -1,0 +1,154 @@
+version: 2
+id: schema.registry.v1.harness
+type: harness
+fields:
+  harness:
+    type: mapping
+    required: true
+    since: v1
+    description: Suite-level execution harness binding.
+  harness.type:
+    type: string
+    required: true
+    since: v1
+    description: Harness type (for example unit.test).
+  harness.profile:
+    type: string
+    required: true
+    since: v1
+    description: Harness execution profile.
+  harness.config:
+    type: mapping
+    required: false
+    since: v1
+    description: Harness runtime configuration mapping.
+  harness.config.root:
+    type: string
+    required: false
+    since: v1
+    description: Root path used by scan-style harness checks.
+  harness.config.check:
+    type: mapping
+    required: false
+    since: v1
+    description: Structured check dispatch payload.
+  harness.config.check.profile:
+    type: string
+    required: false
+    since: v1
+  harness.config.check.config:
+    type: mapping
+    required: false
+    since: v1
+  harness.config.check.config.check:
+    type: string
+    required: false
+    since: v1
+  harness.config.use:
+    type: list
+    required: false
+    since: v1
+  harness.config.use[].ref:
+    type: string
+    required: true
+    since: v1
+  harness.config.use[].as:
+    type: string
+    required: true
+    since: v1
+  harness.config.use[].symbols:
+    type: list
+    required: true
+    since: v1
+  adapters:
+    type: list
+    required: false
+    since: v1
+    description: Optional suite-level adapter blocks; required when services
+      are declared.
+  adapters[].type:
+    type: string
+    required: true
+    since: v1
+    description: Adapter type token resolved by service_contract_catalog_v1.
+  adapters[].defaults:
+    type: mapping
+    required: false
+    since: v1
+    description: Optional defaults merged into each `adapters[].actions[]` row.
+  adapters[].defaults.config:
+    type: mapping
+    required: false
+    since: v1
+    description: Default adapter runtime configuration. External locators must be
+      routed through asset ids (`*_asset_id`/`*_asset_ids`);
+      direct locator keys are invalid.
+  adapters[].actions:
+    type: list
+    required: true
+    since: v1
+  adapters[].actions[].id:
+    type: string
+    required: true
+    since: v1
+    description: Concrete adapter action id.
+  adapters[].actions[].profile:
+    type: string
+    required: false
+    since: v1
+  adapters[].actions[].config:
+    type: mapping
+    required: false
+    since: v1
+  adapters[].actions[].imports:
+    type: list
+    required: false
+    description: Canonical adapter callable import rows (`names`, optional `as`).
+    since: v1
+  adapters[].actions[].imports[].names:
+    type: list
+    required: true
+    since: v1
+    description: Adapter import names bound as adapter_action_id.import_name.
+  services:
+    type: list
+    required: false
+    since: v1
+    description: Contract-facing service composition entries.
+  services[].id:
+    type: string
+    required: true
+    since: v1
+  services[].consumes:
+    type: list
+    required: true
+    since: v1
+    description: Adapter action ids consumed by this service.
+  services[].exposes:
+    type: list
+    required: false
+    since: v1
+  services[].exposes[].names:
+    type: list
+    required: true
+    since: v1
+  services[].exposes[].as:
+    type: mapping
+    required: false
+    since: v1
+  services[].bindings:
+    type: mapping
+    required: false
+    since: v1
+  services[].bindings.<name>.adapter_action:
+    type: string
+    required: true
+    since: v1
+  services[].bindings.<name>.adapter_import:
+    type: string
+    required: true
+    since: v1
+  adapters[].actions[].imports[].as:
+    type: mapping
+    required: false
+    since: v1

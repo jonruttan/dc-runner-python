@@ -1,0 +1,46 @@
+version: 1
+entries:
+- baseline: specs/04_governance/metrics/spec_portability_baseline.json
+  sha256: 25beb986b0c1dfe923bdca65b8a074ca6f6d7630079406e869645bb643efd6d6
+  rationale: Baseline refreshed after objective-aligned measurement framework update.
+  measurement_model_change: 'no'
+- baseline: specs/04_governance/metrics/spec_lang_adoption_baseline.json
+  sha256: d0fd64e6c1096d4851297f3d204fdaf7b64c23ac2ae27e4c7c77712bd37d3156
+  rationale: Baseline refreshed after chain-first library loading hard-cut and one-public-symbol-per-library-case normalization.
+  measurement_model_change: 'yes'
+- baseline: specs/04_governance/metrics/runner_independence_baseline.json
+  sha256: 7066ab5a9fb38c0b2815562015914e9ebdf8087ed77ecdb6c533afd3655923f0
+  rationale: Baseline refreshed after objective-aligned measurement framework update.
+  measurement_model_change: 'no'
+- baseline: specs/04_governance/metrics/docs_operability_baseline.json
+  sha256: 168b4ad0de2322026a0af4f55f652ec8f2ac27ce38361035002880c911f717de
+  rationale: Baseline refreshed after spec-lang namespace chapter expansion increased generated appendix doc count.
+  measurement_model_change: 'yes'
+- baseline: specs/04_governance/metrics/contract_assertions_baseline.json
+  sha256: 860e283126609531054e431e9f075902547379776efd4681005ea143ee89f40a
+  rationale: Baseline refreshed after objective-aligned measurement framework update.
+  measurement_model_change: 'no'
+- baseline: specs/04_governance/metrics/objective_scorecard_baseline.json
+  sha256: 6bf06acb44415f48ee66ed34ee804e9ac099d144f9d81ebd84f448d0f96e7822
+  rationale: Baseline refreshed after api.http v1 verb/cors/scenario uplift adjusted objective aggregate mean score.
+  measurement_model_change: 'no'
+- baseline: specs/04_governance/metrics/python_dependency_baseline.json
+  sha256: 8f017d0e8cf87e5e5fffce84e95e1377267cd438a3bc5dc351b7a0ffa1b96f18
+  rationale: Baseline introduced for python-dependency anti-gaming evidence metric.
+  measurement_model_change: 'yes'
+- baseline: specs/04_governance/metrics/governance_timing_baseline.json
+  sha256: a2b0c728962c0cd5577bffff2bb60817d2acf452f3efbfa43a28ac21e098b4cb
+  rationale: Baseline refreshed after chain export compile/doc caching reduced governance runtime cost.
+  measurement_model_change: 'no'
+- baseline: specs/04_governance/metrics/docs_generate_timing_baseline.json
+  sha256: 5b2687d721c9926ebe1cf111dc382fc6d040df0bbe2f3782308e1eb03c33c239
+  rationale: Baseline retained for docs-generate timing with strict perf-smoke gate enforcement.
+  measurement_model_change: 'no'
+- baseline: specs/04_governance/metrics/governance_profile_baseline.json
+  sha256: 1ed4ec477b409c73aff066c5bc3d141b573fe834a8916e42e2754eaf130dcfc5
+  rationale: Baseline introduced for governance per-case profile total to catch hidden performance regressions.
+  measurement_model_change: 'yes'
+- baseline: specs/04_governance/metrics/docs_generate_profile_baseline.json
+  sha256: 0e84d1f26b01acfb370355376fa9de8d24a75cbc2bf2ff5ef0bc6b04791a720e
+  rationale: Baseline introduced for docs-generate per-case profile total to prevent profile-level regressions.
+  measurement_model_change: 'yes'

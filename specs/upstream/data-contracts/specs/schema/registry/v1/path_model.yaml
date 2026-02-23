@@ -1,9 +1,0 @@
-version: 1
-id: schema.registry.v1.path_model
-type: path_model
-fields:
-  path:
-    type: string
-    required: false
-    since: v1
-    description: Virtual-root contract path (/...).

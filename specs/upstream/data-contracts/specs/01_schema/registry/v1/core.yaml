@@ -1,0 +1,1387 @@
+version: 2
+id: schema.registry.v1.core
+type: core
+fields:
+  spec_version:
+    type: int
+    required: true
+    since: v1
+  schema_ref:
+    type: string
+    required: true
+    since: v1
+  harness:
+    type: mapping
+    required: true
+    since: v1
+  harness.type:
+    type: string
+    required: true
+    since: v1
+  harness.profile:
+    type: string
+    required: true
+    since: v1
+  harness.config:
+    type: mapping
+    required: false
+    since: v1
+    description: Harness runtime configuration mapping.
+  harness.config.root:
+    type: string
+    required: false
+    since: v1
+    description: Root path used by scan-style harness checks.
+  harness.config.check:
+    type: mapping
+    required: false
+    since: v1
+    description: Structured check dispatch payload.
+  harness.config.check.profile:
+    type: string
+    required: false
+    since: v1
+    description: Check execution profile token.
+  harness.config.check.config:
+    type: mapping
+    required: false
+    since: v1
+    description: Check profile-specific configuration mapping.
+  harness.config.check.config.check:
+    type: string
+    required: false
+    since: v1
+    description: Deterministic governance/conformance check id selector.
+  harness.config.use:
+    type: list
+    required: false
+    since: v1
+    description: Structured library import dependencies used by scan checks.
+  harness.config.use[].ref:
+    type: string
+    required: true
+    since: v1
+  harness.config.use[].as:
+    type: string
+    required: true
+    since: v1
+  harness.config.use[].symbols:
+    type: list
+    required: true
+    since: v1
+  harness.docs:
+    type: list
+    required: false
+    since: v1
+  harness.docs[].id:
+    type: string
+    required: false
+    since: v1
+    description: Optional metadata id for documentation entry. Not reference identity.
+  harness.docs[].summary:
+    type: string
+    required: true
+    since: v1
+  harness.docs[].audience:
+    type: string
+    required: true
+    since: v1
+  harness.docs[].status:
+    type: string
+    required: true
+    since: v1
+    enum: &id001
+    - draft
+    - active
+    - unsupported
+    - retired
+  harness.docs[].description:
+    type: string
+    required: false
+    since: v1
+  harness.docs[].type:
+    type: string
+    required: false
+    since: v1
+    enum: &id002
+    - overview
+    - reference
+    - howto
+    - policy
+    - contract
+    - changelog
+  harness.docs[].since:
+    type: string
+    required: false
+    since: v1
+  harness.docs[].updated_at:
+    type: string
+    required: false
+    since: v1
+  harness.docs[].tags:
+    type: list
+    required: false
+    since: v1
+  harness.docs[].owners:
+    type: list
+    required: false
+    since: v1
+  harness.docs[].owners[].id:
+    type: string
+    required: false
+    since: v1
+    description: Optional metadata id for docs owner entry. Not reference identity.
+  harness.docs[].owners[].role:
+    type: string
+    required: true
+    since: v1
+    enum: &id003
+    - owner
+    - reviewer
+    - approver
+  harness.docs[].links:
+    type: list
+    required: false
+    since: v1
+  harness.docs[].links[].rel:
+    type: string
+    required: true
+    since: v1
+    enum: &id004
+    - see_also
+    - depends_on
+    - implements
+    - supersedes
+    - replaced_by
+  harness.docs[].links[].ref:
+    type: string
+    required: true
+    since: v1
+  harness.docs[].links[].title:
+    type: string
+    required: false
+    since: v1
+  harness.docs[].examples:
+    type: list
+    required: false
+    since: v1
+  harness.docs[].examples[].title:
+    type: string
+    required: true
+    since: v1
+  harness.docs[].examples[].ref:
+    type: string
+    required: true
+    since: v1
+  adapters:
+    type: list
+    required: false
+    since: v1
+  adapters[].type:
+    type: string
+    required: true
+    since: v1
+    description: Adapter type token from service catalog (`io.fs`, `io.http`,
+      `io.system`, `io.mysql`, `io.docs`).
+  adapters[].defaults:
+    type: mapping
+    required: false
+    since: v1
+    description: Optional defaults merged into each `adapters[].actions[]` row
+      (shallow merge; entry row keys override defaults).
+  adapters[].defaults.direction:
+    type: string
+    required: false
+    since: v1
+    enum:
+    - input
+    - output
+    - bidirectional
+  adapters[].defaults.profile:
+    type: string
+    required: false
+    since: v1
+  adapters[].defaults.config:
+    type: mapping
+    required: false
+    since: v1
+    description: Default adapter config mapping for entries in this adapter block.
+      External locators must be declared in `artifacts[]` and referenced by
+      artifact id fields; direct locator keys (`path`, `url`, `token_url`,
+      `template_path`, `output_path`, `ref`) are invalid.
+  adapters[].defaults.config.source_asset_id:
+    type: string
+    required: false
+    since: v1
+    description: Artifact id for `read.text` source payloads; must resolve to
+      `assets[].id`.
+  adapters[].defaults.config.request.asset_id:
+    type: string
+    required: false
+    since: v1
+    description: Artifact id for `request.http` single request url; must resolve to
+      `assets[].id`.
+  adapters[].defaults.config.requests[].asset_id:
+    type: string
+    required: false
+    since: v1
+    description: Artifact id for `request.http` scenario request url; must resolve to
+      `assets[].id`.
+  adapters[].defaults.config.api_http.auth.oauth.token_asset_id:
+    type: string
+    required: false
+    since: v1
+    description: Artifact id for oauth token endpoint locator; must resolve to
+      `assets[].id`.
+  adapters[].defaults.config.use[].asset_id:
+    type: string
+    required: false
+    since: v1
+    description: Artifact id for config.use dependency locator; must resolve to
+      `assets[].id`.
+  adapters[].defaults.config.docs_generate.template_asset_id:
+    type: string
+    required: false
+    since: v1
+    description: Artifact id for docs template input; must resolve to
+      `assets[].id`.
+  adapters[].defaults.config.docs_generate.output_artifact_id:
+    type: string
+    required: false
+    since: v1
+    description: Artifact id for docs output target.
+  adapters[].defaults.config.docs_generate.data_sources[].asset_id:
+    type: string
+    required: false
+    since: v1
+    description: Artifact id for docs data source payload; must resolve to
+      `assets[].id`.
+  adapters[].defaults.imports:
+    type: list
+    required: false
+    since: v1
+    description: Canonical adapter import declarations using mapping rows
+      (`names`, optional `as`).
+  adapters[].defaults.imports[].names:
+    type: list
+    required: true
+    since: v1
+    description: Declared adapter import names; each name must be unique per
+      adapter action after alias resolution and available for resolved
+      type+profile in service catalog.
+  adapters[].defaults.imports[].as:
+    type: mapping
+    required: false
+    since: v1
+  adapters[].defaults.docs:
+    type: list
+    required: false
+    since: v1
+  adapters[].defaults.docs[].id:
+    type: string
+    required: false
+    since: v1
+    description: Optional metadata id for documentation entry. Not reference identity.
+  adapters[].defaults.docs[].summary:
+    type: string
+    required: true
+    since: v1
+  adapters[].defaults.docs[].audience:
+    type: string
+    required: true
+    since: v1
+  adapters[].defaults.docs[].status:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - draft
+    - active
+    - unsupported
+    - retired
+  adapters[].defaults.docs[].description:
+    type: string
+    required: false
+    since: v1
+  adapters[].defaults.docs[].type:
+    type: string
+    required: false
+    since: v1
+    enum:
+    - overview
+    - reference
+    - howto
+    - policy
+    - contract
+    - changelog
+  adapters[].defaults.docs[].since:
+    type: string
+    required: false
+    since: v1
+  adapters[].defaults.docs[].updated_at:
+    type: string
+    required: false
+    since: v1
+  adapters[].defaults.docs[].tags:
+    type: list
+    required: false
+    since: v1
+  adapters[].defaults.docs[].owners:
+    type: list
+    required: false
+    since: v1
+  adapters[].defaults.docs[].owners[].id:
+    type: string
+    required: false
+    since: v1
+    description: Optional metadata id for docs owner entry. Not reference identity.
+  adapters[].defaults.docs[].owners[].role:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - owner
+    - reviewer
+    - approver
+  adapters[].defaults.docs[].links:
+    type: list
+    required: false
+    since: v1
+  adapters[].defaults.docs[].links[].rel:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - see_also
+    - depends_on
+    - implements
+    - supersedes
+    - replaced_by
+  adapters[].defaults.docs[].links[].ref:
+    type: string
+    required: true
+    since: v1
+  adapters[].defaults.docs[].links[].title:
+    type: string
+    required: false
+    since: v1
+  adapters[].defaults.docs[].examples:
+    type: list
+    required: false
+    since: v1
+  adapters[].defaults.docs[].examples[].title:
+    type: string
+    required: true
+    since: v1
+  adapters[].defaults.docs[].examples[].ref:
+    type: string
+    required: true
+    since: v1
+  adapters[].actions:
+    type: list
+    required: true
+    since: v1
+    description: Non-empty concrete adapter action rows.
+  adapters[].actions[].id:
+    type: string
+    required: true
+    since: v1
+  adapters[].actions[].direction:
+    type: string
+    required: false
+    since: v1
+    enum:
+    - input
+    - output
+    - bidirectional
+  adapters[].actions[].profile:
+    type: string
+    required: false
+    since: v1
+  adapters[].actions[].config:
+    type: mapping
+    required: false
+    since: v1
+  adapters[].actions[].config.source_asset_id:
+    type: string
+    required: false
+    since: v1
+  adapters[].actions[].config.request.asset_id:
+    type: string
+    required: false
+    since: v1
+  adapters[].actions[].config.requests[].asset_id:
+    type: string
+    required: false
+    since: v1
+  adapters[].actions[].config.api_http.auth.oauth.token_asset_id:
+    type: string
+    required: false
+    since: v1
+  adapters[].actions[].config.use[].asset_id:
+    type: string
+    required: false
+    since: v1
+  adapters[].actions[].config.docs_generate.template_asset_id:
+    type: string
+    required: false
+    since: v1
+  adapters[].actions[].config.docs_generate.output_artifact_id:
+    type: string
+    required: false
+    since: v1
+  adapters[].actions[].config.docs_generate.data_sources[].asset_id:
+    type: string
+    required: false
+    since: v1
+  adapters[].actions[].imports:
+    type: list
+    required: false
+    since: v1
+    description: Supports canonical mapping rows (`names`, optional `as`) and
+      compact list[string] aliases. Mixed item kinds in one list are invalid.
+  adapters[].actions[].imports[].names:
+    type: list
+    required: true
+    since: v1
+  adapters[].actions[].imports[].as:
+    type: mapping
+    required: false
+    since: v1
+  services:
+    type: list
+    required: false
+    since: v1
+    description: Optional contract-facing service composition entries. Required
+      when bindings or imports use `from: service`.
+  services[].id:
+    type: string
+    required: true
+    since: v1
+    description: Service id referenced by contract bindings and imports.
+  services[].consumes:
+    type: list
+    required: true
+    since: v1
+    description: Adapter action ids consumed by this service. Each entry must
+      resolve to `adapters[].actions[].id`.
+  services[].exposes:
+    type: list
+    required: false
+    since: v1
+    description: Service callable surface declarations.
+  services[].exposes[].names:
+    type: list
+    required: true
+    since: v1
+    description: Exposed callable names for this service.
+  services[].exposes[].as:
+    type: mapping
+    required: false
+    since: v1
+  services[].bindings:
+    type: mapping
+    required: false
+    since: v1
+    description: Map from expose name to adapter action/import route.
+  services[].bindings.<name>.adapter_action:
+    type: string
+    required: true
+    since: v1
+    description: Target adapter action id (`adapters[].actions[].id`).
+  services[].bindings.<name>.adapter_import:
+    type: string
+    required: true
+    since: v1
+    description: Target adapter import name declared on the routed adapter action.
+  adapters[].actions[].docs:
+    type: list
+    required: false
+    since: v1
+  adapters[].actions[].docs[].id:
+    type: string
+    required: false
+    since: v1
+  adapters[].actions[].docs[].summary:
+    type: string
+    required: true
+    since: v1
+  adapters[].actions[].docs[].audience:
+    type: string
+    required: true
+    since: v1
+  adapters[].actions[].docs[].status:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - draft
+    - active
+    - unsupported
+    - retired
+  adapters[].actions[].docs[].description:
+    type: string
+    required: false
+    since: v1
+  adapters[].actions[].docs[].type:
+    type: string
+    required: false
+    since: v1
+    enum:
+    - overview
+    - reference
+    - howto
+    - policy
+    - contract
+    - changelog
+  adapters[].actions[].docs[].since:
+    type: string
+    required: false
+    since: v1
+  adapters[].actions[].docs[].updated_at:
+    type: string
+    required: false
+    since: v1
+  adapters[].actions[].docs[].tags:
+    type: list
+    required: false
+    since: v1
+  adapters[].actions[].docs[].owners:
+    type: list
+    required: false
+    since: v1
+  adapters[].actions[].docs[].owners[].id:
+    type: string
+    required: false
+    since: v1
+  adapters[].actions[].docs[].owners[].role:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - owner
+    - reviewer
+    - approver
+  adapters[].actions[].docs[].links:
+    type: list
+    required: false
+    since: v1
+  adapters[].actions[].docs[].links[].rel:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - see_also
+    - depends_on
+    - implements
+    - supersedes
+    - replaced_by
+  adapters[].actions[].docs[].links[].ref:
+    type: string
+    required: true
+    since: v1
+  adapters[].actions[].docs[].links[].title:
+    type: string
+    required: false
+    since: v1
+  adapters[].actions[].docs[].examples:
+    type: list
+    required: false
+    since: v1
+  adapters[].actions[].docs[].examples[].title:
+    type: string
+    required: true
+    since: v1
+  adapters[].actions[].docs[].examples[].ref:
+    type: string
+    required: true
+    since: v1
+  assets:
+    type: list
+    required: false
+    since: v1
+  assets[].id:
+    type: string
+    required: true
+    since: v1
+  assets[].ref:
+    type: string
+    required: true
+    since: v1
+    description: Supports moustache templates resolved from suite context.
+  assets[].type:
+    type: string
+    required: false
+    since: v1
+  assets[].inputs:
+    type: mapping
+    required: false
+    since: v1
+  assets[].outputs:
+    type: mapping
+    required: false
+    since: v1
+  assets[].options:
+    type: mapping
+    required: false
+    since: v1
+  assets[].docs:
+    type: list
+    required: false
+    since: v1
+  assets[].docs[].id:
+    type: string
+    required: false
+    since: v1
+    description: Optional metadata id for documentation entry. Not reference identity.
+  assets[].docs[].summary:
+    type: string
+    required: true
+    since: v1
+  assets[].docs[].audience:
+    type: string
+    required: true
+    since: v1
+  assets[].docs[].status:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - draft
+    - active
+    - unsupported
+    - retired
+  assets[].docs[].description:
+    type: string
+    required: false
+    since: v1
+  assets[].docs[].type:
+    type: string
+    required: false
+    since: v1
+    enum:
+    - overview
+    - reference
+    - howto
+    - policy
+    - contract
+    - changelog
+  assets[].docs[].since:
+    type: string
+    required: false
+    since: v1
+  assets[].docs[].updated_at:
+    type: string
+    required: false
+    since: v1
+  assets[].docs[].tags:
+    type: list
+    required: false
+    since: v1
+  assets[].docs[].owners:
+    type: list
+    required: false
+    since: v1
+  assets[].docs[].owners[].id:
+    type: string
+    required: false
+    since: v1
+    description: Optional metadata id for docs owner entry. Not reference identity.
+  assets[].docs[].owners[].role:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - owner
+    - reviewer
+    - approver
+  assets[].docs[].links:
+    type: list
+    required: false
+    since: v1
+  assets[].docs[].links[].rel:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - see_also
+    - depends_on
+    - implements
+    - supersedes
+    - replaced_by
+  assets[].docs[].links[].ref:
+    type: string
+    required: true
+    since: v1
+  assets[].docs[].links[].title:
+    type: string
+    required: false
+    since: v1
+  assets[].docs[].examples:
+    type: list
+    required: false
+    since: v1
+  assets[].docs[].examples[].title:
+    type: string
+    required: true
+    since: v1
+  assets[].docs[].examples[].ref:
+    type: string
+    required: true
+    since: v1
+  artifacts:
+    type: list
+    required: false
+    since: v1
+  artifacts[].id:
+    type: string
+    required: true
+    since: v1
+  artifacts[].ref:
+    type: string
+    required: true
+    since: v1
+    description: Supports moustache templates resolved from suite context.
+  artifacts[].type:
+    type: string
+    required: false
+    since: v1
+  artifacts[].inputs:
+    type: mapping
+    required: false
+    since: v1
+  artifacts[].outputs:
+    type: mapping
+    required: false
+    since: v1
+  artifacts[].options:
+    type: mapping
+    required: false
+    since: v1
+  artifacts[].docs:
+    type: list
+    required: false
+    since: v1
+  artifacts[].docs[].id:
+    type: string
+    required: false
+    since: v1
+    description: Optional metadata id for documentation entry. Not reference identity.
+  artifacts[].docs[].summary:
+    type: string
+    required: true
+    since: v1
+  artifacts[].docs[].audience:
+    type: string
+    required: true
+    since: v1
+  artifacts[].docs[].status:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - draft
+    - active
+    - unsupported
+    - retired
+  artifacts[].docs[].description:
+    type: string
+    required: false
+    since: v1
+  artifacts[].docs[].type:
+    type: string
+    required: false
+    since: v1
+    enum:
+    - overview
+    - reference
+    - howto
+    - policy
+    - contract
+    - changelog
+  artifacts[].docs[].since:
+    type: string
+    required: false
+    since: v1
+  artifacts[].docs[].updated_at:
+    type: string
+    required: false
+    since: v1
+  artifacts[].docs[].tags:
+    type: list
+    required: false
+    since: v1
+  artifacts[].docs[].owners:
+    type: list
+    required: false
+    since: v1
+  artifacts[].docs[].owners[].id:
+    type: string
+    required: false
+    since: v1
+    description: Optional metadata id for docs owner entry. Not reference identity.
+  artifacts[].docs[].owners[].role:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - owner
+    - reviewer
+    - approver
+  artifacts[].docs[].links:
+    type: list
+    required: false
+    since: v1
+  artifacts[].docs[].links[].rel:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - see_also
+    - depends_on
+    - implements
+    - supersedes
+    - replaced_by
+  artifacts[].docs[].links[].ref:
+    type: string
+    required: true
+    since: v1
+  artifacts[].docs[].links[].title:
+    type: string
+    required: false
+    since: v1
+  artifacts[].docs[].examples:
+    type: list
+    required: false
+    since: v1
+  artifacts[].docs[].examples[].title:
+    type: string
+    required: true
+    since: v1
+  artifacts[].docs[].examples[].ref:
+    type: string
+    required: true
+    since: v1
+  exports:
+    type: list
+    required: false
+    since: v1
+  exports[].as:
+    type: string
+    required: true
+    since: v1
+    description: Required function export symbol name.
+  exports[].from:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - assert.function
+    description: Required function export source.
+  exports[].path:
+    type: string
+    required: true
+    since: v1
+    description: Required function export path.
+  exports[].params:
+    type: list
+    required: false
+    since: v1
+    description: Optional ordered function parameter names.
+  exports[].required:
+    type: bool
+    required: false
+    since: v1
+    description: Optional function export requirement flag.
+  exports[].docs:
+    type: list
+    required: false
+    since: v1
+  exports[].docs[].id:
+    type: string
+    required: false
+    since: v1
+    description: Optional metadata id for documentation entry. Not reference identity.
+  exports[].docs[].summary:
+    type: string
+    required: true
+    since: v1
+  exports[].docs[].audience:
+    type: string
+    required: true
+    since: v1
+  exports[].docs[].status:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - draft
+    - active
+    - unsupported
+    - retired
+  exports[].docs[].description:
+    type: string
+    required: false
+    since: v1
+  exports[].docs[].type:
+    type: string
+    required: false
+    since: v1
+    enum:
+    - overview
+    - reference
+    - howto
+    - policy
+    - contract
+    - changelog
+  exports[].docs[].since:
+    type: string
+    required: false
+    since: v1
+  exports[].docs[].updated_at:
+    type: string
+    required: false
+    since: v1
+  exports[].docs[].tags:
+    type: list
+    required: false
+    since: v1
+  exports[].docs[].owners:
+    type: list
+    required: false
+    since: v1
+  exports[].docs[].owners[].id:
+    type: string
+    required: false
+    since: v1
+    description: Optional metadata id for docs owner entry. Not reference identity.
+  exports[].docs[].owners[].role:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - owner
+    - reviewer
+    - approver
+  exports[].docs[].links:
+    type: list
+    required: false
+    since: v1
+  exports[].docs[].links[].rel:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - see_also
+    - depends_on
+    - implements
+    - supersedes
+    - replaced_by
+  exports[].docs[].links[].ref:
+    type: string
+    required: true
+    since: v1
+  exports[].docs[].links[].title:
+    type: string
+    required: false
+    since: v1
+  exports[].docs[].examples:
+    type: list
+    required: false
+    since: v1
+  exports[].docs[].examples[].title:
+    type: string
+    required: true
+    since: v1
+  exports[].docs[].examples[].ref:
+    type: string
+    required: true
+    since: v1
+  contracts:
+    type: mapping
+    required: true
+    since: v1
+  contracts.clauses:
+    type: list
+    required: true
+    since: v1
+  contracts.clauses[].id:
+    type: string
+    required: true
+    since: v1
+  title:
+    type: string
+    required: false
+    since: v1
+  purpose:
+    type: string
+    required: false
+    since: v1
+  docs:
+    type: list
+    required: false
+    since: v1
+  docs[].id:
+    type: string
+    required: false
+    since: v1
+    description: Optional metadata id for documentation entry. Not reference identity.
+  docs[].summary:
+    type: string
+    required: true
+    since: v1
+  docs[].audience:
+    type: string
+    required: true
+    since: v1
+  docs[].status:
+    type: string
+    required: true
+    since: v1
+    enum: *id001
+  docs[].description:
+    type: string
+    required: false
+    since: v1
+  docs[].type:
+    type: string
+    required: false
+    since: v1
+    enum: *id002
+  docs[].since:
+    type: string
+    required: false
+    since: v1
+  docs[].updated_at:
+    type: string
+    required: false
+    since: v1
+  docs[].tags:
+    type: list
+    required: false
+    since: v1
+  docs[].owners:
+    type: list
+    required: false
+    since: v1
+  docs[].owners[].id:
+    type: string
+    required: false
+    since: v1
+    description: Optional metadata id for docs owner entry. Not reference identity.
+  docs[].owners[].role:
+    type: string
+    required: true
+    since: v1
+    enum: *id003
+  docs[].links:
+    type: list
+    required: false
+    since: v1
+  docs[].links[].rel:
+    type: string
+    required: true
+    since: v1
+    enum: *id004
+  docs[].links[].ref:
+    type: string
+    required: true
+    since: v1
+  docs[].links[].title:
+    type: string
+    required: false
+    since: v1
+  docs[].examples:
+    type: list
+    required: false
+    since: v1
+  docs[].examples[].title:
+    type: string
+    required: true
+    since: v1
+  docs[].examples[].ref:
+    type: string
+    required: true
+    since: v1
+  domain:
+    type: string
+    required: false
+    since: v1
+  contracts.clauses[].title:
+    type: string
+    required: false
+    since: v1
+  contracts.clauses[].purpose:
+    type: string
+    required: false
+    since: v1
+  contracts.clauses[].domain:
+    type: string
+    required: false
+    since: v1
+  contracts.clauses[].docs:
+    type: list
+    required: false
+    since: v1
+  contracts.clauses[].docs[].id:
+    type: string
+    required: false
+    since: v1
+    description: Optional metadata id for documentation entry. Not reference identity.
+  contracts.clauses[].docs[].summary:
+    type: string
+    required: true
+    since: v1
+  contracts.clauses[].docs[].audience:
+    type: string
+    required: true
+    since: v1
+  contracts.clauses[].docs[].status:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - draft
+    - active
+    - unsupported
+    - retired
+  contracts.clauses[].docs[].description:
+    type: string
+    required: false
+    since: v1
+  contracts.clauses[].docs[].type:
+    type: string
+    required: false
+    since: v1
+    enum:
+    - overview
+    - reference
+    - howto
+    - policy
+    - contract
+    - changelog
+  contracts.clauses[].docs[].since:
+    type: string
+    required: false
+    since: v1
+  contracts.clauses[].docs[].updated_at:
+    type: string
+    required: false
+    since: v1
+  contracts.clauses[].docs[].tags:
+    type: list
+    required: false
+    since: v1
+  contracts.clauses[].docs[].owners:
+    type: list
+    required: false
+    since: v1
+  contracts.clauses[].docs[].owners[].id:
+    type: string
+    required: false
+    since: v1
+    description: Optional metadata id for docs owner entry. Not reference identity.
+  contracts.clauses[].docs[].owners[].role:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - owner
+    - reviewer
+    - approver
+  contracts.clauses[].docs[].links:
+    type: list
+    required: false
+    since: v1
+  contracts.clauses[].docs[].links[].rel:
+    type: string
+    required: true
+    since: v1
+    enum:
+    - see_also
+    - depends_on
+    - implements
+    - supersedes
+    - replaced_by
+  contracts.clauses[].docs[].links[].ref:
+    type: string
+    required: true
+    since: v1
+  contracts.clauses[].docs[].links[].title:
+    type: string
+    required: false
+    since: v1
+  contracts.clauses[].docs[].examples:
+    type: list
+    required: false
+    since: v1
+  contracts.clauses[].docs[].examples[].title:
+    type: string
+    required: true
+    since: v1
+  contracts.clauses[].docs[].examples[].ref:
+    type: string
+    required: true
+    since: v1
+  contracts.clauses[].when:
+    type: mapping
+    required: false
+    since: v1
+  contracts.clauses[].when.required:
+    type: list
+    required: false
+    since: v1
+  contracts.clauses[].when.optional:
+    type: list
+    required: false
+    since: v1
+  contracts.clauses[].when.fail:
+    type: list
+    required: false
+    since: v1
+  contracts.clauses[].when.complete:
+    type: list
+    required: false
+    since: v1
+  contracts.clauses[].bindings:
+    type: mapping
+    required: false
+    since: v1
+    description: Contract-local binding declarations using mapping form
+      (`contracts.clauses[].bindings.defaults` + `contracts.clauses[].bindings.rows[]`).
+  contracts.clauses[].bindings.defaults:
+    type: mapping
+    required: false
+    since: v1
+  contracts.clauses[].bindings.defaults.service:
+    type: string
+    required: false
+    since: v1
+    description: Optional default binding service id (`services[].id`).
+  contracts.clauses[].bindings.defaults.import:
+    type: string
+    required: false
+    since: v1
+    description: Optional default binding import name.
+  contracts.clauses[].bindings.defaults.mode:
+    type: string
+    required: false
+    since: v1
+    enum:
+    - merge
+    - override
+  contracts.clauses[].bindings.defaults.predicates:
+    type: list
+    required: false
+    since: v1
+  contracts.clauses[].bindings.rows:
+    type: list
+    required: false
+    since: v1
+    description: Binding rows when using mapping-form contract bindings.
+  contracts.clauses[].bindings.rows[].id:
+    type: string
+    required: true
+    since: v1
+  contracts.clauses[].bindings.rows[].service:
+    type: string
+    required: false
+    since: v1
+  contracts.clauses[].bindings.rows[].import:
+    type: string
+    required: false
+    since: v1
+  contracts.clauses[].bindings.rows[].inputs:
+    type: list
+    required: false
+    since: v1
+    description: Supports canonical mapping rows (`from`, optional `as`) and
+      compact list[string] aliases normalized to `{from: <id>}`. Mixed item
+      kinds in one list are invalid.
+  contracts.clauses[].bindings.rows[].inputs[].from:
+    type: string
+    required: true
+    since: v1
+  contracts.clauses[].bindings.rows[].inputs[].as:
+    type: string
+    required: false
+    since: v1
+  contracts.clauses[].bindings.rows[].outputs:
+    type: list
+    required: false
+    since: v1
+    description: Supports canonical mapping rows (`to`, optional `as`,
+      optional `path`) and compact list[string] aliases normalized to
+      `{to: <id>}`. Mixed item kinds in one list are invalid.
+  contracts.clauses[].bindings.rows[].outputs[].to:
+    type: string
+    required: true
+    since: v1
+  contracts.clauses[].bindings.rows[].outputs[].as:
+    type: string
+    required: false
+    since: v1
+  contracts.clauses[].bindings.rows[].outputs[].path:
+    type: string
+    required: false
+    since: v1
+  contracts.clauses[].bindings.rows[].predicates:
+    type: list
+    required: false
+    since: v1
+  contracts.clauses[].bindings.rows[].mode:
+    type: string
+    required: false
+    since: v1
+    enum:
+    - merge
+    - override
+  contracts.clauses[].asserts:
+    type: mapping
+    required: true
+    since: v1
+  contracts.clauses[].expect:
+    type: mapping
+    required: false
+    since: v1
+  contracts.clauses[].expect.portable:
+    type: mapping
+    required: false
+    since: v1
+  contracts.clauses[].expect.portable.status:
+    type: string
+    required: false
+    since: v1
+  contracts.clauses[].expect.portable.category:
+    type: string
+    required: false
+    since: v1
+  contracts.clauses[].expect.portable.message_tokens:
+    type: list
+    required: false
+    since: v1
+  contracts.clauses[].expect.overrides:
+    type: list
+    required: false
+    since: v1
+  contracts.clauses[].expect.overrides[].runner:
+    type: string
+    required: true
+    since: v1
+  contracts.clauses[].expect.overrides[].status:
+    type: string
+    required: false
+    since: v1
+  contracts.clauses[].expect.overrides[].category:
+    type: string
+    required: false
+    since: v1
+  contracts.clauses[].expect.overrides[].message_tokens:
+    type: list
+    required: false
+    since: v1
+  contracts.clauses[].requires:
+    type: mapping
+    required: false
+    since: v1
+    description: Optional contract-level requirement metadata.

@@ -1,0 +1,127 @@
+version: 1
+title: implementation_bundle_overlay_v1
+type: object
+required:
+  - version
+  - runner_id
+  - base_bundle
+  - overlay
+  - output_bundle
+  - updated_at
+properties:
+  version:
+    type: integer
+    const: 1
+  runner_id:
+    type: string
+    enum:
+      - rust
+      - python
+      - php
+  base_bundle:
+    type: object
+    required:
+      - bundle_id
+      - bundle_version
+      - source
+    properties:
+      bundle_id:
+        type: string
+        minLength: 1
+      bundle_version:
+        type: string
+        minLength: 1
+      source:
+        type: object
+        required:
+          - repo
+          - release_tag
+          - asset_url
+          - sha256
+        properties:
+          repo:
+            type: string
+            minLength: 1
+          release_tag:
+            type: string
+            minLength: 1
+          asset_url:
+            type: string
+            minLength: 1
+          sha256:
+            type: string
+            minLength: 1
+  overlay:
+    type: object
+    required:
+      - add_files
+      - replace_files
+      - delete_paths
+    properties:
+      add_files:
+        type: array
+        items:
+          type: object
+          required:
+            - path
+            - source_path
+          properties:
+            path:
+              type: string
+              minLength: 1
+            source_path:
+              type: string
+              minLength: 1
+      replace_files:
+        type: array
+        items:
+          type: object
+          required:
+            - path
+            - source_path
+          properties:
+            path:
+              type: string
+              minLength: 1
+            source_path:
+              type: string
+              minLength: 1
+      delete_paths:
+        type: array
+        items:
+          type: string
+          minLength: 1
+  output_bundle:
+    type: object
+    required:
+      - bundle_id
+      - bundle_version
+      - summary
+      - maintainers
+    properties:
+      bundle_id:
+        type: string
+        minLength: 1
+      bundle_version:
+        type: string
+        minLength: 1
+      summary:
+        type: string
+        minLength: 1
+      maintainers:
+        type: array
+        minItems: 1
+        items:
+          type: object
+          required:
+            - name
+          properties:
+            name:
+              type: string
+              minLength: 1
+            contact:
+              type: string
+              minLength: 1
+  updated_at:
+    type: string
+    minLength: 1
