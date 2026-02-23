@@ -16,7 +16,7 @@ on releases.
 
 Required report schema:
 
-- `/specs/schema/runner_status_report_v1.yaml`
+- `/specs/01_schema/runner_status_report_v1.yaml`
 
 Required producer fields:
 
@@ -45,7 +45,7 @@ matrix snapshot.
 
 Required matrix schema:
 
-- `/specs/schema/runner_status_matrix_v1.yaml`
+- `/specs/01_schema/runner_status_matrix_v1.yaml`
 
 Canonical ingest outputs:
 
@@ -60,9 +60,9 @@ Canonical ingest entrypoint:
 Consumer validation rules:
 
 - producer report `version` MUST be compatible with
-  `/specs/schema/runner_status_report_v1.yaml`
+  `/specs/01_schema/runner_status_report_v1.yaml`
 - validation context MUST use control-plane schema pin metadata from
-  `/specs/schema/schema_catalog_v1.yaml`
+  `/specs/01_schema/schema_catalog_v1.yaml`
 
 ## Freshness and Enforcement
 
@@ -89,4 +89,4 @@ Common failure classes:
 
 - This contract does not move runner implementation code into `data-contracts`.
 - This contract does not change lane-class ownership semantics in
-  `/specs/contract/25_compatibility_matrix.md`.
+  `/specs/02_contracts/25_compatibility_matrix.md`.

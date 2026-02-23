@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCCONF-STDLIB-001
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: core numeric and set operators evaluate deterministically
 purpose: Validates representative numeric operators in the stdlib profile.
 type: contract.check
@@ -42,14 +42,14 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+      path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-002
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: core collection and object operators evaluate deterministically
 purpose: Validates representative object and json operators in the stdlib profile.
 type: contract.check
@@ -90,14 +90,14 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+      path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-003
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: ops fs path operators evaluate deterministically
 purpose: Validates pure contract-posix path helpers under ops.fs.path.
 type: contract.check
@@ -149,14 +149,14 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+      path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-004
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: ops fs file metadata helpers evaluate deterministically
 purpose: Validates metadata-only file predicates and getters under ops.fs.file.
 type: contract.check
@@ -176,7 +176,7 @@ contract:
     - std.logic.eq:
       - ops.fs.file.exists:
         - lit:
-            path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+            path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
             exists: true
             type: file
             size_bytes: 12
@@ -184,7 +184,7 @@ contract:
     - std.logic.eq:
       - ops.fs.file.is_file:
         - lit:
-            path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+            path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
             exists: true
             type: file
       - true
@@ -198,22 +198,22 @@ contract:
     - std.logic.eq:
       - ops.fs.file.name:
         - lit:
-            path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+            path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
       - spec_lang_stdlib.spec.md
     - std.logic.eq:
       - ops.fs.file.parent:
         - lit:
-            path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
-      - /specs/conformance/cases/core
+            path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
+      - /specs/03_conformance/cases/core
     - std.logic.eq:
       - ops.fs.file.ext:
         - lit:
-            path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+            path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
       - .md
     - std.logic.eq:
       - ops.fs.file.get:
         - lit:
-            path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+            path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
             exists: true
         - missing
         - fallback
@@ -222,14 +222,14 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+      path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-005
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: ops fs json helpers evaluate deterministically
 purpose: Validates pure json parse/path helpers under ops.fs.json.
 type: contract.check
@@ -298,14 +298,14 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+      path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-006
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: ops fs json helpers fail schema for bad argument shapes
 purpose: Ensures ops.fs.json path utilities reject invalid path shapes.
 type: contract.check
@@ -333,14 +333,14 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+      path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-007
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: ops fs glob helpers evaluate deterministically
 purpose: Validates pure glob matching/filter helpers under ops.fs.glob.
 type: contract.check
@@ -388,14 +388,14 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+      path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-008
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: ops fs glob helpers fail schema for bad argument shapes
 purpose: Ensures ops.fs.glob helpers reject invalid list element types.
 type: contract.check
@@ -424,14 +424,14 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+      path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-009
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: ops fs path relativize and common_prefix evaluate deterministically
 purpose: Validates pure relative-path and common-prefix helpers.
 type: contract.check
@@ -474,14 +474,14 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+      path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-010
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: ops fs path common_prefix fails schema for non-string entries
 purpose: Ensures common_prefix rejects list entries that are not strings.
 type: contract.check
@@ -509,14 +509,14 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+      path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-011
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: ops fs path parents and within evaluate deterministically
 purpose: Validates pure parent chain and containment helpers.
 type: contract.check
@@ -566,14 +566,14 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+      path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-012
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: ops fs path parents fails schema for non-string argument
 purpose: Ensures parents rejects non-string input.
 type: contract.check
@@ -599,14 +599,14 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+      path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-013
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: ops fs path compare and sort evaluate deterministically
 purpose: Validates pure normalized path compare and sort helpers.
 type: contract.check
@@ -647,14 +647,14 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+      path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-STDLIB-014
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: ops fs path sort fails schema for non-string entries
 purpose: Ensures sort rejects list entries that are not strings.
 type: contract.check
@@ -683,5 +683,5 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/conformance/cases/core/spec_lang_stdlib.spec.md
+      path: /specs/03_conformance/cases/core/spec_lang_stdlib.spec.md
 ```

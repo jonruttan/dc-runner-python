@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCGOV-RUNTIME-SPECLANG-EXPORT-001
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: non-canonical spec_lang.export type is forbidden after hard cut
 purpose: Ensures executable spec surfaces reject type spec_lang.export and require spec.export
   producer cases.
@@ -13,7 +13,7 @@ harness:
     config:
       check: runtime.spec_lang_export_type_forbidden
   use:
-  - ref: /specs/libraries/policy/policy_core.spec.md
+  - ref: /specs/05_libraries/policy/policy_core.spec.md
     as: lib_policy_core_spec
     symbols:
     - policy.pass_when_no_violations

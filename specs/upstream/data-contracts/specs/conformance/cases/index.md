@@ -28,6 +28,8 @@ Case fixtures that portable runner implementations execute.
 - `cli-run-entrypoint.spec.md`: entrypoint precedence and capability gating
 - `failure-context.spec.md`: deterministic failure context tokens
 - `php-text-file-subset.spec.md`: portable `text.file` subset used for PHP parity
+- `runner_cli/*.spec.md`: portable runner CLI required commands and optional capability negotiation
+- `runner_build_tool/*.spec.md`: tool-agnostic build tool task contract and manifest requirement surface
 
 ## Case Index
 
@@ -147,3 +149,8 @@ Case fixtures that portable runner implementations execute.
 - `DCCONF-JOB-REP-016`
 - `DCCONF-JOB-REP-017`
 - `DCCONF-JOB-REP-018`
+- `DCCONF-BTOOL-001`
+- `DCCONF-BTOOL-002`
+- `DCCONF-BTOOL-003`
+- `DCCONF-BTOOL-004`
+- `DCCONF-BTOOL-005`

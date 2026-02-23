@@ -48,7 +48,7 @@ Fail-fast gate controls:
 
 ## Artifact
 
-- Schema: `/specs/schema/run_trace_v1.yaml`
+- Schema: `/specs/01_schema/run_trace_v1.yaml`
 - JSON artifact: `/.artifacts/run-trace.json`
 - Summary artifact: `/.artifacts/run-trace-summary.md`
 

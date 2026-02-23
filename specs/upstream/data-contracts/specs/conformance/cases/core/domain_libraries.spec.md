@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCCONF-DOMAIN-LIB-001
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: domain http library defines status helper
 purpose: Ensures domain HTTP library exports reusable status-based assertion helper.
 type: contract.check
@@ -9,9 +9,9 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/libraries/domain/http_core.spec.md
+      path: /specs/05_libraries/domain/http_core.spec.md
   use:
-  - ref: /specs/libraries/domain/http_core.spec.md
+  - ref: /specs/05_libraries/domain/http_core.spec.md
     as: lib_http_core_spec
     symbols:
     - domain.http.auth_is_oauth
@@ -198,7 +198,7 @@ contract:
 ```yaml contract-spec
 id: DCCONF-DOMAIN-LIB-002
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: domain library index references all domain library files
 purpose: Ensures domain index remains synchronized with all domain library spec files.
 type: contract.check
@@ -206,13 +206,13 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/libraries/domain/index.md
+      path: /specs/05_libraries/domain/index.md
   use:
-  - ref: /specs/libraries/domain/make_core.spec.md
+  - ref: /specs/05_libraries/domain/make_core.spec.md
     as: lib_make_core_spec
     symbols:
     - make.has_target
-  - ref: /specs/libraries/domain/markdown_core.spec.md
+  - ref: /specs/05_libraries/domain/markdown_core.spec.md
     as: lib_markdown_core_spec
     symbols:
     - domain.markdown.code_fence_language_exists
@@ -227,7 +227,7 @@ harness:
     - domain.markdown.token_ownership_unique
     - domain.markdown.token_present
     - domain.markdown.tokens_all_present
-  - ref: /specs/libraries/domain/fs_core.spec.md
+  - ref: /specs/05_libraries/domain/fs_core.spec.md
     as: lib_fs_core_spec
     symbols:
     - domain.fs.file_ext_eq
@@ -240,7 +240,7 @@ harness:
     - domain.fs.json_has_path_text
     - domain.fs.json_path_eq_text
     - domain.fs.sort_spec_files
-  - ref: /specs/libraries/domain/path_core.spec.md
+  - ref: /specs/05_libraries/domain/path_core.spec.md
     as: lib_path_core_spec
     symbols:
     - domain.path.normalize
@@ -252,11 +252,11 @@ harness:
     - domain.file.is_existing_dir
     - domain.file.has_ext
     - domain.file.name
-  - ref: /specs/libraries/domain/python_core.spec.md
+  - ref: /specs/05_libraries/domain/python_core.spec.md
     as: lib_python_core_spec
     symbols:
     - py.is_tuple_projection
-  - ref: /specs/libraries/domain/php_core.spec.md
+  - ref: /specs/05_libraries/domain/php_core.spec.md
     as: lib_php_core_spec
     symbols:
     - php.is_assoc_projection
@@ -298,17 +298,17 @@ contract:
       - call:
         - {var: domain.path.normalize}
         - /docs//spec/./libraries/domain/http_core.spec.md
-      - /specs/libraries/domain/http_core.spec.md
+      - /specs/05_libraries/domain/http_core.spec.md
     - call:
       - {var: domain.path.eq}
-      - /specs/libraries/domain/http_core.spec.md
-      - /specs/libraries/domain//http_core.spec.md
+      - /specs/05_libraries/domain/http_core.spec.md
+      - /specs/05_libraries/domain//http_core.spec.md
     - call:
       - {var: domain.path.is_spec_md}
-      - /specs/libraries/domain/http_core.spec.md
+      - /specs/05_libraries/domain/http_core.spec.md
     - call:
       - {var: domain.path.is_in_docs}
-      - /specs/libraries/domain/http_core.spec.md
+      - /specs/05_libraries/domain/http_core.spec.md
     - std.logic.eq:
       - call:
         - {var: domain.path.sorted}
@@ -320,7 +320,7 @@ contract:
         - /docs/b
     - call:
       - {var: domain.fs.is_docs_spec_file}
-      - /specs/conformance/cases/core/domain_libraries.spec.md
+      - /specs/03_conformance/cases/core/domain_libraries.spec.md
     - std.logic.eq:
       - call:
         - {var: domain.fs.sort_spec_files}
@@ -387,50 +387,50 @@ contract:
     - call:
       - {var: domain.fs.file_ext_eq}
       - lit:
-          path: /specs/libraries/domain/http_core.spec.md
+          path: /specs/05_libraries/domain/http_core.spec.md
       - md
     - call:
       - {var: domain.file.is_existing_file}
       - lit:
-          path: /specs/libraries/domain/http_core.spec.md
+          path: /specs/05_libraries/domain/http_core.spec.md
           exists: true
           type: file
     - call:
       - {var: domain.file.is_existing_dir}
       - lit:
-          path: /specs/libraries/domain
+          path: /specs/05_libraries/domain
           exists: true
           type: dir
     - call:
       - {var: domain.file.has_ext}
       - lit:
-          path: /specs/libraries/domain/http_core.spec.md
+          path: /specs/05_libraries/domain/http_core.spec.md
       - .md
     - std.logic.eq:
       - call:
         - {var: domain.file.name}
         - lit:
-            path: /specs/libraries/domain/http_core.spec.md
+            path: /specs/05_libraries/domain/http_core.spec.md
       - http_core.spec.md
     - std.string.contains:
       - {var: text}
-      - /specs/libraries/domain/http_core.spec.md
+      - /specs/05_libraries/domain/http_core.spec.md
     - std.string.contains:
       - {var: text}
-      - /specs/libraries/domain/fs_core.spec.md
+      - /specs/05_libraries/domain/fs_core.spec.md
     - std.string.contains:
       - {var: text}
-      - /specs/libraries/domain/make_core.spec.md
+      - /specs/05_libraries/domain/make_core.spec.md
     - std.string.contains:
       - {var: text}
-      - /specs/libraries/domain/markdown_core.spec.md
+      - /specs/05_libraries/domain/markdown_core.spec.md
     - std.string.contains:
       - {var: text}
-      - /specs/libraries/domain/path_core.spec.md
+      - /specs/05_libraries/domain/path_core.spec.md
     - std.string.contains:
       - {var: text}
-      - /specs/libraries/domain/php_core.spec.md
+      - /specs/05_libraries/domain/php_core.spec.md
     - std.string.contains:
       - {var: text}
-      - /specs/libraries/domain/python_core.spec.md
+      - /specs/05_libraries/domain/python_core.spec.md
 ```

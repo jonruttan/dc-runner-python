@@ -20,10 +20,10 @@ Date: 2026-02-18
 
 ## Canonical Specs
 
-- `/specs/schema/schema_v1.md`
-- `/specs/contract/index.md`
+- `/specs/01_schema/schema_v1.md`
+- `/specs/02_contracts/index.md`
 - `/specs/governance/index.md`
-- `/specs/libraries/index.md`
+- `/specs/05_libraries/index.md`
 - `runner-owned implementation specs/index.md`
 
 ## Derived Docs
@@ -32,4 +32,4 @@ Generated references in `/docs/book/9*.md` are derived from canonical spec sourc
 
 ## Runtime Profiling Snapshot
 
-- `run_trace_v1` contract snapshot is defined in `/specs/schema/run_trace_v1.yaml`.
+- `run_trace_v1` contract snapshot is defined in `/specs/01_schema/run_trace_v1.yaml`.

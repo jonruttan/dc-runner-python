@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCGOV-CONF-LIB-EXPR-001
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: spec_lang conformance fixture uses shared helper library calls
 purpose: Ensures spec_lang conformance fixtures reuse shared conformance helper library functions
   for repeated expression patterns.
@@ -9,8 +9,8 @@ type: contract.check
 harness:
   root: .
   spec_lang_fixture_library_usage:
-    path: /specs/conformance/cases/core/spec_lang.spec.md
-    required_library_path: /specs/libraries/conformance/assertion_core.spec.md
+    path: /specs/03_conformance/cases/core/spec_lang.spec.md
+    required_library_path: /specs/05_libraries/conformance/assertion_core.spec.md
     required_call_prefix: conf.
     min_call_count: 4
     required_case_ids:
@@ -22,7 +22,7 @@ harness:
     config:
       check: conformance.spec_lang_fixture_library_usage
   use:
-  - ref: /specs/libraries/policy/policy_core.spec.md
+  - ref: /specs/05_libraries/policy/policy_core.spec.md
     as: lib_policy_core_spec
     symbols:
     - policy.pass_when_no_violations

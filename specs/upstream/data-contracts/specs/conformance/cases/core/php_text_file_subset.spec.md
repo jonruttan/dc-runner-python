@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-001
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: text.file contain assertion passes in php bootstrap
 purpose: Baseline positive contain check for the php text.file subset.
 type: contract.check
@@ -32,7 +32,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-002
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: text.file regex assertion can fail in php bootstrap
 purpose: Baseline failing regex check for the php text.file subset.
 type: contract.check
@@ -63,7 +63,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-003
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: nested must group with inherited target passes
 purpose: Verifies nested must groups inherit target from parent nodes.
 type: contract.check
@@ -94,7 +94,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-004
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: can passes when at least one branch passes
 purpose: Verifies can succeeds when at least one branch succeeds.
 type: contract.check
@@ -129,7 +129,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-005
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: can fails when all branches fail
 purpose: Verifies can fails when every branch assertion fails.
 type: contract.check
@@ -164,7 +164,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-006
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: cannot passes when all branches fail
 purpose: Verifies cannot succeeds when every branch assertion fails.
 type: contract.check
@@ -199,7 +199,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-007
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: cannot fails when any branch passes
 purpose: Verifies cannot fails when at least one branch succeeds.
 type: contract.check
@@ -234,7 +234,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-008
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: nested mixed groups with inherited target passes
 purpose: Covers mixed nested must/may/must_not evaluation with inherited targets.
 type: contract.check
@@ -275,7 +275,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-009
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate regex remains pass under assert_health error mode
 purpose: Confirms evaluate regex assertions bypass sugar diagnostics and can pass under error
   mode.
@@ -309,7 +309,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-010
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate empty contains remains pass under assert_health error mode
 purpose: Confirms evaluate contains with empty string does not trigger sugar diagnostic failures
   in error mode.
@@ -343,7 +343,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-011
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate always-true regex remains pass under assert_health error mode
 purpose: Confirms evaluate regex assertions are evaluated directly without sugar-level AH002
   failures.
@@ -377,7 +377,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-012
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate duplicate contains remain pass under assert_health error mode
 purpose: Confirms evaluate duplicate contains expressions do not trigger sugar-level AH003
   diagnostics.
@@ -417,7 +417,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-013
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate sibling branches remain pass under assert_health error mode
 purpose: Confirms evaluate-only non-redundant sibling branches in can groups remain valid
   in error mode.
@@ -455,7 +455,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-PHP-TEXT-014
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: warn mode emits diagnostics without failing the case
 purpose: Checks warn mode emits diagnostics without converting the case to failure.
 type: contract.check

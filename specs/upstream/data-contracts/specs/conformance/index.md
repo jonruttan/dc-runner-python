@@ -6,10 +6,10 @@ Cross-runner conformance fixtures and report contracts.
 
 ## Canonical Inputs
 
-- Style contract: `/specs/conformance/style.md`
-- Report format: `/specs/conformance/report_format.md`
-- Purpose lint policy: `/specs/conformance/purpose_lint_v1.yaml`
-- Cases index: `/specs/conformance/cases/index.md`
+- Style contract: `/specs/03_conformance/style.md`
+- Report format: `/specs/03_conformance/report_format.md`
+- Purpose lint policy: `/specs/03_conformance/purpose_lint_v1.yaml`
+- Cases index: `/specs/03_conformance/cases/index.md`
 
 ## Execution
 

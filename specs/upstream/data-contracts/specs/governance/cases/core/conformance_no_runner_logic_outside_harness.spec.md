@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCGOV-CONF-PORT-001
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: conformance cases keep runner logic under harness
 purpose: Ensures portable conformance fixtures do not place runner/setup keys at top level.
 type: contract.check
@@ -12,7 +12,7 @@ harness:
     config:
       check: conformance.no_runner_logic_outside_harness
   use:
-  - ref: /specs/libraries/policy/policy_core.spec.md
+  - ref: /specs/05_libraries/policy/policy_core.spec.md
     as: lib_policy_core_spec
     symbols:
     - policy.pass_when_no_violations

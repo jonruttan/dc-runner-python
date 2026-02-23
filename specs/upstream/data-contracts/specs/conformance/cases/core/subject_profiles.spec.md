@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCCONF-PROFILE-001
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: subject profile schema defines canonical envelope fields
 purpose: Ensures subject profile schema defines JSON-core envelope and deterministic projection
   constraints.
@@ -35,14 +35,14 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/schema/subject_profiles_v1.yaml
+      path: /specs/01_schema/subject_profiles_v1.yaml
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-PROFILE-002
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: text.file exposes context_json subject profile envelope
 purpose: Ensures text.file harness provides context_json target with profile metadata and
   JSON value payload.
@@ -80,5 +80,5 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/contract/20_subject_profiles_v1.md
+      path: /specs/02_contracts/20_subject_profiles_v1.md
 ```

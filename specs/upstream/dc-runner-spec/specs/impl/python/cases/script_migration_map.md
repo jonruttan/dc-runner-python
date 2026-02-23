@@ -5,9 +5,9 @@ Frozen conversion inventory from script-focused unit suites to executable spec s
 ## Ownership Updates (Cross-Runner De-dup Sweep)
 
 - Legacy Rust-local report job contracts moved to canonical upstream:
-  - `/specs/upstream/data-contracts/specs/conformance/cases/core/report_job_contracts.spec.md`
+  - `/specs/upstream/data-contracts/specs/03_conformance/cases/core/report_job_contracts.spec.md`
 - Legacy Rust-local script command-contract subset moved to canonical upstream:
-  - `/specs/upstream/data-contracts/specs/conformance/cases/core/script_job_contracts.spec.md`
+  - `/specs/upstream/data-contracts/specs/03_conformance/cases/core/script_job_contracts.spec.md`
 
 ## Python-local Scope (unchanged in this sweep)
 

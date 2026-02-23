@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCGOV-RUNTIME-PYDEP-003
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: non-python lanes avoid direct python execution tokens
 purpose: Ensures default gate/orchestration and rust adapter lane files do not contain python
   execution tokens.
@@ -14,7 +14,7 @@ harness:
     config:
       check: runtime.non_python_lane_no_python_exec
   use:
-  - ref: /specs/libraries/policy/policy_core.spec.md
+  - ref: /specs/05_libraries/policy/policy_core.spec.md
     as: lib_policy_core_spec
     symbols:
     - policy.pass_when_no_violations

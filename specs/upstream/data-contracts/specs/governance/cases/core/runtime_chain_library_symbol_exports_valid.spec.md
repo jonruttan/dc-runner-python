@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCGOV-CHAIN-FROM-003
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: chain assert function imports are valid
 purpose: Ensures from=assert.function step imports include valid symbol path and contract
   shape.
@@ -13,7 +13,7 @@ harness:
     config:
       check: runtime.chain_library_symbol_exports_valid
   use:
-  - ref: /specs/libraries/policy/policy_core.spec.md
+  - ref: /specs/05_libraries/policy/policy_core.spec.md
     as: lib_policy_core_spec
     symbols:
     - policy.pass_when_no_violations

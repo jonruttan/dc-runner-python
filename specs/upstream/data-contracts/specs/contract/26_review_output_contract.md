@@ -1,6 +1,6 @@
 # Review Output Contract (v1)
 
-Source of truth: `/specs/schema/review_snapshot_schema_v1.yaml`
+Source of truth: `/specs/01_schema/review_snapshot_schema_v1.yaml`
 
 Defines the required machine-consumable markdown shape for review snapshots under `/docs/history/reviews/snapshots`.
 

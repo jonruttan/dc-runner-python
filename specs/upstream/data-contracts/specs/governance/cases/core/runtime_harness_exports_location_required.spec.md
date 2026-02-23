@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCGOV-HARNESS-EXPORTS-001
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: producer exports are declared at harness.exports
 purpose: Ensures producer symbol declarations are declared at harness.exports and non-canonical
   harness.chain.exports is rejected.

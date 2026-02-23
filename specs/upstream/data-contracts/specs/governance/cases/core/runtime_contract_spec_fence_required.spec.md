@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCGOV-RUNTIME-CONTRACT-SPEC-001
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: executable case fences must use contract-spec
 purpose: Enforces hard-cut fence rename to contract-spec across specs cases.
 type: contract.check

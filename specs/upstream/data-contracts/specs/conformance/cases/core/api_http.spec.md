@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCCONF-API-001
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http GET reads relative fixture and exposes body assertions
 purpose: Verifies api.http can resolve a local relative request url and assert deterministic
   status and json body shape.
@@ -41,14 +41,14 @@ harness:
     config:
       request:
         method: GET
-        url: /specs/conformance/cases/fixtures/api_http_ok.json
+        url: /specs/03_conformance/cases/fixtures/api_http_ok.json
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-API-002
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http requires request.url
 purpose: Verifies api.http reports a schema violation when request url is missing from portable
   fixture input.
@@ -87,7 +87,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-API-003
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http skip path honors requires.when_missing
 purpose: Verifies extension capability gating can skip fixtures when a required capability
   is absent.
@@ -120,14 +120,14 @@ harness:
     config:
       request:
         method: GET
-        url: /specs/conformance/cases/fixtures/api_http_ok.json
+        url: /specs/03_conformance/cases/fixtures/api_http_ok.json
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-API-004
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http supports POST with body_json
 purpose: Verifies practical REST mutating verb support for POST requests in deterministic
   mode.
@@ -158,7 +158,7 @@ harness:
     config:
       request:
         method: POST
-        url: /specs/conformance/cases/fixtures/api_http_created.json
+        url: /specs/03_conformance/cases/fixtures/api_http_created.json
         body_json:
           name: sample
 ```
@@ -167,7 +167,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-API-005
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http supports PUT
 purpose: Verifies practical REST verb support for PUT in deterministic mode.
 type: contract.check
@@ -197,14 +197,14 @@ harness:
     config:
       request:
         method: PUT
-        url: /specs/conformance/cases/fixtures/api_http_item_abc-123.json
+        url: /specs/03_conformance/cases/fixtures/api_http_item_abc-123.json
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-API-006
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http supports PATCH
 purpose: Verifies practical REST verb support for PATCH in deterministic mode.
 type: contract.check
@@ -234,14 +234,14 @@ harness:
     config:
       request:
         method: PATCH
-        url: /specs/conformance/cases/fixtures/api_http_item_abc-123.json
+        url: /specs/03_conformance/cases/fixtures/api_http_item_abc-123.json
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-API-007
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http supports DELETE
 purpose: Verifies practical REST verb support for DELETE in deterministic mode.
 type: contract.check
@@ -273,14 +273,14 @@ harness:
     config:
       request:
         method: DELETE
-        url: /specs/conformance/cases/fixtures/api_http_deleted.json
+        url: /specs/03_conformance/cases/fixtures/api_http_deleted.json
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-API-008
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http supports HEAD
 purpose: Verifies practical REST verb support for HEAD in deterministic mode.
 type: contract.check
@@ -310,14 +310,14 @@ harness:
     config:
       request:
         method: HEAD
-        url: /specs/conformance/cases/fixtures/api_http_ok.json
+        url: /specs/03_conformance/cases/fixtures/api_http_ok.json
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-API-009
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http supports OPTIONS
 purpose: Verifies practical REST verb support for OPTIONS in deterministic mode.
 type: contract.check
@@ -347,14 +347,14 @@ harness:
     config:
       request:
         method: OPTIONS
-        url: /specs/conformance/cases/fixtures/api_http_ok.json
+        url: /specs/03_conformance/cases/fixtures/api_http_ok.json
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-API-010
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http rejects unsupported request method
 purpose: Verifies unsupported HTTP verbs are rejected as schema violations.
 type: contract.check
@@ -386,14 +386,14 @@ harness:
     config:
       request:
         method: TRACE
-        url: /specs/conformance/cases/fixtures/api_http_ok.json
+        url: /specs/03_conformance/cases/fixtures/api_http_ok.json
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-API-011
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http preflight requires OPTIONS method
 purpose: Verifies cors preflight helper enforces request.method OPTIONS.
 type: contract.check
@@ -425,7 +425,7 @@ harness:
     config:
       request:
         method: GET
-        url: /specs/conformance/cases/fixtures/api_http_ok.json
+        url: /specs/03_conformance/cases/fixtures/api_http_ok.json
         cors:
           preflight: true
           origin: https://client.example
@@ -436,7 +436,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-API-012
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http scenario executes round-trip requests in order
 purpose: Verifies requests scenario supports step templating and exposes steps_json target.
 type: contract.check
@@ -457,13 +457,13 @@ harness:
       requests:
       - id: create
         method: POST
-        url: /specs/conformance/cases/fixtures/api_http_created.json
+        url: /specs/03_conformance/cases/fixtures/api_http_created.json
       - id: get
         method: GET
-        url: /specs/conformance/cases/fixtures/api_http_item_{{steps.create.body_json.id}}.json
+        url: /specs/03_conformance/cases/fixtures/api_http_item_{{steps.create.body_json.id}}.json
       - id: cleanup
         method: DELETE
-        url: /specs/conformance/cases/fixtures/api_http_deleted.json
+        url: /specs/03_conformance/cases/fixtures/api_http_deleted.json
 contract:
   defaults:
     class: MUST
@@ -493,7 +493,7 @@ contract:
 ```yaml contract-spec
 id: DCCONF-API-013
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http oauth deterministic local token exchange
 purpose: Verifies oauth auth profile resolves env refs and produces oauth context metadata
   without network access.
@@ -511,7 +511,7 @@ harness:
     auth:
       oauth:
         grant_type: client_credentials
-        token_url: /specs/conformance/cases/fixtures/oauth_token_ok.json
+        token_url: /specs/03_conformance/cases/fixtures/oauth_token_ok.json
         client_id_env: PATH
         client_secret_env: HOME
         scope: read:spec
@@ -520,7 +520,7 @@ harness:
     config:
       request:
         method: GET
-        url: /specs/conformance/cases/fixtures/api_http_ok.json
+        url: /specs/03_conformance/cases/fixtures/api_http_ok.json
 contract:
   defaults:
     class: MUST
@@ -551,7 +551,7 @@ contract:
 ```yaml contract-spec
 id: DCCONF-API-014
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http oauth missing env refs is schema failure
 purpose: Verifies oauth env-ref credentials are required and missing env vars fail as schema.
 type: contract.check
@@ -569,7 +569,7 @@ harness:
     auth:
       oauth:
         grant_type: client_credentials
-        token_url: /specs/conformance/cases/fixtures/oauth_token_ok.json
+        token_url: /specs/03_conformance/cases/fixtures/oauth_token_ok.json
         client_id_env: SPEC_RUNNER_OAUTH_MISSING_CLIENT_ID
         client_secret_env: SPEC_RUNNER_OAUTH_MISSING_CLIENT_SECRET
   check:
@@ -577,7 +577,7 @@ harness:
     config:
       request:
         method: GET
-        url: /specs/conformance/cases/fixtures/api_http_ok.json
+        url: /specs/03_conformance/cases/fixtures/api_http_ok.json
 contract:
   defaults:
     class: MUST
@@ -597,7 +597,7 @@ contract:
 ```yaml contract-spec
 id: DCCONF-API-015
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http oauth invalid auth_style is schema failure
 purpose: Verifies oauth auth_style is validated against supported values.
 type: contract.check
@@ -615,7 +615,7 @@ harness:
     auth:
       oauth:
         grant_type: client_credentials
-        token_url: /specs/conformance/cases/fixtures/oauth_token_ok.json
+        token_url: /specs/03_conformance/cases/fixtures/oauth_token_ok.json
         client_id_env: PATH
         client_secret_env: HOME
         auth_style: token
@@ -624,7 +624,7 @@ harness:
     config:
       request:
         method: GET
-        url: /specs/conformance/cases/fixtures/api_http_ok.json
+        url: /specs/03_conformance/cases/fixtures/api_http_ok.json
 contract:
   defaults:
     class: MUST
@@ -644,7 +644,7 @@ contract:
 ```yaml contract-spec
 id: DCCONF-API-016
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http oauth live mode is optional capability
 type: contract.check
 purpose: Verifies optional live oauth/network execution can be capability-gated and skipped
@@ -692,7 +692,7 @@ contract:
 ```yaml contract-spec
 id: DCCONF-API-017
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http exposes new domain.http helper exports for CORS and steps
 purpose: Maintains reference usage for domain.http CORS and scenario helper symbol exports.
 type: contract.check
@@ -711,9 +711,9 @@ harness:
     config:
       request:
         method: GET
-        url: /specs/conformance/cases/fixtures/api_http_ok.json
+        url: /specs/03_conformance/cases/fixtures/api_http_ok.json
   use:
-  - ref: /specs/libraries/domain/http_core.spec.md
+  - ref: /specs/05_libraries/domain/http_core.spec.md
     as: lib_http_core_spec
     symbols:
     - domain.http.cors_allow_origin

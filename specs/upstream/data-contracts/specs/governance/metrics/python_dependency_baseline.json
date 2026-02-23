@@ -40,8 +40,8 @@
       ],
       "default_gate": [
         "scripts/ci_gate.sh",
-        "scripts/core_gate.sh",
-        "scripts/docs_doctor.sh"
+        "scripts/ci_gate.sh",
+        "scripts/control_plane.sh"
       ],
       "python_surfaces": [
         "scripts/runner_bin.sh",
@@ -82,14 +82,14 @@
     },
     {
       "allowed_python_surface": 0.0,
-      "file": "scripts/core_gate.sh",
+      "file": "scripts/ci_gate.sh",
       "python_token_count": 0.0,
       "segment": "default_gate",
       "transitive_token_count": 0.0
     },
     {
       "allowed_python_surface": 0.0,
-      "file": "scripts/docs_doctor.sh",
+      "file": "scripts/control_plane.sh",
       "python_token_count": 0.0,
       "segment": "default_gate",
       "transitive_token_count": 0.0

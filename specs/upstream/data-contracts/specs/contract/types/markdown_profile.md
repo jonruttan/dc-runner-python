@@ -12,7 +12,7 @@ Projection rules:
 
 Dual-input contract:
 
-- helpers in `/specs/libraries/domain/markdown_core.spec.md` MUST accept:
+- helpers in `/specs/05_libraries/domain/markdown_core.spec.md` MUST accept:
   - raw markdown text string subjects
   - markdown profile envelope mapping subjects
 - when neither a string nor a mapping envelope is provided, evaluation is a

@@ -38,7 +38,7 @@ Minimum checks:
 - `rust` is the only required (blocking) runtime lane.
 - `python` and `php` are compatibility lanes and non-blocking.
 - future non-Rust lanes (`node`, `c`) are compatibility/non-blocking by default.
-- Lane class definitions are normative in `/specs/contract/25_compatibility_matrix.md`.
+- Lane class definitions are normative in `/specs/02_contracts/25_compatibility_matrix.md`.
 
 ## Compatibility Expectation
 

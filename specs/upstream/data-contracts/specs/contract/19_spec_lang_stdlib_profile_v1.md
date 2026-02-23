@@ -4,7 +4,7 @@ This contract defines the complete fixed stdlib surface for spec-lang v1.
 
 ## Source Of Truth
 
-- Profile file: `/specs/schema/spec_lang_stdlib_profile_v1.yaml`
+- Profile file: `/specs/01_schema/spec_lang_stdlib_profile_v1.yaml`
 - The profile is normative for:
   - required symbols
   - category membership

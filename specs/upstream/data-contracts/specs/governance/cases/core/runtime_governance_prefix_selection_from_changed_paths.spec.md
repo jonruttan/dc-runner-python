@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCGOV-RUNTIME-TRIAGE-011
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: governance triage selects prefixes from changed paths
 type: contract.check
 purpose: Ensures triage auto mode derives targeted check prefixes from changed paths before
@@ -20,7 +20,7 @@ harness:
     config:
       check: runtime.governance_prefix_selection_from_changed_paths
   use:
-  - ref: /specs/libraries/policy/policy_core.spec.md
+  - ref: /specs/05_libraries/policy/policy_core.spec.md
     as: lib_policy_core_spec
     symbols:
     - policy.pass_when_no_violations

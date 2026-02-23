@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCGOV-CHAIN-006
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: chain refs use canonical scalar format
 purpose: Ensures harness.chain step refs are scalar [path][#case_id] values and reject non-canonical
   mapping form.
@@ -13,7 +13,7 @@ harness:
     config:
       check: runtime.chain_ref_scalar_required
   use:
-  - ref: /specs/libraries/policy/policy_core.spec.md
+  - ref: /specs/05_libraries/policy/policy_core.spec.md
     as: lib_policy_core_spec
     symbols:
     - policy.pass_when_no_violations

@@ -13,7 +13,7 @@ required_index_dirs:
 - /specs
 - /specs/contract
 - /specs/conformance
-- /specs/conformance/cases
+- /specs/03_conformance/cases
 - /specs/governance
 - runner-owned implementation specs
 forbidden_filenames:

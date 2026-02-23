@@ -21,8 +21,8 @@ No string parser and no implementation-defined extension hooks are part of v1.
 
 Stdlib completeness source of truth:
 
-- `/specs/schema/spec_lang_stdlib_profile_v1.yaml`
-- `/specs/contract/19_spec_lang_stdlib_profile_v1.md`
+- `/specs/01_schema/spec_lang_stdlib_profile_v1.yaml`
+- `/specs/02_contracts/19_spec_lang_stdlib_profile_v1.md`
 
 Runtime requirement:
 
@@ -324,7 +324,7 @@ Library configuration (optional):
 harness:
   spec_lang:
     includes:
-    - /specs/libraries/common.spec.md
+    - /specs/05_libraries/common.spec.md
     imports:
     - /is_portable_case
 ```

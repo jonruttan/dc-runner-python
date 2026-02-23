@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCGOV-RUNTIME-CI-003
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: matrix artifacts are emitted in ci
 purpose: Ensures CI publishes canonical status matrix artifacts.
 type: contract.check

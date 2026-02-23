@@ -5,7 +5,7 @@ debugging and parity checks remain deterministic.
 ```yaml contract-spec
 id: DCCONF-ERR-001
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: failing assertion includes context tokens in message
 purpose: Guarantees failure messages carry deterministic context tokens for debugging and
   parity.

@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCCONF-EXPR-001
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate simple predicate passes
 purpose: Verifies evaluate runs a basic true predicate against the target subject.
 type: contract.check
@@ -17,7 +17,7 @@ harness:
     profile: text.file
     config: {}
   use:
-  - ref: /specs/libraries/conformance/assertion_core.spec.md
+  - ref: /specs/05_libraries/conformance/assertion_core.spec.md
     as: lib_assertion_core_spec
     symbols:
     - conf.pass_when_text_contains
@@ -42,7 +42,7 @@ contract:
 ```yaml contract-spec
 id: DCCONF-EXPR-002
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate composed boolean passes
 purpose: Verifies composed boolean expressions evaluate correctly across both runner implementations.
 type: contract.check
@@ -58,7 +58,7 @@ harness:
     profile: text.file
     config: {}
   use:
-  - ref: /specs/libraries/conformance/assertion_core.spec.md
+  - ref: /specs/05_libraries/conformance/assertion_core.spec.md
     as: lib_assertion_core_spec
     symbols:
     - conf.pass_when_text_contains
@@ -86,7 +86,7 @@ contract:
 ```yaml contract-spec
 id: DCCONF-EXPR-003
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate tail recursion is stack safe
 purpose: Verifies unsupported mixed literal-expression recursive forms fail deterministically
   under mapping AST hard-cut rules.
@@ -146,7 +146,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-004
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate false predicate fails assertion
 purpose: Verifies evaluate false result is categorized as assertion failure.
 type: contract.check
@@ -182,7 +182,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-005
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate malformed form fails schema
 purpose: Verifies malformed evaluate forms fail with schema classification.
 type: contract.check
@@ -217,7 +217,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-006
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate unknown symbol fails schema
 purpose: Verifies unknown symbols are rejected as schema violations.
 type: contract.check
@@ -253,7 +253,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-007
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate recursive literal-expression shape fails schema
 purpose: Verifies unsupported recursive literal-expression authoring shape fails deterministically
   as schema.
@@ -308,7 +308,7 @@ contract:
 ```yaml contract-spec
 id: DCCONF-EXPR-008
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate contains supports explicit subject form
 purpose: Verifies evaluate contains succeeds with explicit subject arguments for the same
   target subject.
@@ -325,7 +325,7 @@ harness:
     profile: text.file
     config: {}
   use:
-  - ref: /specs/libraries/conformance/assertion_core.spec.md
+  - ref: /specs/05_libraries/conformance/assertion_core.spec.md
     as: lib_assertion_core_spec
     symbols:
     - conf.pass_when_text_contains
@@ -355,7 +355,7 @@ contract:
 ```yaml contract-spec
 id: DCCONF-EXPR-009
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate set intersection supports deep structural equality
 purpose: Verifies intersection deduplicates and compares nested values structurally with stable
   left-first output.
@@ -400,7 +400,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-010
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate set union keeps stable left-first unique ordering
 purpose: Verifies union preserves first-seen ordering while removing deep-equal duplicates.
 type: contract.check
@@ -444,7 +444,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-011
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate difference and symmetric_difference are deterministic
 purpose: Verifies set difference semantics and deterministic ordering for symmetric_difference.
 type: contract.check
@@ -497,7 +497,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-012
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate set predicates compare by deep equality
 purpose: Verifies set_equals, is_subset, is_superset, and includes use deep structural equality.
 type: contract.check
@@ -554,7 +554,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-013
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate map and filter support curried builtins
 purpose: Verifies builtin partial application works with map/filter collection transforms.
 type: contract.check
@@ -609,7 +609,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-014
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate reduce and collection helpers are deterministic
 purpose: Verifies reduce, reject, find, partition, group_by, and uniq_by behavior with curried
   predicates.
@@ -705,7 +705,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-015
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate flatten and list composition helpers
 purpose: Verifies flatten, concat, append, prepend, take, and drop operations.
 type: contract.check
@@ -784,7 +784,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-016
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate currying chain with nested call succeeds
 purpose: Verifies repeated partial application resolves deterministically to a final non-callable
   value.
@@ -828,7 +828,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-017
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate over-application of non-callable result is schema failure
 purpose: Verifies deterministic schema failure when extra call arguments remain after returning
   non-callable value.
@@ -874,7 +874,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-018
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate set ops enforce list inputs
 purpose: Verifies set algebra operators reject non-list inputs with schema errors.
 type: contract.check
@@ -916,7 +916,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-019
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate ramda v1 arithmetic and list utilities behave deterministically
 purpose: Verifies expanded numeric and list utility forms remain pure, strict-typed, and deterministic.
 type: contract.check
@@ -1040,7 +1040,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-020
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate ramda v1 object utilities
 purpose: Verifies expanded object helpers keep deterministic dictionary semantics.
 type: contract.check
@@ -1144,7 +1144,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-021
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate ramda v1 combinators and string helpers
 purpose: Verifies compose/pipe, constant-function behavior, and string transforms are deterministic.
 type: contract.check
@@ -1226,7 +1226,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-022
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate ramda v1 unary numeric and compare helpers
 purpose: Verifies unary numeric helpers and comparison helpers produce deterministic values
   for policy expressions.
@@ -1314,7 +1314,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-023
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate ramda v1 utility and predicate helpers
 purpose: Verifies utility and predicate helpers used by governance logic are deterministic
   and pure.
@@ -1497,7 +1497,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-EXPR-024
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: evaluate ramda v1 schema failures are deterministic
 purpose: Verifies representative arity and type failures stay in schema category for the expanded
   builtin surface.

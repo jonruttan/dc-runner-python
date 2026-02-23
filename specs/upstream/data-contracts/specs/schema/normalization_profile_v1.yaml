@@ -38,7 +38,7 @@ docs_layout:
   - /specs
   - /specs/contract
   - /specs/conformance
-  - /specs/conformance/cases
+  - /specs/03_conformance/cases
   - /specs/governance
   - /dc-runner-php
   forbidden_filenames:

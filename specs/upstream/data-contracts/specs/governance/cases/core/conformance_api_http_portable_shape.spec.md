@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCGOV-CONF-API-001
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http portable conformance cases use canonical shape
 purpose: Ensures api.http portable fixtures keep setup under harness and use only canonical
   behavior assertion targets.
@@ -37,7 +37,7 @@ harness:
     config:
       check: conformance.api_http_portable_shape
   use:
-  - ref: /specs/libraries/policy/policy_core.spec.md
+  - ref: /specs/05_libraries/policy/policy_core.spec.md
     as: lib_policy_core_spec
     symbols:
     - policy.pass_when_no_violations

@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCGOV-RUNTIME-TRIAGE-008
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: governance triage auto mode is targeted-first by default
 purpose: Ensures triage auto mode resolves to targeted-first and exposes broad-first as an
   explicit mode.
@@ -21,7 +21,7 @@ harness:
     config:
       check: runtime.governance_triage_targeted_first_required
   use:
-  - ref: /specs/libraries/policy/policy_core.spec.md
+  - ref: /specs/05_libraries/policy/policy_core.spec.md
     as: lib_policy_core_spec
     symbols:
     - policy.pass_when_no_violations

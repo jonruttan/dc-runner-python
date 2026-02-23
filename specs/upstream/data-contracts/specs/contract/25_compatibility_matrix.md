@@ -15,10 +15,10 @@ It is not a runtime-lane executor.
 
 ## Matrix Source and Shape
 
-- status producer schema: `/specs/schema/runner_status_report_v1.yaml`
-- matrix schema: `/specs/schema/runner_status_matrix_v1.yaml`
+- status producer schema: `/specs/01_schema/runner_status_report_v1.yaml`
+- matrix schema: `/specs/01_schema/runner_status_matrix_v1.yaml`
 - ingest entrypoint: `/scripts/runner_status_ingest.sh`
-- registry source: `/specs/schema/runner_certification_registry_v1.yaml`
+- registry source: `/specs/01_schema/runner_certification_registry_v1.yaml`
 
 ## Freshness
 

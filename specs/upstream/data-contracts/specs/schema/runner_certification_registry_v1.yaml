@@ -10,8 +10,8 @@ runners:
   - runtime.runner_interface_subcommands
   - runtime.compatibility_matrix_registration_required
   required_core_cases:
-  - /specs/conformance/cases/core/runner_certification_core.spec.md#DCCONF-RCERT-001
-  - /specs/conformance/cases/core/runner_certification_core.spec.md#DCCONF-RCERT-002
+  - /specs/03_conformance/cases/core/runner_certification_core.spec.md#DCCONF-RCERT-001
+  - /specs/03_conformance/cases/core/runner_certification_core.spec.md#DCCONF-RCERT-002
   command_contract_subset:
   - name: governance
     args: []

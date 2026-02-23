@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCCONF-LIB-CONTRACT-001
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: policy library uses producer harness exports
 purpose: Ensures policy library authoring uses producer-owned harness.exports with assert.function
   source mappings.
@@ -39,14 +39,14 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/libraries/policy/policy_core.spec.md
+      path: /specs/05_libraries/policy/policy_core.spec.md
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-LIB-CONTRACT-002
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: path library uses producer harness exports
 purpose: Ensures path library authoring uses producer-owned harness.exports with assert.function
   source mappings.
@@ -84,14 +84,14 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/libraries/path/path_core.spec.md
+      path: /specs/05_libraries/path/path_core.spec.md
 ```
 
 
 ```yaml contract-spec
 id: DCCONF-LIB-CONTRACT-003
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: policy library index tracks canonical files
 purpose: Ensures generated policy library index includes canonical file references.
 type: contract.check
@@ -110,13 +110,13 @@ contract:
     assert:
     - std.string.contains:
       - {var: text}
-      - /specs/libraries/policy/policy_core.spec.md
+      - /specs/05_libraries/policy/policy_core.spec.md
     - std.string.contains:
       - {var: text}
-      - /specs/libraries/policy/policy_metrics.spec.md
+      - /specs/05_libraries/policy/policy_metrics.spec.md
 harness:
   check:
     profile: text.file
     config:
-      path: /specs/libraries/policy/index.md
+      path: /specs/05_libraries/policy/index.md
 ```

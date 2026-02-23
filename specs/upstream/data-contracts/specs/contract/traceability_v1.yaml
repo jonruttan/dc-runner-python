@@ -492,7 +492,7 @@ links:
   policy_ref: specs/contract/policy_v1.yaml#SPEC_PORTABILITY_NON_REGRESSION_REQUIRED
   contract_refs:
   - specs/contract/07_portable_spec_authoring.md
-  - specs/governance/cases/core/spec_portability_non_regression.spec.md
+  - specs/governance/cases/core/spec_core/spec_portability_non_regression.spec.md
   schema_refs:
   - specs/schema/schema_v1.md
   conformance_case_ids: []
@@ -527,7 +527,7 @@ links:
   policy_ref: specs/contract/policy_v1.yaml#SPEC_LANG_ADOPTION_NON_REGRESSION_REQUIRED
   contract_refs:
   - specs/contract/07_portable_spec_authoring.md
-  - specs/governance/cases/core/spec_lang_adoption_non_regression.spec.md
+  - specs/governance/cases/core/spec_core/spec_lang_adoption_non_regression.spec.md
   schema_refs:
   - specs/schema/schema_v1.md
   conformance_case_ids: []
@@ -544,7 +544,7 @@ links:
   contract_refs:
   - specs/contract/14_spec_lang_libraries.md
   - specs/contract/18_governance_subject_extractors.md
-  - specs/governance/cases/core/spec_lang_adoption_non_regression.spec.md
+  - specs/governance/cases/core/spec_core/spec_lang_adoption_non_regression.spec.md
   schema_refs:
   - specs/schema/schema_v1.md
   conformance_case_ids: []
@@ -561,7 +561,7 @@ links:
   policy_ref: specs/contract/policy_v1.yaml#LIBRARY_PUBLIC_SURFACE_RATIO_NON_REGRESSION
   contract_refs:
   - specs/contract/14_spec_lang_libraries.md
-  - specs/governance/cases/core/spec_lang_adoption_non_regression.spec.md
+  - specs/governance/cases/core/spec_core/spec_lang_adoption_non_regression.spec.md
   schema_refs:
   - specs/schema/schema_v1.md
   conformance_case_ids: []
@@ -609,7 +609,7 @@ links:
   policy_ref: specs/contract/policy_v1.yaml#GOVERNANCE_POLICY_LIBRARY_USAGE_NON_REGRESSION
   contract_refs:
   - specs/contract/18_governance_subject_extractors.md
-  - specs/governance/cases/core/governance_policy_library_usage_non_regression.spec.md
+  - specs/governance/cases/core/spec_core/governance_policy_library_usage_non_regression.spec.md
   schema_refs:
   - specs/schema/schema_v1.md
   conformance_case_ids: []
@@ -724,8 +724,8 @@ links:
   - tests/test_quality_metrics_unit.py
   implementation_refs:
   - scripts/ci_gate.sh
-  - scripts/core_gate.sh
-  - scripts/docs_doctor.sh
+  - scripts/ci_gate.sh
+  - scripts/control_plane.sh
   notes: Default gate scripts now set rust adapter as default runner interface boundary.
 - rule_id: RUNTIME_PYTHON_USAGE_SCOPED_TO_PYTHON_RUNNER
   policy_ref: specs/contract/policy_v1.yaml#RUNTIME_PYTHON_USAGE_SCOPED_TO_PYTHON_RUNNER
@@ -765,7 +765,7 @@ links:
   policy_ref: specs/contract/policy_v1.yaml#DOCS_OPERABILITY_NON_REGRESSION_REQUIRED
   contract_refs:
   - specs/contract/10_docs_quality.md
-  - specs/governance/cases/core/docs_operability_non_regression.spec.md
+  - specs/governance/cases/core/project_docs/docs_operability_non_regression.spec.md
   schema_refs:
   - specs/schema/docs_schema_v1.md
   conformance_case_ids: []
@@ -799,7 +799,7 @@ links:
   policy_ref: specs/contract/policy_v1.yaml#CONTRACT_ASSERTIONS_NON_REGRESSION_REQUIRED
   contract_refs:
   - specs/contract/03_assertions.md
-  - specs/governance/cases/core/contract_assertions_non_regression.spec.md
+  - specs/governance/cases/core/spec_core/contract_assertions_non_regression.spec.md
   schema_refs:
   - specs/schema/schema_v1.md
   conformance_case_ids: []
@@ -936,7 +936,7 @@ links:
   - dc-runner-python
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/docs_meta_schema_valid.spec.md
+  - specs/governance/cases/core/project_docs/docs_meta_schema_valid.spec.md
   notes: Reference chapter doc-meta blocks are schema-validated.
 - rule_id: DOCS_REFERENCE_MANIFEST_SYNC
   policy_ref: specs/contract/policy_v1.yaml#DOCS_REFERENCE_MANIFEST_SYNC
@@ -954,7 +954,7 @@ links:
   - dc-runner-python
   - scripts/docs_build_reference.py
   - dc-runner-python
-  - specs/governance/cases/core/docs_reference_manifest_sync.spec.md
+  - specs/governance/cases/core/project_docs/docs_reference_manifest_sync.spec.md
   notes: Reference index generation/sync is enforced against manifest source data.
 - rule_id: DOCS_TOKEN_OWNERSHIP_UNIQUE
   policy_ref: specs/contract/policy_v1.yaml#DOCS_TOKEN_OWNERSHIP_UNIQUE
@@ -971,7 +971,7 @@ links:
   - dc-runner-python
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/docs_token_ownership_unique.spec.md
+  - specs/governance/cases/core/project_docs/docs_token_ownership_unique.spec.md
   notes: Canonical doc tokens must have exactly one owner page.
 - rule_id: DOCS_TOKEN_DEPENDENCY_RESOLVED
   policy_ref: specs/contract/policy_v1.yaml#DOCS_TOKEN_DEPENDENCY_RESOLVED
@@ -988,7 +988,7 @@ links:
   - dc-runner-python
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/docs_token_dependency_resolved.spec.md
+  - specs/governance/cases/core/project_docs/docs_token_dependency_resolved.spec.md
   notes: Requires-token dependencies must resolve to owner docs and owner content.
 - rule_id: DOCS_INSTRUCTIONS_REQUIRED_SECTIONS
   policy_ref: specs/contract/policy_v1.yaml#DOCS_INSTRUCTIONS_REQUIRED_SECTIONS
@@ -1005,7 +1005,7 @@ links:
   - dc-runner-python
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/docs_instructions_complete.spec.md
+  - specs/governance/cases/core/project_docs/docs_instructions_complete.spec.md
   notes: Instruction docs must retain required operational sections.
 - rule_id: DOCS_COMMAND_EXAMPLES_VERIFIED
   policy_ref: specs/contract/policy_v1.yaml#DOCS_COMMAND_EXAMPLES_VERIFIED
@@ -1023,7 +1023,7 @@ links:
   - dc-runner-python
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/docs_command_examples_verified.spec.md
+  - specs/governance/cases/core/project_docs/docs_command_examples_verified.spec.md
   notes: Docs examples are validated or explicitly opted out with reason.
 - rule_id: DOCS_EXAMPLE_IDS_UNIQUE
   policy_ref: specs/contract/policy_v1.yaml#DOCS_EXAMPLE_IDS_UNIQUE
@@ -1040,7 +1040,7 @@ links:
   - dc-runner-python
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/docs_example_id_uniqueness.spec.md
+  - specs/governance/cases/core/project_docs/docs_example_id_uniqueness.spec.md
   notes: Example identifiers remain unique across canonical docs metadata.
 - rule_id: DOCS_GENERATED_ARTIFACTS_FRESH
   policy_ref: specs/contract/policy_v1.yaml#DOCS_GENERATED_ARTIFACTS_FRESH
@@ -1058,7 +1058,7 @@ links:
   - dc-runner-python
   - scripts/docs_build_reference.py
   - dc-runner-python
-  - specs/governance/cases/core/docs_generated_files_clean.spec.md
+  - specs/governance/cases/core/project_docs/docs_generated_files_clean.spec.md
   notes: Generated docs artifacts must stay synchronized with manifest and metadata.
 - rule_id: DOCS_MAKE_COMMANDS_SYNC
   policy_ref: specs/contract/policy_v1.yaml#DOCS_MAKE_COMMANDS_SYNC
@@ -1088,7 +1088,7 @@ links:
   - tests/test_contract_governance_unit.py
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/docs_adoption_profiles_sync.spec.md
+  - specs/governance/cases/core/project_docs/docs_adoption_profiles_sync.spec.md
   - dc-runner-python
   notes: Governance enforces synchronized Core/Full adoption profile docs and commands.
 - rule_id: DOCS_RELEASE_CONTRACT_AUTOMATION_ONLY
@@ -1103,7 +1103,7 @@ links:
   - tests/test_contract_governance_unit.py
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/docs_release_contract_automation_policy.spec.md
+  - specs/governance/cases/core/project_docs/docs_release_contract_automation_policy.spec.md
   - dc-runner-python
   notes: Release guidance is automation-first and forbids manual sequential checklist
     choreography.
@@ -1133,7 +1133,7 @@ links:
   - dc-runner-python
   - tests/test_contract_governance_unit.py
   implementation_refs:
-  - scripts/local_ci_parity.sh
+  - scripts/ci_gate.sh
   - specs/governance/cases/core/runtime_local_ci_parity_python_lane_forbidden.spec.md
   notes: Local ci parity path is rust-only and forbids python lane execution.
 - rule_id: RUNTIME_MAKE_PYTHON_PARITY_TARGETS_FORBIDDEN
@@ -1159,7 +1159,7 @@ links:
   - dc-runner-python
   - tests/test_contract_governance_unit.py
   implementation_refs:
-  - scripts/local_ci_parity.sh
+  - scripts/ci_gate.sh
   - .githooks/pre-push
   - Makefile
   - specs/governance/cases/core/runtime_rust_only_prepush_required.spec.md
@@ -1175,7 +1175,7 @@ links:
   - tests/test_contract_governance_unit.py
   implementation_refs:
   - .githooks/pre-push
-  - scripts/install_git_hooks.sh
+  - scripts/ci_gate.sh
   - Makefile
   - specs/governance/cases/core/runtime_git_hook_prepush_enforced.spec.md
   notes: Managed pre-push hook and installer enforce local parity checks before push.
@@ -1189,7 +1189,7 @@ links:
   - dc-runner-python
   - tests/test_contract_governance_unit.py
   implementation_refs:
-  - scripts/local_ci_parity.sh
+  - scripts/ci_gate.sh
   - scripts/ci_gate.sh
   - .githooks/pre-push
   - specs/governance/cases/core/runtime_fast_path_consistency_required.spec.md
@@ -1250,7 +1250,7 @@ links:
   - dc-runner-python
   - tests/test_contract_governance_unit.py
   implementation_refs:
-  - scripts/local_ci_parity.sh
+  - scripts/ci_gate.sh
   - specs/governance/cases/core/runtime_prepush_uses_governance_triage_required.spec.md
   notes: Prepush governance step must use triage entrypoint.
 - rule_id: RUNTIME_CIGATE_GOVERNANCE_TRIAGE_REQUIRED
@@ -1332,7 +1332,7 @@ links:
   - dc-runner-python
   - tests/test_contract_governance_unit.py
   implementation_refs:
-  - scripts/local_ci_parity.sh
+  - scripts/ci_gate.sh
   - specs/governance/cases/core/runtime_local_prepush_broad_governance_forbidden.spec.md
   notes: Local prepush keeps broad governance out of default flow.
 - rule_id: RUNTIME_CI_GATE_OWNERSHIP_CONTRACT_REQUIRED
@@ -1388,7 +1388,7 @@ links:
   - tests/test_contract_governance_unit.py
   implementation_refs:
   - .github/workflows/ci.yml
-  - specs/governance/cases/core/runtime_ci_artifact_upload_paths_valid.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_ci_artifact_upload_paths_valid.spec.md
   notes: CI workflow uses recursive .artifacts upload paths so diagnostics are retained.
 - rule_id: RUNTIME_SCOPE_BOUNDED_FOR_V1
   policy_ref: specs/contract/policy_v1.yaml#RUNTIME_SCOPE_BOUNDED_FOR_V1
@@ -1491,7 +1491,7 @@ links:
   implementation_refs:
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/assert_universal_core_sync.spec.md
+  - specs/governance/cases/core/spec_core/assert_universal_core_sync.spec.md
   notes: Universal assertion core is evaluate; sugar operators compile into evaluate-equivalent
     expressions.
 - rule_id: ASSERT_SUGAR_OPERATORS_COMPILE_ONLY
@@ -1511,7 +1511,7 @@ links:
   - dc-runner-python
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/assert_sugar_compile_only_sync.spec.md
+  - specs/governance/cases/core/spec_core/assert_sugar_compile_only_sync.spec.md
   notes: Sugar ops remain authoring convenience only; runtime uses compiled predicates.
 - rule_id: ASSERT_TARGET_CONTRACT_SUBJECT_DRIVEN
   policy_ref: specs/contract/policy_v1.yaml#ASSERT_TARGET_CONTRACT_SUBJECT_DRIVEN
@@ -1527,7 +1527,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/assert_type_contract_subject_semantics_sync.spec.md
+  - specs/governance/cases/core/spec_core/assert_type_contract_subject_semantics_sync.spec.md
   notes: Type contracts define subject semantics and availability responsibilities.
 - rule_id: ASSERT_COMPILER_SCHEMA_MATRIX_SYNC
   policy_ref: specs/contract/policy_v1.yaml#ASSERT_COMPILER_SCHEMA_MATRIX_SYNC
@@ -1544,7 +1544,7 @@ links:
   implementation_refs:
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/assert_compiler_schema_matrix_sync.spec.md
+  - specs/governance/cases/core/spec_core/assert_compiler_schema_matrix_sync.spec.md
   notes: Governance enforces compiler/schema/contract alignment for universal evaluate
     model.
 - rule_id: GOVERNANCE_DECISIONS_VIA_SPEC_LANG_ONLY
@@ -1658,7 +1658,7 @@ links:
   implementation_refs:
   - .github/workflows/ci.yml
   - dc-runner-python
-  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_control_plane_ci_runner_execution_forbidden.spec.md
   notes: Rust-primary CI lane requirement is enforced through runner-interface CI
     lane checks.
 - rule_id: RUST_PRIMARY_NO_PYTHON_GATE_DEPENDENCY
@@ -1672,10 +1672,10 @@ links:
   - dc-runner-python
   implementation_refs:
   - scripts/ci_gate.sh
-  - scripts/core_gate.sh
-  - scripts/docs_doctor.sh
+  - scripts/ci_gate.sh
+  - scripts/control_plane.sh
   - dc-runner-python
-  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_control_plane_ci_runner_execution_forbidden.spec.md
   notes: Gate orchestration remains runner-interface based without direct Python command
     coupling.
 - rule_id: RUST_PRIMARY_INTERFACE_STABILITY_REQUIRED
@@ -1690,7 +1690,7 @@ links:
   implementation_refs:
   - dc-runner-rust
   - dc-runner-python
-  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_control_plane_ci_runner_execution_forbidden.spec.md
   notes: Rust adapter preserves required runner-interface command surface.
 - rule_id: RUST_PRIMARY_SHARED_CAPABILITY_PARITY_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#RUST_PRIMARY_SHARED_CAPABILITY_PARITY_REQUIRED
@@ -1703,10 +1703,10 @@ links:
   - tests/test_conformance_parity_unit.py
   - dc-runner-python
   implementation_refs:
-  - scripts/core_gate.sh
+  - scripts/ci_gate.sh
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_control_plane_ci_runner_execution_forbidden.spec.md
   notes: Rust-primary-compatible gate flow retains shared-capability parity step.
 - rule_id: RUST_PRIMARY_ADAPTER_EXEC_SMOKE_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#RUST_PRIMARY_ADAPTER_EXEC_SMOKE_REQUIRED
@@ -1720,7 +1720,7 @@ links:
   implementation_refs:
   - dc-runner-rust
   - dc-runner-python
-  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_control_plane_ci_runner_execution_forbidden.spec.md
   notes: Rust-primary governance includes an executable smoke check for adapter command
     behavior.
 - rule_id: RUST_PRIMARY_SUBCOMMAND_PARITY_REQUIRED
@@ -1736,7 +1736,7 @@ links:
   - dc-runner-rust
   - dc-runner-rust
   - dc-runner-python
-  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_control_plane_ci_runner_execution_forbidden.spec.md
   notes: Governance enforces parity between shell adapter and Rust CLI subcommand
     surfaces.
 - rule_id: RUST_PRIMARY_DOCS_ADOPTION_SYNC
@@ -1752,7 +1752,7 @@ links:
   - README.md
   - docs/development.md
   - dc-runner-python
-  - specs/governance/cases/core/docs_adoption_profiles_sync.spec.md
+  - specs/governance/cases/core/project_docs/docs_adoption_profiles_sync.spec.md
   notes: Adoption profile docs remain synchronized during Rust-primary migration.
 - rule_id: OBJECTIVE_METRIC_MANIFEST_VALID
   policy_ref: specs/contract/policy_v1.yaml#OBJECTIVE_METRIC_MANIFEST_VALID
@@ -1859,7 +1859,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/naming_filename_policy.spec.md
+  - specs/governance/cases/core/spec_core/naming_filename_policy.spec.md
   notes: Filename stems are governance-checked for lowercase + underscore word separators
     + hyphen section separators.
 - rule_id: GOVERNANCE_EXTRACTOR_ONLY_NO_VERDICT_BRANCHING
@@ -1888,7 +1888,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/governance_structured_assertions_required.spec.md
+  - specs/governance/cases/core/spec_core/governance_structured_assertions_required.spec.md
   notes: Governance cases use structured result targets for assertion truth instead
     of PASS text coupling.
 - rule_id: RUNTIME_RUST_ADAPTER_NO_PYTHON_EXEC
@@ -1918,7 +1918,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/normalization_profile_sync.spec.md
+  - specs/governance/cases/core/spec_core/normalization_profile_sync.spec.md
   notes: Normalization profile structure is governance-enforced.
 - rule_id: NORMALIZATION_CHECK_GATE_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#NORMALIZATION_CHECK_GATE_REQUIRED
@@ -1951,7 +1951,7 @@ links:
   implementation_refs:
   - dc-runner-python
   - scripts/normalize_repo.py
-  - specs/governance/cases/core/normalization_mapping_ast_only.spec.md
+  - specs/governance/cases/core/spec_core/normalization_mapping_ast_only.spec.md
   notes: Mapping-AST-only syntax is enforced through compiler and normalization checks.
 - rule_id: NORMALIZATION_CONTRACT_SCHEMA_BOOK_SYNC
   policy_ref: specs/contract/policy_v1.yaml#NORMALIZATION_CONTRACT_SCHEMA_BOOK_SYNC
@@ -1968,7 +1968,7 @@ links:
   implementation_refs:
   - scripts/normalize_repo.py
   - dc-runner-python
-  - specs/governance/cases/core/normalization_docs_token_sync.spec.md
+  - specs/governance/cases/core/spec_core/normalization_docs_token_sync.spec.md
   notes: Required/forbidden token rules keep schema/contract/book wording aligned.
 - rule_id: NORMALIZATION_FIX_COMMAND_AVAILABLE
   policy_ref: specs/contract/policy_v1.yaml#NORMALIZATION_FIX_COMMAND_AVAILABLE
@@ -1983,7 +1983,7 @@ links:
   - scripts/normalize_repo.py
   - scripts/runner_bin.sh
   - Makefile
-  - specs/governance/cases/core/normalization_spec_style_sync.spec.md
+  - specs/governance/cases/core/spec_core/normalization_spec_style_sync.spec.md
   notes: Explicit normalize-fix path is available for local authoring.
 - rule_id: NORMALIZATION_VIRTUAL_ROOT_PATHS_ONLY
   policy_ref: specs/contract/policy_v1.yaml#NORMALIZATION_VIRTUAL_ROOT_PATHS_ONLY
@@ -1997,7 +1997,7 @@ links:
   - tests/test_virtual_paths_unit.py
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/normalization_virtual_root_paths_only.spec.md
+  - specs/governance/cases/core/spec_core/normalization_virtual_root_paths_only.spec.md
   notes: Scoped path fields normalize to canonical virtual-root `/...` form.
 - rule_id: REFERENCE_CONTRACT_PATHS_EXIST
   policy_ref: specs/contract/policy_v1.yaml#REFERENCE_CONTRACT_PATHS_EXIST
@@ -2010,7 +2010,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/reference_contract_paths_exist.spec.md
+  - specs/governance/cases/core/spec_core/reference_contract_paths_exist.spec.md
   notes: Governance validates referenced in-root paths exist before runtime.
 - rule_id: REFERENCE_SYMBOLS_EXIST
   policy_ref: specs/contract/policy_v1.yaml#REFERENCE_SYMBOLS_EXIST
@@ -2024,7 +2024,7 @@ links:
   implementation_refs:
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/reference_symbols_exist.spec.md
+  - specs/governance/cases/core/spec_core/reference_symbols_exist.spec.md
   notes: Library exports/symbol references are validated early.
 - rule_id: REFERENCE_LIBRARY_EXPORTS_USED
   policy_ref: specs/contract/policy_v1.yaml#REFERENCE_LIBRARY_EXPORTS_USED
@@ -2038,7 +2038,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/reference_library_exports_used.spec.md
+  - specs/governance/cases/core/spec_core/reference_library_exports_used.spec.md
   notes: Library defines.public symbols must be referenced by policies/expressions
     or harness exports.
 - rule_id: REFERENCE_PRIVATE_SYMBOLS_FORBIDDEN
@@ -2053,7 +2053,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/reference_private_symbols_forbidden.spec.md
+  - specs/governance/cases/core/spec_core/reference_private_symbols_forbidden.spec.md
   notes: defines.private symbols are forbidden from external case policy/assertion
     references.
 - rule_id: REFERENCE_CHECK_IDS_EXIST
@@ -2067,7 +2067,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/reference_check_ids_exist.spec.md
+  - specs/governance/cases/core/spec_core/reference_check_ids_exist.spec.md
   notes: Governance case check ids must map to registered scanner ids.
 - rule_id: REFERENCE_EXTERNAL_REFS_POLICY
   policy_ref: specs/contract/policy_v1.yaml#REFERENCE_EXTERNAL_REFS_POLICY
@@ -2082,7 +2082,7 @@ links:
   implementation_refs:
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/reference_external_refs_policy.spec.md
+  - specs/governance/cases/core/spec_core/reference_external_refs_policy.spec.md
   notes: External refs are deny-by-default and capability/policy gated.
 - rule_id: REFERENCE_TOKEN_ANCHORS_EXIST
   policy_ref: specs/contract/policy_v1.yaml#REFERENCE_TOKEN_ANCHORS_EXIST
@@ -2095,7 +2095,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/reference_token_anchors_exist.spec.md
+  - specs/governance/cases/core/spec_core/reference_token_anchors_exist.spec.md
   notes: Token anchor references are checked for file existence and token presence.
 - rule_id: SPEC_LAYOUT_DOMAIN_TREES
   policy_ref: specs/contract/policy_v1.yaml#SPEC_LAYOUT_DOMAIN_TREES
@@ -2109,7 +2109,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/spec_layout_domain_trees.spec.md
+  - specs/governance/cases/core/spec_core/spec_layout_domain_trees.spec.md
   notes: Domain-tree directories are required for conformance/governance/libraries
     spec surfaces.
 - rule_id: SPEC_DOMAIN_INDEX_SYNC
@@ -2123,7 +2123,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/spec_domain_index_sync.spec.md
+  - specs/governance/cases/core/spec_core/spec_domain_index_sync.spec.md
   notes: Domain index files are checked for completeness and stale entries.
 - rule_id: LIBRARY_DOMAIN_OWNERSHIP
   policy_ref: specs/contract/policy_v1.yaml#LIBRARY_DOMAIN_OWNERSHIP
@@ -2137,7 +2137,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/library_domain_ownership.spec.md
+  - specs/governance/cases/core/spec_core/library_domain_ownership.spec.md
   notes: Governance enforces domain ownership boundaries for harness.spec_lang.includes.
 - rule_id: LIBRARY_DOMAIN_INDEX_SYNC
   policy_ref: specs/contract/policy_v1.yaml#LIBRARY_DOMAIN_INDEX_SYNC
@@ -2151,7 +2151,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/library_domain_index_sync.spec.md
+  - specs/governance/cases/core/spec_core/library_domain_index_sync.spec.md
   notes: Library domain indexes are checked for complete file and exported symbol
     inventory coverage.
 - rule_id: LIBRARY_PUBLIC_SURFACE_MODEL
@@ -2167,7 +2167,7 @@ links:
   implementation_refs:
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/library_public_surface_model.spec.md
+  - specs/governance/cases/core/spec_core/library_public_surface_model.spec.md
   notes: spec_lang.export shape enforcement requires defines.public/defines.private
     scopes.
 - rule_id: LIBRARY_SINGLE_PUBLIC_SYMBOL_PER_CASE_REQUIRED
@@ -2197,7 +2197,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/library_colocated_symbol_tests_required.spec.md
+  - specs/governance/cases/core/spec_core/library_colocated_symbol_tests_required.spec.md
   notes: Library files must include colocated executable non-library tests.
 - rule_id: SPEC_LANG_STDLIB_PROFILE_DEFINED
   policy_ref: specs/contract/policy_v1.yaml#SPEC_LANG_STDLIB_PROFILE_DEFINED
@@ -2212,7 +2212,7 @@ links:
   implementation_refs:
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/spec_lang_stdlib_profile_complete.spec.md
+  - specs/governance/cases/core/spec_core/spec_lang_stdlib_profile_complete.spec.md
   notes: Defines canonical stdlib profile source of truth for implementation and docs
     parity checks.
 - rule_id: SPEC_LANG_STDLIB_PROFILE_COMPLETE
@@ -2227,7 +2227,7 @@ links:
   implementation_refs:
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/spec_lang_stdlib_profile_complete.spec.md
+  - specs/governance/cases/core/spec_core/spec_lang_stdlib_profile_complete.spec.md
   notes: Governance fails when any profile symbol is missing in Python or PHP implementations.
 - rule_id: SPEC_LANG_STDLIB_PY_PHP_PARITY_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#SPEC_LANG_STDLIB_PY_PHP_PARITY_REQUIRED
@@ -2243,7 +2243,7 @@ links:
   - dc-runner-python
   - dc-runner-php
   - dc-runner-python
-  - specs/governance/cases/core/spec_lang_stdlib_py_php_parity.spec.md
+  - specs/governance/cases/core/spec_core/spec_lang_stdlib_py_php_parity.spec.md
   notes: Python and PHP symbol surfaces must remain parity-clean against profile symbols.
 - rule_id: SPEC_LANG_STDLIB_DOCS_SYNC_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#SPEC_LANG_STDLIB_DOCS_SYNC_REQUIRED
@@ -2259,7 +2259,7 @@ links:
   implementation_refs:
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/spec_lang_stdlib_docs_sync.spec.md
+  - specs/governance/cases/core/spec_core/spec_lang_stdlib_docs_sync.spec.md
   notes: Core docs must reference the canonical stdlib profile contract artifacts.
 - rule_id: SPEC_LANG_STDLIB_CONFORMANCE_COVERAGE_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#SPEC_LANG_STDLIB_CONFORMANCE_COVERAGE_REQUIRED
@@ -2273,7 +2273,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/spec_lang_stdlib_conformance_coverage.spec.md
+  - specs/governance/cases/core/spec_core/spec_lang_stdlib_conformance_coverage.spec.md
   notes: Required stdlib conformance fixture files must exist and remain in canonical
     paths.
 - rule_id: RUNTIME_SINGLE_PUBLIC_RUNNER_ENTRYPOINT_REQUIRED
@@ -2286,9 +2286,9 @@ links:
   unit_test_refs:
   - dc-runner-python
   implementation_refs:
-  - scripts/core_gate.sh
   - scripts/ci_gate.sh
-  - scripts/docs_doctor.sh
+  - scripts/ci_gate.sh
+  - scripts/control_plane.sh
   - dc-runner-python
   - specs/governance/cases/retired/runtime_public_runner_entrypoint_single.spec.md
   notes: Gate scripts must reference scripts/runner_bin.sh as the single public
@@ -2306,7 +2306,7 @@ links:
   implementation_refs:
   - scripts/runner_bin.sh
   - dc-runner-python
-  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_control_plane_ci_runner_execution_forbidden.spec.md
   notes: Canonical runner adapter defaults to rust implementation mode.
 - rule_id: RUNTIME_RUNNER_ADAPTER_PYTHON_IMPL_FORBIDDEN
   policy_ref: specs/contract/policy_v1.yaml#RUNTIME_RUNNER_ADAPTER_PYTHON_IMPL_FORBIDDEN
@@ -2320,7 +2320,7 @@ links:
   implementation_refs:
   - scripts/runner_bin.sh
   - dc-runner-python
-  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_control_plane_ci_runner_execution_forbidden.spec.md
   notes: Runtime runner adapter rejects python impl selection with migration guidance.
 - rule_id: RUNTIME_PUBLIC_DOCS_NO_DIRECT_RUST_ADAPTER_INVOCATION
   policy_ref: specs/contract/policy_v1.yaml#RUNTIME_PUBLIC_DOCS_NO_DIRECT_RUST_ADAPTER_INVOCATION
@@ -2349,7 +2349,7 @@ links:
   implementation_refs:
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/assert_subject_profiles_json_only.spec.md
+  - specs/governance/cases/core/spec_core/assert_subject_profiles_json_only.spec.md
   notes: Enforces JSON-core subject model in profile schema and evaluator subject
     validation.
 - rule_id: ASSERT_CONTEXT_PROJECTION_CONTRACT_REQUIRED
@@ -2368,7 +2368,7 @@ links:
   - dc-runner-python
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/assert_adapter_projection_contract_sync.spec.md
+  - specs/governance/cases/core/spec_core/assert_adapter_projection_contract_sync.spec.md
   notes: Requires context_json projection targets and profile metadata in core harness
     adapters.
 - rule_id: ASSERT_DOMAIN_ASSERTIONS_LIBRARY_BACKED
@@ -2388,7 +2388,7 @@ links:
   - specs/libraries/domain/php_core.spec.md
   - specs/libraries/domain/python_core.spec.md
   - dc-runner-python
-  - specs/governance/cases/core/assert_domain_library_usage_required.spec.md
+  - specs/governance/cases/core/spec_core/assert_domain_library_usage_required.spec.md
   notes: Domain assertion scenarios must be library-backed rather than ad hoc inline-only
     expression patterns.
 - rule_id: ASSERT_ADAPTER_PROJECTION_SYNC_REQUIRED
@@ -2407,7 +2407,7 @@ links:
   - specs/contract/types/markdown_profile.md
   - specs/contract/types/makefile_profile.md
   - dc-runner-python
-  - specs/governance/cases/core/assert_domain_profiles_docs_sync.spec.md
+  - specs/governance/cases/core/spec_core/assert_domain_profiles_docs_sync.spec.md
   notes: Keeps profile docs and schema declarations synchronized.
 - rule_id: ASSERT_NO_NON_JSON_EVALUATOR_TYPES
   policy_ref: specs/contract/policy_v1.yaml#ASSERT_NO_NON_JSON_EVALUATOR_TYPES
@@ -2422,7 +2422,7 @@ links:
   implementation_refs:
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/assert_subject_profiles_json_only.spec.md
+  - specs/governance/cases/core/spec_core/assert_subject_profiles_json_only.spec.md
   notes: Evaluator rejects non-JSON subject values; adapters project native values
     to JSON.
 - rule_id: EXECUTABLE_SURFACES_MUST_BE_SPEC_MD
@@ -2438,7 +2438,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/spec_executable_surface_markdown_only.spec.md
+  - specs/governance/cases/core/spec_core/spec_executable_surface_markdown_only.spec.md
   notes: Enforces .spec.md as the canonical executable authoring surface.
 - rule_id: EXECUTABLE_DISCOVERY_MARKDOWN_ONLY
   policy_ref: specs/contract/policy_v1.yaml#EXECUTABLE_DISCOVERY_MARKDOWN_ONLY
@@ -2454,7 +2454,7 @@ links:
   implementation_refs:
   - dc-runner-python
   - dc-runner-python
-  - specs/governance/cases/core/spec_no_executable_yaml_json_in_case_trees.spec.md
+  - specs/governance/cases/core/spec_core/spec_no_executable_yaml_json_in_case_trees.spec.md
   notes: Canonical executable trees reject non-markdown format opt-ins.
 - rule_id: DATA_ARTIFACT_SURFACES_MUST_REMAIN_MACHINE_FILES
   policy_ref: specs/contract/policy_v1.yaml#DATA_ARTIFACT_SURFACES_MUST_REMAIN_MACHINE_FILES
@@ -2467,7 +2467,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/spec_generated_data_artifacts_not_embedded_in_spec_blocks.spec.md
+  - specs/governance/cases/core/spec_core/spec_generated_data_artifacts_not_embedded_in_spec_blocks.spec.md
   notes: Keeps baselines/manifests/schemas as machine data and forbids executable
     fences in those artifacts.
 - rule_id: NO_EXECUTABLE_YAML_JSON_CASES_IN_CANONICAL_TREES
@@ -2483,8 +2483,8 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/spec_no_executable_yaml_json_in_case_trees.spec.md
-  - specs/governance/cases/core/spec_library_cases_markdown_only.spec.md
+  - specs/governance/cases/core/spec_core/spec_no_executable_yaml_json_in_case_trees.spec.md
+  - specs/governance/cases/core/spec_core/spec_library_cases_markdown_only.spec.md
   notes: Forbids runnable yaml/json spec case files in canonical executable trees.
 - rule_id: SCHEMA_REGISTRY_SOURCE_OF_TRUTH_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#SCHEMA_REGISTRY_SOURCE_OF_TRUTH_REQUIRED
@@ -2579,7 +2579,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - scripts/docs_generate_all.py
-  - specs/governance/cases/core/docs_generator_registry_valid.spec.md
+  - specs/governance/cases/core/project_docs/docs_generator_registry_valid.spec.md
   notes: Validates docs generator registry structure and required surfaces.
 - rule_id: DOCS_GENERATOR_ORCHESTRATOR_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#DOCS_GENERATOR_ORCHESTRATOR_REQUIRED
@@ -2607,7 +2607,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - scripts/docs_generate_all.py
-  - specs/governance/cases/core/docs_generator_outputs_sync.spec.md
+  - specs/governance/cases/core/project_docs/docs_generator_outputs_sync.spec.md
   notes: Hard-fails when any declared generated docs surface is stale.
 - rule_id: DOCS_GENERATED_SECTIONS_READ_ONLY
   policy_ref: specs/contract/policy_v1.yaml#DOCS_GENERATED_SECTIONS_READ_ONLY
@@ -2620,7 +2620,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - scripts/docs_generate_all.py
-  - specs/governance/cases/core/docs_generated_sections_read_only.spec.md
+  - specs/governance/cases/core/project_docs/docs_generated_sections_read_only.spec.md
   notes: Enforces generated marker boundaries for mixed manual/generated docs.
 - rule_id: DOCS_API_CATALOGS_GENERATED_AND_SYNCED
   policy_ref: specs/contract/policy_v1.yaml#DOCS_API_CATALOGS_GENERATED_AND_SYNCED
@@ -2640,9 +2640,9 @@ links:
   - scripts/generate_runner_api_catalog.py
   - scripts/generate_harness_type_catalog.py
   - scripts/generate_spec_lang_builtin_catalog.py
-  - specs/governance/cases/core/docs_runner_api_catalog_sync.spec.md
-  - specs/governance/cases/core/docs_harness_type_catalog_sync.spec.md
-  - specs/governance/cases/core/docs_spec_lang_builtin_catalog_sync.spec.md
+  - specs/governance/cases/core/project_docs/docs_runner_api_catalog_sync.spec.md
+  - specs/governance/cases/core/project_docs/docs_harness_type_catalog_sync.spec.md
+  - specs/governance/cases/core/project_docs/docs_spec_lang_builtin_catalog_sync.spec.md
   notes: Catalog generators define and verify machine-backed API documentation surfaces.
 - rule_id: DOCS_POLICY_RULE_CATALOG_SYNC_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#DOCS_POLICY_RULE_CATALOG_SYNC_REQUIRED
@@ -2655,7 +2655,7 @@ links:
   - tests/test_generate_policy_rule_catalog_unit.py
   implementation_refs:
   - scripts/generate_policy_rule_catalog.py
-  - specs/governance/cases/core/docs_policy_rule_catalog_sync.spec.md
+  - specs/governance/cases/core/project_docs/docs_policy_rule_catalog_sync.spec.md
   notes: Policy rule catalog docs surface is generated from policy_v1 rule source.
 - rule_id: DOCS_TRACEABILITY_CATALOG_SYNC_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#DOCS_TRACEABILITY_CATALOG_SYNC_REQUIRED
@@ -2668,7 +2668,7 @@ links:
   - tests/test_generate_traceability_catalog_unit.py
   implementation_refs:
   - scripts/generate_traceability_catalog.py
-  - specs/governance/cases/core/docs_traceability_catalog_sync.spec.md
+  - specs/governance/cases/core/project_docs/docs_traceability_catalog_sync.spec.md
   notes: Traceability catalog docs surface is generated from traceability link source.
 - rule_id: DOCS_GOVERNANCE_CHECK_CATALOG_SYNC_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#DOCS_GOVERNANCE_CHECK_CATALOG_SYNC_REQUIRED
@@ -2681,7 +2681,7 @@ links:
   - tests/test_generate_governance_check_catalog_unit.py
   implementation_refs:
   - scripts/generate_governance_check_catalog.py
-  - specs/governance/cases/core/docs_governance_check_catalog_sync.spec.md
+  - specs/governance/cases/core/project_docs/docs_governance_check_catalog_sync.spec.md
   notes: Governance check inventory and case map are generated from runtime registration.
 - rule_id: DOCS_METRICS_FIELD_CATALOG_SYNC_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#DOCS_METRICS_FIELD_CATALOG_SYNC_REQUIRED
@@ -2694,7 +2694,7 @@ links:
   - tests/test_generate_metrics_field_catalog_unit.py
   implementation_refs:
   - scripts/generate_metrics_field_catalog.py
-  - specs/governance/cases/core/docs_metrics_field_catalog_sync.spec.md
+  - specs/governance/cases/core/project_docs/docs_metrics_field_catalog_sync.spec.md
   notes: Metrics baseline field inventory is generated and synchronized.
 - rule_id: DOCS_SPEC_SCHEMA_FIELD_CATALOG_SYNC_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#DOCS_SPEC_SCHEMA_FIELD_CATALOG_SYNC_REQUIRED
@@ -2709,7 +2709,7 @@ links:
   - tests/test_generate_spec_schema_field_catalog_unit.py
   implementation_refs:
   - scripts/generate_spec_schema_field_catalog.py
-  - specs/governance/cases/core/docs_spec_schema_field_catalog_sync.spec.md
+  - specs/governance/cases/core/project_docs/docs_spec_schema_field_catalog_sync.spec.md
   notes: Schema field catalog is generated from compiled registry into schema and
     book references.
 - rule_id: DOCS_GENERATOR_REPORT_REQUIRED
@@ -2724,7 +2724,7 @@ links:
   implementation_refs:
   - scripts/docs_generate_all.py
   - dc-runner-python
-  - specs/governance/cases/core/docs_generator_outputs_sync.spec.md
+  - specs/governance/cases/core/project_docs/docs_generator_outputs_sync.spec.md
   notes: Ensures docs generator execution emits deterministic report artifacts.
 - rule_id: DOCS_LAYOUT_CANONICAL_TREES_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#DOCS_LAYOUT_CANONICAL_TREES_REQUIRED
@@ -2738,7 +2738,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/docs_layout_canonical_trees.spec.md
+  - specs/governance/cases/core/project_docs/docs_layout_canonical_trees.spec.md
   notes: Enforces canonical docs tree roots and forbids non-canonical review root.
 - rule_id: DOCS_INDEX_FILENAME_INDEX_MD_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#DOCS_INDEX_FILENAME_INDEX_MD_REQUIRED
@@ -2752,7 +2752,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/docs_index_filename_policy.spec.md
+  - specs/governance/cases/core/project_docs/docs_index_filename_policy.spec.md
   notes: Requires `index.md` for docs directory index files and forbids docs-local
     README index files.
 - rule_id: DOCS_FILENAME_POLICY_REQUIRED
@@ -2767,7 +2767,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/docs_filename_policy.spec.md
+  - specs/governance/cases/core/project_docs/docs_filename_policy.spec.md
   notes: Enforces lowercase/no-space docs filename policy.
 - rule_id: DOCS_REVIEWS_NAMESPACE_ACTIVE_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#DOCS_REVIEWS_NAMESPACE_ACTIVE_REQUIRED
@@ -2780,7 +2780,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/docs_reviews_namespace_active.spec.md
+  - specs/governance/cases/core/project_docs/docs_reviews_namespace_active.spec.md
   notes: Requires `docs/history/reviews` for active review assets and treats the historical review archive root as archive-only.
 - rule_id: DOCS_NO_OS_ARTIFACT_FILES_TRACKED
   policy_ref: specs/contract/policy_v1.yaml#DOCS_NO_OS_ARTIFACT_FILES_TRACKED
@@ -2794,7 +2794,7 @@ links:
   implementation_refs:
   - scripts/normalize_docs_layout.py
   - dc-runner-python
-  - specs/governance/cases/core/docs_no_os_artifact_files.spec.md
+  - specs/governance/cases/core/project_docs/docs_no_os_artifact_files.spec.md
   notes: Hard-fails tracked OS/editor artifact files under docs.
 - rule_id: DOCS_BOOK_CHAPTER_ORDER_CANONICAL
   policy_ref: specs/contract/policy_v1.yaml#DOCS_BOOK_CHAPTER_ORDER_CANONICAL
@@ -2807,7 +2807,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/docs_book_chapter_order_canonical.spec.md
+  - specs/governance/cases/core/project_docs/docs_book_chapter_order_canonical.spec.md
   notes: Enforces canonical Learn -> Do -> Debug chapter order and appendix order.
 - rule_id: DOCS_BOOK_APPENDIX_CATALOG_NAMESPACE_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#DOCS_BOOK_APPENDIX_CATALOG_NAMESPACE_REQUIRED
@@ -2821,7 +2821,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - scripts/docs_generate_all.py
-  - specs/governance/cases/core/docs_book_chapter_order_canonical.spec.md
+  - specs/governance/cases/core/project_docs/docs_book_chapter_order_canonical.spec.md
   notes: Keeps generated catalog chapters in `9x_appendix_*` namespace.
 - rule_id: DOCS_SPEC_LANG_GUIDE_BEFORE_REFERENCE_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#DOCS_SPEC_LANG_GUIDE_BEFORE_REFERENCE_REQUIRED
@@ -2834,7 +2834,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/docs_book_chapter_order_canonical.spec.md
+  - specs/governance/cases/core/project_docs/docs_book_chapter_order_canonical.spec.md
   notes: Enforces guide chapter before strict spec-lang reference chapter.
 - rule_id: API_HTTP_OAUTH_HARNESS_PROFILE_SUPPORTED
   policy_ref: specs/contract/policy_v1.yaml#API_HTTP_OAUTH_HARNESS_PROFILE_SUPPORTED
@@ -3681,7 +3681,7 @@ links:
   - dc-runner-python
   implementation_refs:
   - dc-runner-python
-  - specs/governance/cases/core/docs_spec_index_reachability.spec.md
+  - specs/governance/cases/core/project_docs/docs_spec_index_reachability.spec.md
   notes: Governance scanner enforces canonical spec index reachability links.
 - rule_id: GOVERNANCE_CHECK_FAMILY_MAP_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#GOVERNANCE_CHECK_FAMILY_MAP_REQUIRED
@@ -3695,7 +3695,7 @@ links:
   implementation_refs:
   - specs/governance/check_catalog_map_v1.yaml
   - dc-runner-python
-  - specs/governance/cases/core/docs_governance_check_family_map_complete.spec.md
+  - specs/governance/cases/core/project_docs/docs_governance_check_family_map_complete.spec.md
   notes: Governance checks are mapped to deterministic check-id families.
 - rule_id: DOCS_FRESHNESS_STRICT_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#DOCS_FRESHNESS_STRICT_REQUIRED
@@ -3710,7 +3710,7 @@ links:
   implementation_refs:
   - dc-runner-python
   - scripts/docs_inventory.py
-  - specs/governance/cases/core/docs_canonical_freshness_strict.spec.md
+  - specs/governance/cases/core/project_docs/docs_canonical_freshness_strict.spec.md
   notes: Strict docs freshness checker is enforced in governance and CI gates.
 - rule_id: RUNTIME_RUNNER_STATUS_REPORT_SCHEMA_VALID
   policy_ref: specs/contract/policy_v1.yaml#RUNTIME_RUNNER_STATUS_REPORT_SCHEMA_VALID
@@ -3724,7 +3724,7 @@ links:
   - dc-runner-rust
   implementation_refs:
   - specs/schema/runner_status_report_v1.yaml
-  - specs/governance/cases/core/runtime_runner_status_report_schema_valid.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_runner_status_report_schema_valid.spec.md
   notes: Producer status payload schema is explicit and governance-enforced.
 - rule_id: RUNTIME_RUNNER_STATUS_MATRIX_SCHEMA_VALID
   policy_ref: specs/contract/policy_v1.yaml#RUNTIME_RUNNER_STATUS_MATRIX_SCHEMA_VALID
@@ -3738,7 +3738,7 @@ links:
   - dc-runner-rust
   implementation_refs:
   - specs/schema/runner_status_matrix_v1.yaml
-  - specs/governance/cases/core/runtime_runner_status_matrix_schema_valid.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_runner_status_matrix_schema_valid.spec.md
   notes: Matrix schema keeps ingest outputs deterministic and machine-readable.
 - rule_id: RUNTIME_COMPATIBILITY_STATUS_INGESTION_CONFIGURED
   policy_ref: specs/contract/policy_v1.yaml#RUNTIME_COMPATIBILITY_STATUS_INGESTION_CONFIGURED
@@ -3753,7 +3753,7 @@ links:
   - dc-runner-rust
   implementation_refs:
   - scripts/runner_status_ingest.sh
-  - specs/governance/cases/core/runtime_compatibility_status_ingestion_configured.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_compatibility_status_ingestion_configured.spec.md
   notes: Compatibility status exchange is pinned to release-asset ingestion.
 - rule_id: RUNTIME_COMPATIBILITY_STATUS_FRESHNESS_WITHIN_SLO
   policy_ref: specs/contract/policy_v1.yaml#RUNTIME_COMPATIBILITY_STATUS_FRESHNESS_WITHIN_SLO
@@ -3769,7 +3769,7 @@ links:
   implementation_refs:
   - scripts/runner_status_ingest.sh
   - scripts/ci_gate.sh
-  - specs/governance/cases/core/runtime_compatibility_status_freshness_within_slo.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_compatibility_status_freshness_within_slo.spec.md
   notes: Active compatibility telemetry older than 72 hours is treated as stale.
 - rule_id: RUNTIME_COMPATIBILITY_MISSING_STATUS_VISIBILITY_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#RUNTIME_COMPATIBILITY_MISSING_STATUS_VISIBILITY_REQUIRED
@@ -3783,7 +3783,7 @@ links:
   - dc-runner-rust
   implementation_refs:
   - scripts/runner_status_ingest.sh
-  - specs/governance/cases/core/runtime_compatibility_missing_status_visibility_required.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_compatibility_missing_status_visibility_required.spec.md
   notes: Missing compatibility status is surfaced and policy-scored explicitly.
 - rule_id: RUNTIME_REQUIRED_LANE_STATUS_BLOCKING_ENFORCED
   policy_ref: specs/contract/policy_v1.yaml#RUNTIME_REQUIRED_LANE_STATUS_BLOCKING_ENFORCED
@@ -3798,7 +3798,7 @@ links:
   - dc-runner-rust
   implementation_refs:
   - scripts/runner_status_ingest.sh
-  - specs/governance/cases/core/runtime_required_lane_status_blocking_enforced.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_required_lane_status_blocking_enforced.spec.md
   notes: Required-lane status remains merge-blocking under status exchange.
 - rule_id: CONTROL_PLANE_STATUS_INGEST_INTEGRITY_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#CONTROL_PLANE_STATUS_INGEST_INTEGRITY_REQUIRED
@@ -3811,7 +3811,7 @@ links:
   implementation_refs:
   - .github/workflows/ci.yml
   - scripts/runner_status_ingest.sh
-  - specs/governance/cases/core/runtime_status_ingest_job_present.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_status_ingest_job_present.spec.md
   - specs/governance/cases/core/runtime_matrix_artifacts_emitted.spec.md
   notes: Control-plane CI must emit status-ingest artifacts deterministically.
 - rule_id: CONTROL_PLANE_CI_RUNTIME_EXECUTION_FORBIDDEN
@@ -3824,9 +3824,9 @@ links:
   implementation_refs:
   - .github/workflows/ci.yml
   - scripts/ci_gate.sh
-  - scripts/core_gate.sh
-  - scripts/local_ci_parity.sh
-  - specs/governance/cases/core/runtime_control_plane_ci_runner_execution_forbidden.spec.md
+  - scripts/ci_gate.sh
+  - scripts/ci_gate.sh
+  - specs/governance/cases/core/runner_contract/runtime_control_plane_ci_runner_execution_forbidden.spec.md
   notes: Runtime lane execution is externalized to runner repositories.
 - rule_id: CONTROL_PLANE_DOCS_TASK_USAGE_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#CONTROL_PLANE_DOCS_TASK_USAGE_REQUIRED
@@ -3837,8 +3837,8 @@ links:
   unit_test_refs: []
   implementation_refs:
   - README.md
-  - specs/governance/cases/core/docs_readme_task_usage_paths_present.spec.md
-  - specs/governance/cases/core/docs_readme_makefile_cookbook_forbidden.spec.md
+  - specs/governance/cases/core/project_docs/docs_readme_task_usage_paths_present.spec.md
+  - specs/governance/cases/core/project_docs/docs_readme_makefile_cookbook_forbidden.spec.md
   notes: README must function as usage entrypoint, not build cookbook.
 - rule_id: CONTROL_PLANE_LANGUAGE_AGNOSTIC_REQUIRED
   policy_ref: specs/contract/policy_v1.yaml#CONTROL_PLANE_LANGUAGE_AGNOSTIC_REQUIRED
@@ -3850,6 +3850,157 @@ links:
   conformance_case_ids: []
   unit_test_refs: []
   implementation_refs:
-  - specs/governance/cases/core/runtime_contracts_no_rust_primary_language.spec.md
-  - specs/governance/cases/core/runtime_docs_no_required_lane_language.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_contracts_no_rust_primary_language.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_docs_no_required_lane_language.spec.md
   notes: Active docs and contracts avoid implementation-specific primary-lane language.
+- rule_id: SPEC_LANG_POLICY_SOURCE_REQUIRED
+  policy_ref: specs/contract/policy_v1.yaml#SPEC_LANG_POLICY_SOURCE_REQUIRED
+  contract_refs:
+  - specs/contract/15_governance_subject_model.md
+  - specs/contract/18_governance_subject_extractors.md
+  - specs/contract/28_spec_lang_policy_execution.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - scripts/control_plane.sh
+  - specs/governance/cases/core/spec_core/governance_policy_source_spec_lang_required.spec.md
+  notes: Policy verdict authority is delegated to governance spec surfaces.
+- rule_id: SHELL_DECISION_LOGIC_FORBIDDEN
+  policy_ref: specs/contract/policy_v1.yaml#SHELL_DECISION_LOGIC_FORBIDDEN
+  contract_refs:
+  - specs/contract/28_spec_lang_policy_execution.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - scripts/control_plane.sh
+  - scripts/ci_gate.sh
+  - scripts/ci_gate.sh
+  - scripts/ci_gate.sh
+  - scripts/ci_gate.sh
+  - specs/governance/cases/core/runner_contract/runtime_shell_policy_branches_forbidden.spec.md
+  notes: Shell scripts stay orchestration-only for covered governance domains.
+- rule_id: ARTIFACT_COMPATIBILITY_DURING_CUTOVER
+  policy_ref: specs/contract/policy_v1.yaml#ARTIFACT_COMPATIBILITY_DURING_CUTOVER
+  contract_refs:
+  - specs/contract/28_spec_lang_policy_execution.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - scripts/governance_catalog_validate.sh
+  - scripts/spec_schema_pin_validate.sh
+  - scripts/governance_optional_report.sh
+  - specs/governance/cases/core/runtime_artifact_contract_compatibility_preserved.spec.md
+  notes: Extractor artifacts retain stable paths and key contract compatibility.
+- rule_id: POLICY_CHAIN_ENTRY_CASES_REQUIRED
+  policy_ref: specs/contract/policy_v1.yaml#POLICY_CHAIN_ENTRY_CASES_REQUIRED
+  contract_refs:
+  - specs/contract/28_spec_lang_policy_execution.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - specs/governance/cases/core/spec_core/runtime_chain_entry_cases_present.spec.md
+  - specs/governance/cases/core/spec_core/runtime_governance_catalog_pipeline_chain.spec.md
+  - specs/governance/cases/core/spec_core/runtime_schema_pin_pipeline_chain.spec.md
+  - specs/governance/cases/core/runtime_optional_report_pipeline_chain.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_status_ingest_pipeline_chain.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_control_plane_gate_pipeline_chain.spec.md
+  notes: Chain entry cases are required for multi-step policy domains.
+- rule_id: INGEST_POLICY_VERDICTS_SPEC_OWNED
+  policy_ref: specs/contract/policy_v1.yaml#INGEST_POLICY_VERDICTS_SPEC_OWNED
+  contract_refs:
+  - specs/contract/28_spec_lang_policy_execution.md
+  schema_refs:
+  - specs/schema/runner_status_matrix_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - scripts/runner_status_ingest.sh
+  - specs/governance/cases/core/runner_contract/runtime_ingest_policy_branches_forbidden.spec.md
+  - specs/governance/cases/core/runner_contract/runtime_status_ingest_pipeline_chain.spec.md
+  notes: Ingest shell emits facts while governance decides policy outcomes.
+- rule_id: POLICY_LIBRARY_EXPORTS_REQUIRED
+  policy_ref: specs/contract/policy_v1.yaml#POLICY_LIBRARY_EXPORTS_REQUIRED
+  contract_refs:
+  - specs/contract/28_spec_lang_policy_execution.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - specs/libraries/policy/policy_governance_catalog.spec.md
+  - specs/libraries/policy/policy_schema_pin.spec.md
+  - specs/libraries/policy/policy_status_ingest.spec.md
+  - specs/libraries/policy/policy_ci_gate.spec.md
+  - specs/governance/cases/core/spec_core/runtime_policy_library_exports_resolve.spec.md
+  notes: Reusable policy exports are mandatory dependencies for chain entry checks.
+- rule_id: RUNNER_PACK_MANIFESTS_REQUIRED
+  policy_ref: specs/contract/policy_v1.yaml#RUNNER_PACK_MANIFESTS_REQUIRED
+  contract_refs:
+  - specs/contract/12_runner_interface.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - specs/packs/index.md
+  - specs/packs/runner_contract_pack_v1.yaml
+  - specs/packs/spec_core_maintenance_pack_v1.yaml
+  - specs/packs/project_docs_maintenance_pack_v1.yaml
+  - specs/governance/cases/core/spec_core/packs_manifest_index_present.spec.md
+  notes: Runner-ingestible pack manifests are canonical control-plane interfaces.
+- rule_id: RUNNER_CLI_PORTABLE_CONTRACT_REQUIRED
+  policy_ref: specs/contract/policy_v1.yaml#RUNNER_CLI_PORTABLE_CONTRACT_REQUIRED
+  contract_refs:
+  - specs/contract/29_runner_cli_interface.md
+  schema_refs:
+  - specs/schema/runner_cli_contract_v1.yaml
+  conformance_case_ids:
+  - DCCONF-RCLI-001
+  - DCCONF-RCLI-002
+  - DCCONF-RCLI-003
+  - DCCONF-RCLI-004
+  - DCCONF-RCLI-005
+  unit_test_refs: []
+  implementation_refs:
+  - specs/conformance/cases/runner_cli/runner_cli_required_help.spec.md
+  - specs/conformance/cases/runner_cli/runner_cli_required_governance.spec.md
+  - specs/conformance/cases/runner_cli/runner_cli_required_conformance.spec.md
+  - specs/conformance/cases/runner_cli/runner_cli_unknown_command.spec.md
+  - specs/conformance/cases/runner_cli/runner_cli_optional_capability_negotiation.spec.md
+  notes: Portable CLI interface is required while runtime-specific subcommands remain optional.
+- rule_id: RUNNER_BUILD_TOOL_CONTRACT_REQUIRED
+  policy_ref: specs/contract/policy_v1.yaml#RUNNER_BUILD_TOOL_CONTRACT_REQUIRED
+  contract_refs:
+  - specs/contract/30_build_tool_command_set.md
+  schema_refs:
+  - specs/schema/runner_build_tool_contract_v1.yaml
+  conformance_case_ids:
+  - DCCONF-BTOOL-001
+  - DCCONF-BTOOL-002
+  - DCCONF-BTOOL-003
+  - DCCONF-BTOOL-004
+  - DCCONF-BTOOL-005
+  unit_test_refs: []
+  implementation_refs:
+  - specs/conformance/cases/runner_build_tool/runner_build_tool_required_core.spec.md
+  - specs/conformance/cases/runner_build_tool/runner_build_tool_required_sync.spec.md
+  - specs/conformance/cases/runner_build_tool/runner_build_tool_required_compat.spec.md
+  - specs/conformance/cases/runner_build_tool/runner_build_tool_may_catalog.spec.md
+  - specs/conformance/cases/runner_build_tool/runner_build_tool_manifest_path.spec.md
+  - specs/packs/runner_contract_pack_v1.yaml
+  notes: Build-tool command semantics are portable and tool-agnostic across runner repos.
+- rule_id: CORE_SCRIPT_ALLOWLIST_REQUIRED
+  policy_ref: specs/contract/policy_v1.yaml#CORE_SCRIPT_ALLOWLIST_REQUIRED
+  contract_refs:
+  - specs/contract/28_spec_lang_policy_execution.md
+  schema_refs:
+  - specs/schema/core_script_allowlist_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - specs/governance/cases/core/spec_core/runtime_core_script_allowlist_enforced.spec.md
+  - specs/governance/cases/core/project_docs/runtime_non_core_scripts_not_in_active_docs.spec.md
+  - specs/governance/cases/core/spec_core/runtime_non_core_scripts_not_in_active_policy_traceability.spec.md
+  notes: Active entrypoints are restricted to the canonical 8-script core set.

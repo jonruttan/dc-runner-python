@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCGOV-CONF-LIB-CONTRACT-001
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: conformance library contract coverage cases are present
 purpose: Ensures conformance includes executable evaluate-based coverage for flat spec_lang.export
   defines contract behavior.
@@ -9,7 +9,7 @@ type: contract.check
 harness:
   root: .
   conformance_library_contract_cases_present:
-    path: /specs/conformance/cases/core/spec_lang_library_contract.spec.md
+    path: /specs/03_conformance/cases/core/spec_lang_library_contract.spec.md
     required_case_ids:
     - DCCONF-LIB-CONTRACT-001
     - DCCONF-LIB-CONTRACT-002
@@ -19,7 +19,7 @@ harness:
     config:
       check: conformance.library_contract_cases_present
   use:
-  - ref: /specs/libraries/policy/policy_core.spec.md
+  - ref: /specs/05_libraries/policy/policy_core.spec.md
     as: lib_policy_core_spec
     symbols:
     - policy.pass_when_no_violations

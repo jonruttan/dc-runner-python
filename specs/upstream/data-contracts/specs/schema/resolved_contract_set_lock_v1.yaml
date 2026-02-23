@@ -1,0 +1,55 @@
+version: 1
+title: resolved_contract_set_lock_v1
+type: object
+required:
+  - version
+  - root_contract_set
+  - runner
+  - source
+  - resolved_order
+  - integrity
+properties:
+  version:
+    type: integer
+    const: 1
+  root_contract_set:
+    type: string
+    minLength: 1
+  runner:
+    type: string
+    enum:
+      - python
+      - php
+      - rust
+  source:
+    type: object
+    required:
+      - repo
+      - ref
+      - commit
+    properties:
+      repo:
+        type: string
+      ref:
+        type: string
+      commit:
+        type: string
+  resolved_order:
+    type: array
+    items:
+      type: string
+      minLength: 1
+  integrity:
+    type: object
+    required:
+      - file_count
+      - sha256_manifest
+      - sha256_manifests
+    properties:
+      file_count:
+        type: integer
+        minimum: 0
+      sha256_manifest:
+        type: string
+      sha256_manifests:
+        type: string

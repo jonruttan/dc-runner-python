@@ -7,11 +7,11 @@ Canonical specification root for `data-contracts`.
 ## Canonical Inputs
 
 - Active model snapshot: `/specs/current.md`
-- Schema contracts: `/specs/schema/index.md`
-- Normative contracts: `/specs/contract/index.md`
+- Schema contracts: `/specs/01_schema/index.md`
+- Normative contracts: `/specs/02_contracts/index.md`
 - Governance checks: `/specs/governance/index.md`
-- Reusable libraries: `/specs/libraries/index.md`
-- Implementation suites: `runner-owned implementation specs/index.md`
+- Reusable libraries: `/specs/05_libraries/index.md`
+- Runner-ingestible packs: `/specs/packs/index.md`
 
 ## Subdomains
 

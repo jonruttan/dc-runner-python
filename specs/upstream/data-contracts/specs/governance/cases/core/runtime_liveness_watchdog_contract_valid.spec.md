@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCGOV-LIVENESS-CONTRACT-001
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: runtime liveness watchdog contract docs and schema are synchronized
 purpose: Ensures liveness controls and reason tokens are declared in runtime profiling contract
   and schema artifacts.
@@ -13,7 +13,7 @@ harness:
     config:
       check: runtime.liveness_watchdog_contract_valid
   use:
-  - ref: /specs/libraries/policy/policy_core.spec.md
+  - ref: /specs/05_libraries/policy/policy_core.spec.md
     as: lib_policy_core_spec
     symbols:
     - policy.pass_when_no_violations

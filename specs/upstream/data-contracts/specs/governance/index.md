@@ -10,6 +10,12 @@ Executable governance checks for canonical contract enforcement.
 - Check family map: `/specs/governance/check_catalog_map_v1.yaml`
 - Cases index: `/specs/governance/cases/core/index.md`
 
+## Domain Grouping
+
+- Spec-core maintenance: `/specs/governance/cases/core/spec_core/`
+- Runner-contract maintenance: `/specs/governance/cases/core/runner_contract/`
+- Project-docs maintenance: `/specs/governance/cases/core/project_docs/`
+
 ## Subdomains
 
 - Metrics baselines: `/specs/governance/metrics/`

@@ -10,7 +10,7 @@ maintenance decisions stay predictable.
   - `cli.run`
 - Require explicit schema pinning for every executable case:
   - `spec_version: 1`
-  - `schema_ref: /specs/schema/schema_v1.md`
+  - `schema_ref: /specs/01_schema/schema_v1.md`
 - Enforce stable case shape and assertion DSL from:
   - `specs/schema/schema_v1.md`
   - `specs/schema/schema_catalog_v1.yaml`

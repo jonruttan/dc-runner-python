@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCCONF-CHAIN-EXPORT-002
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: producer export path must resolve to producer assert step id
 purpose: Ensures from=assert.function exports fail with schema category when export path does
   not resolve to a producer assert step.
@@ -10,9 +10,9 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/libraries/conformance/chain_export_validation.spec.md
+      path: /specs/05_libraries/conformance/chain_export_validation.spec.md
   use:
-  - ref: /specs/libraries/conformance/chain_export_validation.spec.md#BAD-EXPORT-PATH
+  - ref: /specs/05_libraries/conformance/chain_export_validation.spec.md#BAD-EXPORT-PATH
     as: bad_export_path_fixture
     symbols:
     - bad.path.symbol
@@ -30,7 +30,7 @@ contract:
 ```yaml contract-spec
 id: DCCONF-CHAIN-EXPORT-003
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: producer export source assert step must use class must
 purpose: Ensures from=assert.function exports fail with schema category when source step class
   is not must.
@@ -39,9 +39,9 @@ harness:
   check:
     profile: text.file
     config:
-      path: /specs/libraries/conformance/chain_export_validation.spec.md
+      path: /specs/05_libraries/conformance/chain_export_validation.spec.md
   use:
-  - ref: /specs/libraries/conformance/chain_export_validation.spec.md#BAD-EXPORT-CLASS
+  - ref: /specs/05_libraries/conformance/chain_export_validation.spec.md#BAD-EXPORT-CLASS
     as: bad_export_class_fixture
     symbols:
     - bad.class.symbol

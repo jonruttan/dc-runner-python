@@ -4,9 +4,9 @@ Canonical domain index for executable specs in this subtree.
 
 ## Files
 
-- `/specs/libraries/policy/policy_assertions.spec.md`
-- `/specs/libraries/policy/policy_text.spec.md`
-- `/specs/libraries/policy/policy_job.spec.md`
+- `/specs/05_libraries/policy/policy_assertions.spec.md`
+- `/specs/05_libraries/policy/policy_text.spec.md`
+- `/specs/05_libraries/policy/policy_job.spec.md`
 
 ## Exported Symbols
 

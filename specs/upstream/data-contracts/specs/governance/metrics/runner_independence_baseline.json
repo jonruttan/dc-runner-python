@@ -14,7 +14,7 @@
     "rust_ci_required_tokens": [
       "core-gate-rust-adapter:",
       "SPEC_RUNNER_BIN: ./dc-runner-rust",
-      "run: ./scripts/core_gate.sh"
+      "run: ./scripts/ci_gate.sh"
     ],
     "segment_files": {
       "adapter_interfaces": [
@@ -75,7 +75,7 @@
     },
     {
       "direct_runtime_invocation_count": 0.0,
-      "file": "scripts/core_gate.sh",
+      "file": "scripts/ci_gate.sh",
       "runner_independence_ratio": 1.0,
       "runner_interface_usage_ratio": 1.0,
       "rust_primary_path_coverage_ratio": 1.0,
@@ -83,7 +83,7 @@
     },
     {
       "direct_runtime_invocation_count": 0.0,
-      "file": "scripts/docs_doctor.sh",
+      "file": "scripts/control_plane.sh",
       "runner_independence_ratio": 1.0,
       "runner_interface_usage_ratio": 1.0,
       "rust_primary_path_coverage_ratio": 1.0,

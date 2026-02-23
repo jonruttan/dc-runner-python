@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCGOV-RUNTIME-APIHTTP-002
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: api.http oauth specs contain no secret literals
 purpose: Ensures api.http fixtures avoid inline bearer tokens and secret literal OAuth fields.
 type: contract.check
@@ -12,7 +12,7 @@ harness:
     config:
       check: runtime.api_http_oauth_no_secret_literals
   use:
-  - ref: /specs/libraries/policy/policy_core.spec.md
+  - ref: /specs/05_libraries/policy/policy_core.spec.md
     as: lib_policy_core_spec
     symbols:
     - policy.pass_when_no_violations

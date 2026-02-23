@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCGOV-RUNTIME-JOB-DISPATCH-004
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: ops.job.dispatch requires ops.job capability
 purpose: Ensures cases that call ops.job.dispatch declare harness.spec_lang.capabilities including
   ops.job.

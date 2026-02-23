@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCGOV-CONF-SPECLANG-002
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: conformance evaluate-first ratio is non-regressing
 purpose: Enforces ratchet-style non-regression for conformance evaluate coverage against the
   checked-in spec-lang adoption baseline.
@@ -16,7 +16,7 @@ harness:
     epsilon: 1.0e-12
     spec_lang_adoption:
       roots:
-      - /specs/conformance/cases
+      - /specs/03_conformance/cases
       segment_rules:
       - prefix: specs/conformance/cases
         segment: conformance
@@ -26,7 +26,7 @@ harness:
     config:
       check: conformance.evaluate_first_ratio_non_regression
   use:
-  - ref: /specs/libraries/policy/policy_core.spec.md
+  - ref: /specs/05_libraries/policy/policy_core.spec.md
     as: lib_policy_core_spec
     symbols:
     - policy.pass_when_no_violations

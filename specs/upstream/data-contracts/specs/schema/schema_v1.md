@@ -62,7 +62,7 @@ Parser behavior:
 - `type` is required
 - `spec_version` is required
 - `schema_ref` is required
-- `schema_ref` MUST resolve in `/specs/schema/schema_catalog_v1.yaml`
+- `schema_ref` MUST resolve in `/specs/01_schema/schema_catalog_v1.yaml`
 - `spec_version` MUST match the schema major encoded by `schema_ref`
 
 `assert_health`:

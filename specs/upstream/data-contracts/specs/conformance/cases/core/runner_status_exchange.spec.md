@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCCONF-RSTAT-001
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: runner status report schema is declared
 purpose: Ensures the producer-facing status report schema exists.
 type: contract.check
@@ -31,7 +31,7 @@ contract:
 ```yaml contract-spec
 id: DCCONF-RSTAT-002
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: runner status matrix schema is declared
 purpose: Ensures the aggregate status matrix schema exists.
 type: contract.check
@@ -61,7 +61,7 @@ contract:
 ```yaml contract-spec
 id: DCCONF-RSTAT-003
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: ingest script enforces freshness threshold
 purpose: Ensures ingest includes max-age controls and enforcement flag.
 type: contract.check
@@ -91,7 +91,7 @@ contract:
 ```yaml contract-spec
 id: DCCONF-RSTAT-004
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: ingest tracks missing compatibility status visibility
 purpose: Ensures missing compatibility status is represented and policy-scored.
 type: contract.check
@@ -121,7 +121,7 @@ contract:
 ```yaml contract-spec
 id: DCCONF-RSTAT-005
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: required lane policy remains blocking
 purpose: Ensures required lane status maps to blocking policy effect.
 type: contract.check

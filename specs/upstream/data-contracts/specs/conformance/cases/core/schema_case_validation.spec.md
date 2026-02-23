@@ -1,7 +1,7 @@
 ```yaml contract-spec
 id: DCCONF-SCHEMA-CASE-001
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: valid core shape compiles and runs
 purpose: Ensures standard top-level keys accepted by registry validation continue to execute
   successfully.
@@ -33,7 +33,7 @@ harness:
 ```yaml contract-spec
 id: DCCONF-SCHEMA-CASE-002
 spec_version: 1
-schema_ref: /specs/schema/schema_v1.md
+schema_ref: /specs/01_schema/schema_v1.md
 title: unknown evaluate symbol is rejected as schema
 purpose: Ensures unknown spec-lang symbols fail as schema in both runtimes.
 type: contract.check
