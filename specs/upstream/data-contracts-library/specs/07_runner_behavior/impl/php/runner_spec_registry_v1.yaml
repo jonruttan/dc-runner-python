@@ -1,0 +1,132 @@
+version: 1
+cases:
+  - id: DCIMPL-PHP-AH-001
+    path: /specs/07_runner_behavior/impl/php/cases/runner_assert_health.spec.md
+    purpose: cli.run warn mode emits diagnostics without failing.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-AH-002
+    path: /specs/07_runner_behavior/impl/php/cases/runner_assert_health.spec.md
+    purpose: cli.run error mode fails on assertion-health diagnostics.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-AH-003
+    path: /specs/07_runner_behavior/impl/php/cases/runner_assert_health.spec.md
+    purpose: invalid assert_health mode is schema failure.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-AH-004
+    path: /specs/07_runner_behavior/impl/php/cases/runner_assert_health.spec.md
+    purpose: global assert health mode applies when case mode is omitted.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-AH-005
+    path: /specs/07_runner_behavior/impl/php/cases/runner_assert_health.spec.md
+    purpose: per-case ignore overrides global warn policy.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-RUN-F001
+    path: /specs/07_runner_behavior/impl/php/cases/runner_failures.spec.md
+    purpose: text.file virtual absolute path missing file fails runtime.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-RUN-F002
+    path: /specs/07_runner_behavior/impl/php/cases/runner_failures.spec.md
+    purpose: text.file path escape is rejected.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-RUN-F003
+    path: /specs/07_runner_behavior/impl/php/cases/runner_failures.spec.md
+    purpose: cli.run without entrypoint fails.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-RUN-F004
+    path: /specs/07_runner_behavior/impl/php/cases/runner_failures.spec.md
+    purpose: cli.run rejects unknown spec-lang symbol usage.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-RUN-F005
+    path: /specs/07_runner_behavior/impl/php/cases/runner_failures.spec.md
+    purpose: cli.run exit_code mismatch is assertion failure.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-RUN-F006
+    path: /specs/07_runner_behavior/impl/php/cases/runner_failures.spec.md
+    purpose: unknown type reports runtime failure.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-RUN-F007
+    path: /specs/07_runner_behavior/impl/php/cases/runner_failures.spec.md
+    purpose: cli.run rejects unsupported harness keys.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-RUN-F008
+    path: /specs/07_runner_behavior/impl/php/cases/runner_failures.spec.md
+    purpose: leaf target key is rejected.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-RUN-LIB-001
+    path: /specs/07_runner_behavior/impl/php/cases/runner_library_exports.spec.md
+    purpose: impl assertion library exports are referenced by impl fixtures.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-RUN-001
+    path: /specs/07_runner_behavior/impl/php/cases/runner_pass.spec.md
+    purpose: text.file default target uses containing spec file.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-RUN-002
+    path: /specs/07_runner_behavior/impl/php/cases/runner_pass.spec.md
+    purpose: text.file supports relative path.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-RUN-003
+    path: /specs/07_runner_behavior/impl/php/cases/runner_pass.spec.md
+    purpose: text.file can group succeeds with one passing branch.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-RUN-004
+    path: /specs/07_runner_behavior/impl/php/cases/runner_pass.spec.md
+    purpose: cli.run explicit entrypoint executes argv.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-RUN-005
+    path: /specs/07_runner_behavior/impl/php/cases/runner_pass.spec.md
+    purpose: cli.run applies harness env mapping.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-RUN-006
+    path: /specs/07_runner_behavior/impl/php/cases/runner_pass.spec.md
+    purpose: cli.run requires explicit harness entrypoint.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-RUN-007
+    path: /specs/07_runner_behavior/impl/php/cases/runner_pass.spec.md
+    purpose: cli.run json_type list assertion passes.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-RUN-008
+    path: /specs/07_runner_behavior/impl/php/cases/runner_pass.spec.md
+    purpose: cli.run can assert stderr output.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-RUN-009
+    path: /specs/07_runner_behavior/impl/php/cases/runner_pass.spec.md
+    purpose: cli.run supports stdout_path and stdout_path_text targets.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-PORT-001
+    path: /specs/07_runner_behavior/impl/php/cases/runner_portability.spec.md
+    purpose: shell command via sh -c works when shell exists.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-PORT-002
+    path: /specs/07_runner_behavior/impl/php/cases/runner_portability.spec.md
+    purpose: process env passthrough remains stringly typed.
+    owner: dc-runner-php
+    status: active
+  - id: DCIMPL-PHP-PORT-003
+    path: /specs/07_runner_behavior/impl/php/cases/runner_portability.spec.md
+    purpose: relative stdout path resolves from runner cwd.
+    owner: dc-runner-php
+    status: active

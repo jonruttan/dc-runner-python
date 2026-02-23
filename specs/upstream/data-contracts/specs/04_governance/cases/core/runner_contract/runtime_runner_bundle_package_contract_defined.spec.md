@@ -61,19 +61,19 @@ contracts:
           std.logic.not:
             std.string.contains:
             - var: text
-            - dc-runner-rust-specs
+            - dc-runner-spec
       - id: assert_9
         assert:
           std.logic.not:
             std.string.contains:
             - var: text
-            - dc-runner-python-specs
+            - data-contracts-bundle-spec
       - id: assert_10
         assert:
           std.logic.not:
             std.string.contains:
             - var: text
-            - dc-runner-php-specs
+            - data-contracts-bundler-spec
   - id: DCGOV-RUNTIME-BUNDLE-003
     title: runner build tool schema declares bundle sync tasks
     purpose: Ensures runner build tool schema uses bundle-sync task ids and does not

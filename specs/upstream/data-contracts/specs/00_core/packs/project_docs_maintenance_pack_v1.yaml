@@ -1,0 +1,18 @@
+version: 1
+pack_id: project_docs_maintenance_pack_v1
+pack_role: project_docs_maintenance
+runner_consumption: docs-only
+entry_cases:
+  - /specs/04_governance/cases/core/project_docs/docs_readme_task_usage_paths_present.spec.md
+  - /specs/04_governance/cases/core/project_docs/docs_readme_makefile_cookbook_forbidden.spec.md
+  - /specs/04_governance/cases/core/project_docs/docs_usage_guides_required_set_present.spec.md
+  - /specs/04_governance/cases/core/project_docs/docs_reference_manifest_guide_order_canonical.spec.md
+contracts:
+  - /specs/02_contracts/10_docs_quality.md
+  - /specs/02_contracts/22_docs_information_architecture.md
+schemas:
+  - /specs/01_schema/docs_schema_v1.md
+  - /specs/01_schema/docs_layout_profile_v1.yaml
+artifacts_expected:
+  - /.artifacts/governance-summary.json
+  - /.artifacts/governance-optional-summary.md

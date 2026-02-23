@@ -93,7 +93,7 @@ make runner-spec-check
 - Global contracts snapshot:
   - `/specs/upstream/data-contracts/`
 - Runner-specific contracts snapshot:
-  - `/specs/upstream/dc-runner-spec/specs/impl/python/`
+  - `/specs/upstream/data-contracts-library/specs/07_runner_behavior/impl/python/`
 - Local pointer only:
   - `/specs/impl/python/index.md`
 

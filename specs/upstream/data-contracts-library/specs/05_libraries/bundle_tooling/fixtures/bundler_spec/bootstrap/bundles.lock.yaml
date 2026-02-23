@@ -1,0 +1,13 @@
+version: 1
+project_id: data-contracts-bundler-rust
+bundles:
+  - bundle_id: data-contracts-bundler
+    bundle_version: 0.1.0
+    role: primary
+    source:
+      repo: jonruttan/data-contracts-bundles
+      release_tag: data-contracts-bundler-v0.1.0
+      asset_url: file:///tmp/data-contract-bundle-data-contracts-bundler-v0.1.0.tar.gz
+      sha256: REPLACE_WITH_REAL_SHA256
+    install_dir: .bundles/data-contracts-bundler
+updated_at: 2026-02-21T00:00:00Z

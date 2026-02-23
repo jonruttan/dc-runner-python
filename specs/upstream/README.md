@@ -1,6 +1,6 @@
 # Upstream Snapshots
 
-This directory stores pinned snapshots consumed by `dc-runner-python`.
+This directory stores pinned snapshots consumed by this runner repository.
 
 ## Global Contracts (`data-contracts`)
 
@@ -20,12 +20,12 @@ Check:
 make spec-sync-check
 ```
 
-## Runner-Specific Contracts (`dc-runner-spec`)
+## Runner Contracts (`data-contracts-library`)
 
-- Snapshot: `/specs/upstream/dc-runner-spec/`
+- Snapshot: `/specs/upstream/data-contracts-library/`
 - Lock: `/specs/upstream/resolved_contract_set_lock_v1.yaml`
 - Lock Hash: `/specs/upstream/resolved_contract_set_lock_v1.sha256`
-- Manifest: `/specs/upstream/dc-runner-spec.manifest.sha256`
+- Manifest: `/specs/upstream/data-contracts-library.manifest.sha256`
 
 Update:
 

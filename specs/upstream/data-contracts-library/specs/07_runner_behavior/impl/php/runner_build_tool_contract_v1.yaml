@@ -1,0 +1,92 @@
+version: 1
+required_tasks:
+  - task_id: build
+    norm: MUST
+  - task_id: test
+    norm: MUST
+  - task_id: verify
+    norm: MUST
+  - task_id: spec-sync
+    norm: MUST
+  - task_id: spec-sync-check
+    norm: MUST
+  - task_id: compat-check
+    norm: MUST
+optional_tasks:
+  - task_id: smoke
+    norm: MAY
+  - task_id: package-check
+    norm: MAY
+  - task_id: release-verify
+    norm: MAY
+  - task_id: docs-check
+    norm: MAY
+  - task_id: lint
+    norm: MAY
+  - task_id: typecheck
+    norm: MAY
+task_map:
+  build:
+    supported: true
+    invocations:
+      - make lint
+    tool_kind: make
+    notes: Interpreted PHP lane uses syntax validation as build-equivalent gate.
+  test:
+    supported: true
+    invocations:
+      - make lint
+      - make smoke
+    tool_kind: make
+    notes: Current PHP lane test-equivalent gate is lint + smoke.
+  verify:
+    supported: true
+    invocations:
+      - make verify
+    tool_kind: make
+  spec-sync:
+    supported: true
+    invocations:
+      - make spec-sync TAG=<upstream-tag> SOURCE=<path-or-url>
+    tool_kind: make
+  spec-sync-check:
+    supported: true
+    invocations:
+      - make spec-sync-check SOURCE=<path-or-url>
+    tool_kind: make
+  compat-check:
+    supported: true
+    invocations:
+      - make compat-check SOURCE=<path-or-url>
+    tool_kind: make
+  smoke:
+    supported: true
+    invocations:
+      - make smoke
+    tool_kind: make
+  package-check:
+    supported: false
+    invocations:
+      - "not-supported"
+    tool_kind: custom
+  release-verify:
+    supported: false
+    invocations:
+      - "not-supported"
+    tool_kind: custom
+  docs-check:
+    supported: false
+    invocations:
+      - "not-supported"
+    tool_kind: custom
+  lint:
+    supported: true
+    invocations:
+      - make lint
+    tool_kind: make
+  typecheck:
+    supported: false
+    invocations:
+      - "not-supported"
+    tool_kind: custom
+    notes: Dedicated typecheck target is not defined for PHP lane.

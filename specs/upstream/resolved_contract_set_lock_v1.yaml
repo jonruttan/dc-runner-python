@@ -2,15 +2,15 @@ version: 1
 root_contract_set: python_runner_contract_set
 runner: python
 source:
-  repo: git@github.com:jonruttan/dc-runner-spec.git
+  repo: https://github.com/jonruttan/data-contracts-library.git
   ref: main
-  commit: 1f2393c2085c26cb69542134eadfb43b910306cd
+  commit: 98630d93d7351c42726018a03e7b4695ca0ac685
 resolved_order:
 - python_impl_contract_set
 - shared_makefile_help_contract_set
 - shared_runner_build_tool_task_sets_contract_set
 - python_runner_contract_set
 integrity:
-  file_count: 33
-  sha256_manifest: f884c9f2726b50527301ace11d1257743527622085bdfcaa564fe73704ec9b5d
+  file_count: 76
+  sha256_manifest: 407c32418d971b0038f458911a429af450e13739300fe08d470c4f07bc663961
   sha256_manifests: 5bdad32680a134b72fdb8528b7705c748bc8c494e95bff3421e63b77afd7a8bc

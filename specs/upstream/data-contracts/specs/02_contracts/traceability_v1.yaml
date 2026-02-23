@@ -4364,8 +4364,8 @@ links:
   conformance_case_ids: []
   unit_test_refs: []
   implementation_refs:
-  - ../dc-runner-spec/specs/index.md
-  - ../dc-runner-spec/README.md
+  - ../data-contracts-library/specs/index.md
+  - ../data-contracts-library/README.md
   notes: Canonical schema authority is data-contracts; runner specs consume schema via schema_ref.
 - rule_id: REPO_BOUNDARY_RUNNER_TREE_TOKENS_FORBIDDEN_IN_CANONICAL_TREES
   policy_ref: specs/02_contracts/policy_v1.yaml#REPO_BOUNDARY_RUNNER_TREE_TOKENS_FORBIDDEN_IN_CANONICAL_TREES

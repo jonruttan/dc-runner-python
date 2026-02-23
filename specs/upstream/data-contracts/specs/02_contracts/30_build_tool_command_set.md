@@ -64,7 +64,7 @@ checks and use stable non-zero failure signaling suitable for CI blocking.
 
 Each runner repository MUST publish a machine-readable task map manifest at:
 
-- `/dc-runner-spec/specs/impl/<runner>/runner_build_tool_contract_v1.yaml`
+- `/data-contracts-library/specs/07_runner_behavior/impl/<runner>/runner_build_tool_contract_v1.yaml`
 
 The manifest maps task IDs to local invocations and declares supported optional
 capabilities.

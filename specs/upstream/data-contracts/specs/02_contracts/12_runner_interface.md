@@ -11,7 +11,7 @@ Runtime execution ownership lives in runner repositories:
 - `dc-runner-rust`
 - `dc-runner-python`
 - `dc-runner-php`
-- `dc-runner-spec` (runner-owned executable spec suite contracts)
+- `data-contracts-library` (reusable runner behavior + overlay + shared runner libraries)
 
 `data-contracts` owns:
 
@@ -40,7 +40,7 @@ entrypoints and artifact emitters only.
 Active shell scripts in canonical repos are wrapper-only command boundaries and
 must not embed policy or schema decision logic.
 
-Runner-owned executable spec suites MUST use canonical v1 case shape:
+Reusable runner executable spec suites MUST use canonical v1 case shape:
 
 - `spec_version: 1`
 - `schema_ref: /specs/01_schema/schema_v1.md`
@@ -51,9 +51,9 @@ Boundary contract:
 
 - canonical `data-contracts` docs/specs must not reference internal runner trees
   using internal runner tree path tokens.
-- external runner surfaces must be referenced via explicit repository paths, for
-  example `/dc-runner-spec/specs/impl/**` and
-  `/dc-runner-spec/specs/contract_sets/**`.
+- external reusable-runner surfaces must be referenced via explicit repository paths, for
+  example `/data-contracts-library/specs/07_runner_behavior/impl/**` and
+  `/data-contracts-library/specs/07_runner_behavior/contract_sets/**`.
 
 ## Status Exchange Boundary
 
@@ -93,7 +93,7 @@ Canonical bundle manifest and package librarian repository:
 
 - `https://github.com/jonruttan/data-contracts-bundles`
 
-Implementation-specific overlay repositories:
+Reusable implementation-specific overlay repository:
 
 - `https://github.com/jonruttan/data-contracts-library`
 

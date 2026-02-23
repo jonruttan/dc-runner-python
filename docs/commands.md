@@ -19,7 +19,7 @@ make spec-sync-check
 make compat-check
 ```
 
-## Runner Specs (`dc-runner-spec`)
+## Runner Specs (`data-contracts-library`)
 
 ```sh
 make runner-spec-sync TAG=<tag-or-ref> SOURCE=<path-or-url>

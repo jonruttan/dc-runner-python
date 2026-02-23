@@ -7,7 +7,7 @@ deterministic overlays on top of canonical base bundles.
 
 - Base runner bundle manifests and packages remain canonical in:
   `https://github.com/jonruttan/data-contracts-bundles`
-- Implementation-specific overlays and shared reusable libraries are owned in:
+- Reusable runner behavior overlays and shared reusable libraries are owned in:
   - `https://github.com/jonruttan/data-contracts-library`
 
 ## Overlay Semantics
@@ -16,10 +16,10 @@ Implementation repositories MUST define overlay intent using:
 
 - `/specs/01_schema/implementation_bundle_overlay_v1.yaml`
 
-Runner-owned spec repositories (for example `dc-runner-spec`) MUST keep
+Reusable runner behavior specs in `data-contracts-library` MUST keep
 executable `.spec.md` cases in canonical v1 suite shape so overlay consumers
 can parse and validate them deterministically.
-Canonical schema docs in `data-contracts` must reference runner-owned trees
+Canonical schema docs in `data-contracts` must reference reusable-runner trees
 through explicit external repository paths only.
 Runner-side shell tooling must remain wrapper-only around runner command/spec
 surfaces for deterministic cross-repo behavior.
@@ -68,9 +68,8 @@ Implementation-specific packages MUST use canonical naming:
 - `data-contract-bundle-{bundle_id}-v{bundle_version}.tar.gz.sha256`
 - `data-contract-bundle-{bundle_id}-v{bundle_version}.tar.gz.intoto.json`
 
-Each `dc-runner-*-specs` repository publishes its own release assets.
-Mirroring into `data-contracts-bundles` is optional and not required by this
-contract.
+Reusable runner behavior and overlay bundle sources are published from
+`data-contracts-library` and packaged in `data-contracts-bundles`.
 
 ## Project Consumption
 

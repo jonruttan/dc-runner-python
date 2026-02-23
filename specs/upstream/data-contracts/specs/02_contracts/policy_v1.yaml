@@ -4736,8 +4736,7 @@ rules:
   norm: MUST
   requirement: new_spec_repository_authority_must_not_be_introduced_outside_allowlist
   description: Canonical documentation and manifests must not introduce new `*-spec`
-    repository authorities. Allowed spec authorities are data-contracts, dc-runner-spec,
-    and data-contracts-library.
+    repository authorities. Allowed spec authorities are data-contracts and data-contracts-library.
   rationale: Prevents repository sprawl and keeps shared reusable spec authority centralized.
   risk_if_violated: Spec authority fragments across many repositories and creates
     long-term maintenance drift.

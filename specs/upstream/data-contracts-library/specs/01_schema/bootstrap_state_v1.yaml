@@ -1,0 +1,38 @@
+version: 1
+title: bootstrap_state_v1
+type: object
+required:
+  - version
+  - bundle_id
+  - bundle_version
+  - source
+  - install_dir
+  - installed_at
+properties:
+  version:
+    type: integer
+    const: 1
+  bundle_id:
+    type: string
+    const: data-contracts-bundler
+  bundle_version:
+    type: string
+    minLength: 1
+  source:
+    type: object
+    required:
+      - asset_url
+      - sha256
+    properties:
+      asset_url:
+        type: string
+        minLength: 1
+      sha256:
+        type: string
+        minLength: 1
+  install_dir:
+    type: string
+    minLength: 1
+  installed_at:
+    type: string
+    minLength: 1

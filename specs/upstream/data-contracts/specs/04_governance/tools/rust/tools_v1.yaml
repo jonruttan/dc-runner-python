@@ -1,0 +1,43 @@
+version: 1
+implementation: rust
+tools:
+- tool_id: metric.spec_lang_adoption.json
+  effect_symbol: ops.proc.command.exec
+  capability_id: orchestration.tool.metric.spec_lang_adoption
+  input_schema_ref: /specs/01_schema/orchestration_result_v1.yaml#tool_input
+  output_schema_ref: /specs/01_schema/orchestration_result_v1.yaml#tool_output
+  stability: stable
+  since: v1
+  adapter_subcommand: spec-lang-adoption-json
+- tool_id: metric.runner_independence.json
+  effect_symbol: ops.proc.command.exec
+  capability_id: orchestration.tool.metric.runner_independence
+  input_schema_ref: /specs/01_schema/orchestration_result_v1.yaml#tool_input
+  output_schema_ref: /specs/01_schema/orchestration_result_v1.yaml#tool_output
+  stability: stable
+  since: v1
+  adapter_subcommand: runner-independence-json
+- tool_id: metric.python_dependency.json
+  effect_symbol: ops.proc.command.exec
+  capability_id: orchestration.tool.metric.python_dependency
+  input_schema_ref: /specs/01_schema/orchestration_result_v1.yaml#tool_input
+  output_schema_ref: /specs/01_schema/orchestration_result_v1.yaml#tool_output
+  stability: stable
+  since: v1
+  adapter_subcommand: python-dependency-json
+- tool_id: governance.run
+  effect_symbol: ops.proc.command.exec
+  capability_id: orchestration.tool.governance.run
+  input_schema_ref: /specs/01_schema/orchestration_result_v1.yaml#tool_input
+  output_schema_ref: /specs/01_schema/orchestration_result_v1.yaml#tool_output
+  stability: stable
+  since: v1
+  adapter_subcommand: governance
+- tool_id: docs.generate.check
+  effect_symbol: ops.proc.command.exec
+  capability_id: orchestration.tool.docs.generate_check
+  input_schema_ref: /specs/01_schema/orchestration_result_v1.yaml#tool_input
+  output_schema_ref: /specs/01_schema/orchestration_result_v1.yaml#tool_output
+  stability: stable
+  since: v1
+  adapter_subcommand: docs-generate-check

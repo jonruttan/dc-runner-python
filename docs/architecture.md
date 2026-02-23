@@ -29,8 +29,8 @@ Pinned upstream compatibility artifacts:
 - `/specs/upstream/data-contracts.manifest.sha256`
 - `/specs/upstream/data-contracts/**`
 - `/specs/upstream/resolved_contract_set_lock_v1.yaml`
-- `/specs/upstream/dc-runner-spec.manifest.sha256`
-- `/specs/upstream/dc-runner-spec/specs/impl/python/**`
+- `/specs/upstream/data-contracts-library.manifest.sha256`
+- `/specs/upstream/data-contracts-library/specs/07_runner_behavior/impl/python/**`
 
 ## Execution Model
 

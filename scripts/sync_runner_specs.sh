@@ -4,9 +4,9 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 LOCK_FILE="${ROOT_DIR}/specs/upstream/resolved_contract_set_lock_v1.yaml"
 LOCK_HASH_FILE="${ROOT_DIR}/specs/upstream/resolved_contract_set_lock_v1.sha256"
-SNAP_ROOT="${ROOT_DIR}/specs/upstream/dc-runner-spec"
-MANIFEST_FILE="${ROOT_DIR}/specs/upstream/dc-runner-spec.manifest.sha256"
-DEFAULT_SOURCE="https://github.com/jonruttan/dc-runner-spec.git"
+SNAP_ROOT="${ROOT_DIR}/specs/upstream/data-contracts-library"
+MANIFEST_FILE="${ROOT_DIR}/specs/upstream/data-contracts-library.manifest.sha256"
+DEFAULT_SOURCE="https://github.com/jonruttan/data-contracts-library.git"
 RUNNER="python"
 ROOT_CONTRACT_SET="python_runner_contract_set"
 LOCK_FILENAME="resolved_contract_set_lock_v1.yaml"
@@ -105,11 +105,11 @@ verify_required_files_exist() {
   local snapshot_root="$1"
   local required=(
     "specs/index.md"
-    "specs/impl/shared/makefile_help_output_v1.md"
-    "specs/impl/python/index.md"
-    "specs/impl/python/runner_build_tool_contract_v1.yaml"
-    "specs/impl/python/runner_spec_registry_v1.yaml"
-    "specs/impl/python/cases/index.md"
+    "specs/07_runner_behavior/impl/shared/makefile_help_output_v1.md"
+    "specs/07_runner_behavior/impl/python/index.md"
+    "specs/07_runner_behavior/impl/python/runner_build_tool_contract_v1.yaml"
+    "specs/07_runner_behavior/impl/python/runner_spec_registry_v1.yaml"
+    "specs/07_runner_behavior/impl/python/cases/index.md"
   )
 
   local missing=0

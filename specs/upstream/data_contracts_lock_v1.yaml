@@ -21,5 +21,5 @@ snapshot:
     - "**/reviews/**"
     - "**/snapshots/**"
 integrity:
-  file_count: 479
-  sha256_manifest: 84fdae7262dcc444b2ddedb5e185d245eda2cc181a7f66ff0b46357991252c95
+  file_count: 548
+  sha256_manifest: 4d437a645e62e1317031f5c80406b6fb5443ea6e17196054b3d7ea2443a4e1de

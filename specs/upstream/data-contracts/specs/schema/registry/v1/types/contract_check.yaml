@@ -1,0 +1,11 @@
+version: 2
+id: schema.registry.v1.type.contract_check
+type: unsupported
+case_type: contract.check
+status: non_normative
+superseded_by: /specs/01_schema/service_contract_catalog_v1.yaml
+fields:
+  note:
+    type: string
+    required: true
+    since: v1
