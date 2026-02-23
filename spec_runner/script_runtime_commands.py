@@ -742,7 +742,7 @@ _FORBIDDEN_TOKENS = {
 
 _SOURCE_OF_TRUTH_RE = re.compile(r"^Source of truth:\s*([^\s]+)\s*$", re.IGNORECASE)
 _EXPECTED_SPEC_INDEX_LINKS = {
-    "/specs/schema/index.md",
+    "/specs/01_schema/index.md",
     "/specs/contract/index.md",
     "/specs/governance/index.md",
     "/specs/libraries/index.md",

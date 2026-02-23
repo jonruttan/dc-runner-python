@@ -11,7 +11,7 @@ INCLUDE_PATTERNS=(
   "specs/index.md"
   "specs/current.md"
   "specs/contract/**"
-  "specs/schema/**"
+  "specs/01_schema/**"
   "specs/conformance/**"
   "specs/governance/index.md"
   "specs/governance/check_*.yaml"
@@ -159,9 +159,9 @@ verify_required_files_exist() {
     "specs/contract/index.md"
     "specs/contract/policy_v1.yaml"
     "specs/contract/traceability_v1.yaml"
-    "specs/schema/index.md"
-    "specs/schema/runner_certification_registry_v2.yaml"
-    "specs/schema/runner_reference_v1.yaml"
+    "specs/01_schema/index.md"
+    "specs/01_schema/runner_certification_registry_v1.yaml"
+    "specs/01_schema/runner_reference_v1.yaml"
     "specs/governance/index.md"
     "specs/governance/check_sets_v1.yaml"
     "specs/governance/check_prefix_map_v1.yaml"
@@ -315,7 +315,7 @@ snapshot:
     - specs/index.md
     - specs/current.md
     - specs/contract/**
-    - specs/schema/**
+    - specs/01_schema/**
     - specs/conformance/**
     - specs/governance/index.md
     - specs/governance/check_*.yaml

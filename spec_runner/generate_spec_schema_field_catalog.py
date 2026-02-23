@@ -102,7 +102,7 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Generate schema field catalog JSON and markdown sections.")
     ap.add_argument("--out", default=".artifacts/spec-schema-field-catalog.json")
     ap.add_argument("--doc-out", default="docs/book/98_appendix_spec_case_shape_reference.md")
-    ap.add_argument("--schema-doc-out", default="specs/schema/schema_v1.md")
+    ap.add_argument("--schema-doc-out", default="specs/01_schema/schema_v1.md")
     ap.add_argument("--check", action="store_true")
     ns = ap.parse_args(argv)
 

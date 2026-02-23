@@ -7,8 +7,8 @@ from typing import Any
 import yaml
 
 
-REGISTRY_ROOT = Path("specs/schema/registry/v1")
-REGISTRY_SCHEMA_PATH = Path("specs/schema/registry_schema_v1.yaml")
+REGISTRY_ROOT = Path("specs/01_schema/registry/v1")
+REGISTRY_SCHEMA_PATH = Path("specs/01_schema/registry_schema_v1.yaml")
 
 
 @dataclass(frozen=True)

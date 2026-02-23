@@ -30,8 +30,8 @@ def _repo_commit_sha(root: Path) -> str:
 
 def _load_registry(root: Path) -> tuple[Path, dict[str, Any]]:
     candidates = [
-        root / "specs/schema/runner_certification_registry_v2.yaml",
-        root / "specs/upstream/data-contracts/specs/schema/runner_certification_registry_v2.yaml",
+        root / "specs/01_schema/runner_certification_registry_v1.yaml",
+        root / "specs/upstream/data-contracts/specs/01_schema/runner_certification_registry_v1.yaml",
     ]
     for path in candidates:
         if path.exists():
@@ -39,7 +39,7 @@ def _load_registry(root: Path) -> tuple[Path, dict[str, Any]]:
             if isinstance(payload, dict):
                 return path, payload
             raise SystemExit(f"ERROR: invalid registry root in {path}")
-    raise SystemExit("ERROR: runner certification registry v2 not found")
+    raise SystemExit("ERROR: runner certification registry v1 not found")
 
 
 def _normalize_intent(entry: dict[str, Any]) -> dict[str, Any]:
@@ -67,8 +67,8 @@ def _normalize_intent(entry: dict[str, Any]) -> dict[str, Any]:
         "required_core_cases": cases,
         "command_contract_subset": subset_rows,
         "registry_ref": {
-            "path": "/specs/schema/runner_certification_registry_v2.yaml",
-            "version": 2,
+            "path": "/specs/01_schema/runner_certification_registry_v1.yaml",
+            "version": 1,
         },
     }
 
@@ -87,7 +87,7 @@ def _run_command(root: Path, name: str, args: list[str]) -> int:
 
 
 def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
-    ap = argparse.ArgumentParser(description="Emit runner execution certificate v2 artifacts")
+    ap = argparse.ArgumentParser(description="Emit runner execution certificate v1 artifacts")
     ap.add_argument("--runner", required=True)
     ap.add_argument("--root", default=".")
     return ap.parse_args(argv)
@@ -100,7 +100,7 @@ def main(argv: list[str] | None = None) -> int:
         raise SystemExit("ERROR: --runner must be non-empty")
     root = Path(ns.root).resolve()
     reg_path, registry = _load_registry(root)
-    if int(registry.get("version", 0)) != 2:
+    if int(registry.get("version", 0)) != 1:
         raise SystemExit(f"ERROR: unsupported registry version in {reg_path}: {registry.get('version')}")
 
     entry: dict[str, Any] | None = None
@@ -172,7 +172,7 @@ def main(argv: list[str] | None = None) -> int:
     intent_hash = _sha256_hex(_canonical_json(execution_intent))
 
     payload: dict[str, Any] = {
-        "version": 2,
+        "version": 1,
         "runner": {
             "runner_id": runner_id,
             "class": runner_class,

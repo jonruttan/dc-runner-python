@@ -174,7 +174,7 @@ def _namespace_bucket(symbol: str) -> str:
 
 
 def _build_payload(repo_root: Path) -> dict[str, Any]:
-    profile_path = repo_root / "specs/schema/spec_lang_stdlib_profile_v1.yaml"
+    profile_path = repo_root / "specs/01_schema/spec_lang_stdlib_profile_v1.yaml"
     profile = yaml.safe_load(profile_path.read_text(encoding="utf-8"))
     symbols_meta = profile.get("symbols") if isinstance(profile, dict) else None
     if not isinstance(symbols_meta, dict):

@@ -9,7 +9,7 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[3]
-PROFILE_PATH = ROOT / "specs/schema/docs_layout_profile_v1.yaml"
+PROFILE_PATH = ROOT / "specs/01_schema/docs_layout_profile_v1.yaml"
 
 
 def _load_profile(path: Path) -> dict:

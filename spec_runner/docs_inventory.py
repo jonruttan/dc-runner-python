@@ -23,7 +23,7 @@ def _classify(path: str) -> tuple[str, str, bool]:
         return "spec.current", "specs", True
     if path == "specs/index.md":
         return "spec.root", "specs", True
-    if path.startswith("specs/schema/"):
+    if path.startswith("specs/01_schema/"):
         return "spec.schema", "specs/schema", path.endswith("/index.md")
     if path.startswith("specs/contract/"):
         return "spec.contract", "specs/contract", path.endswith("/index.md")

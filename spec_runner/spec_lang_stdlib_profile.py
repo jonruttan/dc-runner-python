@@ -10,10 +10,10 @@ from spec_runner.spec_lang import _builtin_arity_table
 from spec_runner.spec_lang_std_names import FLAT_TO_STD
 
 
-PROFILE_PATH = "specs/schema/spec_lang_stdlib_profile_v1.yaml"
+PROFILE_PATH = "specs/01_schema/spec_lang_stdlib_profile_v1.yaml"
 DOC_SYNC_FILES = (
     "specs/contract/03b_spec_lang_v1.md",
-    "specs/schema/schema_v1.md",
+    "specs/01_schema/schema_v1.md",
     "docs/book/90_reference_guide.md",
 )
 DOC_SYNC_REQUIRED_TOKENS = (

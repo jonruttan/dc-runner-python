@@ -104,7 +104,7 @@ def normalize_evaluate(raw: object, *, field: str) -> list[object]:
 _SECURITY_WARNING_DOCS = (
     "README.md",
     "docs/book/10_getting_started.md",
-    "specs/schema/schema_v1.md",
+    "specs/01_schema/schema_v1.md",
 )
 _SECURITY_WARNING_TOKENS = (
     "not a sandbox",
@@ -124,14 +124,14 @@ _CONFORMANCE_MAX_BLOCK_LINES = 120
 _REGEX_PROFILE_DOC = "specs/contract/03a_regex_portability_v1.md"
 _ASSERTION_OPERATOR_DOC_SYNC_TOKENS = ("evaluate",)
 _ASSERT_UNIVERSAL_DOC_FILES = (
-    "specs/schema/schema_v1.md",
+    "specs/01_schema/schema_v1.md",
     "specs/contract/03_assertions.md",
     "specs/contract/09_internal_representation.md",
 )
 _CURRENT_SPEC_ONLY_DOCS = (
     "README.md",
     "docs/book/20_case_model.md",
-    "specs/schema/schema_v1.md",
+    "specs/01_schema/schema_v1.md",
     "specs/contract/01_discovery.md",
     "specs/contract/02_case_shape.md",
     "specs/contract/03_assertions.md",
@@ -182,8 +182,8 @@ _RUNNER_KEYS_MUST_BE_UNDER_HARNESS = {
     "patcher",
     "capture",
 }
-_NORMALIZATION_PROFILE_PATH = "specs/schema/normalization_profile_v1.yaml"
-_DOCS_LAYOUT_PROFILE_PATH = "specs/schema/docs_layout_profile_v1.yaml"
+_NORMALIZATION_PROFILE_PATH = "specs/01_schema/normalization_profile_v1.yaml"
+_DOCS_LAYOUT_PROFILE_PATH = "specs/01_schema/docs_layout_profile_v1.yaml"
 _TOP_LEVEL_DIR_ALLOWLIST = {
     ".artifacts",
     ".git",
@@ -231,11 +231,11 @@ _DATA_ARTIFACT_GLOBS = (
     "specs/governance/metrics/*.json",
     "specs/governance/metrics/*.yaml",
     "docs/book/reference_manifest.yaml",
-    "specs/schema/*.yaml",
+    "specs/01_schema/*.yaml",
 )
 _GOVERNANCE_CHECK_CATALOG_MAP = "specs/governance/check_catalog_map_v1.yaml"
 _SUBJECT_PROFILE_CONTRACT_DOC = "specs/contract/20_subject_profiles_v1.md"
-_SUBJECT_PROFILE_SCHEMA_DOC = "specs/schema/subject_profiles_v1.yaml"
+_SUBJECT_PROFILE_SCHEMA_DOC = "specs/01_schema/subject_profiles_v1.yaml"
 _SUBJECT_PROFILE_TYPE_DOCS = (
     "specs/contract/types/python_profile.md",
     "specs/contract/types/php_profile.md",
@@ -250,8 +250,8 @@ _SUBJECT_PROFILE_DOMAIN_LIBS = (
     "specs/libraries/domain/markdown_core.spec.md",
     "specs/libraries/domain/make_core.spec.md",
 )
-_SCHEMA_REGISTRY_ROOT = "specs/schema/registry/v1"
-_SCHEMA_REGISTRY_SCHEMA = "specs/schema/registry_schema_v1.yaml"
+_SCHEMA_REGISTRY_ROOT = "specs/01_schema/registry/v1"
+_SCHEMA_REGISTRY_SCHEMA = "specs/01_schema/registry_schema_v1.yaml"
 _SCHEMA_REGISTRY_CONTRACT_DOC = "specs/contract/21_schema_registry_contract.md"
 _SCHEMA_REGISTRY_COMPILED_ARTIFACT = ".artifacts/schema_registry_compiled.json"
 _DOCS_GENERATOR_REPORT = ".artifacts/docs-generator-report.json"
@@ -265,7 +265,7 @@ _REVIEW_PROMPT_FILES = (
 )
 _REVIEW_DISCOVERY_PROMPT = "docs/reviews/prompts/discovery_fit_self_heal.md"
 _REVIEW_SCHEMA_REF_TOKENS = (
-    "/specs/schema/review_snapshot_schema_v1.yaml",
+    "/specs/01_schema/review_snapshot_schema_v1.yaml",
     "/specs/contract/26_review_output_contract.md",
 )
 _REVIEW_REQUIRED_SECTION_TOKENS = (
@@ -284,7 +284,7 @@ _REVIEW_DISCOVERY_ENTRYPOINT_TOKENS = (
     "/docs/development.md",
     "/specs/current.md",
     "/specs/contract/index.md",
-    "/specs/schema/schema_v1.md",
+    "/specs/01_schema/schema_v1.md",
 )
 _REVIEW_DISCOVERY_SELF_HEAL_ALLOWED_TOKENS = (
     "Allowed auto-fixes",
@@ -1662,7 +1662,7 @@ def _scan_conformance_case_doc_style_guard(root: Path) -> list[str]:
 def _scan_regex_doc_sync(root: Path) -> list[str]:
     violations: list[str] = []
     assertions_doc = root / "specs/contract/03_assertions.md"
-    schema_doc = root / "specs/schema/schema_v1.md"
+    schema_doc = root / "specs/01_schema/schema_v1.md"
     policy_doc = root / "specs/contract/policy_v1.yaml"
     if not assertions_doc.exists() or not schema_doc.exists() or not policy_doc.exists():
         return violations
@@ -1677,7 +1677,7 @@ def _scan_regex_doc_sync(root: Path) -> list[str]:
         )
     if _REGEX_PROFILE_DOC not in schema_text:
         violations.append(
-            "specs/schema/schema_v1.md: missing regex portability profile reference"
+            "specs/01_schema/schema_v1.md: missing regex portability profile reference"
         )
     if _REGEX_PROFILE_DOC not in policy_text:
         violations.append(
@@ -1688,14 +1688,14 @@ def _scan_regex_doc_sync(root: Path) -> list[str]:
         if tok not in assertions_text:
             violations.append(f"specs/contract/03_assertions.md: missing operator token {tok}")
         if tok not in schema_text:
-            violations.append(f"specs/schema/schema_v1.md: missing operator token {tok}")
+            violations.append(f"specs/01_schema/schema_v1.md: missing operator token {tok}")
     return violations
 
 
 def _scan_assert_universal_core_sync(root: Path) -> list[str]:
     violations: list[str] = []
     required_tokens_by_file: dict[str, tuple[object, ...]] = {
-        "specs/schema/schema_v1.md": (
+        "specs/01_schema/schema_v1.md": (
             "universal core",
             "evaluate",
             ("conformance/cases/*.spec.md", "conformance/cases/**/*.spec.md"),
@@ -1814,7 +1814,7 @@ def _scan_assert_type_contract_subject_semantics_sync(root: Path) -> list[str]:
 def _scan_assert_compiler_schema_matrix_sync(root: Path) -> list[str]:
     violations: list[str] = []
     compiler = root / "runners/python/spec_runner/compiler.py"
-    schema = root / "specs/schema/schema_v1.md"
+    schema = root / "specs/01_schema/schema_v1.md"
     assertions_doc = root / "specs/contract/03_assertions.md"
     if not compiler.exists() or not schema.exists() or not assertions_doc.exists():
         return ["assert.compiler_schema_matrix_sync requires compiler + schema + assertion contract docs"]
@@ -1823,7 +1823,7 @@ def _scan_assert_compiler_schema_matrix_sync(root: Path) -> list[str]:
     assertions_lower = assertions_doc.read_text(encoding="utf-8").lower()
 
     if "universal core operator" not in schema_lower:
-        violations.append("specs/schema/schema_v1.md:1: missing universal core operator section")
+        violations.append("specs/01_schema/schema_v1.md:1: missing universal core operator section")
     if "only universal assertion operator contract" not in assertions_lower:
         violations.append("specs/contract/03_assertions.md:1: missing universal evaluate-only contract text")
     if 'supported = {"evaluate"}' not in compiler_raw:
@@ -1874,7 +1874,7 @@ def _scan_assert_spec_lang_builtin_surface_sync(root: Path, *, harness: dict | N
     unknown = sorted(required - profile_symbols)
     for op in unknown:
         violations.append(
-            f"specs/schema/spec_lang_stdlib_profile_v1.yaml:1: required_ops entry is not in stdlib profile: {op}"
+            f"specs/01_schema/spec_lang_stdlib_profile_v1.yaml:1: required_ops entry is not in stdlib profile: {op}"
         )
     required = {op for op in required if op in profile_symbols}
     if not required:
@@ -2111,9 +2111,9 @@ def _scan_schema_registry_compiled_sync(root: Path) -> list[str]:
 
 
 def _scan_schema_registry_docs_sync(root: Path) -> list[str]:
-    schema_doc = _join_contract_path(root, "specs/schema/schema_v1.md")
+    schema_doc = _join_contract_path(root, "specs/01_schema/schema_v1.md")
     if not schema_doc.exists():
-        return ["specs/schema/schema_v1.md:1: missing schema doc"]
+        return ["specs/01_schema/schema_v1.md:1: missing schema doc"]
     raw = schema_doc.read_text(encoding="utf-8")
     required_tokens = (
         "BEGIN GENERATED: SCHEMA_REGISTRY_V1",
@@ -2123,19 +2123,19 @@ def _scan_schema_registry_docs_sync(root: Path) -> list[str]:
     violations: list[str] = []
     for tok in required_tokens:
         if tok not in raw:
-            violations.append(f"specs/schema/schema_v1.md:1: missing token {tok}")
+            violations.append(f"specs/01_schema/schema_v1.md:1: missing token {tok}")
     if _SCHEMA_REGISTRY_ROOT not in raw:
-        violations.append(f"specs/schema/schema_v1.md:1: missing registry root token {_SCHEMA_REGISTRY_ROOT}")
+        violations.append(f"specs/01_schema/schema_v1.md:1: missing registry root token {_SCHEMA_REGISTRY_ROOT}")
     return violations
 
 
 def _scan_schema_no_prose_only_rules(root: Path) -> list[str]:
     violations: list[str] = []
     contract_doc = _join_contract_path(root, _SCHEMA_REGISTRY_CONTRACT_DOC)
-    schema_doc = _join_contract_path(root, "specs/schema/schema_v1.md")
+    schema_doc = _join_contract_path(root, "specs/01_schema/schema_v1.md")
     for rel, p in (
         (_SCHEMA_REGISTRY_CONTRACT_DOC, contract_doc),
-        ("specs/schema/schema_v1.md", schema_doc),
+        ("specs/01_schema/schema_v1.md", schema_doc),
     ):
         if not p.exists():
             violations.append(f"{rel}:1: missing required doc")
@@ -2976,7 +2976,7 @@ def _scan_runtime_api_http_live_mode_explicit(root: Path) -> list[str]:
 
 def _scan_runtime_api_http_oauth_docs_sync(root: Path) -> list[str]:
     required: dict[str, tuple[str, ...]] = {
-        "specs/schema/schema_v1.md": (
+        "specs/01_schema/schema_v1.md": (
             "harness.api_http.auth.oauth",
             "client_id_env",
             "client_secret_env",
@@ -6841,7 +6841,7 @@ def _scan_runtime_scope_sync(root: Path, *, harness: dict | None = None) -> list
 def _scan_runtime_profiling_contract_artifacts(root: Path, *, harness: dict | None = None) -> list[str]:
     del harness
     required = [
-        "specs/schema/run_trace_v1.yaml",
+        "specs/01_schema/run_trace_v1.yaml",
         "specs/contract/24_runtime_profiling_contract.md",
     ]
     violations: list[str] = []
@@ -6942,7 +6942,7 @@ def _scan_runtime_liveness_watchdog_contract_valid(root: Path, *, harness: dict 
             ),
         ),
         (
-            "specs/schema/run_trace_v1.yaml",
+            "specs/01_schema/run_trace_v1.yaml",
             (
                 "stall.runner.no_progress",
                 "stall.subprocess.no_output_no_event",
@@ -7928,12 +7928,12 @@ def _scan_architecture_harness_local_workflow_duplication_forbidden(
 def _scan_schema_harness_type_overlay_complete(root: Path, *, harness: dict | None = None) -> list[str]:
     del harness
     required = {
-        "specs/schema/registry/v1/types/orchestration_run.yaml": (
+        "specs/01_schema/registry/v1/types/orchestration_run.yaml": (
             "required_top_level",
             "allowed_top_level_extra",
             "fields",
         ),
-        "specs/schema/registry/v1/types/docs_generate.yaml": (
+        "specs/01_schema/registry/v1/types/docs_generate.yaml": (
             "required_top_level",
             "allowed_top_level_extra",
             "fields",
@@ -7963,8 +7963,8 @@ def _scan_schema_harness_contract_overlay_sync(root: Path, *, harness: dict | No
     contract = _join_contract_path(root, "specs/contract/04_harness.md")
     current = _join_contract_path(root, "specs/current.md")
     overlays = (
-        _join_contract_path(root, "specs/schema/registry/v1/types/orchestration_run.yaml"),
-        _join_contract_path(root, "specs/schema/registry/v1/types/docs_generate.yaml"),
+        _join_contract_path(root, "specs/01_schema/registry/v1/types/orchestration_run.yaml"),
+        _join_contract_path(root, "specs/01_schema/registry/v1/types/docs_generate.yaml"),
     )
     violations: list[str] = []
     if not contract.exists():
@@ -8461,9 +8461,9 @@ def _scan_runtime_runner_certification_registry_valid(
     if version != 2:
         violations.append(f"{path}:1: registry version must be 2")
     cert_schema_ref = str(payload.get("certificate_schema_ref", "")).strip()
-    if cert_schema_ref != "/specs/schema/runner_execution_certificate_v2.yaml":
+    if cert_schema_ref != "/specs/01_schema/runner_execution_certificate_v1.yaml":
         violations.append(
-            f"{path}:1: certificate_schema_ref must be /specs/schema/runner_execution_certificate_v2.yaml"
+            f"{path}:1: certificate_schema_ref must be /specs/01_schema/runner_execution_certificate_v1.yaml"
         )
     runners = payload.get("runners")
     if not isinstance(runners, list) or not runners:
@@ -10204,7 +10204,7 @@ def _scan_schema_verb_first_contract_sync(root: Path, *, harness: dict | None = 
             ("type: spec_lang.export", "defines.public", "defines.private", "definitions.public", "definitions.private"),
         ),
         (
-            "specs/schema/schema_v1.md",
+            "specs/01_schema/schema_v1.md",
             ("`spec.export`", "`harness.exports`", "`assert.function`"),
             ("`spec_lang.export`", "`defines`", "`definitions`", "definitions.public", "definitions.private"),
         ),
@@ -10930,7 +10930,7 @@ def _scan_tests_unit_opt_out_non_regression(root: Path, *, harness: dict | None 
 def _scan_docs_spec_index_reachability(root: Path, *, harness: dict | None = None) -> list[str]:
     expected = {
         "/specs/current.md",
-        "/specs/schema/index.md",
+        "/specs/01_schema/index.md",
         "/specs/contract/index.md",
         "/specs/governance/index.md",
         "/specs/libraries/index.md",

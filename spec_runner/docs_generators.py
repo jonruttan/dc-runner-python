@@ -10,7 +10,7 @@ import yaml
 from spec_runner.virtual_paths import VirtualPathError, resolve_contract_path
 
 
-REGISTRY_PATH = Path("specs/schema/docs_generator_registry_v1.yaml")
+REGISTRY_PATH = Path("specs/01_schema/docs_generator_registry_v1.yaml")
 
 
 @dataclass(frozen=True)

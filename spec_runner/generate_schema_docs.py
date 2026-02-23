@@ -19,7 +19,7 @@ def _generated_section(compiled: dict) -> str:
         "",
         "## Generated Registry Snapshot",
         "",
-        "This section is generated from `specs/schema/registry/v1/*.yaml`.",
+        "This section is generated from `specs/01_schema/registry/v1/*.yaml`.",
         "",
         f"- profile_count: {int(compiled.get('profile_count', 0))}",
         f"- top_level_fields: {len(top)}",
@@ -56,7 +56,7 @@ def _update_doc(existing: str, section: str) -> str:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Generate schema docs snapshot from registry profiles.")
-    ap.add_argument("--out", default="specs/schema/schema_v1.md")
+    ap.add_argument("--out", default="specs/01_schema/schema_v1.md")
     ap.add_argument("--check", action="store_true")
     ns = ap.parse_args(argv)
 

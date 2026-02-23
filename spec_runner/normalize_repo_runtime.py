@@ -17,7 +17,7 @@ from spec_runner.split_library_cases_per_symbol import main as split_library_cas
 
 
 ROOT = Path(__file__).resolve().parents[3]
-PROFILE_PATH = ROOT / "specs/schema/normalization_profile_v1.yaml"
+PROFILE_PATH = ROOT / "specs/01_schema/normalization_profile_v1.yaml"
 _EXECUTABLE_CASE_TREE_ROOTS = (
     "specs/conformance/cases",
     "specs/governance/cases",
@@ -28,7 +28,7 @@ _DATA_ARTIFACT_GLOBS = (
     "specs/governance/metrics/*.json",
     "specs/governance/metrics/*.yaml",
     "docs/book/reference_manifest.yaml",
-    "specs/schema/*.yaml",
+    "specs/01_schema/*.yaml",
 )
 _HARNESS_FILES = (
     "runners/python/spec_runner/harnesses/text_file.py",
@@ -117,10 +117,10 @@ def _check_docs_tokens(profile: dict[str, Any]) -> list[str]:
     issues: list[str] = []
     token_sync = profile.get("docs_token_sync", {})
     if not isinstance(token_sync, dict):
-        return ["specs/schema/normalization_profile_v1.yaml:1: NORMALIZATION_PROFILE: docs_token_sync must be a mapping"]
+        return ["specs/01_schema/normalization_profile_v1.yaml:1: NORMALIZATION_PROFILE: docs_token_sync must be a mapping"]
     rules = token_sync.get("rules", [])
     if not isinstance(rules, list):
-        return ["specs/schema/normalization_profile_v1.yaml:1: NORMALIZATION_PROFILE: docs_token_sync.rules must be a list"]
+        return ["specs/01_schema/normalization_profile_v1.yaml:1: NORMALIZATION_PROFILE: docs_token_sync.rules must be a list"]
     for rule in rules:
         if not isinstance(rule, dict):
             continue
@@ -152,10 +152,10 @@ def _apply_replacements(profile: dict[str, Any]) -> tuple[list[str], int]:
     issues: list[str] = []
     repl = profile.get("replacements", {})
     if not isinstance(repl, dict):
-        return (["specs/schema/normalization_profile_v1.yaml:1: NORMALIZATION_PROFILE: replacements must be a mapping"], 0)
+        return (["specs/01_schema/normalization_profile_v1.yaml:1: NORMALIZATION_PROFILE: replacements must be a mapping"], 0)
     rules = repl.get("rules", [])
     if not isinstance(rules, list):
-        return (["specs/schema/normalization_profile_v1.yaml:1: NORMALIZATION_PROFILE: replacements.rules must be a list"], 0)
+        return (["specs/01_schema/normalization_profile_v1.yaml:1: NORMALIZATION_PROFILE: replacements.rules must be a list"], 0)
     for rule in rules:
         if not isinstance(rule, dict):
             continue
@@ -655,7 +655,7 @@ def main(argv: list[str] | None = None) -> int:
     explicit_paths = _parse_explicit_paths(str(ns.paths), [str(x) for x in ns.path])
     scope_paths = explicit_paths if explicit_paths else _scope_paths(profile, ns.scope)
     if not scope_paths:
-        print("specs/schema/normalization_profile_v1.yaml:1: NORMALIZATION_PROFILE: no paths selected for scope")
+        print("specs/01_schema/normalization_profile_v1.yaml:1: NORMALIZATION_PROFILE: no paths selected for scope")
         return 1
 
     mode_flag = "--check" if ns.check else "--write"
