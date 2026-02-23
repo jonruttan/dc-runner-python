@@ -20,12 +20,12 @@ Check:
 make spec-sync-check
 ```
 
-## Runner Contracts (`data-contracts-library`)
+## Runner Contracts (`data-contracts-runner`)
 
-- Snapshot: `/specs/upstream/data-contracts-library/`
+- Snapshot: `/specs/upstream/data-contracts-runner/`
 - Lock: `/specs/upstream/resolved_contract_set_lock_v1.yaml`
 - Lock Hash: `/specs/upstream/resolved_contract_set_lock_v1.sha256`
-- Manifest: `/specs/upstream/data-contracts-library.manifest.sha256`
+- Manifest: `/specs/upstream/data-contracts-runner.manifest.sha256`
 
 Update:
 

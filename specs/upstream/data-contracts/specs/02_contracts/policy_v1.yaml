@@ -2949,9 +2949,7 @@ rules:
   rationale: Allows manual prose while keeping generator-owned sections deterministic.
   risk_if_violated: Manual edits to generated blocks silently drift from source data.
   references:
-  - docs/book/91_appendix_runner_api_reference.md
-  - docs/book/92_appendix_harness_type_reference.md
-  - docs/book/93_appendix_spec_lang_builtin_catalog.md
+  - docs/book/99_generated_reference_index.md
   - specs/04_governance/cases/core/project_docs/docs_generated_sections_read_only.spec.md
 - id: DOCS_API_CATALOGS_GENERATED_AND_SYNCED
   introduced_in: v1
@@ -2986,7 +2984,7 @@ rules:
   risk_if_violated: Policy changes can land without corresponding reference updates.
   references:
   - scripts/generate_policy_rule_catalog.py
-  - docs/book/94_appendix_contract_policy_reference.md
+  - docs/book/99_generated_reference_index.md
   - specs/04_governance/cases/core/project_docs/docs_policy_rule_catalog_sync.spec.md
 - id: DOCS_TRACEABILITY_CATALOG_SYNC_REQUIRED
   introduced_in: v1
@@ -3002,7 +3000,7 @@ rules:
   risk_if_violated: Rule-to-implementation mappings become stale and misleading.
   references:
   - scripts/generate_traceability_catalog.py
-  - docs/book/95_appendix_traceability_reference.md
+  - docs/book/99_generated_reference_index.md
   - specs/04_governance/cases/core/project_docs/docs_traceability_catalog_sync.spec.md
 - id: DOCS_GOVERNANCE_CHECK_CATALOG_SYNC_REQUIRED
   introduced_in: v1
@@ -3018,7 +3016,7 @@ rules:
   risk_if_violated: Governance check IDs and documented coverage drift apart.
   references:
   - scripts/generate_governance_check_catalog.py
-  - docs/book/96_appendix_governance_checks_reference.md
+  - docs/book/99_generated_reference_index.md
   - specs/04_governance/cases/core/project_docs/docs_governance_check_catalog_sync.spec.md
 - id: DOCS_METRICS_FIELD_CATALOG_SYNC_REQUIRED
   introduced_in: v1
@@ -3034,7 +3032,7 @@ rules:
   risk_if_violated: Baseline schema changes become undocumented.
   references:
   - scripts/generate_metrics_field_catalog.py
-  - docs/book/97_appendix_metrics_reference.md
+  - docs/book/99_generated_reference_index.md
   - specs/04_governance/cases/core/project_docs/docs_metrics_field_catalog_sync.spec.md
 - id: DOCS_SPEC_SCHEMA_FIELD_CATALOG_SYNC_REQUIRED
   introduced_in: v1
@@ -3051,7 +3049,7 @@ rules:
   references:
   - scripts/generate_spec_schema_field_catalog.py
   - specs/01_schema/schema_v1.md
-  - docs/book/98_appendix_spec_case_shape_reference.md
+  - docs/book/99_generated_reference_index.md
   - specs/04_governance/cases/core/project_docs/docs_spec_schema_field_catalog_sync.spec.md
 - id: DOCS_GENERATOR_REPORT_REQUIRED
   introduced_in: v1
@@ -3151,8 +3149,8 @@ rules:
   applies_to: docs.book.chapter_order
   norm: MUST
   requirement: book_reference_manifest_must_match_canonical_chapter_order
-  description: 'Book chapter ordering must follow canonical Learn -> Do -> Debug flow,
-    place spec-lang guide before strict reference, and preserve ordered appendix namespace.
+  description: 'Book chapter ordering must follow canonical tutorial-first flow and
+    place spec-lang authoring before strict reference navigation.
 
     '
   rationale: Keeps reader navigation deterministic and aligned with authoring intent.
@@ -3165,13 +3163,13 @@ rules:
   scope: governance
   applies_to: docs.book.appendix_catalog_naming
   norm: MUST
-  requirement: generated_catalog_chapters_must_use_9x_appendix_namespace
-  description: 'Generated catalog surfaces in the book must live under `9x_appendix_*`
-    chapter filenames.
+  requirement: generated_reference_surfaces_must_use_single_entrypoint
+  description: 'Generated reference surfaces in the book must be reached through
+    `docs/book/99_generated_reference_index.md`.
 
     '
-  rationale: Separates narrative chapters from machine-generated reference catalogs.
-  risk_if_violated: Generated surfaces bleed into core narrative ordering.
+  rationale: Keeps narrative chapters focused while preserving one deterministic generated entrypoint.
+  risk_if_violated: Generated references fragment and drift from canonical navigation.
   references:
   - specs/01_schema/docs_generator_registry_v1.yaml
   - docs/book/reference_manifest.yaml
@@ -3181,8 +3179,8 @@ rules:
   scope: governance
   applies_to: docs.book.spec_lang_chapter_order
   norm: MUST
-  requirement: spec_lang_guide_chapter_must_precede_strict_reference_chapter
-  description: 'Book taxonomy must place `04_spec_lang_guide.md` before `07_spec_lang_reference.md`.
+  requirement: spec_lang_authoring_chapter_must_precede_reference_guide
+  description: 'Book taxonomy must place `40_spec_lang_authoring.md` before `90_reference_guide.md`.
 
     '
   rationale: Ensures readers learn authoring patterns before strict operator semantics.

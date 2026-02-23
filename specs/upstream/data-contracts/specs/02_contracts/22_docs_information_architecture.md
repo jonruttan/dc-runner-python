@@ -12,9 +12,9 @@ Defines canonical docs surfaces for reader navigation and governance coverage.
 
 ## Audience Paths
 
-- narrative orientation path (`05` -> `15` -> `25`)
-- guide-first operational path (`guides/index` -> guide set)
-- reference bridge path (`90_reference_guide.md` -> generated references)
+- orientation/tutorial path (`05` -> `30`)
+- guide-first operational path (`35` -> `guides/index` -> guide set)
+- reference bridge path (`90_reference_guide.md` -> `99_generated_reference_index.md`)
 
 ## Ownership Boundary
 

@@ -1,16 +1,10 @@
 version: 1
-root_contract_set: python_runner_contract_set
+root_contract_set: shared_runner_build_tool_task_sets_contract_set
 runner: python
 source:
-  repo: https://github.com/jonruttan/data-contracts-library.git
-  ref: main
-  commit: 98630d93d7351c42726018a03e7b4695ca0ac685
-resolved_order:
-- python_impl_contract_set
-- shared_makefile_help_contract_set
-- shared_runner_build_tool_task_sets_contract_set
-- python_runner_contract_set
+  repo: "/Users/jon/Workspace/Development/data-contracts-runner"
+  ref: "WORKTREE"
+  commit: "f0867d0e3f0587eb95e6aaa3d8ad7fd691506456"
 integrity:
-  file_count: 76
-  sha256_manifest: 407c32418d971b0038f458911a429af450e13739300fe08d470c4f07bc663961
-  sha256_manifests: 5bdad32680a134b72fdb8528b7705c748bc8c494e95bff3421e63b77afd7a8bc
+  file_count: 1
+  sha256_manifest: "632b70328641961a0bfc0332f9b5db9b80bad60006c2bf190d15b95cbfc3d687"

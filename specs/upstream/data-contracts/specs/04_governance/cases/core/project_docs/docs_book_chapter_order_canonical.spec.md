@@ -22,8 +22,8 @@ contracts:
   clauses:
   - id: DCGOV-DOCS-REF-018
     title: docs book chapter order is canonical
-    purpose: Enforces the hard-cut Learn -> Do -> Debug chapter order and appendix
-      namespace ordering in the reference manifest.
+    purpose: Enforces tutorial-first chapter ordering and deterministic generated
+      reference entrypoint ordering in the reference manifest.
     asserts:
       imports:
       - from: asset

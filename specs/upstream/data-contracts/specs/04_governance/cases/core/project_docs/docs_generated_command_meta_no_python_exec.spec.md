@@ -8,11 +8,7 @@ harness:
     root: .
     generated_command_meta:
       files:
-      - /docs/book/93j_library_symbol_reference.md
-      - /docs/book/93k_library_symbol_index.md
-      - /docs/book/93l_spec_case_reference.md
-      - /docs/book/93m_spec_case_index.md
-      - /docs/book/93n_spec_case_templates_reference.md
+      - /docs/book/99_generated_reference_index.md
       required_tokens:
       - ./scripts/control_plane.sh docs-generate-check
       forbidden_tokens:

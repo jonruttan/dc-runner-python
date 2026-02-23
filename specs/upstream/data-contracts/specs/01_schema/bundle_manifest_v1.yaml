@@ -64,22 +64,41 @@ properties:
             type: object
             required:
               - id
-              - include_paths
+              - contracts
+              - resource_kinds
+              - selection_policy
             properties:
               id:
                 type: string
                 minLength: 1
-              include_paths:
+              contracts:
+                description: Canonical contract declarations inspected for selector derivation.
                 type: array
                 minItems: 1
                 items:
                   type: string
                   minLength: 1
-              exclude_paths:
+              resource_kinds:
                 type: array
+                minItems: 1
                 items:
                   type: string
-                  minLength: 1
+                  enum:
+                    - asset
+              selection_policy:
+                type: object
+                required:
+                  - refs
+                  - artifacts
+                properties:
+                  refs:
+                    type: string
+                    enum:
+                      - static_local_only
+                  artifacts:
+                    type: string
+                    enum:
+                      - exclude_produced
               artifacts:
                 type: array
                 items:
@@ -99,11 +118,6 @@ properties:
                         - report
                         - manifest
                         - lock
-              contracts:
-                type: array
-                items:
-                  type: string
-                  minLength: 1
   declaration_provenance:
     type: object
     required:

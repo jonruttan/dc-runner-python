@@ -54,7 +54,13 @@ Implementation bundle build flow MUST:
    - `resolved_bundle_lock_v1.yaml`
    - `implementation_bundle_build_lock_v1.yaml`
 7. Emit declaration provenance digest derived from resolved canonical
-   `assets[]` / `artifacts[]` declarations referenced by bundled specs.
+   `assets[]` declarations referenced by bundled specs.
+
+Bundle module payload selection is declaration-derived only:
+- selectors read contract `assets[]`
+- refs must be static local paths
+- produced `artifacts[]` are excluded from source payload selection
+- module glob selectors are not canonical semantics
 
 Build lock schema:
 

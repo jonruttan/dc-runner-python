@@ -38,8 +38,18 @@ Shared reusable library and overlay sources are owned in:
   - `scaffold/files/**`
   - `scaffold/templates/**`
 - Ensure package checksums are reproducible from published bytes.
-- Store declaration provenance as digest metadata derived from canonical
-  `assets[]` / `artifacts[]` declarations in source specs.
+- Derive package payload selection from canonical contract `assets[]`
+  declarations only.
+- Selector walk is deterministic and required:
+  1. load module `contracts[]`
+  2. read `assets[]`
+  3. keep only static local refs
+  4. normalize to repo-relative canonical paths
+  5. materialize deterministic merged file set
+- `artifacts[]` are semantic outputs only and are excluded from source payload
+  selection.
+- Store declaration provenance as digest metadata derived from selected
+  declaration-driven paths.
 - For scaffold bundles, declaration provenance MUST include scaffold manifest and
   all required materialization sources.
 
@@ -103,6 +113,9 @@ compatibility.
 Bundle manifest/lock files are package metadata, not semantic authority for
 resource declarations. Canonical resource semantics are owned by
 `data-contracts` schema and executable specs.
+
+`bundle_manifest_v1` module `include_paths` and `exclude_paths` are not part of
+canonical semantics.
 
 ## Bundle Governance Boundary
 

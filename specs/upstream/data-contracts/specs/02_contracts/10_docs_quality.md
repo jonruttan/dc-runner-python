@@ -42,13 +42,11 @@ MUST:
 MUST:
 
 - each `docs/book/guides/guide_*.md` include:
-  - `## Purpose`
-  - `## Inputs`
-  - `## Outputs`
-  - `## Failure Modes`
-  - `## Do This Now`
-  - `## How To Verify Success`
-  - `## Common Failure Signatures`
+  - `## When to read this`
+  - `## What you will do`
+  - `## Step-by-step`
+  - `## Common failure signals`
+  - `## Normative refs`
 
 ## Control-Plane Language Policy
 

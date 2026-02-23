@@ -7,8 +7,8 @@ Former locations in `data-contracts`:
 - `specs/impl/**` implementation narratives
 
 Canonical runner-specific spec ownership now lives in:
-- `data-contracts-library/specs/impl/python/`
+- `data-contracts-runner/specs/impl/python/`
 
 This repository consumes that canonical source via:
-- `/specs/upstream/data-contracts-library/specs/07_runner_behavior/impl/python/`
+- `/specs/impl/python/`
 - `/specs/impl/python/index.md` (local pointer)

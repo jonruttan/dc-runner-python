@@ -38,16 +38,6 @@ else
   "$SYNC_SCRIPT" --check
 fi
 
-if find "$ROOT_DIR/specs/impl/python/cases" -type f -name '*.spec.md' 2>/dev/null | grep -q .; then
-  echo "ERROR: local python spec cases detected under specs/impl/python/cases; runner-specific specs must be consumed from specs/upstream/data-contracts-library" >&2
-  exit 1
-fi
-
-if [[ -f "$ROOT_DIR/specs/impl/python/runner_build_tool_contract_v1.yaml" ]]; then
-  echo "ERROR: local runner_build_tool_contract_v1.yaml detected; canonical file is vendored from specs/upstream/data-contracts-library" >&2
-  exit 1
-fi
-
 if [[ -f "$ROOT_DIR/specs/upstream/dc_runner_spec_lock_v1.yaml" ]]; then
   echo "ERROR: noncanonical lock file detected (specs/upstream/dc_runner_spec_lock_v1.yaml); migrate to resolved_contract_set_lock_v1.yaml" >&2
   exit 1

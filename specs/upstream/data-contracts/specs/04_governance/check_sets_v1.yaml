@@ -504,8 +504,6 @@ profiles:
         kind: report_only
       - id: docs.reference_manifest_sync
         kind: report_only
-      - id: docs.reference_namespace_chapters_sync
-        kind: report_only
       - id: docs.reference_surface_complete
         kind: report_only
       - id: docs.regex_doc_sync

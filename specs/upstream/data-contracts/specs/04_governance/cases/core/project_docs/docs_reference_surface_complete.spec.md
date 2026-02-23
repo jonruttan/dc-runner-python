@@ -11,6 +11,7 @@ harness:
       - docs/book/reference_index.md
       - specs/01_schema/schema_v1.md
       - specs/02_contracts/10_docs_quality.md
+      - docs/book/index.md
       - docs/book/05_what_is_data_contracts.md
       - docs/book/10_getting_started.md
       - docs/book/15_spec_lifecycle.md
@@ -37,17 +38,6 @@ harness:
       - docs/book/80_troubleshooting.md
       - docs/book/90_reference_guide.md
       - docs/book/99_generated_reference_index.md
-      - docs/book/93_appendix_spec_lang_builtin_catalog.md
-      - docs/book/93a_std_core.md
-      - docs/book/93b_std_logic.md
-      - docs/book/93c_std_math.md
-      - docs/book/93d_std_string.md
-      - docs/book/93e_std_collection.md
-      - docs/book/93f_std_object.md
-      - docs/book/93g_std_type.md
-      - docs/book/93h_std_set.md
-      - docs/book/93i_std_json_schema_fn_null.md
-      - docs/book/93n_spec_case_templates_reference.md
       required_globs:
       - specs/02_contracts/*.md
     check:
@@ -66,8 +56,7 @@ contracts:
   clauses:
   - id: DCGOV-DOCS-REF-001
     title: docs reference surface files exist
-    purpose: Enforces that the canonical docs reference surface remains complete and
-      cannot silently lose required files.
+    purpose: Enforces complete and trimmed canonical docs/book surface.
     asserts:
       imports:
       - from: asset

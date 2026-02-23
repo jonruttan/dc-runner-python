@@ -2823,7 +2823,7 @@ links:
   implementation_refs:
   - dc-runner-python
   - specs/04_governance/cases/core/project_docs/docs_book_chapter_order_canonical.spec.md
-  notes: Enforces canonical Learn -> Do -> Debug chapter order and appendix order.
+  notes: Enforces canonical tutorial-first chapter order across narrative, guides, and reference entrypoint.
 - rule_id: DOCS_BOOK_APPENDIX_CATALOG_NAMESPACE_REQUIRED
   policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_BOOK_APPENDIX_CATALOG_NAMESPACE_REQUIRED
   contract_refs:
@@ -2837,7 +2837,7 @@ links:
   implementation_refs:
   - scripts/docs_generate_all.py
   - specs/04_governance/cases/core/project_docs/docs_book_chapter_order_canonical.spec.md
-  notes: Keeps generated catalog chapters in `9x_appendix_*` namespace.
+  notes: Keeps generated references behind the single `99_generated_reference_index.md` entrypoint.
 - rule_id: DOCS_SPEC_LANG_GUIDE_BEFORE_REFERENCE_REQUIRED
   policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_SPEC_LANG_GUIDE_BEFORE_REFERENCE_REQUIRED
   contract_refs:
@@ -2850,7 +2850,7 @@ links:
   implementation_refs:
   - dc-runner-python
   - specs/04_governance/cases/core/project_docs/docs_book_chapter_order_canonical.spec.md
-  notes: Enforces guide chapter before strict spec-lang reference chapter.
+  notes: Enforces spec-lang authoring chapter ordering before strict reference navigation chapter.
 - rule_id: API_HTTP_OAUTH_HARNESS_PROFILE_SUPPORTED
   policy_ref: specs/02_contracts/policy_v1.yaml#API_HTTP_OAUTH_HARNESS_PROFILE_SUPPORTED
   contract_refs:
@@ -3008,8 +3008,8 @@ links:
   - tests/test_generate_spec_lang_reference_docgen_unit.py
   implementation_refs:
   - scripts/generate_spec_lang_builtin_catalog.py
-  - docs/book/93a_std_core.md
-  - docs/book/93i_std_json_schema_fn_null.md
+  - docs/book/99_generated_reference_index.md
+  - docs/book/99_generated_reference_index.md
   notes: Generated namespace chapter payloads include semantic symbol docs.
 - rule_id: DOCS_STDLIB_EXAMPLES_REQUIRED
   policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_STDLIB_EXAMPLES_REQUIRED

@@ -3,14 +3,14 @@
 `dc-runner-python` consumes two pinned upstream snapshots:
 
 1. Global contracts from `data-contracts`.
-2. Python runner-specific contracts from `data-contracts-library`.
+2. Python runner-specific contracts from `data-contracts-runner`.
 
 Artifacts:
 
 - `/specs/upstream/data_contracts_lock_v1.yaml`
 - `/specs/upstream/data-contracts.manifest.sha256`
 - `/specs/upstream/resolved_contract_set_lock_v1.yaml`
-- `/specs/upstream/data-contracts-library.manifest.sha256`
+- `/specs/upstream/data-contracts-runner.manifest.sha256`
 
 Verification gates:
 
