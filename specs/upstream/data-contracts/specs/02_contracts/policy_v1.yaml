@@ -4742,3 +4742,61 @@ rules:
   - specs/00_core/repo_boundary_charter.md
   - specs/02_contracts/12_runner_interface.md
   - specs/02_contracts/33_bundle_package_management.md
+- id: DOCS_AUDIENCE_CANONICAL_ENUM_REQUIRED
+  introduced_in: v1
+  scope: governance
+  applies_to: docs.audience.tokens
+  norm: MUST
+  requirement: docs_audience_values_use_canonical_enum_only
+  description: 'Audience metadata in active v1 surfaces must use canonical audience enum values only.
+
+    '
+  rationale: Keeps generated audience docs deterministic and portable across runners.
+  risk_if_violated: Mixed audience tokens break audience compilation and increase ambiguity.
+  references:
+  - specs/01_schema/docs_schema_v1.md
+  - specs/01_schema/registry/v1/core.yaml
+  - specs/00_core/docs_audience_migration_map.md
+- id: DOCS_AUDIENCE_SURFACES_GENERATED_AND_SYNCED
+  introduced_in: v1
+  scope: governance
+  applies_to: docs.audience.surfaces
+  norm: MUST
+  requirement: audience_docs_surfaces_must_be_generated_and_drift_free
+  description: 'Audience docs outputs must exist and remain synchronized with spec-declared metadata.
+
+    '
+  rationale: Provides audience-targeted operator documentation from canonical spec data.
+  risk_if_violated: Audience-specific docs become stale or incomplete.
+  references:
+  - specs/01_schema/docs_audience_surface_v1.yaml
+  - specs/02_contracts/35_docs_audience_generation_contract.md
+  - docs/audience/implementer/reference_manifest.yaml
+- id: RUNTIME_WRAPPER_ONLY_SHELL_REQUIRED
+  introduced_in: v1
+  scope: governance
+  applies_to: runtime.scripts.wrapper_only
+  norm: MUST
+  requirement: shell_scripts_must_not_encode_check_selection_or_policy_logic
+  description: 'Active shell scripts must only dispatch to runner/spec profiles and preserve artifact wiring.
+
+    '
+  rationale: Keeps shared behavior portable and spec-defined.
+  risk_if_violated: Shell drift creates hidden policy engines.
+  references:
+  - specs/02_contracts/16_control_plane_runtime_separation.md
+  - specs/04_governance/check_sets_v1.yaml
+- id: RUNNER_COMMAND_ENTRYPOINTS_SPEC_DEFINED
+  introduced_in: v1
+  scope: governance
+  applies_to: runtime.command_entrypoints
+  norm: MUST
+  requirement: canonical_runner_commands_must_resolve_from_spec_entrypoint_registry
+  description: Canonical runner command semantics are declared in spec entrypoint
+    manifests and resolved to check-set profiles.
+  rationale: Keeps command authority declarative and portable across runner implementations.
+  risk_if_violated: Command behavior drifts from canonical contracts and governance lanes.
+  references:
+  - specs/01_schema/runner_command_entrypoints_v1.yaml
+  - specs/04_governance/runner_entrypoints_v1.yaml
+  - specs/02_contracts/36_runner_command_entrypoints.md

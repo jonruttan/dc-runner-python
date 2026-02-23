@@ -1,0 +1,52 @@
+type: docs.audience_surface
+version: 1
+required:
+  - version
+  - audience
+  - generated_at
+  - source_paths
+  - outputs
+properties:
+  version:
+    type: integer
+    const: 1
+  audience:
+    type: string
+    default: implementer
+    enum:
+      - operator
+      - integrator
+      - implementer
+      - maintainer
+      - governance
+      - reviewer
+      - auditor
+  generated_at:
+    type: string
+    minLength: 1
+  source_paths:
+    type: array
+    minItems: 1
+    items:
+      type: string
+      minLength: 1
+  outputs:
+    type: object
+    required:
+      - index
+      - reference_manifest
+      - reference_index
+      - reference_coverage
+    properties:
+      index:
+        type: string
+        minLength: 1
+      reference_manifest:
+        type: string
+        minLength: 1
+      reference_index:
+        type: string
+        minLength: 1
+      reference_coverage:
+        type: string
+        minLength: 1

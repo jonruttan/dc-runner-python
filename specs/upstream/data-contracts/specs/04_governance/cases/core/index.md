@@ -105,6 +105,9 @@ Canonical domain index for executable specs in this subtree.
 - /specs/04_governance/cases/core/project_docs/packs_project_docs_pack_complete.spec.md
 - /specs/04_governance/cases/core/project_docs/runtime_non_core_scripts_not_in_active_docs.spec.md
 - /specs/04_governance/cases/core/runner_contract/packs_runner_contract_pack_complete.spec.md
+- /specs/04_governance/cases/core/runner_contract/entrypoint_registry_schema_valid.spec.md
+- /specs/04_governance/cases/core/runner_contract/entrypoint_profile_refs_resolve.spec.md
+- /specs/04_governance/cases/core/runner_contract/entrypoint_artifact_contract_complete.spec.md
 - /specs/04_governance/cases/core/runner_contract/runtime_ci_artifact_upload_paths_valid.spec.md
 - /specs/04_governance/cases/core/runner_contract/runtime_ci_python_lane_non_blocking_required.spec.md
 - /specs/04_governance/cases/core/runner_contract/runtime_ci_workflow_critical_gate_required.spec.md

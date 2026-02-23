@@ -9,20 +9,22 @@ This contract specifies only implementation-agnostic runner CLI behavior.
 Runtime-specific or implementation-specific subcommands remain runner-owned.
 Runner-owned CLI behavior specs are maintained in external runner spec
 repositories, not in canonical schema trees.
-Shell entrypoints in canonical repos wrap runner CLI contracts and do not
-implement policy verdict logic directly.
+Command behavior is resolved from spec-defined command entrypoints, not shell
+wrappers.
 
 ## MUST Surface
 
 Runner CLIs MUST provide deterministic behavior for:
 
-- `runner --help`
-- `runner conformance`
-- `runner governance`
-- `runner contract-spec-format --check <paths...>`
-- `runner contract-spec-format --write <paths...>`
-- `runner project scaffold --project-root <path> --bundle-id <id> --bundle-version <semver> [--runner <rust|python|php>]`
-- `runner project scaffold --project-root <path> --bundle-id <id> --bundle-version <semver> [--runner <rust|python|php>] [--var <key=value>]... [--overwrite]`
+- `dc-runner --help`
+- `dc-runner conformance`
+- `dc-runner governance`
+- `dc-runner critical-gate`
+- `dc-runner docs-generate-check`
+- `dc-runner contract-spec-format --check <paths...>`
+- `dc-runner contract-spec-format --write <paths...>`
+- `dc-runner project scaffold --project-root <path> --bundle-id <id> --bundle-version <semver> [--runner <rust|python|php>]`
+- `dc-runner project scaffold --project-root <path> --bundle-id <id> --bundle-version <semver> [--runner <rust|python|php>] [--var <key=value>]... [--overwrite]`
 - unknown command handling with non-zero exit code
 - structured status output mode (`--json` or equivalent capability)
 
@@ -34,7 +36,7 @@ Runner CLIs MAY provide:
 - additional diagnostics modes
 - additional output formats beyond the structured mode
 - external scaffold source override:
-  - `runner project scaffold --project-root <path> --bundle-url <url> --sha256 <hex> --allow-external`
+  - `dc-runner project scaffold --project-root <path> --bundle-url <url> --sha256 <hex> --allow-external`
 
 ## Capability Model
 
@@ -55,6 +57,20 @@ Canonical executable case payload shape for formatting and execution is
 
 Implementation-specific additions MUST be capability-gated and MUST NOT weaken
 the required portable command semantics.
+
+## Entrypoint Resolution
+
+Command-to-profile mapping source of truth:
+
+- `/specs/04_governance/runner_entrypoints_v1.yaml`
+
+Schema:
+
+- `/specs/01_schema/runner_command_entrypoints_v1.yaml`
+
+For canonical command entrypoints, `dc-runner` MUST resolve command id to
+`/specs/governance/check_sets_v1.yaml` profile and enforce declared artifact
+and exit-code contracts.
 
 ## Scaffold Source Contract
 

@@ -86,6 +86,15 @@ fields:
     type: string
     required: true
     since: v1
+    enum: &audience_enum
+    - operator
+    - integrator
+    - implementer
+    - maintainer
+    - governance
+    - reviewer
+    - auditor
+    default: implementer
   harness.docs[].status:
     type: string
     required: true
@@ -290,6 +299,8 @@ fields:
     type: string
     required: true
     since: v1
+    enum: *audience_enum
+    default: implementer
   adapters[].defaults.docs[].status:
     type: string
     required: true
@@ -510,6 +521,8 @@ fields:
     type: string
     required: true
     since: v1
+    enum: *audience_enum
+    default: implementer
   adapters[].actions[].docs[].status:
     type: string
     required: true
@@ -642,6 +655,8 @@ fields:
     type: string
     required: true
     since: v1
+    enum: *audience_enum
+    default: implementer
   assets[].docs[].status:
     type: string
     required: true
@@ -775,6 +790,8 @@ fields:
     type: string
     required: true
     since: v1
+    enum: *audience_enum
+    default: implementer
   artifacts[].docs[].status:
     type: string
     required: true
@@ -910,6 +927,8 @@ fields:
     type: string
     required: true
     since: v1
+    enum: *audience_enum
+    default: implementer
   exports[].docs[].status:
     type: string
     required: true
@@ -1034,6 +1053,8 @@ fields:
     type: string
     required: true
     since: v1
+    enum: *audience_enum
+    default: implementer
   docs[].status:
     type: string
     required: true
@@ -1136,6 +1157,8 @@ fields:
     type: string
     required: true
     since: v1
+    enum: *audience_enum
+    default: implementer
   contracts.clauses[].docs[].status:
     type: string
     required: true

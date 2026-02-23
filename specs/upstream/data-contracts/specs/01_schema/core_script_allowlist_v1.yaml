@@ -1,11 +1,7 @@
 version: 1
 core_scripts:
   - /scripts/bundle
-  - /scripts/control_plane.sh
-  - /scripts/ci_gate.sh
-  - /scripts/runner_status_ingest.sh
-  - /scripts/runner_bin.sh
-  - /scripts/governance_catalog_validate.sh
-  - /scripts/spec_schema_pin_validate.sh
-  - /scripts/governance_optional_report.sh
-  - /scripts/governance_triage.sh
+  - /scripts/governance_interface_sync.sh
+  - /scripts/governance_interface_validate.sh
+  - /scripts/docs_audience_generate.sh
+  - /scripts/docs_audience_generate.py

@@ -4419,3 +4419,56 @@ links:
   implementation_refs:
   - specs/04_governance/cases/core/runner_contract/runtime_runner_bundle_package_contract_defined.spec.md
   notes: Governance and contract docs enforce the canonical allowlist of spec authority repositories.
+- rule_id: DOCS_AUDIENCE_CANONICAL_ENUM_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_AUDIENCE_CANONICAL_ENUM_REQUIRED
+  contract_refs:
+  - specs/02_contracts/35_docs_audience_generation_contract.md
+  schema_refs:
+  - specs/01_schema/docs_schema_v1.md
+  - specs/01_schema/registry/v1/core.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - specs/04_governance/cases/core/project_docs/docs_audience_canonical_tokens_only.spec.md
+  notes: Enforces canonical audience enum for active docs metadata surfaces.
+- rule_id: DOCS_AUDIENCE_SURFACES_GENERATED_AND_SYNCED
+  policy_ref: specs/02_contracts/policy_v1.yaml#DOCS_AUDIENCE_SURFACES_GENERATED_AND_SYNCED
+  contract_refs:
+  - specs/02_contracts/35_docs_audience_generation_contract.md
+  schema_refs:
+  - specs/01_schema/docs_audience_surface_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - specs/04_governance/cases/core/project_docs/docs_audience_surfaces_generated.spec.md
+  - specs/04_governance/cases/core/project_docs/docs_audience_surfaces_synced.spec.md
+  notes: Audience docs outputs are generated and checked for drift.
+- rule_id: RUNTIME_WRAPPER_ONLY_SHELL_REQUIRED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNTIME_WRAPPER_ONLY_SHELL_REQUIRED
+  contract_refs:
+  - specs/02_contracts/16_control_plane_runtime_separation.md
+  schema_refs: []
+  conformance_case_ids: []
+  unit_test_refs:
+  - dc-runner-python
+  implementation_refs:
+  - specs/04_governance/cases/core/runner_contract/runtime_shell_policy_branches_forbidden.spec.md
+  - specs/04_governance/cases/core/runner_contract/runtime_ingest_policy_branches_forbidden.spec.md
+  notes: Shell scripts remain transport wrappers with no shared decision semantics.
+- rule_id: RUNNER_COMMAND_ENTRYPOINTS_SPEC_DEFINED
+  policy_ref: specs/02_contracts/policy_v1.yaml#RUNNER_COMMAND_ENTRYPOINTS_SPEC_DEFINED
+  contract_refs:
+  - specs/02_contracts/29_runner_cli_interface.md
+  - specs/02_contracts/36_runner_command_entrypoints.md
+  schema_refs:
+  - specs/01_schema/runner_command_entrypoints_v1.yaml
+  conformance_case_ids: []
+  unit_test_refs: []
+  implementation_refs:
+  - specs/04_governance/runner_entrypoints_v1.yaml
+  - specs/04_governance/cases/core/runner_contract/entrypoint_registry_schema_valid.spec.md
+  - specs/04_governance/cases/core/runner_contract/entrypoint_profile_refs_resolve.spec.md
+  - specs/04_governance/cases/core/runner_contract/entrypoint_artifact_contract_complete.spec.md
+  notes: Canonical command semantics are resolved from spec-owned entrypoint mappings.

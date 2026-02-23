@@ -10,7 +10,7 @@ contracts:
     title: omitted docs id remains valid metadata
     docs:
     - summary: contract docs id intentionally omitted
-      audience: spec-authors
+      audience: implementer
       status: active
     expect:
       portable:
@@ -31,7 +31,7 @@ harness:
   profile: check
   docs:
   - summary: harness docs owner id omitted
-    audience: spec-authors
+    audience: implementer
     status: active
     owners:
     - role: owner

@@ -19,6 +19,9 @@ rules:
   DCGOV-DOCS-REF-025: docs.readme_task_usage_paths_present
   DCGOV-DOCS-REF-026: docs.readme_makefile_cookbook_forbidden
   DCGOV-DOCS-REF-027: docs.reviews_discovery_workflow_sync
+  DCGOV-DOCS-AUD-001: docs.audience_surfaces_generated
+  DCGOV-DOCS-AUD-002: docs.audience_surfaces_synced
+  DCGOV-DOCS-AUD-003: docs.audience_canonical_tokens_only
   DCGOV-POLICY-REQ-003: governance.structured_assertions_required
   DCGOV-SCHEMA-PIN-001: schema.spec_case_version_present
   DCGOV-SCHEMA-PIN-002: schema.spec_case_schema_ref_present
@@ -50,6 +53,9 @@ rules:
   DCGOV-RUNTIME-CORE-004: runtime.retired_scripts_root_absent
   DCGOV-RUNTIME-BOUNDARY-001: runtime.repo_boundary_tokens_forbidden
   DCGOV-RUNTIME-BOUNDARY-002: runtime.repo_boundary_validator_tokens_configured
+  DCGOV-ENTRY-001: entrypoint.registry.schema_valid
+  DCGOV-ENTRY-002: entrypoint.profile_refs_resolve
+  DCGOV-ENTRY-003: entrypoint.artifact_contract_complete
   DCGOV-DOCS-: docs.
   DCGOV-RUNTIME-: runtime.
   DCGOV-CONTRACT-: contract.

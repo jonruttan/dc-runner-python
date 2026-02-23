@@ -4,8 +4,8 @@ Defines a tool-agnostic maintenance command contract for runner repositories.
 
 ## Scope
 
-This contract standardizes task semantics, not command runners. Implementations
-MAY use `cargo xtask`, `make`, `composer`, shell scripts, or equivalent tooling.
+This contract standardizes task semantics, not command runners. Canonical
+invocation is through `dc-runner` command surfaces.
 
 ## MUST Task IDs
 
@@ -57,14 +57,14 @@ semantics.
 
 ## Determinism and Exit Behavior
 
-Task wrappers MUST provide deterministic behavior for required maintenance lane
+Task execution MUST provide deterministic behavior for required maintenance lane
 checks and use stable non-zero failure signaling suitable for CI blocking.
 
 ## Manifest Requirement
 
 Each runner repository MUST publish a machine-readable task map manifest at:
 
-- `/data-contracts-library/specs/07_runner_behavior/impl/<runner>/runner_build_tool_contract_v1.yaml`
+- `/dc-runner-<runner>/specs/impl/<runner>/runner_build_tool_contract_v1.yaml`
 
 The manifest maps task IDs to local invocations and declares supported optional
 capabilities.

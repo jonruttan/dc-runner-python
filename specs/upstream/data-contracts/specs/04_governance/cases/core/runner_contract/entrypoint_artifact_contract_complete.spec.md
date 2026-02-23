@@ -10,10 +10,9 @@ harness:
       config: {}
 contracts:
   clauses:
-  - id: DCCONF-BTOOL-005
-    title: runner build tool contract declares manifest path requirement
-    purpose: Build tool command contract must require each runner repository to publish
-      a task map manifest path.
+  - id: DCGOV-ENTRY-003
+    title: entrypoint artifact contract is complete
+    purpose: Ensures required command artifacts are declared in the entrypoint contract.
     asserts:
       imports:
       - from: asset
@@ -24,15 +23,20 @@ contracts:
         assert:
           std.string.contains:
           - var: text
-          - /dc-runner-<runner>/specs/impl/<runner>/runner_build_tool_contract_v1.yaml
+          - /.artifacts/governance-summary.json
+      - id: assert_2
+        assert:
+          std.string.contains:
+          - var: text
+          - /.artifacts/critical-gate-summary.json
 adapters:
 - type: beta.check_profile_text_file_config
   actions:
-  - id: svc.check_profile_text_file_config.default.1
+  - id: svc.gov.entry.artifact.contract.1
     direction: bidirectional
     profile: default
 services:
-- id: svc.check_profile_text_file_config.default.1
+- id: svc.gov.entry.artifact.contract.1
   consumes:
-  - svc.check_profile_text_file_config.default.1
+  - svc.gov.entry.artifact.contract.1
 ```

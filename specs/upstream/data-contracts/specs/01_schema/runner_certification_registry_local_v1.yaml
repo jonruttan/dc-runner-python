@@ -5,7 +5,7 @@ runners:
     class: required
     status: active
     entrypoints:
-      public_adapter: /scripts/runner_bin.sh
+      public_adapter: dc-runner
       implementation_repo: dc-runner-rust
     required_core_checks: []
     required_core_cases: []
@@ -24,7 +24,7 @@ runners:
     class: compatibility_non_blocking
     status: active
     entrypoints:
-      public_adapter: /scripts/runner_bin.sh
+      public_adapter: dc-runner
       implementation_repo: dc-runner-python
     required_core_checks: []
     required_core_cases: []
@@ -43,7 +43,7 @@ runners:
     class: compatibility_non_blocking
     status: active
     entrypoints:
-      public_adapter: /scripts/runner_bin.sh
+      public_adapter: dc-runner
       implementation_repo: dc-runner-php
     required_core_checks: []
     required_core_cases: []

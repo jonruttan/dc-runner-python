@@ -44,6 +44,9 @@ The schema registry under `specs/01_schema/registry/v1/` is the machine source o
 - Suite consumed references MUST be declared under `assets[]`; produced references MUST be declared under `artifacts[]`.
 - Root `exports[]` MUST be function-only declarations using `as` + `from: assert.function` + `path`.
 - Documentation metadata surfaces MUST use `docs[]` entry arrays with required `summary|audience|status`.
+  `audience` MUST be one of:
+  `operator|integrator|implementer|maintainer|governance|reviewer|auditor`
+  and defaults to `implementer` when omitted by generators.
 - `docs[].id` and `docs[].owners[].id` are optional metadata keys.
 - `contracts.clauses[].asserts.checks[].id` is required and must be explicitly authored.
 - Requiredness language is standardized as: `explicit-required`, `optional`, `effective-required (required after deterministic merge)`.

@@ -59,7 +59,7 @@ contracts:
     title: contract export without top-level imports remains valid under suite harness/services
     docs:
     - summary: schema export validation case
-      audience: spec-authors
+      audience: implementer
       status: active
       description: Valid contract.export shape without unsupported top-level imports.
       since: v1
@@ -83,7 +83,7 @@ contracts:
     title: contract export top-level imports are rejected as schema
     docs:
     - summary: schema export invalid imports case
-      audience: spec-authors
+      audience: implementer
       status: active
       description: unsupported contract.export top-level imports must hard-fail in
         v1.
@@ -294,7 +294,7 @@ contracts:
     title: docs entry missing required status is rejected as schema
     docs:
     - summary: missing status
-      audience: spec-authors
+      audience: implementer
     expect:
       portable:
         status: fail
@@ -308,7 +308,7 @@ contracts:
     title: docs entry invalid type enum is rejected as schema
     docs:
     - summary: invalid docs type
-      audience: spec-authors
+      audience: implementer
       status: active
       type: narrative
     expect:
@@ -324,10 +324,10 @@ contracts:
     title: docs entry duplicate ids are rejected as schema
     docs:
     - summary: docs entry one
-      audience: spec-authors
+      audience: implementer
       status: active
     - summary: docs entry two
-      audience: spec-authors
+      audience: implementer
       status: active
     expect:
       portable:
@@ -342,7 +342,7 @@ contracts:
     title: docs entry unknown key is rejected as schema
     docs:
     - summary: docs entry with unknown key
-      audience: spec-authors
+      audience: implementer
       status: active
       unknown_field: true
     expect:
@@ -661,21 +661,21 @@ assets:
   type: application/yaml
   docs:
   - summary: schema reference import
-    audience: spec-authors
+    audience: implementer
     status: active
 - id: schema_registry_core_yaml
   ref: "/specs/01_schema/registry/v1/core.yaml"
   type: application/yaml
   docs:
   - summary: schema registry core yaml input
-    audience: spec-authors
+    audience: implementer
     status: active
 - id: schema_registry_assertions_yaml
   ref: "/specs/01_schema/registry/v1/assertions.yaml"
   type: application/yaml
   docs:
   - summary: schema registry assertions yaml input
-    audience: spec-authors
+    audience: implementer
     status: active
 artifacts:
 - id: schema_ref_export
@@ -683,13 +683,13 @@ artifacts:
   type: application/json
   docs:
   - summary: schema reference export
-    audience: spec-authors
+    audience: implementer
     status: active
 - id: text
   ref: "{{schema_ref}}"
   type: text/plain
   docs:
   - summary: schema text export
-    audience: spec-authors
+    audience: implementer
     status: active
 ```

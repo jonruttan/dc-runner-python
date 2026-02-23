@@ -10,10 +10,9 @@ harness:
       config: {}
 contracts:
   clauses:
-  - id: DCCONF-BTOOL-005
-    title: runner build tool contract declares manifest path requirement
-    purpose: Build tool command contract must require each runner repository to publish
-      a task map manifest path.
+  - id: DCGOV-ENTRY-001
+    title: entrypoint registry schema is defined
+    purpose: Ensures runner command entrypoint schema is present and canonical.
     asserts:
       imports:
       - from: asset
@@ -24,15 +23,20 @@ contracts:
         assert:
           std.string.contains:
           - var: text
-          - /dc-runner-<runner>/specs/impl/<runner>/runner_build_tool_contract_v1.yaml
+          - type: runtime.runner_command_entrypoints
+      - id: assert_2
+        assert:
+          std.string.contains:
+          - var: text
+          - pattern: '^dc-runner(\s|$)'
 adapters:
 - type: beta.check_profile_text_file_config
   actions:
-  - id: svc.check_profile_text_file_config.default.1
+  - id: svc.gov.entry.registry.schema.1
     direction: bidirectional
     profile: default
 services:
-- id: svc.check_profile_text_file_config.default.1
+- id: svc.gov.entry.registry.schema.1
   consumes:
-  - svc.check_profile_text_file_config.default.1
+  - svc.gov.entry.registry.schema.1
 ```

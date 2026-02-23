@@ -14,7 +14,7 @@ Example:
 doc_id: DOC-REF-001
 title: Chapter title
 status: active
-audience: author
+audience: implementer
 owns_tokens:
 - token_a
 requires_tokens:
@@ -37,7 +37,7 @@ Required keys:
 - `doc_id` (string): `DOC-<AREA>-###`
 - `title` (string, non-empty)
 - `status` (`active` | `draft`)
-- `audience` (`author` | `reviewer` | `maintainer`)
+- `audience` (`operator` | `integrator` | `implementer` | `maintainer` | `governance` | `reviewer` | `auditor`, default `implementer`)
 - `owns_tokens` (list[string])
 - `requires_tokens` (list[string])
 - `commands` (list[mapping `{run, purpose}`])

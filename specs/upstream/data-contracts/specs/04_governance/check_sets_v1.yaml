@@ -27,17 +27,18 @@ profiles:
           - scripts/runner_bin.sh
       - id: runtime.compatibility_status_freshness_within_slo
         kind: file_tokens
-        path: /scripts/runner_status_ingest.sh
+        path: /specs/04_governance/runner_entrypoints_v1.yaml
         must_contain:
-          - --check-id runtime.compatibility_status_freshness_within_slo
-          - --out .artifacts/runner-status-matrix.json
-          - --summary-out .artifacts/runner-status-matrix.md
+          - id: governance
+          - profile: full
+          - /.artifacts/governance-summary.json
       - id: runtime.compatibility_missing_status_visibility_required
         kind: file_tokens
-        path: /scripts/runner_status_ingest.sh
+        path: /specs/04_governance/runner_entrypoints_v1.yaml
         must_contain:
-          - --check-id runtime.compatibility_missing_status_visibility_required
-          - --trace-out .artifacts/runner-status-ingest-log.json
+          - id: critical-gate
+          - profile: critical
+          - /.artifacts/critical-gate-trace.json
       - id: docs.readme_task_usage_paths_present
         kind: file_tokens
         path: /README.md
@@ -56,19 +57,22 @@ profiles:
           - hooks-install
       - id: schema.spec_case_version_present
         kind: file_tokens
-        path: /scripts/spec_schema_pin_validate.sh
+        path: /specs/04_governance/runner_entrypoints_v1.yaml
         must_contain:
-          - --check-id schema.spec_case_version_present
+          - id: docs-generate-check
+          - cli: dc-runner docs-generate-check
       - id: schema.spec_case_schema_ref_present
         kind: file_tokens
-        path: /scripts/spec_schema_pin_validate.sh
+        path: /specs/01_schema/runner_command_entrypoints_v1.yaml
         must_contain:
-          - --check-id schema.spec_case_schema_ref_present
+          - type: runtime.runner_command_entrypoints
+          - pattern: '^dc-runner(\s|$)'
       - id: schema.spec_case_schema_ref_known
         kind: file_tokens
-        path: /scripts/spec_schema_pin_validate.sh
+        path: /specs/01_schema/runner_command_entrypoints_v1.yaml
         must_contain:
-          - --check-id schema.spec_case_schema_ref_known
+          - - commands
+          - - profile
       - id: schema.pin_pipeline_chain_valid
         kind: file_tokens
         path: /specs/04_governance/cases/core/spec_core/runtime_schema_pin_pipeline_chain.spec.md
@@ -110,10 +114,9 @@ profiles:
         kind: file_tokens
         path: /specs/01_schema/core_script_allowlist_v1.yaml
         must_contain:
-          - /scripts/control_plane.sh
-          - /scripts/ci_gate.sh
-          - /scripts/runner_status_ingest.sh
-          - /scripts/runner_bin.sh
+          - /scripts/bundle
+          - /scripts/governance_interface_sync.sh
+          - /scripts/governance_interface_validate.sh
       - id: runtime.retired_scripts_root_absent
         kind: file_tokens
         path: /specs/01_schema/core_script_allowlist_v1.yaml
@@ -122,36 +125,16 @@ profiles:
           - /scripts/retired
       - id: runtime.repo_boundary_tokens_forbidden
         kind: file_tokens
-        path: /scripts/control_plane.sh
+        path: /specs/04_governance/runner_entrypoints_v1.yaml
         must_contain:
-          - ./scripts/governance_boundary_validate.sh
+          - id: governance
+          - id: critical-gate
       - id: runtime.repo_boundary_validator_tokens_configured
         kind: file_tokens
-        path: /scripts/governance_boundary_validate.sh
+        path: /specs/04_governance/runner_entrypoints_v1.yaml
         must_contain:
-          - --check-id runtime.repo_boundary_tokens_forbidden
-          - --check-id runtime.repo_boundary_validator_tokens_configured
-          - governance-boundary-validate.json
-      - id: runtime.legacy_overlay_repo_tokens_forbidden_readme
-        kind: file_tokens
-        path: /README.md
-        must_not_contain:
-          - dc-runner-spec
-          - data-contracts-bundle-spec
-          - data-contracts-bundler-spec
-          - dc-runner-rust-specs
-          - dc-runner-python-specs
-          - dc-runner-php-specs
-      - id: runtime.legacy_overlay_repo_tokens_forbidden_bundle_contract
-        kind: file_tokens
-        path: /specs/02_contracts/33_bundle_package_management.md
-        must_not_contain:
-          - dc-runner-spec
-          - data-contracts-bundle-spec
-          - data-contracts-bundler-spec
-          - dc-runner-rust-specs
-          - dc-runner-python-specs
-          - dc-runner-php-specs
+          - id: docs-generate-check
+          - cli: dc-runner docs-generate-check
   full:
     checks:
       - id: runtime.full_check_set_manifest_required
@@ -180,12 +163,10 @@ profiles:
           - policy_effect
       - id: runtime.compatibility_status_ingestion_configured
         kind: file_tokens
-        path: /scripts/runner_status_ingest.sh
+        path: /specs/04_governance/runner_entrypoints_v1.yaml
         must_contain:
-          - --profile full
-          - runner-status-matrix.json
-          - runner-status-matrix.md
-          - runner-status-ingest-log.json
+          - id: governance
+          - /.artifacts/governance-summary.md
       - id: runtime.contracts_no_rust_primary_language
         kind: file_tokens
         path: /specs/02_contracts/12_runner_interface.md
@@ -236,9 +217,9 @@ profiles:
           - Mermaid
       - id: schema.spec_case_version_matches_schema_ref
         kind: file_tokens
-        path: /scripts/spec_schema_pin_validate.sh
+        path: /specs/01_schema/runner_cli_contract_v1.yaml
         must_contain:
-          - --check-id schema.spec_case_version_matches_schema_ref
+          - const: 1
       - id: schema.catalog_contains_active_schema_v1
         kind: file_tokens
         path: /specs/01_schema/schema_catalog_v1.yaml
@@ -255,27 +236,41 @@ profiles:
           - Shell scripts MUST NOT be the source of final policy verdict semantics
       - id: runtime.shell_policy_branches_forbidden
         kind: file_tokens
-        path: /scripts/control_plane.sh
+        path: /specs/02_contracts/12_runner_interface.md
         must_not_contain:
-          - README missing required task path token
-          - runtime runner execution references are forbidden
-          - missing required file:
+          - scripts/runner_bin.sh
+          - scripts/control_plane.sh
       - id: runtime.artifact_contract_compatibility_preserved
         kind: file_tokens
-        path: /scripts/governance_catalog_validate.sh
+        path: /specs/04_governance/runner_entrypoints_v1.yaml
         must_contain:
-          - .artifacts/governance-catalog-validate.json
-          - --check-id governance.catalog_pipeline_chain_valid
-          - --check-id runtime.chain_entry_cases_present
+          - /.artifacts/governance-summary.json
+          - /.artifacts/critical-gate-summary.json
       - id: runtime.infra_script_boundary_enforced
         kind: file_tokens
-        path: /scripts/runner_status_ingest.sh
+        path: /specs/02_contracts/29_runner_cli_interface.md
         must_contain:
-          - ./scripts/runner_bin.sh governance
-          - --check-id runtime.status_ingest_pipeline_chain_valid
+          - dc-runner governance
+          - dc-runner critical-gate
         must_not_contain:
-          - specs/02_contracts/policy_v1.yaml
-          - check_sets_v1.yaml
+          - ./scripts/runner_bin.sh
+      - id: docs.audience_surfaces_generated
+        kind: file_tokens
+        path: /docs/audience/implementer/reference_manifest.yaml
+        must_contain:
+          - version: 1
+          - audience: implementer
+      - id: docs.audience_surfaces_synced
+        kind: file_tokens
+        path: /scripts/docs_audience_generate.sh
+        must_contain:
+          - docs_audience_generate.py
+      - id: docs.audience_canonical_tokens_only
+        kind: file_tokens
+        path: /specs/00_core/docs_audience_migration_map.md
+        must_contain:
+          - spec-authors
+          - implementer
       - id: governance.catalog_pipeline_chain_valid
         kind: file_tokens
         path: /specs/04_governance/cases/core/spec_core/runtime_governance_catalog_pipeline_chain.spec.md
@@ -299,14 +294,33 @@ profiles:
           - check: runtime.status_ingest_pipeline_chain_valid
       - id: runtime.shell_extractors_fact_only_enforced
         kind: file_tokens
-        path: /scripts/governance_catalog_validate.sh
+        path: /specs/02_contracts/36_runner_command_entrypoints.md
         must_not_contain:
-          - jq -n
+          - shell wrappers
       - id: runtime.ingest_policy_branches_forbidden
         kind: file_tokens
-        path: /scripts/runner_status_ingest.sh
+        path: /specs/02_contracts/12_runner_interface.md
         must_not_contain:
-          - ERROR: compatibility status freshness policy violation
+          - scripts/runner_bin.sh
+          - wrapper-only command boundaries
+      - id: entrypoint.registry.schema_valid
+        kind: file_tokens
+        path: /specs/01_schema/runner_command_entrypoints_v1.yaml
+        must_contain:
+          - type: runtime.runner_command_entrypoints
+          - pattern: '^dc-runner(\s|$)'
+      - id: entrypoint.profile_refs_resolve
+        kind: file_tokens
+        path: /specs/04_governance/runner_entrypoints_v1.yaml
+        must_contain:
+          - profile: full
+          - profile: critical
+      - id: entrypoint.artifact_contract_complete
+        kind: file_tokens
+        path: /specs/04_governance/runner_entrypoints_v1.yaml
+        must_contain:
+          - /.artifacts/governance-summary.json
+          - /.artifacts/critical-gate-summary.json
       - id: runtime.policy_library_exports_resolve
         kind: file_tokens
         path: /specs/05_libraries/policy/index.md

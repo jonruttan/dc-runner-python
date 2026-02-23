@@ -11,7 +11,8 @@ Runtime execution ownership lives in runner repositories:
 - `dc-runner-rust`
 - `dc-runner-python`
 - `dc-runner-php`
-- `data-contracts-library` (reusable runner behavior + overlay + shared runner libraries)
+- `data-contracts-runner` (shared runner behavior + shared runner contracts)
+- `data-contracts-library` (shared reusable libraries + overlays)
 
 `data-contracts` owns:
 
@@ -27,18 +28,17 @@ Runtime execution ownership lives in runner repositories:
 
 ## Stable Boundary
 
-The public command boundary remains:
+The public command boundary is the installed binary:
 
-- `scripts/runner_bin.sh`
+- `dc-runner`
 
-This boundary is retained for compatibility, but control-plane CI in this repo
-must not depend on runtime-lane execution through that boundary.
+Command semantics are source-controlled in:
+
+- `/specs/04_governance/runner_entrypoints_v1.yaml`
 
 Shared governance semantics MUST be sourced from spec surfaces (`specs/04_governance/**`
-`specs/05_libraries/policy/**`) and executed by runners; shell scripts are transport
-entrypoints and artifact emitters only.
-Active shell scripts in canonical repos are wrapper-only command boundaries and
-must not embed policy or schema decision logic.
+`specs/05_libraries/policy/**`) and executed by runners. Shell scripts are not
+canonical command entrypoints.
 
 Reusable runner executable spec suites MUST use canonical v1 case shape:
 
@@ -52,8 +52,9 @@ Boundary contract:
 - canonical `data-contracts` docs/specs must not reference internal runner trees
   using internal runner tree path tokens.
 - external reusable-runner surfaces must be referenced via explicit repository paths, for
-  example `/data-contracts-library/specs/07_runner_behavior/impl/**` and
-  `/data-contracts-library/specs/07_runner_behavior/contract_sets/**`.
+  example `/dc-runner-<impl>/specs/impl/<impl>/**`,
+  `/data-contracts-runner/specs/07_runner_behavior/runner/**`, and
+  `/data-contracts-runner/specs/07_runner_behavior/contract_sets/shared/**`.
 
 ## Status Exchange Boundary
 
@@ -93,7 +94,11 @@ Canonical bundle manifest and package librarian repository:
 
 - `https://github.com/jonruttan/data-contracts-bundles`
 
-Reusable implementation-specific overlay repository:
+Reusable shared runner behavior repository:
+
+- `https://github.com/jonruttan/data-contracts-runner`
+
+Reusable overlay/library repository:
 
 - `https://github.com/jonruttan/data-contracts-library`
 

@@ -61,6 +61,8 @@ Related docs/reference schemas:
 - `purpose` (string, optional): suite-level description
 - `docs` (list, optional): suite-level documentation metadata entries
   - required entry keys: `summary`, `audience`, `status`
+  - `docs[].audience` enum: `operator|integrator|implementer|maintainer|governance|reviewer|auditor`
+  - `docs[].audience` default: `implementer`
   - `id` is optional metadata; when omitted, runners may emit deterministic
     report labels only (not schema/reference identity)
   - optional entry keys: `description`, `type`, `since`, `updated_at`, `tags`, `owners`, `links`, `examples`

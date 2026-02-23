@@ -36,6 +36,7 @@ Optional v1 type overlays (non-normative references):
 - `/specs/01_schema/runner_status_matrix_v1.yaml`
 - `/specs/01_schema/runner_cli_contract_v1.yaml`
 - `/specs/01_schema/runner_build_tool_contract_v1.yaml`
+- `/specs/01_schema/runner_command_entrypoints_v1.yaml`
 - `/specs/01_schema/bundle_manifest_v1.yaml`
 - `/specs/01_schema/scaffold_manifest_v1.yaml`
 - `/specs/01_schema/resolved_bundle_lock_v1.yaml`
@@ -45,6 +46,7 @@ Optional v1 type overlays (non-normative references):
 - `/specs/01_schema/implementation_bundle_build_lock_v1.yaml`
 - `/specs/01_schema/contract_set_manifest_v1.yaml`
 - `/specs/01_schema/resolved_contract_set_lock_v1.yaml`
+- `/specs/01_schema/docs_audience_surface_v1.yaml`
 - `/specs/01_schema/core_script_allowlist_v1.yaml`
 - `/specs/01_schema/normalization_profile_v1.yaml`
 - `/specs/01_schema/subject_profiles_v1.yaml`
